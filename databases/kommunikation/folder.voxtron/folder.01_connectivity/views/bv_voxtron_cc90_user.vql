@@ -1,0 +1,212 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_user
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_user.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_user.SCHEMANAME}' 
+    RELATIONNAME='CC90_User' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the CC instance where user belongs to.', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        userid = 'UserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the user.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        levelid = 'LevelID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the level (WEB10_UserLevel) of user rights in application.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        username = 'Username' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='200', description='Username of the user.', sourcetypeid='12', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        password = 'Password' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='User''s password.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        firstname = 'FirstName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='60', description='User''s first name.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        lastname = 'LastName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='60', description='User''s last name.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        email = 'Email' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='100', description='User''s e-mail.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        isactive = 'IsActive' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user is active (logicaly deleted).', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        lastlogin = 'LastLogin' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='0', sourcetypesize='23', description='Date and time of the user''s last login.', sourcetypeid='93', sourcetypename='datetime')  SORTABLE,
+        personalnumber = 'PersonalNumber' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='User''s personal number.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        loginid = 'LoginID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Unique identifier that is used for logging in when the agent has no PC.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        wrapuptimefactor = 'WrapUpTimeFactor' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Wrap up time factor value in range from 0 to 100.', sourcetypeid='5', sourcetypename='smallint')  SORTABLE,
+        freeseatingdisabled = 'FreeSeatingDisabled' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the free seating is disabled for user.', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        extension = 'Extension' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='200', description='User''s phone extension number.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        alwaysmonitorextension = 'AlwaysMonitorExtension' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user''s extension is always monitored.', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        interactionsendfaxviaemail = 'InteractionSendFaxViaEmail' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the fax data is sent via email to agent instead of using the agent client.', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        enterextensionallowed = 'EnterExtensionAllowed' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the CTI is enabled for this user.', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        directfaxincomingenabled = 'DirectFaxIncomingEnabled' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user is allowed to receive direct faxes.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        directfaxoutgoingenabled = 'DirectFaxOutgoingEnabled' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user is allowed to send direct outbound faxes.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        directfaxnumber = 'DirectFaxNumber' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Direct fax number for this user.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        directfaxreceivernumber = 'DirectFaxReceiverNumber' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Direct fax number that will be transmitted as the receiver number to the remote fax machine.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        directfaxreceivername = 'DirectFaxReceiverName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='Name that will be transmitted as the receiver name to the remote fax machine.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        directfaxincomingarchive = 'DirectFaxIncomingArchive' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', description='Contains one of four options for archiving the direct incoming faxes. (1 = Always, 2 = Never, 3 = Default, 4 = Not default)', sourcetypeid='-6', sourcetypename='tinyint')  SORTABLE,
+        directfaxhandling = 'DirectFaxHandling' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', description='Indicates how the direct faxes should be handled. (1 = Send direct faxes via e-mail, 2 = Handle direct faxes via client application)', sourcetypeid='-6', sourcetypename='tinyint')  SORTABLE,
+        directfaxuserhandleonlogon = 'DirectFaxUserHandleOnLogon' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user can specify to handle direct faxes at login', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        directfaxoutgoingarchive = 'DirectFaxOutgoingArchive' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', description='Contains one of four options for archiving the direct outgoing faxes. (1 = Always, 2 = Never, 3 = Default, 4 = Not default)', sourcetypeid='-6', sourcetypename='tinyint')  SORTABLE,
+        directfaxwhichsenderdata = 'DirectFaxWhichSenderData' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', description='Defines one of three options for data that should be send when using outgoing direct fax. (1 = Default, 2 = Use settings from direct incoming faxes, 3 = Specify which sender data)', sourcetypeid='-6', sourcetypename='tinyint')  SORTABLE,
+        directfaxsendernumber = 'DirectFaxSenderNumber' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Number that will be sent to the remote fax machine as a sender''s fax number.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        directfaxsendername = 'DirectFaxSenderName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='Name that will be sent to the remote fax machine as a sender''s name.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        faxroutingsendviaemail = 'FaxRoutingSendViaEmail' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the fax data is sent via email to agent instead of using the agent client.', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        appuserid = 'AppUserId' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier (DS10_MainUser) of the user who made last table data modification from application. ', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE,
+        canhandlemultiplecontacts = 'CanHandleMultipleContacts' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Specifies whether this user can handle multiple contacts when webchat interaction is active', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        maxnumberofcontacts = 'MaxNumberOfContacts' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Specifies the maximum number of contacts when multiple contacts are allowed for this user', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        istemplate = 'IsTemplate' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Marks if given user is a template user or normal user', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        usertemplateid = 'UserTemplateID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='ID of user which serves as a template user. Used as FK reference to same table.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        templatechanged = 'TemplateChanged' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='0', sourcetypesize='23', description='Datetime when template assigned to user was last changed. Used to notify user about changes.', sourcetypeid='93', sourcetypename='datetime')  SORTABLE,
+        cc80_userid = 'CC80_UserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original UserID of the User in the CC80.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        initiallogonstatus = 'InitialLogonStatus' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The value used to force the initial logon status in Voxtron client', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        initiallogonstatus_pausereasonid = 'InitialLogonStatus_PauseReasonId' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The pause reason used when the initial logon status is set to pause', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        isaduser = 'IsADUser' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the user is imported from Active Directory (= 1) or not (= 0).', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        profileid = 'ProfileID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the Profile (CC90_OLA_Profile) assigned to user.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        islyncintegrationenabled = 'IsLyncIntegrationEnabled' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the Lync / Skype for Business is enabled for the user.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        configurationsetid = 'ConfigurationSetID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='The Lync / Skype for Business configuration set enabled for the user.', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT SORTABLE,
+        passwordtimestamp = 'PasswordTimeStamp' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='0', sourcetypesize='23', description='Time of latest password change', sourcetypeid='93', sourcetypename='datetime')  NOT NULL SORTABLE,
+        passwordexpired = 'PasswordExpired' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Password needs to be changed', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        useusersettingsfortabpermissions = 'UseUserSettingsForTabPermissions' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabPermissions', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabskills = 'UseUserSettingsForTabSkills' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabSkills', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabqueues = 'UseUserSettingsForTabQueues' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabQueues', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabam = 'UseUserSettingsForTabAM' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabAM', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabwm = 'UseUserSettingsForTabWM' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabWM', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabclient = 'UseUserSettingsForTabClient' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabClient', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortabnewsticker = 'UseUserSettingsForTabNewsTicker' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabNewsTicker', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        useusersettingsfortablync = 'UseUserSettingsForTabLync' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='UseUserSettingsForTabLync', sourcetypeid='-7', sourcetypename='bit')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_User' PRIMARY KEY ( 'InstanceID' , 'UserID' )
+    CONSTRAINT 'FK_CC90_User_CC90_OLA_Profile' FOREIGN KEY ( 'InstanceID' , 'ProfileID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_OLA_Profile'( 'InstanceID' , 'ProfileID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_CC90_PauseReason' FOREIGN KEY ( 'InstanceID' , 'InitialLogonStatus_PauseReasonId' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_PauseReason'( 'InstanceID' , 'PauseReasonID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_CC90_User_UserTemplate' FOREIGN KEY ( 'InstanceID' , 'UserTemplateID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_CC90_UserLogonStatus' FOREIGN KEY ( 'InstanceID' , 'InitialLogonStatus' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_UserLogonStatus'( 'InstanceID' , 'UserLogonStatusID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_DS10_MainUser' FOREIGN KEY ( 'UserID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_MainUser'( 'MainUserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_User_WEB10_UserLevel' FOREIGN KEY ( 'LevelID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'WEB10_UserLevel'( 'UserLevelID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_User' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'UserID' )
+    INDEX 'IX_CC90_UniqueUsernamePerInstance' OTHER UNIQUE ( 'InstanceID' , 'Username' , 'IsTemplate' )
+    INDEX 'IX_CC90_User_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' )
+    INDEX 'IX__CC90_User__UserId_UserNameUserTemplateID_IsTemplate_IsActive' OTHER ( 'UserID' , 'Username' , 'UserTemplateID' , 'IsTemplate' , 'IsActive' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_user I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the CC instance where user belongs to.'), 
+        userid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the user.'), 
+        levelid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the level (WEB10_UserLevel) of user rights in application.'), 
+        username:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '200', description = 'Username of the user.'), 
+        password:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'User''s password.'), 
+        firstname:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '60', description = 'User''s first name.'), 
+        lastname:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '60', description = 'User''s last name.'), 
+        email:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '100', description = 'User''s e-mail.'), 
+        isactive:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user is active (logicaly deleted).'), 
+        lastlogin:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Date and time of the user''s last login.'), 
+        personalnumber:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'User''s personal number.'), 
+        loginid:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Unique identifier that is used for logging in when the agent has no PC.'), 
+        wrapuptimefactor:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Wrap up time factor value in range from 0 to 100.'), 
+        freeseatingdisabled:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the free seating is disabled for user.'), 
+        extension:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '200', description = 'User''s phone extension number.'), 
+        alwaysmonitorextension:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user''s extension is always monitored.'), 
+        interactionsendfaxviaemail:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the fax data is sent via email to agent instead of using the agent client.'), 
+        enterextensionallowed:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the CTI is enabled for this user.'), 
+        directfaxincomingenabled:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user is allowed to receive direct faxes.'), 
+        directfaxoutgoingenabled:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user is allowed to send direct outbound faxes.'), 
+        directfaxnumber:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Direct fax number for this user.'), 
+        directfaxreceivernumber:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Direct fax number that will be transmitted as the receiver number to the remote fax machine.'), 
+        directfaxreceivername:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = 'Name that will be transmitted as the receiver name to the remote fax machine.'), 
+        directfaxincomingarchive:int (sourcetypeid = '-6', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3', description = 'Contains one of four options for archiving the direct incoming faxes. (1 = Always, 2 = Never, 3 = Default, 4 = Not default)'), 
+        directfaxhandling:int (sourcetypeid = '-6', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3', description = 'Indicates how the direct faxes should be handled. (1 = Send direct faxes via e-mail, 2 = Handle direct faxes via client application)'), 
+        directfaxuserhandleonlogon:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user can specify to handle direct faxes at login'), 
+        directfaxoutgoingarchive:int (sourcetypeid = '-6', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3', description = 'Contains one of four options for archiving the direct outgoing faxes. (1 = Always, 2 = Never, 3 = Default, 4 = Not default)'), 
+        directfaxwhichsenderdata:int (sourcetypeid = '-6', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3', description = 'Defines one of three options for data that should be send when using outgoing direct fax. (1 = Default, 2 = Use settings from direct incoming faxes, 3 = Specify which sender data)'), 
+        directfaxsendernumber:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Number that will be sent to the remote fax machine as a sender''s fax number.'), 
+        directfaxsendername:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = 'Name that will be sent to the remote fax machine as a sender''s name.'), 
+        faxroutingsendviaemail:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the fax data is sent via email to agent instead of using the agent client.'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier (DS10_MainUser) of the user who made last table data modification from application. '), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record'), 
+        canhandlemultiplecontacts:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Specifies whether this user can handle multiple contacts when webchat interaction is active'), 
+        maxnumberofcontacts:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Specifies the maximum number of contacts when multiple contacts are allowed for this user'), 
+        istemplate:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Marks if given user is a template user or normal user'), 
+        usertemplateid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'ID of user which serves as a template user. Used as FK reference to same table.'), 
+        templatechanged:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Datetime when template assigned to user was last changed. Used to notify user about changes.'), 
+        cc80_userid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original UserID of the User in the CC80.'), 
+        initiallogonstatus:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The value used to force the initial logon status in Voxtron client'), 
+        initiallogonstatus_pausereasonid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The pause reason used when the initial logon status is set to pause'), 
+        isaduser:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the user is imported from Active Directory (= 1) or not (= 0).'), 
+        profileid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the Profile (CC90_OLA_Profile) assigned to user.'), 
+        islyncintegrationenabled:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the Lync / Skype for Business is enabled for the user.'), 
+        configurationsetid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'The Lync / Skype for Business configuration set enabled for the user.'), 
+        passwordtimestamp:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Time of latest password change'), 
+        passwordexpired:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Password needs to be changed'), 
+        useusersettingsfortabpermissions:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabPermissions'), 
+        useusersettingsfortabskills:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabSkills'), 
+        useusersettingsfortabqueues:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabQueues'), 
+        useusersettingsfortabam:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabAM'), 
+        useusersettingsfortabwm:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabWM'), 
+        useusersettingsfortabclient:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabClient'), 
+        useusersettingsfortabnewsticker:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabNewsTicker'), 
+        useusersettingsfortablync:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'UseUserSettingsForTabLync')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains all users for single CC instance.'
+    CONSTRAINT 'PK_CC90_User' PRIMARY KEY ( 'instanceid' , 'userid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_user(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD userid (any) OPT ANY
+             ADD levelid (any) OPT ANY
+             ADD username (any) OPT ANY
+             ADD password (any) OPT ANY
+             ADD firstname (any) OPT ANY
+             ADD lastname (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD isactive (any) OPT ANY
+             ADD lastlogin (any) OPT ANY
+             ADD personalnumber (any) OPT ANY
+             ADD loginid (any) OPT ANY
+             ADD wrapuptimefactor (any) OPT ANY
+             ADD freeseatingdisabled (any) OPT ANY
+             ADD extension (any) OPT ANY
+             ADD alwaysmonitorextension (any) OPT ANY
+             ADD interactionsendfaxviaemail (any) OPT ANY
+             ADD enterextensionallowed (any) OPT ANY
+             ADD directfaxincomingenabled (any) OPT ANY
+             ADD directfaxoutgoingenabled (any) OPT ANY
+             ADD directfaxnumber (any) OPT ANY
+             ADD directfaxreceivernumber (any) OPT ANY
+             ADD directfaxreceivername (any) OPT ANY
+             ADD directfaxincomingarchive (any) OPT ANY
+             ADD directfaxhandling (any) OPT ANY
+             ADD directfaxuserhandleonlogon (any) OPT ANY
+             ADD directfaxoutgoingarchive (any) OPT ANY
+             ADD directfaxwhichsenderdata (any) OPT ANY
+             ADD directfaxsendernumber (any) OPT ANY
+             ADD directfaxsendername (any) OPT ANY
+             ADD faxroutingsendviaemail (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD canhandlemultiplecontacts (any) OPT ANY
+             ADD maxnumberofcontacts (any) OPT ANY
+             ADD istemplate (any) OPT ANY
+             ADD usertemplateid (any) OPT ANY
+             ADD templatechanged (any) OPT ANY
+             ADD cc80_userid (any) OPT ANY
+             ADD initiallogonstatus (any) OPT ANY
+             ADD initiallogonstatus_pausereasonid (any) OPT ANY
+             ADD isaduser (any) OPT ANY
+             ADD profileid (any) OPT ANY
+             ADD islyncintegrationenabled (any) OPT ANY
+             ADD configurationsetid (any) OPT ANY
+             ADD passwordtimestamp (any) OPT ANY
+             ADD passwordexpired (any) OPT ANY
+             ADD useusersettingsfortabpermissions (any) OPT ANY
+             ADD useusersettingsfortabskills (any) OPT ANY
+             ADD useusersettingsfortabqueues (any) OPT ANY
+             ADD useusersettingsfortabam (any) OPT ANY
+             ADD useusersettingsfortabwm (any) OPT ANY
+             ADD useusersettingsfortabclient (any) OPT ANY
+             ADD useusersettingsfortabnewsticker (any) OPT ANY
+             ADD useusersettingsfortablync (any) OPT ANY
+        )
+        OUTPUTLIST (alwaysmonitorextension, appuserid, canhandlemultiplecontacts, cc80_userid, configurationsetid, directfaxhandling, directfaxincomingarchive, directfaxincomingenabled, directfaxnumber, directfaxoutgoingarchive, directfaxoutgoingenabled, directfaxreceivername, directfaxreceivernumber, directfaxsendername, directfaxsendernumber, directfaxuserhandleonlogon, directfaxwhichsenderdata, email, enterextensionallowed, extension, faxroutingsendviaemail, firstname, freeseatingdisabled, initiallogonstatus, initiallogonstatus_pausereasonid, instanceid, interactionsendfaxviaemail, isactive, isaduser, islyncintegrationenabled, istemplate, lastlogin, lastname, lastupdaterowversion, levelid, loginid, maxnumberofcontacts, password, passwordexpired, passwordtimestamp, personalnumber, profileid, templatechanged, userid, username, usertemplateid, useusersettingsfortabam, useusersettingsfortabclient, useusersettingsfortablync, useusersettingsfortabnewsticker, useusersettingsfortabpermissions, useusersettingsfortabqueues, useusersettingsfortabskills, useusersettingsfortabwm, wrapuptimefactor
+        )
+        WRAPPER (jdbc cc90_user)
+    )
+    SMART_ONLY;
+

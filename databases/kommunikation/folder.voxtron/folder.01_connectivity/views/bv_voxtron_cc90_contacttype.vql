@@ -1,0 +1,44 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_voxtroncc90_contacttype
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.bv_voxtroncc90_contacttype.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.bv_voxtroncc90_contacttype.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactType' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contacttypeid = 'ContactTypeID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Unique identifier for the contact type', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        description = 'Description' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Description of the contact type (e.g. CCININTERN)', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactType' PRIMARY KEY ( 'InstanceID' , 'ContactTypeID' )
+    CONSTRAINT 'FK_CC90_ContactType_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactType' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactTypeID' )
+    INDEX 'IX_CC90_ContactType_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contacttype I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contacttypeid:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Unique identifier for the contact type'), 
+        description:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Description of the contact type (e.g. CCININTERN)'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    CONSTRAINT 'PK_CC90_ContactType' PRIMARY KEY ( 'instanceid' , 'contacttypeid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_voxtroncc90_contacttype(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contacttypeid (any) OPT ANY
+             ADD description (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+        )
+        OUTPUTLIST (contacttypeid, description, instanceid, lastupdaterowversion
+        )
+        WRAPPER (jdbc bv_voxtroncc90_contacttype)
+    )
+    SMART_ONLY;
+

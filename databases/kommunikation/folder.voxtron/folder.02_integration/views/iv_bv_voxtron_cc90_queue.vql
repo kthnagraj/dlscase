@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_queue FOLDER = '/voxtron/02_integration' AS SELECT bv_voxtron_cc90_queue.instanceid AS queue_instanceid, bv_voxtron_cc90_queue.queueid AS queue_queueid, bv_voxtron_cc90_queue.name AS queue_name, bv_voxtron_cc90_queue.isdefault AS queue_isdefault, bv_voxtron_cc90_queue.isactive AS queue_isactive, bv_voxtron_cc90_queue.defaultagentsettings AS queue_defaultagentsettings, bv_voxtron_cc90_queue.defaultrouting AS queue_defaultrouting, bv_voxtron_cc90_queue.defaultadvancedrouting AS queue_defaultadvancedrouting, bv_voxtron_cc90_queue.defaulttimes AS queue_defaulttimes, bv_voxtron_cc90_queue.appuserid AS queue_appuserid, bv_voxtron_cc90_queue.lastupdaterowversion AS queue_lastupdaterowversion, bv_voxtron_cc90_queue.contactcodesmandatory AS queue_contactcodesmandatory, bv_voxtron_cc90_queue.contactcodesmandatoryonfailure AS queue_contactcodesmandatoryonfailure, bv_voxtron_cc90_queue.cc80_queueid AS queue_cc80_queueid FROM bv_voxtron_cc90_queue;
+
+ALTER VIEW iv_bv_voxtron_cc90_queue
+ LAYOUT (bv_voxtron_cc90_queue = [20, 20, 366, 306]);
+

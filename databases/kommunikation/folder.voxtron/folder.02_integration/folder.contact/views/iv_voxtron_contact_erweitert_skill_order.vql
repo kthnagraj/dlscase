@@ -1,0 +1,70 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contact_erweitert_skill_order FOLDER = '/voxtron/02_integration/contact' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle Einzelkontakte (d. h. alle Anrufe) der letzten 24 Monate gelistet, die in der Voxtron Datenbank enthalten sind. </li>
+        <li>Neben allgemeinen Informationen werden auch die angerufenen Skills (Rufnummern) ausgegeben, die bei einem Anruf involviert waren. </li>
+        <li>In dieser View wird versucht, eine Reihenfolge der Skills auszulesen. Diese ist allerdings nicht zu 100% vertrauenswürdig. </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">Startdatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default:</span></strong>
+            <ul>
+                <li><span style="color:#444444">aktuelles Datum - 100 Tage</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+        <li><strong><span style="color:#444444">Enddatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li>Aktuelles Datum</li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>'  AS SELECT contact_erweitert.contact_instanceid AS contact_instanceid, contact_erweitert.contact_contactid AS contact_contactid, contact_erweitert.contact_conferenceid AS contact_conferenceid, contact_erweitert.contact_contacttypeid AS contact_contacttypeid, contact_erweitert.contact_from_0 AS contact_from_0, contact_erweitert.contact_from_origin AS contact_from_origin, contact_erweitert.contact_to_0 AS contact_to_0, iv_voxtron_cc90_contact_included_skills_nested_extended.first_skillid AS first_skillid, iv_voxtron_cc90_contact_included_skills_nested_extended.first_skill_name AS first_skill_name, iv_voxtron_cc90_contact_included_skills_nested_extended.second_skillid AS second_skillid, iv_voxtron_cc90_contact_included_skills_nested_extended.second_skill_name AS second_skill_name, iv_voxtron_cc90_contact_included_skills_nested_extended.involved_skillids_nested AS involved_skillids_nested, iv_voxtron_cc90_contact_included_skills_nested_extended.involved_skill_names_nested AS involved_skill_names_nested, contact_erweitert.contact_timecreated AS contact_timecreated, contact_erweitert.contact_waitingtimelength AS contact_waitingtimelength, contact_erweitert.contact_conversationlength AS contact_conversationlength, contact_erweitert.contact_handledby AS contact_handledby, contact_erweitert.contact_sentby AS contact_sentby, contact_erweitert.contact_senderid AS contact_senderid, contact_erweitert.contact_receiverid AS contact_receiverid, contact_erweitert.contact_companyname AS contact_companyname, contact_erweitert.contact_recipientname AS contact_recipientname, contact_erweitert.contact_isshortcontact AS contact_isshortcontact, contact_erweitert.contact_lastupdaterowversion AS contact_lastupdaterowversion, contact_erweitert.contact_callsetupdatetime AS contact_callsetupdatetime, contact_erweitert.contact_resultcode AS contact_resultcode, contact_erweitert.contact_lastassignedagent AS contact_lastassignedagent, contact_erweitert.contact_lastassignedqueue AS contact_lastassignedqueue, contact_erweitert.contact_hascontent AS contact_hascontent, contact_erweitert.contact_customerid AS contact_customerid, contact_erweitert.contact_subtype AS contact_subtype, contact_erweitert.contact_contactdate AS contact_contactdate, contact_erweitert.contact_contacttime AS contact_contacttime, contact_erweitert.contact_year AS contact_year, contact_erweitert.contact_month AS contact_month, contact_erweitert.contact_day AS contact_day, contact_erweitert.contact_hour AS contact_hour, contact_erweitert.contact_dayofweek AS contact_dayofweek, contact_erweitert.contact_wrapuplength AS contact_wrapuplength, contact_erweitert.contactactionlog_ringingtimelength AS contactactionlog_ringingtimelength, contact_erweitert.contacttype_description AS contacttype_description, contact_erweitert.contacttype_lastupdaterowversion AS contacttype_lastupdaterowversion, contact_erweitert.isinueberlauf AS isinueberlauf, contact_erweitert._param_contactdate_start AS _param_contactdate_start, contact_erweitert._param_contactdate_end AS _param_contactdate_end FROM iv_voxtron_contact_erweitert AS contact_erweitert INNER JOIN iv_voxtron_cc90_contact_included_skills_nested_extended AS iv_voxtron_cc90_contact_included_skills_nested_extended ON contact_erweitert.contact_contactid = iv_voxtron_cc90_contact_included_skills_nested_extended.contact_contactid ;
+
+ALTER VIEW iv_voxtron_contact_erweitert_skill_order
+ LAYOUT (iv_voxtron_contact_erweitert = [70, 30, 250, 670], iv_voxtron_cc90_contact_included_skills_nested_extended = [595, 84, 200, 225]);
+

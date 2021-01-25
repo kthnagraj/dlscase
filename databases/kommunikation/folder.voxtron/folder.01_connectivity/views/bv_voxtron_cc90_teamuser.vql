@@ -1,0 +1,47 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_teamuser
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_teamuser.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_teamuser.SCHEMANAME}' 
+    RELATIONNAME='CC90_TeamUser' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique Identifier of the Instance to which Team record belongs', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        teamid = 'TeamID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Team Unique Identifier', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        userid = 'UserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='User Unique Identifier', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        appuserid = 'AppUserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier (DS10_MainUser) of the user who made last table data modification from application.', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_TeamUser' PRIMARY KEY ( 'InstanceID' , 'TeamID' , 'UserID' )
+    CONSTRAINT 'FK_CC90_TeamUser_CC90_Team' FOREIGN KEY ( 'InstanceID' , 'TeamID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Team'( 'InstanceID' , 'TeamID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_TeamUser_CC90_User' FOREIGN KEY ( 'InstanceID' , 'UserID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_TeamUser' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'TeamID' , 'UserID' )
+    INDEX 'IX__CC90_TeamUser__UserId_TeamId' OTHER ( 'UserID' , 'TeamID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_teamuser I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique Identifier of the Instance to which Team record belongs'), 
+        teamid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Team Unique Identifier'), 
+        userid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'User Unique Identifier'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier (DS10_MainUser) of the user who made last table data modification from application.')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'Contains users assigned to certain team.'
+    CONSTRAINT 'PK_CC90_TeamUser' PRIMARY KEY ( 'instanceid' , 'teamid' , 'userid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_teamuser(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD teamid (any) OPT ANY
+             ADD userid (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+        )
+        OUTPUTLIST (appuserid, instanceid, teamid, userid
+        )
+        WRAPPER (jdbc cc90_teamuser)
+    )
+    SMART_ONLY;
+

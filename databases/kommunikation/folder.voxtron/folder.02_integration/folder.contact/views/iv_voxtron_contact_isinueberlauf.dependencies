@@ -1,0 +1,11 @@
+﻿/databases/kommunikation/folder.voxtron/voxtron.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/02_integration.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/folder.contact/contact.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/01_connectivity.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/00_datasource.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/datasources/jdbc/ds_voxtron.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/views/bv_voxtron_cc90_contactskill.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/folder.contact/views/iv_bv_voxtron_cc90_contactskill.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/views/bv_voxtron_cc90_skill.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/views/iv_bv_voxtron_cc90_skill.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/folder.contact/views/iv_voxtron_contactskill_skill.vql

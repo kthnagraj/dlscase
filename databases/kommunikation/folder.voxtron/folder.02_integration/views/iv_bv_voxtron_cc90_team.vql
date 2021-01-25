@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_team FOLDER = '/voxtron/02_integration' AS SELECT bv_voxtron_cc90_team.instanceid AS team_instanceid, bv_voxtron_cc90_team.teamid AS team_teamid, bv_voxtron_cc90_team.name AS team_name, bv_voxtron_cc90_team.isactive AS team_isactive, bv_voxtron_cc90_team.appuserid AS team_appuserid, bv_voxtron_cc90_team.lastupdaterowversion AS team_lastupdaterowversion, bv_voxtron_cc90_team.templateid AS team_templateid, bv_voxtron_cc90_team.cc80_teamid AS team_cc80_teamid FROM bv_voxtron_cc90_team;
+
+ALTER VIEW iv_bv_voxtron_cc90_team
+ LAYOUT (bv_voxtron_cc90_team = [20, 20, 305, 186]);
+

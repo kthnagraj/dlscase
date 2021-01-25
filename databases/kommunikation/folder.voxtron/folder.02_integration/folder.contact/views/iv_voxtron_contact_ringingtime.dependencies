@@ -1,0 +1,9 @@
+﻿/databases/kommunikation/folder.voxtron/voxtron.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/02_integration.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/folder.contact/contact.vql
+/extensions/jars/lv1871-denodo-custom-functions.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/01_connectivity.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/00_datasource.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/datasources/jdbc/ds_voxtron.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/views/bv_voxtron_cc90_contactaction.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/views/bv_voxtron_cc90_contactactionlog.vql

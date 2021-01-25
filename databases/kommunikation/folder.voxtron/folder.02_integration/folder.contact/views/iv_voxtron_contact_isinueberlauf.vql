@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contact_isinueberlauf FOLDER = '/voxtron/02_integration/contact' AS SELECT iv_voxtron_contactskill_skill.contactid AS contactid, 1 AS isinueberlauf FROM iv_voxtron_contactskill_skill AS iv_voxtron_contactskill_skill INNER JOIN iv_voxtron_contactskill_skill AS iv_voxtron_contactskill_skill1 ON iv_voxtron_contactskill_skill.contactid = iv_voxtron_contactskill_skill1.contactid  WHERE iv_voxtron_contactskill_skill.skill_name = (iv_voxtron_contactskill_skill1.skill_name||'_Ü');
+
+ALTER VIEW iv_voxtron_contact_isinueberlauf
+ LAYOUT (iv_voxtron_contactskill_skill = [46, 176, 200, 146], iv_voxtron_contactskill_skill = [440, 214, 200, 146]);
+

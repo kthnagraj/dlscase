@@ -1,0 +1,43 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_contactskill
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactskill.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactskill.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactSkill' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactid = 'ContactID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Indicates to which contact this skill was assigned to', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        skillid = 'SkillID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the skill from the table CC90_Skill', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactSkill' PRIMARY KEY ( 'InstanceID' , 'ContactID' , 'SkillID' )
+    CONSTRAINT 'FK_CC90_ContactSkill_CC90_Contact' FOREIGN KEY ( 'InstanceID' , 'ContactID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Contact'( 'InstanceID' , 'ContactID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_ContactSkill_CC90_Skill' FOREIGN KEY ( 'InstanceID' , 'SkillID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Skill'( 'InstanceID' , 'SkillID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactSkill' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactID' , 'SkillID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contactskill I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contactid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Indicates to which contact this skill was assigned to'), 
+        skillid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the skill from the table CC90_Skill')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'Intermediate table that stores which skill is assigned to which contact.'
+    CONSTRAINT 'PK_CC90_ContactSkill' PRIMARY KEY ( 'instanceid' , 'contactid' , 'skillid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_contactskill(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactid (any) OPT ANY
+             ADD skillid (any) OPT ANY
+        )
+        OUTPUTLIST (contactid, instanceid, skillid
+        )
+        WRAPPER (jdbc cc90_contactskill)
+    )
+    SMART_ONLY;
+

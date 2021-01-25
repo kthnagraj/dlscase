@@ -1,0 +1,60 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_team
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_team.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_team.SCHEMANAME}' 
+    RELATIONNAME='CC90_Team' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique Identifier of the Instance to which Team record belongs', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        teamid = 'TeamID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier of the Team record', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        name = 'Name' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='100', description='Name of the Team', sourcetypeid='12', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        isactive = 'IsActive' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if the Team is active', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        appuserid = 'AppUserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier of the user who invoked last table data modification from application', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE,
+        templateid = 'TemplateID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Marks if a team is assigned a template', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        cc80_teamid = 'CC80_TeamID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original TeamID of the Team in the CC80.', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_Team' PRIMARY KEY ( 'InstanceID' , 'TeamID' )
+    CONSTRAINT 'FK_CC90_Team_CC90_User_TemplateID' FOREIGN KEY ( 'InstanceID' , 'TemplateID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_Team_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_Team' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'TeamID' )
+    INDEX 'IX_CC90_Team_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' )
+    INDEX 'IX__CC90_Team__TeamId_IsActive' OTHER ( 'TeamID' , 'IsActive' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_team I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique Identifier of the Instance to which Team record belongs'), 
+        teamid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier of the Team record'), 
+        name:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '100', description = 'Name of the Team'), 
+        isactive:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if the Team is active'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier of the user who invoked last table data modification from application'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record'), 
+        templateid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Marks if a team is assigned a template'), 
+        cc80_teamid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original TeamID of the Team in the CC80.')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains all teams defined by users.'
+    CONSTRAINT 'PK_CC90_Team' PRIMARY KEY ( 'instanceid' , 'teamid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_team(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD teamid (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD isactive (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD templateid (any) OPT ANY
+             ADD cc80_teamid (any) OPT ANY
+        )
+        OUTPUTLIST (appuserid, cc80_teamid, instanceid, isactive, lastupdaterowversion, name, teamid, templateid
+        )
+        WRAPPER (jdbc cc90_team)
+    )
+    SMART_ONLY;
+

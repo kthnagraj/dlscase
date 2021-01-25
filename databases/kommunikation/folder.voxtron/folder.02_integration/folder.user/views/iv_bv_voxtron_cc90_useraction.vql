@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_useraction FOLDER = '/voxtron/02_integration/user' AS SELECT bv_voxtron_cc90_useraction.instanceid AS useraction_instanceid, bv_voxtron_cc90_useraction.useractionid AS useraction_useractionid, bv_voxtron_cc90_useraction.description AS useraction_description, bv_voxtron_cc90_useraction.relatedactionid AS useraction_relatedactionid, bv_voxtron_cc90_useraction.relation AS useraction_relation, bv_voxtron_cc90_useraction.lastupdaterowversion AS useraction_lastupdaterowversion FROM bv_voxtron_cc90_useraction;
+
+ALTER VIEW iv_bv_voxtron_cc90_useraction
+ LAYOUT (bv_voxtron_cc90_useraction = [20, 20, 305, 146]);
+

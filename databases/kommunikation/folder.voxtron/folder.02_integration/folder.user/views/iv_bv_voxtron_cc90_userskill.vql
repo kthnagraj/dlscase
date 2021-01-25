@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_userskill FOLDER = '/voxtron/02_integration/user' AS SELECT bv_voxtron_cc90_userskill.instanceid AS userskill_instanceid, bv_voxtron_cc90_userskill.userid AS userskill_userid, bv_voxtron_cc90_userskill.skillid AS userskill_skillid, bv_voxtron_cc90_userskill.knowledge AS userskill_knowledge, bv_voxtron_cc90_userskill.appuserid AS userskill_appuserid FROM bv_voxtron_cc90_userskill;
+
+ALTER VIEW iv_bv_voxtron_cc90_userskill
+ LAYOUT (bv_voxtron_cc90_userskill = [20, 20, 212, 126]);
+

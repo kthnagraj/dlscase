@@ -1,0 +1,8 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contact_ringingtime FOLDER = '/voxtron/02_integration/contact' DESCRIPTION = 'Returns the total waiting time of each contact Id'  (
+    contactactionlog_ringingtimelength (sourcetypeid = '3', description = 'Total ringing time before someone answers the phone')
+)
+ AS SELECT bv_voxtron_cc90_contactactionlog.contactid AS contact_id, sum(lv1871_getsecondsbetween(bv_voxtron_cc90_contactactionlog.time, bv_voxtron_cc90_contactactionlog.relatedtime)) AS contactactionlog_ringingtimelength FROM bv_voxtron_cc90_contactaction AS bv_voxtron_cc90_contactaction INNER JOIN bv_voxtron_cc90_contactactionlog AS bv_voxtron_cc90_contactactionlog ON bv_voxtron_cc90_contactaction.contactactionid = bv_voxtron_cc90_contactactionlog.contactactionid  WHERE bv_voxtron_cc90_contactaction.contactactionid = 25 GROUP BY bv_voxtron_cc90_contactactionlog.contactid;
+
+ALTER VIEW iv_voxtron_contact_ringingtime
+ LAYOUT (bv_voxtron_cc90_contactaction = [160, 200, 330, 146], bv_voxtron_cc90_contactactionlog = [670, 260, 530, 226]);
+

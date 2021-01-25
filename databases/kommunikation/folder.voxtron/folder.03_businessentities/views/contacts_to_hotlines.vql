@@ -1,0 +1,77 @@
+﻿CREATE OR REPLACE VIEW contacts_to_hotlines FOLDER = '/voxtron/03_businessentities' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle Einzelkontakte (d. h. alle Anrufe) der letzten 24 Monate gelistet, die in der Voxtron Datenbank enthalten sind und bei einer Hotline eingegangen sind. </li>
+        <li>Neben allgemeinen Informationen werden auch die angerufenen Skills (Rufnummern)m Queues (entspricht ungefähr den Abteilungen) und Servicezeiten ausgegeben, die bei einem Anruf involviert waren. </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li>Pro Anruf kann es mehrere Zeilen geben, da mehrere Skills involviert sein können. Es gibt eine Zeile pro Skill.</li>
+        <li>In der Regel gibt es nur eine Queue pro Anruf.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">Startdatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default:</span></strong>
+            <ul>
+                <li><span style="color:#444444">aktuelles Datum - 100 Tage</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+        <li><strong><span style="color:#444444">Enddatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li>Aktuelles Datum</li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>'  (
+    contact_is_in_sla (description = 'Der Kontakt erfüllt den SLA, wenn die Wartezeit < 20s ist.'),
+    contact_is_accepted_contact (description = 'True, wenn Anruf nicht abgebrochen wurde'),
+    contact_is_lost_call (description = 'True, wenn Anruf verloren wurde'),
+    contact_is_answered_call (description = 'True, wenn Anruf angenommen wurde'),
+    contact_is_in_sla_ringingtime (description = 'Der Kontakt erfüllt den SLA, wenn die Klingelzeit < 20s ist.')
+)
+ AS SELECT servicezeiten.hotlinenummer AS hotlinenummer, servicezeiten.hotlinenamedienstname AS hotlinenamedienstname, servicezeiten.abteilung AS abteilung, servicezeiten.wochentag AS wochentag, servicezeiten.wochentag_int AS wochentag_int, servicezeiten.beginnservicezeit AS beginnservicezeit, servicezeiten.endeservicezeit AS endeservicezeit, servicezeiten.emailfürvoicemail AS emailfürvoicemail, servicezeiten.verantwortlicher AS verantwortlicher, case WHEN ((contact_waitingtimelength < 20 AND contact_resultcode = 2)) THEN 1 ELSE 0 END AS contact_is_in_sla, case WHEN (((contact_resultcode = 1 AND contact_waitingtimelength > 20) OR contact_resultcode = 2)) THEN 1 ELSE 0 END AS contact_is_accepted_contact, case WHEN (contact_resultcode = 1) THEN 1 ELSE 0 END AS contact_is_lost_call, case WHEN (contact_resultcode = 2) THEN 1 ELSE 0 END AS contact_is_answered_call, case WHEN ((contactactionlog_ringingtimelength < 20 AND contact_resultcode = 2)) THEN 1 ELSE 0 END AS contact_is_in_sla_ringingtime, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_contactid AS contact_contactid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_conferenceid AS contact_conferenceid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_contacttypeid AS contact_contacttypeid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_from_0 AS contact_from_0, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_from_origin AS contact_from_origin, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_to_0 AS contact_to_0, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_timecreated AS contact_timecreated, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_waitingtimelength AS contact_waitingtimelength, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_conversationlength AS contact_conversationlength, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_handledby AS contact_handledby, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_sentby AS contact_sentby, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_companyname AS contact_companyname, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_isshortcontact AS contact_isshortcontact, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_callsetupdatetime AS contact_callsetupdatetime, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_resultcode AS contact_resultcode, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_lastassignedagent AS contact_lastassignedagent, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_lastassignedqueue AS contact_lastassignedqueue, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_hascontent AS contact_hascontent, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_contactdate AS contact_contactdate, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_contacttime AS contact_contacttime, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_year AS contact_year, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_month AS contact_month, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_day AS contact_day, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_hour AS contact_hour, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_dayofweek AS contact_dayofweek, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_wrapuplength AS contact_wrapuplength, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contactactionlog_ringingtimelength AS contactactionlog_ringingtimelength, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contacttype_description AS contacttype_description, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.isinueberlauf AS isinueberlauf, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette._param_contactdate_start AS _param_contactdate_start, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette._param_contactdate_end AS _param_contactdate_end, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skillid AS skillid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_name AS skill_name, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_name_bereinigt AS skill_name_bereinigt, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_is_fdmnebenstelle AS skill_is_fdmnebenstelle, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_importance AS skill_importance, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_isactive AS skill_isactive, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_ismandatory AS skill_ismandatory, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contactqueue_queueid AS contactqueue_queueid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contactqueue_assignedcount AS contactqueue_assignedcount, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contactqueue_handledcount AS contactqueue_handledcount, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_name AS queue_name, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_isdefault AS queue_isdefault, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_isactive AS queue_isactive, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_defaultagentsettings AS queue_defaultagentsettings, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_defaultrouting AS queue_defaultrouting, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_defaultadvancedrouting AS queue_defaultadvancedrouting, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_defaulttimes AS queue_defaulttimes, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_appuserid AS queue_appuserid, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_lastupdaterowversion AS queue_lastupdaterowversion, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_contactcodesmandatory AS queue_contactcodesmandatory, iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.queue_contactcodesmandatoryonfailure AS queue_contactcodesmandatoryonfailure FROM servicezeiten AS servicezeiten INNER JOIN iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette AS iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette ON (servicezeiten.skill_name = iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_name_bereinigt AND servicezeiten.wochentag_int = iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.contact_dayofweek)  WHERE iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette.skill_name not like '4711%';
+
+ALTER VIEW contacts_to_hotlines
+ LAYOUT (servicezeiten = [670, 110, 200, 225], iv_voxtron_contact_erweitert_skill_and_queue_bereinigt_isfddublette = [90, 80, 350, 580]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_skill FOLDER = '/voxtron/02_integration' AS SELECT bv_voxtron_cc90_skill.instanceid AS skill_instanceid, bv_voxtron_cc90_skill.skillid AS skill_skillid, bv_voxtron_cc90_skill.name AS skill_name, bv_voxtron_cc90_skill.importance AS skill_importance, bv_voxtron_cc90_skill.isactive AS skill_isactive, bv_voxtron_cc90_skill.ismandatory AS skill_ismandatory, bv_voxtron_cc90_skill.lastagentcanlogoff AS skill_lastagentcanlogoff, bv_voxtron_cc90_skill.lastagentcanpause AS skill_lastagentcanpause, bv_voxtron_cc90_skill.appuserid AS skill_appuserid, bv_voxtron_cc90_skill.lastupdaterowversion AS skill_lastupdaterowversion, bv_voxtron_cc90_skill.cc80_skillid AS skill_cc80_skillid FROM bv_voxtron_cc90_skill;
+
+ALTER VIEW iv_bv_voxtron_cc90_skill
+ LAYOUT (bv_voxtron_cc90_skill = [20, 20, 305, 246]);
+

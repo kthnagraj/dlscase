@@ -1,0 +1,76 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_queue
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_queue.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_queue.SCHEMANAME}' 
+    RELATIONNAME='CC90_Queue' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='The unique identifier of the CC instance to which queue belongs', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        queueid = 'QueueID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The unique identifier of the queue', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        name = 'Name' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='The name of the queue', sourcetypeid='12', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        isdefault = 'IsDefault' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if the queue is default queue. Only one queue can be default.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        isactive = 'IsActive' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates whether the queue is active (logicaly deleted) or not.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        defaultagentsettings = 'DefaultAgentSettings' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if default agent settings are turned on or off.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        defaultrouting = 'DefaultRouting' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if default routing is turned on or off.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        defaultadvancedrouting = 'DefaultAdvancedRouting' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if default advanced routing is turned on or off.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        defaulttimes = 'DefaultTimes' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if default times are turned on or off.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        appuserid = 'AppUserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='ID of the last user who edited this row', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE,
+        contactcodesmandatory = 'ContactCodesMandatory' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag marking whether contact codes for this queue are mandatory', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        contactcodesmandatoryonfailure = 'ContactCodesMandatoryOnFailure' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag marking whether contact codes for this queue are mandatory on failure', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        cc80_queueid = 'CC80_QueueID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original QueueID of the Queue in the CC80.', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_Queue' PRIMARY KEY ( 'InstanceID' , 'QueueID' )
+    CONSTRAINT 'FK_CC90_Queue_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_Queue' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'QueueID' )
+    INDEX 'IX_CC90_Queue_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' )
+    INDEX 'IX_CC90_UniqueQueuePerInstance' OTHER UNIQUE ( 'InstanceID' , 'Name' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_queue I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'The unique identifier of the CC instance to which queue belongs'), 
+        queueid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The unique identifier of the queue'), 
+        name:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'The name of the queue'), 
+        isdefault:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if the queue is default queue. Only one queue can be default.'), 
+        isactive:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates whether the queue is active (logicaly deleted) or not.'), 
+        defaultagentsettings:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if default agent settings are turned on or off.'), 
+        defaultrouting:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if default routing is turned on or off.'), 
+        defaultadvancedrouting:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if default advanced routing is turned on or off.'), 
+        defaulttimes:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if default times are turned on or off.'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'ID of the last user who edited this row'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record'), 
+        contactcodesmandatory:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag marking whether contact codes for this queue are mandatory'), 
+        contactcodesmandatoryonfailure:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag marking whether contact codes for this queue are mandatory on failure'), 
+        cc80_queueid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original QueueID of the Queue in the CC80.')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains queues defined for CC instance'
+    CONSTRAINT 'PK_CC90_Queue' PRIMARY KEY ( 'instanceid' , 'queueid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_queue(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD queueid (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD isdefault (any) OPT ANY
+             ADD isactive (any) OPT ANY
+             ADD defaultagentsettings (any) OPT ANY
+             ADD defaultrouting (any) OPT ANY
+             ADD defaultadvancedrouting (any) OPT ANY
+             ADD defaulttimes (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD contactcodesmandatory (any) OPT ANY
+             ADD contactcodesmandatoryonfailure (any) OPT ANY
+             ADD cc80_queueid (any) OPT ANY
+        )
+        OUTPUTLIST (appuserid, cc80_queueid, contactcodesmandatory, contactcodesmandatoryonfailure, defaultadvancedrouting, defaultagentsettings, defaultrouting, defaulttimes, instanceid, isactive, isdefault, lastupdaterowversion, name, queueid
+        )
+        WRAPPER (jdbc cc90_queue)
+    )
+    SMART_ONLY;
+

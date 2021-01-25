@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_contactqueue FOLDER = '/voxtron/02_integration/contact' AS SELECT bv_voxtron_cc90_contactqueue.instanceid AS contactqueue_instanceid, bv_voxtron_cc90_contactqueue.contactid AS contactqueue_contactid, bv_voxtron_cc90_contactqueue.queueid AS contactqueue_queueid, bv_voxtron_cc90_contactqueue.assignedcount AS contactqueue_assignedcount, bv_voxtron_cc90_contactqueue.handledcount AS contactqueue_handledcount FROM bv_voxtron_cc90_contactqueue;
+
+ALTER VIEW iv_bv_voxtron_cc90_contactqueue
+ LAYOUT (bv_voxtron_cc90_contactqueue = [20, 20, 239, 126]);
+

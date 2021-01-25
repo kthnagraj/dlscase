@@ -1,0 +1,49 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_userskill
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_userskill.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_userskill.SCHEMANAME}' 
+    RELATIONNAME='CC90_UserSkill' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        userid = 'UserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='User''s unique identifier', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        skillid = 'SkillID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Skill''s unique identifier', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        knowledge = 'Knowledge' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Value that represents user''s knowledge level for this skill in percentage.', sourcetypeid='5', sourcetypename='smallint')  SORTABLE,
+        appuserid = 'AppUserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier (DS10_MainUser) of the user who made last table data modification from application. ', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_UserSkill' PRIMARY KEY ( 'InstanceID' , 'UserID' , 'SkillID' )
+    CONSTRAINT 'FK_CC90_UserSkill_CC90_Skill' FOREIGN KEY ( 'InstanceID' , 'SkillID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Skill'( 'InstanceID' , 'SkillID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_UserSkill_CC90_User' FOREIGN KEY ( 'InstanceID' , 'UserID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_UserSkill' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'UserID' , 'SkillID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_userskill I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36'), 
+        userid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'User''s unique identifier'), 
+        skillid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Skill''s unique identifier'), 
+        knowledge:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Value that represents user''s knowledge level for this skill in percentage.'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier (DS10_MainUser) of the user who made last table data modification from application. ')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains skills assigned to single user.'
+    CONSTRAINT 'PK_CC90_UserSkill' PRIMARY KEY ( 'instanceid' , 'userid' , 'skillid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_userskill(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD userid (any) OPT ANY
+             ADD skillid (any) OPT ANY
+             ADD knowledge (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+        )
+        OUTPUTLIST (appuserid, instanceid, knowledge, skillid, userid
+        )
+        WRAPPER (jdbc cc90_userskill)
+    )
+    SMART_ONLY;
+

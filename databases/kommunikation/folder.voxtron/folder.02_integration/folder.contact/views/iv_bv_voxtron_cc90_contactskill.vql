@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_contactskill FOLDER = '/voxtron/02_integration/contact' AS SELECT bv_voxtron_cc90_contactskill.instanceid AS contactskill_instanceid, bv_voxtron_cc90_contactskill.contactid AS contactskill_contactid, bv_voxtron_cc90_contactskill.skillid AS contactskill_skillid FROM bv_voxtron_cc90_contactskill;
+
+ALTER VIEW iv_bv_voxtron_cc90_contactskill
+ LAYOUT (bv_voxtron_cc90_contactskill = [20, 20, 226, 86]);
+

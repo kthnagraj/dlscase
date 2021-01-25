@@ -1,0 +1,329 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_statisticgeneraldata
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_statisticgeneraldata.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_statisticgeneraldata.SCHEMANAME}' 
+    RELATIONNAME='CC90_StatisticGeneralData' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique Identifier of the Contact Center Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        entrydate = 'EntryDate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='Date (without time) when the statistic entry is added', sourcetypeid='12', sourcetypename='date')  NOT NULL SORTABLE,
+        i5timeid = 'I5TimeID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Identifies the 5 minute interval to which this statistic entry belongs.
+    The coding is as follows:
+    I5TimeID	Interval
+    =====	================
+    0	00:00:00 <= t < 00:05:00
+    1	00:05:00 <= t < 00:10:00
+    ...
+    287	23:55:00 <= t < 00:00:00', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        contacttypeid = 'ContactTypeID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Specifies the contact type, according to the table CC90_ContactType', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        i10timeid = 'I10TimeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identifies the 10 minute interval to which this statistic entry belongs.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        i15timeid = 'I15TimeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identifies the 15 minute interval to which this statistic entry belongs.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        i30timeid = 'I30TimeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identifies the 30 minute interval to which this statistic entry belongs.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        i60timeid = 'I60TimeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identifies the 60 minute interval to which this statistic entry belongs.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        imonth = 'IMonth' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Month of the EntryDate', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        weekday = 'Weekday' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Weekday of the EntryDate', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        ss_week = 'SS_Week' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Weeknumber as returned by SQL Server: week 1 is the week that starts Januari 1', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        ss_year = 'SS_Year' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Year of the EntryDate as determined by SQL Server, the year that corresponds with SS_Week', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_calls_in_waiting = 'NBR_OF_CALLS_IN_WAITING' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of calls that have been waiting for an appropriate agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_calls_in_waiting_and_talk = 'NBR_OF_CALLS_IN_WAITING_AND_TALK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of calls that have been waiting for and finally talked with an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_conversations = 'NBR_OF_CONVERSATIONS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of calls that have been serviced (effectively talked to an agent)', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_calls_not_serviced = 'NBR_OF_CALLS_NOT_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of calls that have not been serviced (Hang up before a conversation took place.)', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        sum_conversation_duration = 'SUM_CONVERSATION_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total conversation duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        sum_waiting_duration = 'SUM_WAITING_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total waiting duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        max_waiting_duration = 'MAX_WAITING_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Maximum waiting time duration that a call has to wait to be transferred to an agent', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        min_waitinghangup_duration = 'MIN_WAITINGHANGUP_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The minimum waiting time of calls that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  SORTABLE,
+        max_waitinghangup_duration = 'MAX_WAITINGHANGUP_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of calls that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  SORTABLE,
+        total_waitinghangup_duration = 'TOTAL_WAITINGHANGUP_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The total waiting time of calls that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        total_axxoverflow_duration = 'TOTAL_AXXOVERFLOW_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The total duration that Axxium was a full capacity (all lines in use).', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        nbr_of_shortaxx_calls = 'NBR_OF_SHORTAXX_CALLS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Axxium calls that are shorter then x seconds (configurable in the agenTel configuration tool).', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_inagtcalls_intern = 'NBR_OF_INAGTCALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of incoming CC calls from an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_inagtcalls_extern = 'NBR_OF_INAGTCALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of incoming CC calls from an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_incalls_intern = 'NBR_OF_INCALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming non-agenTel calls from an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_incalls_extern = 'NBR_OF_INCALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming non-agenTel calls from an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outagtcalls_intern = 'NBR_OF_OUTAGTCALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing agenTel calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outagtcalls_extern = 'NBR_OF_OUTAGTCALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing agenTel calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outcalls_intern = 'NBR_OF_OUTCALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing non-agenTel calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outcalls_extern = 'NBR_OF_OUTCALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing agenTel calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outcgncalls_intern = 'NBR_OF_OUTCGNCALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of outgoing CC campaign calls to an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outcgncalls_extern = 'NBR_OF_OUTCGNCALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of outgoing CC campaign calls to an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_emails_in_waiting_and_talk = 'NBR_OF_EMAILS_IN_WAITING_AND_TALK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC emails that have been waiting before being transferred to an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_conversations_emails = 'NBR_OF_CONVERSATIONS_EMAILS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of emails that have been serviced by an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_emails_not_serviced = 'NBR_OF_EMAILS_NOT_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of emails that have not been serviced by an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        sum_conversation_duration_emails = 'SUM_CONVERSATION_DURATION_EMAILS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total email handling duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        sum_waiting_duration_emails = 'SUM_WAITING_DURATION_EMAILS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total waiting duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        max_waiting_duration_emails = 'MAX_WAITING_DURATION_EMAILS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of emails before being serviced', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        nbr_of_requeues_emails = 'NBR_OF_REQUEUES_EMAILS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of emails that have been requeued by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_emails = 'NBR_OF_EMAILS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of emails (serviced + not serviced)', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_faxes_in_waiting_and_talk = 'NBR_OF_FAXES_IN_WAITING_AND_TALK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC faxes that have been waiting for an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_conversations_faxes = 'NBR_OF_CONVERSATIONS_FAXES' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC faxes that have been serviced', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_faxes_not_serviced = 'NBR_OF_FAXES_NOT_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC faxes that have not been serviced', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        sum_conversation_duration_faxes = 'SUM_CONVERSATION_DURATION_FAXES' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total fax handling duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        sum_waiting_duration_faxes = 'SUM_WAITING_DURATION_FAXES' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total waiting duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        max_waiting_duration_faxes = 'MAX_WAITING_DURATION_FAXES' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of faxes before being serviced', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        nbr_of_inagtfaxes_intern = 'NBR_OF_INAGTFAXES_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming agenTel faxes from an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_inagtfaxes_extern = 'NBR_OF_INAGTFAXES_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming agenTel faxes from an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outagtfaxes_intern = 'NBR_OF_OUTAGTFAXES_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing agenTel faxes to an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outagtfaxes_extern = 'NBR_OF_OUTAGTFAXES_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing agenTel calls to an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_infaxes_intern = 'NBR_OF_INFAXES_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming private faxes from an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_infaxes_extern = 'NBR_OF_INFAXES_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming private faxes from an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outfaxes_intern = 'NBR_OF_OUTFAXES_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing private faxes to an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outfaxes_extern = 'NBR_OF_OUTFAXES_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing private faxes to an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_requeues_faxes = 'NBR_OF_REQUEUES_FAXES' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of faxes that have been requeued by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_faxes = 'NBR_OF_FAXES' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of faxes, independent of type', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_chats_in_waiting = 'NBR_OF_CHATS_IN_WAITING' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of CC chats that have been waiting for an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_chats_in_waiting_and_talk = 'NBR_OF_CHATS_IN_WAITING_AND_TALK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of CC chats that have been waiting for an agent and finally got serviced.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_conversations_chats = 'NBR_OF_CONVERSATIONS_CHATS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC chats that have been serviced', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_chats_not_serviced = 'NBR_OF_CHATS_NOT_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC chats that have not been serviced', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        sum_conversation_duration_chats = 'SUM_CONVERSATION_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total chat conversation duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        sum_waiting_duration_chats = 'SUM_WAITING_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total waiting duration', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        max_waiting_duration_chats = 'MAX_WAITING_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of chats before being serviced', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        min_waitinghangup_duration_chats = 'MIN_WAITINGHANGUP_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The minimum waiting time of chats that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  SORTABLE,
+        max_waitinghangup_duration_chats = 'MAX_WAITINGHANGUP_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of chats that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  SORTABLE,
+        total_waitinghangup_duration_chats = 'TOTAL_WAITINGHANGUP_DURATION_CHATS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The total waiting time of chats that hang up while waiting for an agent', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        nbr_of_inagtchats_intern = 'NBR_OF_INAGTCHATS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming CC Webchats from an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_inagtchats_extern = 'NBR_OF_INAGTCHATS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming CC Webchats from an external number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outagtchats_intern = 'NBR_OF_OUTAGTCHATS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing CC Webchats to an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_inchats_intern = 'NBR_OF_INCHATS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of incoming Direct Webchats from an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_outchats_intern = 'NBR_OF_OUTCHATS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of outgoing Direct Webchats to an internal number', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_requeues_chats = 'NBR_OF_REQUEUES_CHATS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of chats that have been requeued by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_chats = 'NBR_OF_CHATS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Number of CC webchats independent of type', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_preview_campaign_calls_intern = 'NBR_OF_PREVIEW_CAMPAIGN_CALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Preview Campaign calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_preview_campaign_calls_extern = 'NBR_OF_PREVIEW_CAMPAIGN_CALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Preview Campaign calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_progressive_campaign_calls_intern = 'NBR_OF_PROGRESSIVE_CAMPAIGN_CALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Progressive Campaign calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_progressive_campaign_calls_extern = 'NBR_OF_PROGRESSIVE_CAMPAIGN_CALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Progressive Campaign calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_power_campaign_calls_intern = 'NBR_OF_POWER_CAMPAIGN_CALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Power Campaign calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_power_campaign_calls_extern = 'NBR_OF_POWER_CAMPAIGN_CALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Power Campaign calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_predictive_campaign_calls_intern = 'NBR_OF_PREDICTIVE_CAMPAIGN_CALLS_INTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Predictive Campaign calls to an internal number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_predictive_campaign_calls_extern = 'NBR_OF_PREDICTIVE_CAMPAIGN_CALLS_EXTERN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of Predictive Campaign calls to an external number.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_campaign_calls = 'NBR_OF_CAMPAIGN_CALLS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The total number of Campaign calls, irrespective of CampaignType or internal/external number.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_calls = 'NBR_OF_CALLS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of calls, sum of the numbers for the different call types. ', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_ccobjects_in_waiting_and_talk = 'NBR_OF_CCOBJECTS_IN_WAITING_AND_TALK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Total number of CC objects that have been waiting before being transferred to an agent', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_ccobjects_serviced = 'NBR_OF_CCOBJECTS_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of objects routed by the Contact Center and serviced by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_ccobjects_not_serviced = 'NBR_OF_CCOBJECTS_NOT_SERVICED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of objects routed by the Contact Center but not serviced by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_ccobjects_requeued = 'NBR_OF_CCOBJECTS_REQUEUED' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of objects requeued by an agent.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        sum_conversation_duration_ccobjects = 'SUM_CONVERSATION_DURATION_CCOBJECTS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total duration an agent was handling objects.', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        sum_waiting_duration_ccobjects = 'SUM_WAITING_DURATION_CCOBJECTS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Total waiting duration for objects', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        max_waiting_duration_ccobjects = 'MAX_WAITING_DURATION_CCOBJECTS' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='The maximum waiting time of objects before being serviced', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE,
+        nbr_of_ccobjects = 'NBR_OF_CCOBJECTS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The total number of objects routed by the Contact Center.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        nbr_of_outdirect_emails = 'NBR_OF_OUTDIRECT_EMAILS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of ''Outbound Direct'' emails.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        nbr_of_ccoutdirect_emails = 'NBR_OF_CCOUTDIRECT_EMAILS' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The number of ''CC Outbound Direct'' emails (use wrapup).', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_StatisticGeneralData' PRIMARY KEY ( 'InstanceID' , 'EntryDate' , 'I5TimeID' , 'ContactTypeID' )
+    INDEX 'PK_CC90_StatisticGeneralData' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'EntryDate' , 'I5TimeID' , 'ContactTypeID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_statisticgeneraldata I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique Identifier of the Contact Center Instance'), 
+        entrydate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Date (without time) when the statistic entry is added'), 
+        i5timeid:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Identifies the 5 minute interval to which this statistic entry belongs.
+    The coding is as follows:
+    I5TimeID	Interval
+    =====	================
+    0	00:00:00 <= t < 00:05:00
+    1	00:05:00 <= t < 00:10:00
+    ...
+    287	23:55:00 <= t < 00:00:00'), 
+        contacttypeid:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Specifies the contact type, according to the table CC90_ContactType'), 
+        i10timeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identifies the 10 minute interval to which this statistic entry belongs.'), 
+        i15timeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identifies the 15 minute interval to which this statistic entry belongs.'), 
+        i30timeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identifies the 30 minute interval to which this statistic entry belongs.'), 
+        i60timeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identifies the 60 minute interval to which this statistic entry belongs.'), 
+        imonth:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Month of the EntryDate'), 
+        weekday:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Weekday of the EntryDate'), 
+        ss_week:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Weeknumber as returned by SQL Server: week 1 is the week that starts Januari 1'), 
+        ss_year:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Year of the EntryDate as determined by SQL Server, the year that corresponds with SS_Week'), 
+        nbr_of_calls_in_waiting:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of calls that have been waiting for an appropriate agent'), 
+        nbr_of_calls_in_waiting_and_talk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of calls that have been waiting for and finally talked with an agent'), 
+        nbr_of_conversations:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of calls that have been serviced (effectively talked to an agent)'), 
+        nbr_of_calls_not_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of calls that have not been serviced (Hang up before a conversation took place.)'), 
+        sum_conversation_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total conversation duration'), 
+        sum_waiting_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total waiting duration'), 
+        max_waiting_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Maximum waiting time duration that a call has to wait to be transferred to an agent'), 
+        min_waitinghangup_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The minimum waiting time of calls that hang up while waiting for an agent'), 
+        max_waitinghangup_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of calls that hang up while waiting for an agent'), 
+        total_waitinghangup_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The total waiting time of calls that hang up while waiting for an agent'), 
+        total_axxoverflow_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The total duration that Axxium was a full capacity (all lines in use).'), 
+        nbr_of_shortaxx_calls:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Axxium calls that are shorter then x seconds (configurable in the agenTel configuration tool).'), 
+        nbr_of_inagtcalls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of incoming CC calls from an internal number'), 
+        nbr_of_inagtcalls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of incoming CC calls from an external number'), 
+        nbr_of_incalls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming non-agenTel calls from an internal number.'), 
+        nbr_of_incalls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming non-agenTel calls from an external number.'), 
+        nbr_of_outagtcalls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing agenTel calls to an internal number.'), 
+        nbr_of_outagtcalls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing agenTel calls to an external number.'), 
+        nbr_of_outcalls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing non-agenTel calls to an internal number.'), 
+        nbr_of_outcalls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing agenTel calls to an external number.'), 
+        nbr_of_outcgncalls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of outgoing CC campaign calls to an internal number'), 
+        nbr_of_outcgncalls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of outgoing CC campaign calls to an external number'), 
+        nbr_of_emails_in_waiting_and_talk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC emails that have been waiting before being transferred to an agent'), 
+        nbr_of_conversations_emails:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of emails that have been serviced by an agent'), 
+        nbr_of_emails_not_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of emails that have not been serviced by an agent'), 
+        sum_conversation_duration_emails:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total email handling duration'), 
+        sum_waiting_duration_emails:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total waiting duration'), 
+        max_waiting_duration_emails:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of emails before being serviced'), 
+        nbr_of_requeues_emails:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of emails that have been requeued by an agent.'), 
+        nbr_of_emails:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of emails (serviced + not serviced)'), 
+        nbr_of_faxes_in_waiting_and_talk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC faxes that have been waiting for an agent'), 
+        nbr_of_conversations_faxes:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC faxes that have been serviced'), 
+        nbr_of_faxes_not_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC faxes that have not been serviced'), 
+        sum_conversation_duration_faxes:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total fax handling duration'), 
+        sum_waiting_duration_faxes:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total waiting duration'), 
+        max_waiting_duration_faxes:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of faxes before being serviced'), 
+        nbr_of_inagtfaxes_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming agenTel faxes from an internal number'), 
+        nbr_of_inagtfaxes_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming agenTel faxes from an external number'), 
+        nbr_of_outagtfaxes_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing agenTel faxes to an internal number'), 
+        nbr_of_outagtfaxes_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing agenTel calls to an external number'), 
+        nbr_of_infaxes_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming private faxes from an internal number'), 
+        nbr_of_infaxes_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming private faxes from an external number'), 
+        nbr_of_outfaxes_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing private faxes to an internal number'), 
+        nbr_of_outfaxes_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing private faxes to an external number'), 
+        nbr_of_requeues_faxes:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of faxes that have been requeued by an agent.'), 
+        nbr_of_faxes:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of faxes, independent of type'), 
+        nbr_of_chats_in_waiting:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of CC chats that have been waiting for an agent'), 
+        nbr_of_chats_in_waiting_and_talk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of CC chats that have been waiting for an agent and finally got serviced.'), 
+        nbr_of_conversations_chats:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC chats that have been serviced'), 
+        nbr_of_chats_not_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC chats that have not been serviced'), 
+        sum_conversation_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total chat conversation duration'), 
+        sum_waiting_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total waiting duration'), 
+        max_waiting_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of chats before being serviced'), 
+        min_waitinghangup_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The minimum waiting time of chats that hang up while waiting for an agent'), 
+        max_waitinghangup_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of chats that hang up while waiting for an agent'), 
+        total_waitinghangup_duration_chats:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The total waiting time of chats that hang up while waiting for an agent'), 
+        nbr_of_inagtchats_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming CC Webchats from an internal number'), 
+        nbr_of_inagtchats_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming CC Webchats from an external number'), 
+        nbr_of_outagtchats_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing CC Webchats to an internal number'), 
+        nbr_of_inchats_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of incoming Direct Webchats from an internal number'), 
+        nbr_of_outchats_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of outgoing Direct Webchats to an internal number'), 
+        nbr_of_requeues_chats:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of chats that have been requeued by an agent.'), 
+        nbr_of_chats:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Number of CC webchats independent of type'), 
+        nbr_of_preview_campaign_calls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Preview Campaign calls to an internal number.'), 
+        nbr_of_preview_campaign_calls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Preview Campaign calls to an external number.'), 
+        nbr_of_progressive_campaign_calls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Progressive Campaign calls to an internal number.'), 
+        nbr_of_progressive_campaign_calls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Progressive Campaign calls to an external number.'), 
+        nbr_of_power_campaign_calls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Power Campaign calls to an internal number.'), 
+        nbr_of_power_campaign_calls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Power Campaign calls to an external number.'), 
+        nbr_of_predictive_campaign_calls_intern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Predictive Campaign calls to an internal number.'), 
+        nbr_of_predictive_campaign_calls_extern:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of Predictive Campaign calls to an external number.'), 
+        nbr_of_campaign_calls:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The total number of Campaign calls, irrespective of CampaignType or internal/external number.'), 
+        nbr_of_calls:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of calls, sum of the numbers for the different call types. '), 
+        nbr_of_ccobjects_in_waiting_and_talk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Total number of CC objects that have been waiting before being transferred to an agent'), 
+        nbr_of_ccobjects_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of objects routed by the Contact Center and serviced by an agent.'), 
+        nbr_of_ccobjects_not_serviced:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of objects routed by the Contact Center but not serviced by an agent.'), 
+        nbr_of_ccobjects_requeued:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of objects requeued by an agent.'), 
+        sum_conversation_duration_ccobjects:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total duration an agent was handling objects.'), 
+        sum_waiting_duration_ccobjects:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Total waiting duration for objects'), 
+        max_waiting_duration_ccobjects:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'The maximum waiting time of objects before being serviced'), 
+        nbr_of_ccobjects:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The total number of objects routed by the Contact Center.'), 
+        nbr_of_outdirect_emails:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of ''Outbound Direct'' emails.'), 
+        nbr_of_ccoutdirect_emails:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The number of ''CC Outbound Direct'' emails (use wrapup).')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains the data needed for generation of the General reports'
+    CONSTRAINT 'PK_CC90_StatisticGeneralData' PRIMARY KEY ( 'instanceid' , 'entrydate' , 'i5timeid' , 'contacttypeid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_statisticgeneraldata(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD entrydate (any) OPT ANY
+             ADD i5timeid (any) OPT ANY
+             ADD contacttypeid (any) OPT ANY
+             ADD i10timeid (any) OPT ANY
+             ADD i15timeid (any) OPT ANY
+             ADD i30timeid (any) OPT ANY
+             ADD i60timeid (any) OPT ANY
+             ADD imonth (any) OPT ANY
+             ADD weekday (any) OPT ANY
+             ADD ss_week (any) OPT ANY
+             ADD ss_year (any) OPT ANY
+             ADD nbr_of_calls_in_waiting (any) OPT ANY
+             ADD nbr_of_calls_in_waiting_and_talk (any) OPT ANY
+             ADD nbr_of_conversations (any) OPT ANY
+             ADD nbr_of_calls_not_serviced (any) OPT ANY
+             ADD sum_conversation_duration (any) OPT ANY
+             ADD sum_waiting_duration (any) OPT ANY
+             ADD max_waiting_duration (any) OPT ANY
+             ADD min_waitinghangup_duration (any) OPT ANY
+             ADD max_waitinghangup_duration (any) OPT ANY
+             ADD total_waitinghangup_duration (any) OPT ANY
+             ADD total_axxoverflow_duration (any) OPT ANY
+             ADD nbr_of_shortaxx_calls (any) OPT ANY
+             ADD nbr_of_inagtcalls_intern (any) OPT ANY
+             ADD nbr_of_inagtcalls_extern (any) OPT ANY
+             ADD nbr_of_incalls_intern (any) OPT ANY
+             ADD nbr_of_incalls_extern (any) OPT ANY
+             ADD nbr_of_outagtcalls_intern (any) OPT ANY
+             ADD nbr_of_outagtcalls_extern (any) OPT ANY
+             ADD nbr_of_outcalls_intern (any) OPT ANY
+             ADD nbr_of_outcalls_extern (any) OPT ANY
+             ADD nbr_of_outcgncalls_intern (any) OPT ANY
+             ADD nbr_of_outcgncalls_extern (any) OPT ANY
+             ADD nbr_of_emails_in_waiting_and_talk (any) OPT ANY
+             ADD nbr_of_conversations_emails (any) OPT ANY
+             ADD nbr_of_emails_not_serviced (any) OPT ANY
+             ADD sum_conversation_duration_emails (any) OPT ANY
+             ADD sum_waiting_duration_emails (any) OPT ANY
+             ADD max_waiting_duration_emails (any) OPT ANY
+             ADD nbr_of_requeues_emails (any) OPT ANY
+             ADD nbr_of_emails (any) OPT ANY
+             ADD nbr_of_faxes_in_waiting_and_talk (any) OPT ANY
+             ADD nbr_of_conversations_faxes (any) OPT ANY
+             ADD nbr_of_faxes_not_serviced (any) OPT ANY
+             ADD sum_conversation_duration_faxes (any) OPT ANY
+             ADD sum_waiting_duration_faxes (any) OPT ANY
+             ADD max_waiting_duration_faxes (any) OPT ANY
+             ADD nbr_of_inagtfaxes_intern (any) OPT ANY
+             ADD nbr_of_inagtfaxes_extern (any) OPT ANY
+             ADD nbr_of_outagtfaxes_intern (any) OPT ANY
+             ADD nbr_of_outagtfaxes_extern (any) OPT ANY
+             ADD nbr_of_infaxes_intern (any) OPT ANY
+             ADD nbr_of_infaxes_extern (any) OPT ANY
+             ADD nbr_of_outfaxes_intern (any) OPT ANY
+             ADD nbr_of_outfaxes_extern (any) OPT ANY
+             ADD nbr_of_requeues_faxes (any) OPT ANY
+             ADD nbr_of_faxes (any) OPT ANY
+             ADD nbr_of_chats_in_waiting (any) OPT ANY
+             ADD nbr_of_chats_in_waiting_and_talk (any) OPT ANY
+             ADD nbr_of_conversations_chats (any) OPT ANY
+             ADD nbr_of_chats_not_serviced (any) OPT ANY
+             ADD sum_conversation_duration_chats (any) OPT ANY
+             ADD sum_waiting_duration_chats (any) OPT ANY
+             ADD max_waiting_duration_chats (any) OPT ANY
+             ADD min_waitinghangup_duration_chats (any) OPT ANY
+             ADD max_waitinghangup_duration_chats (any) OPT ANY
+             ADD total_waitinghangup_duration_chats (any) OPT ANY
+             ADD nbr_of_inagtchats_intern (any) OPT ANY
+             ADD nbr_of_inagtchats_extern (any) OPT ANY
+             ADD nbr_of_outagtchats_intern (any) OPT ANY
+             ADD nbr_of_inchats_intern (any) OPT ANY
+             ADD nbr_of_outchats_intern (any) OPT ANY
+             ADD nbr_of_requeues_chats (any) OPT ANY
+             ADD nbr_of_chats (any) OPT ANY
+             ADD nbr_of_preview_campaign_calls_intern (any) OPT ANY
+             ADD nbr_of_preview_campaign_calls_extern (any) OPT ANY
+             ADD nbr_of_progressive_campaign_calls_intern (any) OPT ANY
+             ADD nbr_of_progressive_campaign_calls_extern (any) OPT ANY
+             ADD nbr_of_power_campaign_calls_intern (any) OPT ANY
+             ADD nbr_of_power_campaign_calls_extern (any) OPT ANY
+             ADD nbr_of_predictive_campaign_calls_intern (any) OPT ANY
+             ADD nbr_of_predictive_campaign_calls_extern (any) OPT ANY
+             ADD nbr_of_campaign_calls (any) OPT ANY
+             ADD nbr_of_calls (any) OPT ANY
+             ADD nbr_of_ccobjects_in_waiting_and_talk (any) OPT ANY
+             ADD nbr_of_ccobjects_serviced (any) OPT ANY
+             ADD nbr_of_ccobjects_not_serviced (any) OPT ANY
+             ADD nbr_of_ccobjects_requeued (any) OPT ANY
+             ADD sum_conversation_duration_ccobjects (any) OPT ANY
+             ADD sum_waiting_duration_ccobjects (any) OPT ANY
+             ADD max_waiting_duration_ccobjects (any) OPT ANY
+             ADD nbr_of_ccobjects (any) OPT ANY
+             ADD nbr_of_outdirect_emails (any) OPT ANY
+             ADD nbr_of_ccoutdirect_emails (any) OPT ANY
+        )
+        OUTPUTLIST (contacttypeid, entrydate, i10timeid, i15timeid, i30timeid, i5timeid, i60timeid, imonth, instanceid, max_waiting_duration, max_waiting_duration_ccobjects, max_waiting_duration_chats, max_waiting_duration_emails, max_waiting_duration_faxes, max_waitinghangup_duration, max_waitinghangup_duration_chats, min_waitinghangup_duration, min_waitinghangup_duration_chats, nbr_of_calls, nbr_of_calls_in_waiting, nbr_of_calls_in_waiting_and_talk, nbr_of_calls_not_serviced, nbr_of_campaign_calls, nbr_of_ccobjects, nbr_of_ccobjects_in_waiting_and_talk, nbr_of_ccobjects_not_serviced, nbr_of_ccobjects_requeued, nbr_of_ccobjects_serviced, nbr_of_ccoutdirect_emails, nbr_of_chats, nbr_of_chats_in_waiting, nbr_of_chats_in_waiting_and_talk, nbr_of_chats_not_serviced, nbr_of_conversations, nbr_of_conversations_chats, nbr_of_conversations_emails, nbr_of_conversations_faxes, nbr_of_emails, nbr_of_emails_in_waiting_and_talk, nbr_of_emails_not_serviced, nbr_of_faxes, nbr_of_faxes_in_waiting_and_talk, nbr_of_faxes_not_serviced, nbr_of_inagtcalls_extern, nbr_of_inagtcalls_intern, nbr_of_inagtchats_extern, nbr_of_inagtchats_intern, nbr_of_inagtfaxes_extern, nbr_of_inagtfaxes_intern, nbr_of_incalls_extern, nbr_of_incalls_intern, nbr_of_inchats_intern, nbr_of_infaxes_extern, nbr_of_infaxes_intern, nbr_of_outagtcalls_extern, nbr_of_outagtcalls_intern, nbr_of_outagtchats_intern, nbr_of_outagtfaxes_extern, nbr_of_outagtfaxes_intern, nbr_of_outcalls_extern, nbr_of_outcalls_intern, nbr_of_outcgncalls_extern, nbr_of_outcgncalls_intern, nbr_of_outchats_intern, nbr_of_outdirect_emails, nbr_of_outfaxes_extern, nbr_of_outfaxes_intern, nbr_of_power_campaign_calls_extern, nbr_of_power_campaign_calls_intern, nbr_of_predictive_campaign_calls_extern, nbr_of_predictive_campaign_calls_intern, nbr_of_preview_campaign_calls_extern, nbr_of_preview_campaign_calls_intern, nbr_of_progressive_campaign_calls_extern, nbr_of_progressive_campaign_calls_intern, nbr_of_requeues_chats, nbr_of_requeues_emails, nbr_of_requeues_faxes, nbr_of_shortaxx_calls, ss_week, ss_year, sum_conversation_duration, sum_conversation_duration_ccobjects, sum_conversation_duration_chats, sum_conversation_duration_emails, sum_conversation_duration_faxes, sum_waiting_duration, sum_waiting_duration_ccobjects, sum_waiting_duration_chats, sum_waiting_duration_emails, sum_waiting_duration_faxes, total_axxoverflow_duration, total_waitinghangup_duration, total_waitinghangup_duration_chats, weekday
+        )
+        WRAPPER (jdbc cc90_statisticgeneraldata)
+    )
+    SMART_ONLY;
+

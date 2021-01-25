@@ -1,0 +1,69 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contact_erweitert_skill FOLDER = '/voxtron/02_integration/contact' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle Einzelkontakte (d. h. alle Anrufe) der letzten sechs Monate gelistet, die in der Voxtron Datenbank enthalten sind. </li>
+        <li>Neben allgemeinen Informationen werden auch die angerufenen Skills (Rufnummern) ausgegeben, die bei einem Anruf involviert waren. </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li>Pro Anruf kann es mehrere Zeilen geben, da mehrere Skills involviert sein können. Es gibt eine Zeile pro Skill.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">Startdatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default:</span></strong>
+            <ul>
+                <li><span style="color:#444444">aktuelles Datum - 100 Tage</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+        <li><strong><span style="color:#444444">Enddatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li>Aktuelles Datum</li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>'  AS SELECT contact_erweitert.contact_instanceid AS contact_instanceid, contact_erweitert.contact_contactid AS contact_contactid, contact_erweitert.contact_conferenceid AS contact_conferenceid, contact_erweitert.contact_contacttypeid AS contact_contacttypeid, contact_erweitert.contact_from_0 AS contact_from_0, contact_erweitert.contact_from_origin AS contact_from_origin, contact_erweitert.contact_to_0 AS contact_to_0, contact_erweitert.contact_timecreated AS contact_timecreated, contact_erweitert.contact_waitingtimelength AS contact_waitingtimelength, contact_erweitert.contact_conversationlength AS contact_conversationlength, contact_erweitert.contact_handledby AS contact_handledby, contact_erweitert.contact_sentby AS contact_sentby, contact_erweitert.contact_senderid AS contact_senderid, contact_erweitert.contact_receiverid AS contact_receiverid, contact_erweitert.contact_companyname AS contact_companyname, contact_erweitert.contact_recipientname AS contact_recipientname, contact_erweitert.contact_isshortcontact AS contact_isshortcontact, contact_erweitert.contact_lastupdaterowversion AS contact_lastupdaterowversion, contact_erweitert.contact_callsetupdatetime AS contact_callsetupdatetime, contact_erweitert.contact_resultcode AS contact_resultcode, contact_erweitert.contact_lastassignedagent AS contact_lastassignedagent, contact_erweitert.contact_lastassignedqueue AS contact_lastassignedqueue, contact_erweitert.contact_hascontent AS contact_hascontent, contact_erweitert.contact_customerid AS contact_customerid, contact_erweitert.contact_subtype AS contact_subtype, contact_erweitert.contact_contactdate AS contact_contactdate, contact_erweitert.contact_contacttime AS contact_contacttime, contact_erweitert.contact_year AS contact_year, contact_erweitert.contact_month AS contact_month, contact_erweitert.contact_day AS contact_day, contact_erweitert.contact_hour AS contact_hour, contact_erweitert.contact_dayofweek AS contact_dayofweek, contact_erweitert.contact_wrapuplength AS contact_wrapuplength, contact_erweitert.contactactionlog_ringingtimelength AS contactactionlog_ringingtimelength, contact_erweitert.contacttype_description AS contacttype_description, contact_erweitert.contacttype_lastupdaterowversion AS contacttype_lastupdaterowversion, iv_contactskill_skill.skillid AS skillid, iv_contactskill_skill.skill_name AS skill_name, iv_contactskill_skill.skill_importance AS skill_importance, iv_contactskill_skill.skill_isactive AS skill_isactive, iv_contactskill_skill.skill_ismandatory AS skill_ismandatory, contact_erweitert._param_contactdate_start AS _param_contactdate_start, contact_erweitert._param_contactdate_end AS _param_contactdate_end, iv_contactskill_skill.contactid AS contactid, contact_erweitert.isinueberlauf AS isinueberlauf FROM iv_voxtron_contactskill_skill AS iv_contactskill_skill INNER JOIN iv_voxtron_contact_erweitert AS contact_erweitert ON iv_contactskill_skill.contactid = contact_erweitert.contact_contactid ;
+
+ALTER VIEW iv_voxtron_contact_erweitert_skill
+ LAYOUT (iv_voxtron_contactskill_skill = [370, 100, 200, 146], iv_voxtron_contact_erweitert = [20, 20, 200, 225]);
+

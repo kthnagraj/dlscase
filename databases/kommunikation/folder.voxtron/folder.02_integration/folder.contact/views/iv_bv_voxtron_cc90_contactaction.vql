@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_contactaction FOLDER = '/voxtron/02_integration/contact' AS SELECT bv_voxtron_cc90_contactaction.instanceid AS contactaction_instanceid, bv_voxtron_cc90_contactaction.contactactionid AS contactaction_contactactionid, bv_voxtron_cc90_contactaction.description AS contactaction_description, bv_voxtron_cc90_contactaction.relatedactionid AS contactaction_relatedactionid, bv_voxtron_cc90_contactaction.relation AS contactaction_relation, bv_voxtron_cc90_contactaction.lastupdaterowversion AS contactaction_lastupdaterowversion FROM bv_voxtron_cc90_contactaction;
+
+ALTER VIEW iv_bv_voxtron_cc90_contactaction
+ LAYOUT (bv_voxtron_cc90_contactaction = [20, 20, 305, 146]);
+

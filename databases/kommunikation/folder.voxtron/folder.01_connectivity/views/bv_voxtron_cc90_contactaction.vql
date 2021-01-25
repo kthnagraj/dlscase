@@ -1,0 +1,57 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_contactaction
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactaction.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactaction.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactAction' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactactionid = 'ContactActionID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This is the unique ID for a contact action and is used in the table CC90_ContactActionLog to identify the action corresponding with the log item', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        description = 'Description' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Description of the action, this is only added for informational purposes', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        relatedactionid = 'RelatedActionID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='If an action is related to another, this field contains the ContactActionID of the related action. For instance, if this action is ''Start of Conversation'', RelatedActionID contains ContactActionID of ''End of Conversation''.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        relation = 'Relation' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Identifies the kind of relation (if any).
+	I = Independent
+	S = Start of period
+	E = End of period', sourcetypeid='1', sourcetypename='char')  NOT NULL SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactAction' PRIMARY KEY ( 'InstanceID' , 'ContactActionID' )
+    CONSTRAINT 'FK_CC90_ContactAction_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactAction' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactActionID' )
+    INDEX 'IX_CC90_ContactAction_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contactaction I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contactactionid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This is the unique ID for a contact action and is used in the table CC90_ContactActionLog to identify the action corresponding with the log item'), 
+        description:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Description of the action, this is only added for informational purposes'), 
+        relatedactionid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'If an action is related to another, this field contains the ContactActionID of the related action. For instance, if this action is ''Start of Conversation'', RelatedActionID contains ContactActionID of ''End of Conversation''.'), 
+        relation:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Identifies the kind of relation (if any).
+	I = Independent
+	S = Start of period
+	E = End of period'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This codetable defines all types of contact actions that can be logged in the CC90_ContactActionLog table'
+    CONSTRAINT 'PK_CC90_ContactAction' PRIMARY KEY ( 'instanceid' , 'contactactionid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_contactaction(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactactionid (any) OPT ANY
+             ADD description (any) OPT ANY
+             ADD relatedactionid (any) OPT ANY
+             ADD relation (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+        )
+        OUTPUTLIST (contactactionid, description, instanceid, lastupdaterowversion, relatedactionid, relation
+        )
+        WRAPPER (jdbc cc90_contactaction)
+    )
+    SMART_ONLY;
+

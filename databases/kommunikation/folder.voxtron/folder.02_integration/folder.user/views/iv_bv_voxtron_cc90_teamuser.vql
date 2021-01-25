@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_teamuser FOLDER = '/voxtron/02_integration/user' AS SELECT bv_voxtron_cc90_teamuser.instanceid AS teamuser_instanceid, bv_voxtron_cc90_teamuser.teamid AS teamuser_teamid, bv_voxtron_cc90_teamuser.userid AS teamuser_userid, bv_voxtron_cc90_teamuser.appuserid AS teamuser_appuserid FROM bv_voxtron_cc90_teamuser;
+
+ALTER VIEW iv_bv_voxtron_cc90_teamuser
+ LAYOUT (bv_voxtron_cc90_teamuser = [20, 20, 218, 106]);
+

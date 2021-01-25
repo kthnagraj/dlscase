@@ -1,0 +1,49 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_contactqueue
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactqueue.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contactqueue.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactQueue' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactid = 'ContactID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the contact', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        queueid = 'QueueID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the Queue from the table CC90_Queue', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        assignedcount = 'AssignedCount' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='This column counts the number of times that the contact was assigned to the Queue.', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        handledcount = 'HandledCount' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='This column counts the number of times that the contact was handled while on the Queue.', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactQueue' PRIMARY KEY ( 'InstanceID' , 'ContactID' , 'QueueID' )
+    CONSTRAINT 'FK_CC90_ContactQueue_CC90_Contact' FOREIGN KEY ( 'InstanceID' , 'ContactID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Contact'( 'InstanceID' , 'ContactID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_ContactQueue_CC90_Queue' FOREIGN KEY ( 'InstanceID' , 'QueueID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Queue'( 'InstanceID' , 'QueueID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactQueue' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactID' , 'QueueID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contactqueue I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contactid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the contact'), 
+        queueid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the Queue from the table CC90_Queue'), 
+        assignedcount:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'This column counts the number of times that the contact was assigned to the Queue.'), 
+        handledcount:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'This column counts the number of times that the contact was handled while on the Queue.')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table (only used in the Warehouse database) stores the Queues assigned to the contact and if the Queue actually handled the contact.'
+    CONSTRAINT 'PK_CC90_ContactQueue' PRIMARY KEY ( 'instanceid' , 'contactid' , 'queueid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_contactqueue(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactid (any) OPT ANY
+             ADD queueid (any) OPT ANY
+             ADD assignedcount (any) OPT ANY
+             ADD handledcount (any) OPT ANY
+        )
+        OUTPUTLIST (assignedcount, contactid, handledcount, instanceid, queueid
+        )
+        WRAPPER (jdbc cc90_contactqueue)
+    )
+    SMART_ONLY;
+

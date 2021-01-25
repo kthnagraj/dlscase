@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_voxtron_cc90_contacttype FOLDER = '/voxtron/02_integration/contact' AS SELECT bv_voxtron_cc90_contacttype.instanceid AS contacttype_instanceid, bv_voxtron_cc90_contacttype.contacttypeid AS contacttype_contacttypeid, bv_voxtron_cc90_contacttype.description AS contacttype_description, bv_voxtron_cc90_contacttype.lastupdaterowversion AS contacttype_lastupdaterowversion FROM bv_voxtron_cc90_contacttype;
+
+ALTER VIEW iv_bv_voxtron_cc90_contacttype
+ LAYOUT (bv_voxtron_cc90_contacttype = [20, 20, 305, 106]);
+

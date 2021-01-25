@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contactskill_skill FOLDER = '/voxtron/02_integration/contact' AS SELECT iv_bv_voxtron_cc90_contactskill.contactskill_contactid AS contactid, iv_bv_voxtron_cc90_contactskill.contactskill_skillid AS skillid, iv_bv_voxtron_cc90_skill.skill_name AS skill_name, iv_bv_voxtron_cc90_skill.skill_importance AS skill_importance, iv_bv_voxtron_cc90_skill.skill_isactive AS skill_isactive, iv_bv_voxtron_cc90_skill.skill_ismandatory AS skill_ismandatory FROM iv_bv_voxtron_cc90_contactskill AS iv_bv_voxtron_cc90_contactskill INNER JOIN iv_bv_voxtron_cc90_skill AS iv_bv_voxtron_cc90_skill ON iv_bv_voxtron_cc90_contactskill.contactskill_skillid = iv_bv_voxtron_cc90_skill.skill_skillid ;
+
+ALTER VIEW iv_voxtron_contactskill_skill
+ LAYOUT (iv_bv_voxtron_cc90_contactskill = [107, 178, 200, 86], iv_bv_voxtron_cc90_skill = [415, 236, 200, 225]);
+

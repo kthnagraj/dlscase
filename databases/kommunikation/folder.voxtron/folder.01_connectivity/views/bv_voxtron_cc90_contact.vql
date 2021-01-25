@@ -1,0 +1,131 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_contact
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contact.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_contact.SCHEMANAME}' 
+    RELATIONNAME='CC90_Contact' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactid = 'ContactID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the contact that is used by the CC service.', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        conferenceid = 'ConferenceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='This GUID links this contact to the conference with this ID', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT SORTABLE,
+        contacttypeid = 'ContactTypeID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Type identifier of the contact, see the CC90_ContactType table for all possible contact types', sourcetypeid='5', sourcetypename='smallint')  SORTABLE,
+        from_0 = 'From' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Originator of the contact, the value is dependent on the type of contact (for phone calls, this is the CLIP, for emails, this is the from address of the mail)', sourcetypeid='12', sourcetypename='nvarchar')  ESCAPE SORTABLE,
+        to_0 = 'To' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Destination of the contact, this is dependent on the type of contact (for phone calls this can be the called number, for emails this is the to address of the email)', sourcetypeid='12', sourcetypename='nvarchar')  ESCAPE SORTABLE,
+        timecreated = 'TimeCreated' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='0', sourcetypesize='23', description='The timestamp when the contact was created', sourcetypeid='93', sourcetypename='datetime')  SORTABLE,
+        waitingtimelength = 'WaitingTimeLength' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='How long in seconds the contact had to wait before being connected or destroyed', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        conversationlength = 'ConversationLength' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='How long in seconds the conversation was', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        handledby = 'HandledBy' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This field indicates (only for fax and email) by which user the contact was handled. This link is made by means of the stored procedure spCC90_ContactHandledBy.
+	Default = NULL', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        sentby = 'SentBy' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Id of the agent that sent the fax. Null in case of an incoming fax', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        senderid = 'SenderId' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Holds the sender id, which is in case of an outgoing fax the sender id configured in the agent client or in the agenTel configuration and in case of an incoming fax the sender id of the machine sending the fax to us', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        receiverid = 'ReceiverId' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='Holds the ID of the receiver returned by the receiving fax machine, which is in case of an incoming fax, the receiver id configured or set in Axxium and in case of an outgoing fax the receiver id we got when sending the fax', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        companyname = 'CompanyName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='256', description='Holds the name of the company which is used when sending a fax and is put in the header of the page. Null in case of an incoming fax, else the value specified in the agent client or the default value specified in the contact center service', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        recipientname = 'RecipientName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='256', description='The recipient to whom an outgoing fax is sent, showed in contact monitor and notifications. NULL in case of an incoming fax, else the value provided in the printer driver screen.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        isshortcontact = 'IsShortContact' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if the contact was a short contact or not', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE,
+        callsetupdatetime = 'CallSetupDatetime' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='0', sourcetypesize='23', description='Datetime of Call Setup (used for matching Contact with Recording)', sourcetypeid='93', sourcetypename='datetime')  SORTABLE,
+        resultcode = 'ResultCode' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Represents the contact result = the final outcome of the contact, which is of course very much dependent on the type of the contact. For instance an incoming CC call can be LOST, SHORT or HANDLED; an outgoing fax can be SENTOK or FAILED, ...', sourcetypeid='5', sourcetypename='smallint')  SORTABLE,
+        lastassignedagent = 'LastAssignedAgent' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identification of the user who was last assigned to the contact.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        lastassignedqueue = 'LastAssignedQueue' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Identification of the queue to which the contact was last assigned.', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        hascontent = 'HasContent' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Indicates if the contact''s content is available. For instance for a call, this bit is set to 1 if the call has been recorded.', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        customerid = 'CustomerID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='50', description='"Key field" that identifies the customer. It is assigned by the contact provider or manually entered by the agent.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        subtype = 'SubType' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='256', description='"Key field" that identifies the sub type of the contact. It is assigned by the contact provider in the create and/or connect state.', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        contactdate = 'ContactDate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='The date when the contact was created', sourcetypeid='12', sourcetypename='date')  SORTABLE,
+        contacttime = 'ContactTime' :'java.time.LocalTime' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='The time when the contact was created', sourcetypeid='12', sourcetypename='time')  SORTABLE,
+        year = 'Year' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The year when the contact was created', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE,
+        month = 'Month' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The month when the contact was created', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE,
+        day = 'Day' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The day when the contact was created', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE,
+        dayofweek = 'DayOfWeek' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The weekday when the contact was created. Monday = 1, Sunday = 7', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        wrapuplength = 'WrapupLength' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='How long in seconds the wrapup was', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_Contact' PRIMARY KEY ( 'InstanceID' , 'ContactID' )
+    CONSTRAINT 'FK_CC90_Contact_CC90_ContactType' FOREIGN KEY ( 'InstanceID' , 'ContactTypeID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_ContactType'( 'InstanceID' , 'ContactTypeID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_Contact_CC90_User' FOREIGN KEY ( 'InstanceID' , 'HandledBy' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_Contact_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_Contact' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contact I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contactid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the contact that is used by the CC service.'), 
+        conferenceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'This GUID links this contact to the conference with this ID'), 
+        contacttypeid:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Type identifier of the contact, see the CC90_ContactType table for all possible contact types'), 
+        from_0:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Originator of the contact, the value is dependent on the type of contact (for phone calls, this is the CLIP, for emails, this is the from address of the mail)'), 
+        to_0:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Destination of the contact, this is dependent on the type of contact (for phone calls this can be the called number, for emails this is the to address of the email)'), 
+        timecreated:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '3', sourcetypesize = '23', description = 'The timestamp when the contact was created'), 
+        waitingtimelength:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'How long in seconds the contact had to wait before being connected or destroyed'), 
+        conversationlength:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'How long in seconds the conversation was'), 
+        handledby:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This field indicates (only for fax and email) by which user the contact was handled. This link is made by means of the stored procedure spCC90_ContactHandledBy.
+	Default = NULL'), 
+        sentby:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Id of the agent that sent the fax. Null in case of an incoming fax'), 
+        senderid:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Holds the sender id, which is in case of an outgoing fax the sender id configured in the agent client or in the agenTel configuration and in case of an incoming fax the sender id of the machine sending the fax to us'), 
+        receiverid:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = 'Holds the ID of the receiver returned by the receiving fax machine, which is in case of an incoming fax, the receiver id configured or set in Axxium and in case of an outgoing fax the receiver id we got when sending the fax'), 
+        companyname:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '256', description = 'Holds the name of the company which is used when sending a fax and is put in the header of the page. Null in case of an incoming fax, else the value specified in the agent client or the default value specified in the contact center service'), 
+        recipientname:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '256', description = 'The recipient to whom an outgoing fax is sent, showed in contact monitor and notifications. NULL in case of an incoming fax, else the value provided in the printer driver screen.'), 
+        isshortcontact:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if the contact was a short contact or not'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record'), 
+        callsetupdatetime:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Datetime of Call Setup (used for matching Contact with Recording)'), 
+        resultcode:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Represents the contact result = the final outcome of the contact, which is of course very much dependent on the type of the contact. For instance an incoming CC call can be LOST, SHORT or HANDLED; an outgoing fax can be SENTOK or FAILED, ...'), 
+        lastassignedagent:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identification of the user who was last assigned to the contact.'), 
+        lastassignedqueue:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Identification of the queue to which the contact was last assigned.'), 
+        hascontent:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Indicates if the contact''s content is available. For instance for a call, this bit is set to 1 if the call has been recorded.'), 
+        customerid:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '50', description = '"Key field" that identifies the customer. It is assigned by the contact provider or manually entered by the agent.'), 
+        subtype:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '256', description = '"Key field" that identifies the sub type of the contact. It is assigned by the contact provider in the create and/or connect state.'), 
+        contactdate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The date when the contact was created'), 
+        contacttime:time (sourcetypeid = '92', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'The time when the contact was created'), 
+        year:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The year when the contact was created'), 
+        month:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The month when the contact was created'), 
+        day:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The day when the contact was created'), 
+        dayofweek:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The weekday when the contact was created. Monday = 1, Sunday = 7'), 
+        wrapuplength:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'How long in seconds the wrapup was')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table holds one entry for each contact handled by the contact center service. It stores the properties of this contact (From, To, .).'
+    CONSTRAINT 'PK_CC90_Contact' PRIMARY KEY ( 'instanceid' , 'contactid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_contact(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactid (any) OPT ANY
+             ADD conferenceid (any) OPT ANY
+             ADD contacttypeid (any) OPT ANY
+             ADD from_0 (any) OPT ANY
+             ADD to_0 (any) OPT ANY
+             ADD timecreated (any) OPT ANY
+             ADD waitingtimelength (any) OPT ANY
+             ADD conversationlength (any) OPT ANY
+             ADD handledby (any) OPT ANY
+             ADD sentby (any) OPT ANY
+             ADD senderid (any) OPT ANY
+             ADD receiverid (any) OPT ANY
+             ADD companyname (any) OPT ANY
+             ADD recipientname (any) OPT ANY
+             ADD isshortcontact (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD callsetupdatetime (any) OPT ANY
+             ADD resultcode (any) OPT ANY
+             ADD lastassignedagent (any) OPT ANY
+             ADD lastassignedqueue (any) OPT ANY
+             ADD hascontent (any) OPT ANY
+             ADD customerid (any) OPT ANY
+             ADD subtype (any) OPT ANY
+             ADD contactdate (any) OPT ANY
+             ADD contacttime (any) OPT ANY
+             ADD year (any) OPT ANY
+             ADD month (any) OPT ANY
+             ADD day (any) OPT ANY
+             ADD dayofweek (any) OPT ANY
+             ADD wrapuplength (any) OPT ANY
+        )
+        OUTPUTLIST (callsetupdatetime, companyname, conferenceid, contactdate, contactid, contacttime, contacttypeid, conversationlength, customerid, day, dayofweek, from_0, handledby, hascontent, instanceid, isshortcontact, lastassignedagent, lastassignedqueue, lastupdaterowversion, month, receiverid, recipientname, resultcode, senderid, sentby, subtype, timecreated, to_0, waitingtimelength, wrapuplength, year
+        )
+        WRAPPER (jdbc cc90_contact)
+    )
+    SMART_ONLY;
+

@@ -1,0 +1,28 @@
+﻿CREATE OR REPLACE VIEW servicezeiten FOLDER = '/voxtron/03_businessentities' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle Servicenummern inklusive Servicezeiten und Verantwortliche gelistet.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>'  AS SELECT iv_bv_voxtron_cc90_skill.skill_skillid AS skill_skillid, iv_bv_voxtron_cc90_skill.skill_name AS skill_name, iv_servicenummern_transformed.hotlinenummer AS hotlinenummer, iv_servicenummern_transformed.hotlinenamedienstname AS hotlinenamedienstname, iv_servicenummern_transformed.abteilung AS abteilung, iv_servicenummern_transformed.wochentag AS wochentag, iv_servicenummern_transformed.wochentag_int AS wochentag_int, iv_servicenummern_transformed.beginnservicezeit AS beginnservicezeit, iv_servicenummern_transformed.endeservicezeit AS endeservicezeit, iv_servicenummern_transformed.emailfürvoicemail AS emailfürvoicemail, iv_servicenummern_transformed.verantwortlicher AS verantwortlicher FROM iv_servicenummern_transformed AS iv_servicenummern_transformed INNER JOIN iv_bv_voxtron_cc90_skill AS iv_bv_voxtron_cc90_skill ON iv_servicenummern_transformed.skill_name = iv_bv_voxtron_cc90_skill.skill_name ;
+
+ALTER VIEW servicezeiten
+ LAYOUT (iv_servicenummern_transformed = [259, 199, 200, 206], iv_bv_voxtron_cc90_skill = [634, 242, 200, 225]);
+

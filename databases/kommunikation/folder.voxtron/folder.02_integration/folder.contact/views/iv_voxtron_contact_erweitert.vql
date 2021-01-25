@@ -1,0 +1,72 @@
+﻿CREATE OR REPLACE VIEW iv_voxtron_contact_erweitert FOLDER = '/voxtron/02_integration/contact' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle Einzelkontakte (d. h. alle Anrufe) der letzten sechs Monate gelistet, die in der Voxtron Datenbank enthalten sind.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">Startdatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default:</span></strong>
+            <ul>
+                <li><span style="color:#444444">aktuelles Datum - 100 Tage</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+        <li><strong><span style="color:#444444">Enddatum:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li>Aktuelles Datum</li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">TIMESTAMP ''yyyy-mm-dd hh:mm:ss.sss''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>TIMESTAMP ''2020-11-19 17:06:04.883''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>' 
+    PRIMARY KEY ( 'contact_instanceid' , 'contact_contactid' ) (
+    contact_from_origin (description = 'Der eingehende Anruf kommt von intern / extern / FD')
+)
+ AS SELECT iv_bv_voxtron_cc90_contact.contact_instanceid AS contact_instanceid, iv_bv_voxtron_cc90_contact.contact_contactid AS contact_contactid, iv_bv_voxtron_cc90_contact.contact_conferenceid AS contact_conferenceid, iv_bv_voxtron_cc90_contact.contact_contacttypeid AS contact_contacttypeid, iv_bv_voxtron_cc90_contact.contact_from_0 AS contact_from_0, case WHEN ((contact_from_0 like '+4940303720%' OR contact_from_0 like '+4930219178%' OR contact_from_0 like '+49211862024%' OR contact_from_0 like '+4969153001%' OR contact_from_0 like '+49711238308%' OR contact_from_0 like '+498955167300' OR contact_from_0 like '+498955167301' OR contact_from_0 like '+498955167303' OR contact_from_0 like '+498955167304' OR contact_from_0 like '+498955167305' OR contact_from_0 like '+498955167391' OR contact_from_0 like '+498955167551')) THEN 'FD' ELSE case WHEN ((contact_from_0 like '+498955167%' OR (contact_from_0 like 'sip:%' AND contact_from_0 not like 'sip:anonym%') OR contact_contacttypeid = 1)) THEN 'intern' ELSE 'extern' END END AS contact_from_origin, iv_bv_voxtron_cc90_contact.contact_to_0 AS contact_to_0, iv_bv_voxtron_cc90_contact.contact_timecreated AS contact_timecreated, iv_bv_voxtron_cc90_contact.contact_waitingtimelength AS contact_waitingtimelength, iv_bv_voxtron_cc90_contact.contact_conversationlength AS contact_conversationlength, iv_bv_voxtron_cc90_contact.contact_handledby AS contact_handledby, iv_bv_voxtron_cc90_contact.contact_sentby AS contact_sentby, iv_bv_voxtron_cc90_contact.contact_senderid AS contact_senderid, iv_bv_voxtron_cc90_contact.contact_receiverid AS contact_receiverid, iv_bv_voxtron_cc90_contact.contact_companyname AS contact_companyname, iv_bv_voxtron_cc90_contact.contact_recipientname AS contact_recipientname, iv_bv_voxtron_cc90_contact.contact_isshortcontact AS contact_isshortcontact, iv_bv_voxtron_cc90_contact.contact_lastupdaterowversion AS contact_lastupdaterowversion, iv_bv_voxtron_cc90_contact.contact_callsetupdatetime AS contact_callsetupdatetime, iv_bv_voxtron_cc90_contact.contact_resultcode AS contact_resultcode, iv_bv_voxtron_cc90_contact.contact_lastassignedagent AS contact_lastassignedagent, iv_bv_voxtron_cc90_contact.contact_lastassignedqueue AS contact_lastassignedqueue, iv_bv_voxtron_cc90_contact.contact_hascontent AS contact_hascontent, iv_bv_voxtron_cc90_contact.contact_customerid AS contact_customerid, iv_bv_voxtron_cc90_contact.contact_subtype AS contact_subtype, iv_bv_voxtron_cc90_contact.contact_contactdate AS contact_contactdate, iv_bv_voxtron_cc90_contact.contact_contacttime AS contact_contacttime, iv_bv_voxtron_cc90_contact.contact_year AS contact_year, iv_bv_voxtron_cc90_contact.contact_month AS contact_month, iv_bv_voxtron_cc90_contact.contact_day AS contact_day, iv_bv_voxtron_cc90_contact.contact_hour AS contact_hour, iv_bv_voxtron_cc90_contact.contact_dayofweek AS contact_dayofweek, iv_bv_voxtron_cc90_contact.contact_wrapuplength AS contact_wrapuplength, contact_ringingtime.contactactionlog_ringingtimelength AS contactactionlog_ringingtimelength, iv_bv_voxtron_cc90_contacttype.contacttype_description AS contacttype_description, iv_bv_voxtron_cc90_contacttype.contacttype_lastupdaterowversion AS contacttype_lastupdaterowversion, iv_voxtron_contact_isinueberlauf.isinueberlauf AS isinueberlauf, _param_contactdate_start, _param_contactdate_end FROM ((iv_bv_voxtron_cc90_contact AS iv_bv_voxtron_cc90_contact LEFT OUTER JOIN iv_voxtron_contact_ringingtime AS contact_ringingtime ON iv_bv_voxtron_cc90_contact.contact_contactid = contact_ringingtime.contact_id ) INNER JOIN iv_bv_voxtron_cc90_contacttype AS iv_bv_voxtron_cc90_contacttype ON iv_bv_voxtron_cc90_contact.contact_contacttypeid = iv_bv_voxtron_cc90_contacttype.contacttype_contacttypeid ) LEFT OUTER JOIN iv_voxtron_contact_isinueberlauf AS iv_voxtron_contact_isinueberlauf ON iv_bv_voxtron_cc90_contact.contact_contactid = iv_voxtron_contact_isinueberlauf.contactid  WHERE (_param_contactdate_start <= iv_bv_voxtron_cc90_contact.contact_contactdate AND _param_contactdate_end >= iv_bv_voxtron_cc90_contact.contact_contactdate) USING PARAMETERS ( _param_contactdate_start : timestamp addday(current_date(), -100), _param_contactdate_end : timestamp current_date());
+
+ALTER VIEW iv_voxtron_contact_erweitert
+ LAYOUT (iv_bv_voxtron_cc90_contact = [110, 70, 310, 350], iv_voxtron_contact_ringingtime = [570, 80, 200, 66], iv_bv_voxtron_cc90_contacttype = [200, 480, 390, 106], iv_voxtron_contact_isinueberlauf = [670, 460, 380, 66]);
+

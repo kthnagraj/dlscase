@@ -1,0 +1,62 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC cc90_statisticteampausedata
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_statisticteampausedata.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.cc90_statisticteampausedata.SCHEMANAME}' 
+    RELATIONNAME='CC90_StatisticTeamPauseData' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique Identifier of the Contact Center Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        teamid = 'TeamID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the team.', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        pausereasonid = 'PauseReasonID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='The unique identifier of the pause reason', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        entrydate = 'EntryDate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='Date (without time) when the statistic entry is added', sourcetypeid='12', sourcetypename='date')  NOT NULL SORTABLE,
+        i5timeid = 'I5TimeID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='Identifies the 5 minute interval to which this statistic entry belongs.
+    The coding is as follows:
+    I5TimeID	Interval
+    =====	================
+    0	00:00:00 <= t < 00:05:00
+    1	00:05:00 <= t < 00:10:00
+    ...
+    287	23:55:00 <= t < 00:00:00', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        pause_duration = 'PAUSE_DURATION' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='2', sourcetypesize='53', description='Pause duration for the specified PauseReasonID', sourcetypeid='8', sourcetypename='float')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_StatisticTeamPauseData' PRIMARY KEY ( 'InstanceID' , 'TeamID' , 'PauseReasonID' , 'EntryDate' , 'I5TimeID' )
+    INDEX 'PK_CC90_StatisticTeamPauseData' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'TeamID' , 'PauseReasonID' , 'EntryDate' , 'I5TimeID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_statisticteampausedata I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique Identifier of the Contact Center Instance'), 
+        teamid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the team.'), 
+        pausereasonid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'The unique identifier of the pause reason'), 
+        entrydate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Date (without time) when the statistic entry is added'), 
+        i5timeid:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'Identifies the 5 minute interval to which this statistic entry belongs.
+    The coding is as follows:
+    I5TimeID	Interval
+    =====	================
+    0	00:00:00 <= t < 00:05:00
+    1	00:05:00 <= t < 00:10:00
+    ...
+    287	23:55:00 <= t < 00:00:00'), 
+        pause_duration:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypedecimals = '0', sourcetypesize = '53', description = 'Pause duration for the specified PauseReasonID')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    DESCRIPTION = 'This table contains the pause duration data needed for generation of the Team reports'
+    CONSTRAINT 'PK_CC90_StatisticTeamPauseData' PRIMARY KEY ( 'instanceid' , 'teamid' , 'pausereasonid' , 'entrydate' , 'i5timeid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD cc90_statisticteampausedata(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD teamid (any) OPT ANY
+             ADD pausereasonid (any) OPT ANY
+             ADD entrydate (any) OPT ANY
+             ADD i5timeid (any) OPT ANY
+             ADD pause_duration (any) OPT ANY
+        )
+        OUTPUTLIST (entrydate, i5timeid, instanceid, pause_duration, pausereasonid, teamid
+        )
+        WRAPPER (jdbc cc90_statisticteampausedata)
+    )
+    SMART_ONLY;
+
