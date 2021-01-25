@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW inl_f_ds_livv_dms_vertragsstore_tariftyp_params FOLDER = '/livv/02_integration/inline_parameters' AS SELECT string AS tariftyp FROM FLATTEN inl_ds_livv_dms_vertragsstore_tariftyp_params AS v ( v.tariftyp_parameter_array);
+
+ALTER VIEW inl_f_ds_livv_dms_vertragsstore_tariftyp_params
+ LAYOUT (inl_ds_livv_dms_vertragsstore_tariftyp_params = [20, 20, 330, 66]);
+

@@ -1,0 +1,10 @@
+﻿/databases/livv/folder.livv/livv.vql
+/databases/livv/folder.livv/folder.03_businessentities/03_businessentities.vql
+/extensions/jars/lv1871-denodo-custom-functions.vql
+/databases/livv/folder.livv/folder.02_integration/02_integration.vql
+/databases/livv/folder.livv/folder.01_connectivity/01_connectivity.vql
+/databases/livv/folder.livv/folder.00_datasource/00_datasource.vql
+/databases/livv/folder.livv/folder.00_datasource/datasources/json/ds_livv_dms_vertragsstore.vql
+/databases/livv/folder.livv/folder.01_connectivity/views/bv_ds_livv_dms_vertragsstore_vertragresource.vql
+/databases/livv/folder.livv/folder.02_integration/views/iv_f_ds_livv_dms_vertragsstore_vertragresource.vql
+/databases/livv/folder.livv/folder.02_integration/views/iv_f_p_ds_livv_dms_vertragsstore_vertragresource.vql

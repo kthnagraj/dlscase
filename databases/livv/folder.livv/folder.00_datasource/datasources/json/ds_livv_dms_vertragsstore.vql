@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON ds_livv_dms_vertragsstore
+    FOLDER = '/livv/00_datasource'
+    ROUTE HTTP 'http.CommonsHttpClientConnection,120000' GET '${databases.livv.folder.livv.folder.00_datasource.datasources.json.ds_livv_dms_vertragsstore.ROUTE.HTTP.URL}'
+    HEADERS (
+        'D3APIKEY'='93840834095093493093409309430940900'
+    )
+    AUTHENTICATION OFF
+    PROXY OFF;
+

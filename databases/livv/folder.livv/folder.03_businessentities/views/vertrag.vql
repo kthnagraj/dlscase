@@ -1,0 +1,54 @@
+﻿CREATE OR REPLACE VIEW vertrag FOLDER = '/livv/03_businessentities' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>Livv.at Verträge welche über den DMS-Service abgefragt werden.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li>Für die Livv-Verträge besteht aktuell keine DWH-Integration, daher kann keine Verbindung zur Vertragstabelle aufgebaut werden über die VNR.</li>
+        <li>Standardmäßig liefert die View alle Verträge zurück. Über u.g. Parameter kann die Ergebnissmenge auf einen Vertragstype eingeschränkt werden, war die Performance der Abfrage erhöht.</li>
+	<li>Die Tabelle livv.tariftyp enhält alle möglichen Parameter, andere Werte führen zu einem Fehler.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fact</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">_param_tariftyp:</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li><span style="color:#444444">Leer/null</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">''String/Zeichenkette''</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>''L_R1''</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li>N/A</li>
+    </ul>
+    </li>
+</ul>'  (
+    versicherungsnummer_hashed (description = 'Anoymisierte/Gehashte Variante der VNR zur DSGVO-konformen Verwendung')
+)
+ AS SELECT iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsnummer AS versicherungsnummer, lv1871_hash_salt(iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsnummer, 'PBIotXpyABaYkodqhI6g') AS versicherungsnummer_hashed, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.mandant AS mandant, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.datumpolicierung AS datumpolicierung, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.userpolicierung AS userpolicierung, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.tarif_tariftyp AS tarif_tariftyp, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.tarif_tarifversion AS tarif_tarifversion, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.tarif_kurzbezeichnung AS tarif_kurzbezeichnung, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.garantiertewerte_todesfallsumme AS garantiertewerte_todesfallsumme, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.widerruf_datum AS widerruf_datum, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.widerruf_grund AS widerruf_grund, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.bonusdatenvp1_raucherstatus AS bonusdatenvp1_raucherstatus, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsumfang_versicherungsbeginn AS versicherungsumfang_versicherungsbeginn, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsumfang_versicherungsende AS versicherungsumfang_versicherungsende, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_status AS beitrag_status, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_zahlungsweise AS beitrag_zahlungsweise, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_versicherungssteuer AS beitrag_versicherungssteuer, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_beitrag AS beitrag_beitrag, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_beitragbrutto AS beitrag_beitragbrutto, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.beitrag_beitragnetto AS beitrag_beitragnetto, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.status_leistungmaschinellgerechnet AS status_leistungmaschinellgerechnet, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.status_art AS status_art, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.status_abgangsdatum AS status_abgangsdatum, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.art_vertragstyp AS art_vertragstyp, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.art_bav AS art_bav, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.art_riester AS art_riester, iv_f_p_ds_livv_dms_vertragsstore_vertragresource.art_rente AS art_rente, (getyear(iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsumfang_versicherungsende)-getyear(iv_f_p_ds_livv_dms_vertragsstore_vertragresource.versicherungsumfang_versicherungsbeginn)) AS dauer_beitragszahlung_in_jahren, iv_f_p_ds_livv_dms_vertragsstore_vertragresource._param_tariftyp AS _param_tariftyp FROM iv_f_p_ds_livv_dms_vertragsstore_vertragresource;
+
+ALTER VIEW vertrag
+ LAYOUT (iv_f_p_ds_livv_dms_vertragsstore_vertragresource = [20, 20, 360, 586]);
+

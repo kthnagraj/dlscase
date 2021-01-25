@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE VIEW tariftyp FOLDER = '/livv/03_businessentities' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>Für die Livv-Verträge vorhandene Tariftypen welche für die Abfrage der Livv-Verträge genutzt weden können.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li>Die Liste ist statisch, neue Typen kommen nicht automatisch dazu da hierfür keine Schnittstelle besteht sonderm müssen manuelle eingepflegt werden.</li>
+        <li>Da aktuell kein zentrales Produktmodel besteht, passen dieses Tariftypen nur zum Teil zu den Tariftypen anderer Systeme. Eine Beziehung muss i.d.R. manuell über ein Mapping aufgebaut werden.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Lookup</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li>N/A</li>
+    </ul>
+    </li>
+</ul>'  AS SELECT inl_f_ds_livv_dms_vertragsstore_tariftyp_params.tariftyp AS tariftyp FROM inl_f_ds_livv_dms_vertragsstore_tariftyp_params;
+
+ALTER VIEW tariftyp
+ LAYOUT (inl_f_ds_livv_dms_vertragsstore_tariftyp_params = [20, 20, 338, 46]);
+

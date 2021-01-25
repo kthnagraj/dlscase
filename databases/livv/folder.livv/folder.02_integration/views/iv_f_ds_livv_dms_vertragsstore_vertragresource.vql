@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_f_ds_livv_dms_vertragsstore_vertragresource FOLDER = '/livv/02_integration' AS SELECT _param_tariftyp AS _param_tariftyp, versicherungsnummer AS versicherungsnummer, art AS art, mandant AS mandant, status AS status, beitrag AS beitrag, versicherungsumfang AS versicherungsumfang, bonusdatenvp1 AS bonusdatenvp1, tarif AS tarif, id AS id, datumpolicierung AS datumpolicierung, userpolicierung AS userpolicierung, widerruf AS widerruf, garantiertewerte AS garantiertewerte FROM FLATTEN bv_ds_livv_dms_vertragsstore_vertragresource AS v ( v.jsonarray);
+
+ALTER VIEW iv_f_ds_livv_dms_vertragsstore_vertragresource
+ LAYOUT (bv_ds_livv_dms_vertragsstore_vertragresource = [20, 20, 516, 766]);
+
