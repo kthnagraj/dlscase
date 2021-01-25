@@ -1,0 +1,6 @@
+﻿/databases/kunde/folder.dwh/dwh.vql
+/databases/kunde/folder.dwh/folder.02_integration/02_integration.vql
+/databases/kunde/folder.dwh/folder.02_integration/folder.02.02_staging/02.02_staging.vql
+/extensions/jars/lv1871-denodo-custom-functions.vql
+/databases/kunde/folder.dwh/folder.02_integration/folder.02.01_integration/02.01_integration.vql
+/databases/kunde/folder.dwh/folder.02_integration/folder.02.01_integration/views/iv_ds_dwh_dwh_d_kunde.vql
