@@ -1,0 +1,5 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/test.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/folder.kafka/kafka.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/folder.kafka/datasources/json/ds_kafka_strea_agg_json.vql

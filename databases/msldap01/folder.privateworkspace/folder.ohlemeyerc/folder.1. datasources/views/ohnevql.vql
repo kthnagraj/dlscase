@@ -1,0 +1,43 @@
+﻿CREATE OR REPLACE WRAPPER LDAP ohnevql
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    OBJECTCLASSES='person', 'top', 'user'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String' (OPT),
+        displayname = 'displayName' : 'java.lang.String' (OPT),
+        memberof = 'memberOf' : ARRAY OF (
+            memberof = 'memberOf' : REGISTER OF (
+                memberof = 'memberOf' : 'java.lang.String' (OPT)
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE _user_memberof_memberof AS REGISTER OF (memberof:text);
+
+CREATE OR REPLACE TYPE _user_memberof AS ARRAY OF _user_memberof_memberof;
+
+CREATE OR REPLACE TABLE ohnevql I18N de_euro (
+        cn:text, 
+        displayname:text, 
+        memberof:_user_memberof
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ohnevql(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn (any) OPT ANY
+             ADD displayname (any) OPT ANY
+             ADD memberof NOS ZERO ()
+             ADD memberof NOS ZERO ()
+             ADD memberof.memberof (any) OPT ANY
+        )
+        OUTPUTLIST (cn, displayname, memberof
+        )
+        WRAPPER (ldap ohnevql)
+    );
+

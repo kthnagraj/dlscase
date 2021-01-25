@@ -1,0 +1,313 @@
+﻿CREATE OR REPLACE WRAPPER LDAP groups_top
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    OBJECTCLASSES='group', 'top'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        admincount = 'adminCount' : 'java.lang.Integer' (OPT),
+        cn = 'cn' : 'java.lang.String' (OPT),
+        controlaccessrights = 'controlAccessRights' : ARRAY OF (
+            controlaccessrights = 'controlAccessRights' : REGISTER OF (
+                controlaccessrights = 'controlAccessRights' : '[Ljava.lang.Byte;' (OPT)
+            )
+        ),
+        dlmemberrule = 'dLMemberRule' : ARRAY OF (
+            dlmemberrule = 'dLMemberRule' : REGISTER OF (
+                dlmemberrule = 'dLMemberRule' : '[Ljava.lang.Byte;' (OPT)
+            )
+        ),
+        desktopprofile = 'desktopProfile' : 'java.lang.String' (OPT),
+        groupattributes = 'groupAttributes' : 'java.lang.Integer' (OPT),
+        groupmembershipsam = 'groupMembershipSAM' : '[Ljava.lang.Byte;' (OPT),
+        grouptype = 'groupType' : 'java.lang.Integer' (OPT),
+        hidedlmembership = 'hideDLMembership' : 'java.lang.Boolean' (OPT),
+        location = 'location' : 'java.lang.String' (OPT),
+        mail = 'mail' : 'java.lang.String' (OPT),
+        managedby = 'managedBy' : 'java.lang.String' (OPT),
+        member = 'member' : ARRAY OF (
+            member = 'MEMBER' : REGISTER OF (
+                member = 'member' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsazapplicationdata_0 = 'msDS-AzApplicationData' : 'java.lang.String' (OPT),
+        msdsazbizrule_0 = 'msDS-AzBizRule' : 'java.lang.String' (OPT),
+        msdsazbizrulelanguage_0 = 'msDS-AzBizRuleLanguage' : 'java.lang.String' (OPT),
+        msdsazgenericdata_0 = 'msDS-AzGenericData' : 'java.lang.String' (OPT),
+        msdsazldapquery_0 = 'msDS-AzLDAPQuery' : 'java.lang.String' (OPT),
+        msdsazlastimportedbizrulepath_0 = 'msDS-AzLastImportedBizRulePath' : 'java.lang.String' (OPT),
+        msdsazobjectguid_0 = 'msDS-AzObjectGuid' : '[Ljava.lang.Byte;' (OPT),
+        msdshabseniorityindex_0 = 'msDS-HABSeniorityIndex' : 'java.lang.Integer' (OPT),
+        msdsnonmembers_0 = 'msDS-NonMembers' : ARRAY OF (
+            msdsnonmembers_0 = 'msDS-NonMembers' : REGISTER OF (
+                msdsnonmembers_0 = 'msDS-NonMembers' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsphoneticdisplayname_0 = 'msDS-PhoneticDisplayName' : 'java.lang.String' (OPT),
+        msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : ARRAY OF (
+            msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : REGISTER OF (
+                msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdspreferreddatalocation_0 = 'msDS-preferredDataLocation' : 'java.lang.String' (OPT),
+        msexcharbitrationmailbox = 'msExchArbitrationMailbox' : 'java.lang.String' (OPT),
+        msexchcomanagedbylink = 'msExchCoManagedByLink' : ARRAY OF (
+            msexchcomanagedbylink = 'msExchCoManagedByLink' : REGISTER OF (
+                msexchcomanagedbylink = 'msExchCoManagedByLink' : 'java.lang.String' (OPT)
+            )
+        ),
+        msexchgroupdepartrestriction = 'msExchGroupDepartRestriction' : 'java.lang.Integer' (OPT),
+        msexchgroupjoinrestriction = 'msExchGroupJoinRestriction' : 'java.lang.Integer' (OPT),
+        msexchmasteraccounthistory = 'msExchMasterAccountHistory' : ARRAY OF (
+            msexchmasteraccounthistory = 'msExchMasterAccountHistory' : REGISTER OF (
+                msexchmasteraccounthistory = 'msExchMasterAccountHistory' : '[Ljava.lang.Byte;' (OPT)
+            )
+        ),
+        msexchoriginatingforest = 'msExchOriginatingForest' : ARRAY OF (
+            msexchoriginatingforest = 'msExchOriginatingForest' : REGISTER OF (
+                msexchoriginatingforest = 'msExchOriginatingForest' : 'java.lang.String' (OPT)
+            )
+        ),
+        msexchserveradmindelegationbl = 'msExchServerAdminDelegationBL' : ARRAY OF (
+            msexchserveradmindelegationbl = 'msExchServerAdminDelegationBL' : REGISTER OF (
+                msexchserveradmindelegationbl = 'msExchServerAdminDelegationBL' : 'java.lang.String' (OPT)
+            )
+        ),
+        msorggroupsubtypename_0 = 'msOrg-GroupSubtypeName' : 'java.lang.String' (OPT),
+        msorgisorganizational_0 = 'msOrg-IsOrganizational' : 'java.lang.Boolean' (OPT),
+        msorgleaders_0 = 'msOrg-Leaders' : ARRAY OF (
+            msorgleaders_0 = 'msOrg-Leaders' : REGISTER OF (
+                msorgleaders_0 = 'msOrg-Leaders' : 'java.lang.String' (OPT)
+            )
+        ),
+        msorgotherdisplaynames_0 = 'msOrg-OtherDisplayNames' : ARRAY OF (
+            msorgotherdisplaynames_0 = 'msOrg-OtherDisplayNames' : REGISTER OF (
+                msorgotherdisplaynames_0 = 'msOrg-OtherDisplayNames' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipgroupingid_0 = 'msRTCSIP-GroupingID' : '[Ljava.lang.Byte;' (OPT),
+        msrtcsiptenantid_0 = 'msRTCSIP-TenantId' : '[Ljava.lang.Byte;' (OPT),
+        mssfu30name = 'msSFU30Name' : 'java.lang.String' (OPT),
+        mssfu30nisdomain = 'msSFU30NisDomain' : 'java.lang.String' (OPT),
+        mssfu30posixmember = 'msSFU30PosixMember' : ARRAY OF (
+            mssfu30posixmember = 'msSFU30PosixMember' : REGISTER OF (
+                mssfu30posixmember = 'msSFU30PosixMember' : 'java.lang.String' (OPT)
+            )
+        ),
+        ntgroupmembers = 'nTGroupMembers' : ARRAY OF (
+            ntgroupmembers = 'nTGroupMembers' : REGISTER OF (
+                ntgroupmembers = 'nTGroupMembers' : '[Ljava.lang.Byte;' (OPT)
+            )
+        ),
+        nonsecuritymember = 'nonSecurityMember' : ARRAY OF (
+            nonsecuritymember = 'nonSecurityMember' : REGISTER OF (
+                nonsecuritymember = 'nonSecurityMember' : 'java.lang.String' (OPT)
+            )
+        ),
+        oofreplytooriginator = 'oOFReplyToOriginator' : 'java.lang.Boolean' (OPT),
+        operatorcount = 'operatorCount' : 'java.lang.Integer' (OPT),
+        owner = 'owner' : 'java.lang.String' (OPT),
+        primarygrouptoken = 'primaryGroupToken' : 'java.lang.Integer' (OPT),
+        reporttooriginator = 'reportToOriginator' : 'java.lang.Boolean' (OPT),
+        reporttoowner = 'reportToOwner' : 'java.lang.Boolean' (OPT),
+        thumbnailphoto = 'thumbnailPhoto' : '[Ljava.lang.Byte;' (OPT)
+    );
+
+CREATE OR REPLACE TYPE _top_controlaccessrights_controlaccessrights AS REGISTER OF (controlaccessrights:blob);
+
+CREATE OR REPLACE TYPE _top_controlaccessrights AS ARRAY OF _top_controlaccessrights_controlaccessrights;
+
+CREATE OR REPLACE TYPE _top_dlmemberrule_dlmemberrule AS REGISTER OF (dlmemberrule:blob);
+
+CREATE OR REPLACE TYPE _top_dlmemberrule AS ARRAY OF _top_dlmemberrule_dlmemberrule;
+
+CREATE OR REPLACE TYPE _top_member_member AS REGISTER OF (member:text);
+
+CREATE OR REPLACE TYPE _top_member AS ARRAY OF _top_member_member;
+
+CREATE OR REPLACE TYPE _top_msdsnonmembers_0_msdsnonmembers_0 AS REGISTER OF (msdsnonmembers_0:text);
+
+CREATE OR REPLACE TYPE _top_msdsnonmembers_0 AS ARRAY OF _top_msdsnonmembers_0_msdsnonmembers_0;
+
+CREATE OR REPLACE TYPE _top_msdsprimarycomputer_0_msdsprimarycomputer_0 AS REGISTER OF (msdsprimarycomputer_0:text);
+
+CREATE OR REPLACE TYPE _top_msdsprimarycomputer_0 AS ARRAY OF _top_msdsprimarycomputer_0_msdsprimarycomputer_0;
+
+CREATE OR REPLACE TYPE _top_msexchcomanagedbylink_msexchcomanagedbylink AS REGISTER OF (msexchcomanagedbylink:text);
+
+CREATE OR REPLACE TYPE _top_msexchcomanagedbylink AS ARRAY OF _top_msexchcomanagedbylink_msexchcomanagedbylink;
+
+CREATE OR REPLACE TYPE _top_msexchmasteraccounthistory_msexchmasteraccounthistory AS REGISTER OF (msexchmasteraccounthistory:blob);
+
+CREATE OR REPLACE TYPE _top_msexchmasteraccounthistory AS ARRAY OF _top_msexchmasteraccounthistory_msexchmasteraccounthistory;
+
+CREATE OR REPLACE TYPE _top_msexchoriginatingforest_msexchoriginatingforest AS REGISTER OF (msexchoriginatingforest:text);
+
+CREATE OR REPLACE TYPE _top_msexchoriginatingforest AS ARRAY OF _top_msexchoriginatingforest_msexchoriginatingforest;
+
+CREATE OR REPLACE TYPE _top_msexchserveradmindelegationbl_msexchserveradmindelegationbl AS REGISTER OF (msexchserveradmindelegationbl:text);
+
+CREATE OR REPLACE TYPE _top_msexchserveradmindelegationbl AS ARRAY OF _top_msexchserveradmindelegationbl_msexchserveradmindelegationbl;
+
+CREATE OR REPLACE TYPE _top_msorgleaders_0_msorgleaders_0 AS REGISTER OF (msorgleaders_0:text);
+
+CREATE OR REPLACE TYPE _top_msorgleaders_0 AS ARRAY OF _top_msorgleaders_0_msorgleaders_0;
+
+CREATE OR REPLACE TYPE _top_msorgotherdisplaynames_0_msorgotherdisplaynames_0 AS REGISTER OF (msorgotherdisplaynames_0:text);
+
+CREATE OR REPLACE TYPE _top_msorgotherdisplaynames_0 AS ARRAY OF _top_msorgotherdisplaynames_0_msorgotherdisplaynames_0;
+
+CREATE OR REPLACE TYPE _top_mssfu30posixmember_mssfu30posixmember AS REGISTER OF (mssfu30posixmember:text);
+
+CREATE OR REPLACE TYPE _top_mssfu30posixmember AS ARRAY OF _top_mssfu30posixmember_mssfu30posixmember;
+
+CREATE OR REPLACE TYPE _top_ntgroupmembers_ntgroupmembers AS REGISTER OF (ntgroupmembers:blob);
+
+CREATE OR REPLACE TYPE _top_ntgroupmembers AS ARRAY OF _top_ntgroupmembers_ntgroupmembers;
+
+CREATE OR REPLACE TYPE _top_nonsecuritymember_nonsecuritymember AS REGISTER OF (nonsecuritymember:text);
+
+CREATE OR REPLACE TYPE _top_nonsecuritymember AS ARRAY OF _top_nonsecuritymember_nonsecuritymember;
+
+CREATE OR REPLACE TABLE groups_top I18N de_euro (
+        admincount:int, 
+        cn:text, 
+        controlaccessrights:_top_controlaccessrights, 
+        dlmemberrule:_top_dlmemberrule, 
+        desktopprofile:text, 
+        groupattributes:int, 
+        groupmembershipsam:blob, 
+        grouptype:int, 
+        hidedlmembership:boolean, 
+        location:text, 
+        mail:text, 
+        managedby:text, 
+        member:_top_member, 
+        msdsazapplicationdata_0:text, 
+        msdsazbizrule_0:text, 
+        msdsazbizrulelanguage_0:text, 
+        msdsazgenericdata_0:text, 
+        msdsazldapquery_0:text, 
+        msdsazlastimportedbizrulepath_0:text, 
+        msdsazobjectguid_0:blob, 
+        msdshabseniorityindex_0:int, 
+        msdsnonmembers_0:_top_msdsnonmembers_0, 
+        msdsphoneticdisplayname_0:text, 
+        msdsprimarycomputer_0:_top_msdsprimarycomputer_0, 
+        msdspreferreddatalocation_0:text, 
+        msexcharbitrationmailbox:text, 
+        msexchcomanagedbylink:_top_msexchcomanagedbylink, 
+        msexchgroupdepartrestriction:int, 
+        msexchgroupjoinrestriction:int, 
+        msexchmasteraccounthistory:_top_msexchmasteraccounthistory, 
+        msexchoriginatingforest:_top_msexchoriginatingforest, 
+        msexchserveradmindelegationbl:_top_msexchserveradmindelegationbl, 
+        msorggroupsubtypename_0:text, 
+        msorgisorganizational_0:boolean, 
+        msorgleaders_0:_top_msorgleaders_0, 
+        msorgotherdisplaynames_0:_top_msorgotherdisplaynames_0, 
+        msrtcsipgroupingid_0:blob, 
+        msrtcsiptenantid_0:blob, 
+        mssfu30name:text, 
+        mssfu30nisdomain:text, 
+        mssfu30posixmember:_top_mssfu30posixmember, 
+        ntgroupmembers:_top_ntgroupmembers, 
+        nonsecuritymember:_top_nonsecuritymember, 
+        oofreplytooriginator:boolean, 
+        operatorcount:int, 
+        owner:text, 
+        primarygrouptoken:int, 
+        reporttooriginator:boolean, 
+        reporttoowner:boolean, 
+        thumbnailphoto:blob
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD groups_top(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD admincount (any) OPT ANY
+             ADD cn (any) OPT ANY
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights.controlaccessrights NOS ZERO ()
+             ADD dlmemberrule NOS ZERO ()
+             ADD dlmemberrule NOS ZERO ()
+             ADD dlmemberrule.dlmemberrule NOS ZERO ()
+             ADD desktopprofile (any) OPT ANY
+             ADD groupattributes (any) OPT ANY
+             ADD groupmembershipsam NOS ZERO ()
+             ADD grouptype (any) OPT ANY
+             ADD hidedlmembership (any) OPT ANY
+             ADD location (any) OPT ANY
+             ADD mail (any) OPT ANY
+             ADD managedby (any) OPT ANY
+             ADD member NOS ZERO ()
+             ADD member NOS ZERO ()
+             ADD member.member (any) OPT ANY
+             ADD msdsazapplicationdata_0 (any) OPT ANY
+             ADD msdsazbizrule_0 (any) OPT ANY
+             ADD msdsazbizrulelanguage_0 (any) OPT ANY
+             ADD msdsazgenericdata_0 (any) OPT ANY
+             ADD msdsazldapquery_0 (any) OPT ANY
+             ADD msdsazlastimportedbizrulepath_0 (any) OPT ANY
+             ADD msdsazobjectguid_0 NOS ZERO ()
+             ADD msdshabseniorityindex_0 (any) OPT ANY
+             ADD msdsnonmembers_0 NOS ZERO ()
+             ADD msdsnonmembers_0 NOS ZERO ()
+             ADD msdsnonmembers_0.msdsnonmembers_0 (any) OPT ANY
+             ADD msdsphoneticdisplayname_0 (any) OPT ANY
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0.msdsprimarycomputer_0 (any) OPT ANY
+             ADD msdspreferreddatalocation_0 (any) OPT ANY
+             ADD msexcharbitrationmailbox (any) OPT ANY
+             ADD msexchcomanagedbylink NOS ZERO ()
+             ADD msexchcomanagedbylink NOS ZERO ()
+             ADD msexchcomanagedbylink.msexchcomanagedbylink (any) OPT ANY
+             ADD msexchgroupdepartrestriction (any) OPT ANY
+             ADD msexchgroupjoinrestriction (any) OPT ANY
+             ADD msexchmasteraccounthistory NOS ZERO ()
+             ADD msexchmasteraccounthistory NOS ZERO ()
+             ADD msexchmasteraccounthistory.msexchmasteraccounthistory NOS ZERO ()
+             ADD msexchoriginatingforest NOS ZERO ()
+             ADD msexchoriginatingforest NOS ZERO ()
+             ADD msexchoriginatingforest.msexchoriginatingforest (any) OPT ANY
+             ADD msexchserveradmindelegationbl NOS ZERO ()
+             ADD msexchserveradmindelegationbl NOS ZERO ()
+             ADD msexchserveradmindelegationbl.msexchserveradmindelegationbl (any) OPT ANY
+             ADD msorggroupsubtypename_0 (any) OPT ANY
+             ADD msorgisorganizational_0 (any) OPT ANY
+             ADD msorgleaders_0 NOS ZERO ()
+             ADD msorgleaders_0 NOS ZERO ()
+             ADD msorgleaders_0.msorgleaders_0 (any) OPT ANY
+             ADD msorgotherdisplaynames_0 NOS ZERO ()
+             ADD msorgotherdisplaynames_0 NOS ZERO ()
+             ADD msorgotherdisplaynames_0.msorgotherdisplaynames_0 (any) OPT ANY
+             ADD msrtcsipgroupingid_0 NOS ZERO ()
+             ADD msrtcsiptenantid_0 NOS ZERO ()
+             ADD mssfu30name (any) OPT ANY
+             ADD mssfu30nisdomain (any) OPT ANY
+             ADD mssfu30posixmember NOS ZERO ()
+             ADD mssfu30posixmember NOS ZERO ()
+             ADD mssfu30posixmember.mssfu30posixmember (any) OPT ANY
+             ADD ntgroupmembers NOS ZERO ()
+             ADD ntgroupmembers NOS ZERO ()
+             ADD ntgroupmembers.ntgroupmembers NOS ZERO ()
+             ADD nonsecuritymember NOS ZERO ()
+             ADD nonsecuritymember NOS ZERO ()
+             ADD nonsecuritymember.nonsecuritymember (any) OPT ANY
+             ADD oofreplytooriginator (any) OPT ANY
+             ADD operatorcount (any) OPT ANY
+             ADD owner (any) OPT ANY
+             ADD primarygrouptoken (any) OPT ANY
+             ADD reporttooriginator (any) OPT ANY
+             ADD reporttoowner (any) OPT ANY
+             ADD thumbnailphoto NOS ZERO ()
+        )
+        OUTPUTLIST (admincount, cn, controlaccessrights, desktopprofile, dlmemberrule, groupattributes, groupmembershipsam, grouptype, hidedlmembership, location, mail, managedby, member, msdsazapplicationdata_0, msdsazbizrule_0, msdsazbizrulelanguage_0, msdsazgenericdata_0, msdsazlastimportedbizrulepath_0, msdsazldapquery_0, msdsazobjectguid_0, msdshabseniorityindex_0, msdsnonmembers_0, msdsphoneticdisplayname_0, msdspreferreddatalocation_0, msdsprimarycomputer_0, msexcharbitrationmailbox, msexchcomanagedbylink, msexchgroupdepartrestriction, msexchgroupjoinrestriction, msexchmasteraccounthistory, msexchoriginatingforest, msexchserveradmindelegationbl, msorggroupsubtypename_0, msorgisorganizational_0, msorgleaders_0, msorgotherdisplaynames_0, msrtcsipgroupingid_0, msrtcsiptenantid_0, mssfu30name, mssfu30nisdomain, mssfu30posixmember, nonsecuritymember, ntgroupmembers, oofreplytooriginator, operatorcount, owner, primarygrouptoken, reporttooriginator, reporttoowner, thumbnailphoto
+        )
+        WRAPPER (ldap groups_top)
+    );
+

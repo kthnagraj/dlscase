@@ -1,0 +1,1151 @@
+﻿CREATE OR REPLACE WRAPPER LDAP user_0
+    FOLDER = '/privateworkspace/gundlachs/ldap'
+    DATASOURCENAME=my_ldap_connection
+    OBJECTCLASSES='user'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        acspolicyname = 'aCSPolicyName' : 'java.lang.String' (OPT),
+        accountexpires = 'accountExpires' : 'java.lang.Long' (OPT),
+        admincount = 'adminCount' : 'java.lang.Integer' (OPT),
+        audio = 'audio' : ARRAY OF (
+            audio = 'AUDIO' : REGISTER OF (
+                audio = 'audio' : 'java.lang.String' (OPT)
+            )
+        ),
+        businesscategory = 'businessCategory' : ARRAY OF (
+            businesscategory = 'businessCategory' : REGISTER OF (
+                businesscategory = 'businessCategory' : 'java.lang.String' (OPT)
+            )
+        ),
+        codepage = 'codePage' : 'java.lang.Integer' (OPT),
+        controlaccessrights = 'controlAccessRights' : ARRAY OF (
+            controlaccessrights = 'controlAccessRights' : REGISTER OF (
+                controlaccessrights = 'controlAccessRights' : 'java.lang.String' (OPT)
+            )
+        ),
+        dbcspwd = 'dBCSPwd' : 'java.lang.String' (OPT),
+        defaultclassstore = 'defaultClassStore' : ARRAY OF (
+            defaultclassstore = 'defaultClassStore' : REGISTER OF (
+                defaultclassstore = 'defaultClassStore' : 'java.lang.String' (OPT)
+            )
+        ),
+        departmentnumber = 'departmentNumber' : ARRAY OF (
+            departmentnumber = 'departmentNumber' : REGISTER OF (
+                departmentnumber = 'departmentNumber' : 'java.lang.String' (OPT)
+            )
+        ),
+        desktopprofile = 'desktopProfile' : 'java.lang.String' (OPT),
+        displayname = 'displayName' : 'java.lang.String' (OPT),
+        dynamicldapserver = 'dynamicLDAPServer' : 'java.lang.String' (OPT),
+        employeenumber = 'employeeNumber' : 'java.lang.String' (OPT),
+        employeetype = 'employeeType' : 'java.lang.String' (OPT),
+        givenname = 'givenName' : 'java.lang.String' (OPT),
+        groupmembershipsam = 'groupMembershipSAM' : 'java.lang.String' (OPT),
+        grouppriority = 'groupPriority' : ARRAY OF (
+            grouppriority = 'groupPriority' : REGISTER OF (
+                grouppriority = 'groupPriority' : 'java.lang.String' (OPT)
+            )
+        ),
+        groupstoignore = 'groupsToIgnore' : ARRAY OF (
+            groupstoignore = 'groupsToIgnore' : REGISTER OF (
+                groupstoignore = 'groupsToIgnore' : 'java.lang.String' (OPT)
+            )
+        ),
+        homedirectory = 'homeDirectory' : 'java.lang.String' (OPT),
+        homedrive = 'homeDrive' : 'java.lang.String' (OPT),
+        homephone = 'homePhone' : 'java.lang.String' (OPT),
+        homepostaladdress = 'homePostalAddress' : 'java.lang.String' (OPT),
+        initials = 'initials' : 'java.lang.String' (OPT),
+        jpegphoto = 'jpegPhoto' : ARRAY OF (
+            jpegphoto = 'jpegPhoto' : REGISTER OF (
+                jpegphoto = 'jpegPhoto' : 'java.lang.String' (OPT)
+            )
+        ),
+        kmserver = 'kMServer' : 'java.lang.String' (OPT),
+        labeleduri = 'labeledURI' : ARRAY OF (
+            labeleduri = 'labeledURI' : REGISTER OF (
+                labeleduri = 'labeledURI' : 'java.lang.String' (OPT)
+            )
+        ),
+        lastlogoff = 'lastLogoff' : 'java.lang.Long' (OPT),
+        lastlogon = 'lastLogon' : 'java.lang.Long' (OPT),
+        lastlogontimestamp = 'lastLogonTimestamp' : 'java.lang.Long' (OPT),
+        lmpwdhistory = 'lmPwdHistory' : ARRAY OF (
+            lmpwdhistory = 'lmPwdHistory' : REGISTER OF (
+                lmpwdhistory = 'lmPwdHistory' : 'java.lang.String' (OPT)
+            )
+        ),
+        localeid = 'localeID' : ARRAY OF (
+            localeid = 'localeID' : REGISTER OF (
+                localeid = 'localeID' : 'java.lang.Integer' (OPT)
+            )
+        ),
+        lockouttime = 'lockoutTime' : 'java.lang.Long' (OPT),
+        logoncount = 'logonCount' : 'java.lang.Integer' (OPT),
+        logonhours = 'logonHours' : 'java.lang.String' (OPT),
+        logonworkstation = 'logonWorkstation' : 'java.lang.String' (OPT),
+        msdscreatorsid_0 = 'mS-DS-CreatorSID' : 'java.lang.String' (OPT),
+        msmqdigests = 'mSMQDigests' : ARRAY OF (
+            msmqdigests = 'mSMQDigests' : REGISTER OF (
+                msmqdigests = 'mSMQDigests' : 'java.lang.String' (OPT)
+            )
+        ),
+        msmqdigestsmig = 'mSMQDigestsMig' : ARRAY OF (
+            msmqdigestsmig = 'mSMQDigestsMig' : REGISTER OF (
+                msmqdigestsmig = 'mSMQDigestsMig' : 'java.lang.String' (OPT)
+            )
+        ),
+        msmqsigncertificates = 'mSMQSignCertificates' : 'java.lang.String' (OPT),
+        msmqsigncertificatesmig = 'mSMQSignCertificatesMig' : 'java.lang.String' (OPT),
+        mail = 'mail' : 'java.lang.String' (OPT),
+        manager = 'manager' : 'java.lang.String' (OPT),
+        maxstorage = 'maxStorage' : 'java.lang.Long' (OPT),
+        mobile = 'mobile' : 'java.lang.String' (OPT),
+        mscomuserpartitionsetlink_0 = 'msCOM-UserPartitionSetLink' : 'java.lang.String' (OPT),
+        msdrmidentitycertificate_0 = 'msDRM-IdentityCertificate' : ARRAY OF (
+            msdrmidentitycertificate_0 = 'msDRM-IdentityCertificate' : REGISTER OF (
+                msdrmidentitycertificate_0 = 'msDRM-IdentityCertificate' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsassignedauthnpolicy_0 = 'msDS-AssignedAuthNPolicy' : 'java.lang.String' (OPT),
+        msdsassignedauthnpolicysilo_0 = 'msDS-AssignedAuthNPolicySilo' : 'java.lang.String' (OPT),
+        msdsauthnpolicysilomembersbl_0 = 'msDS-AuthNPolicySiloMembersBL' : ARRAY OF (
+            msdsauthnpolicysilomembersbl_0 = 'msDS-AuthNPolicySiloMembersBL' : REGISTER OF (
+                msdsauthnpolicysilomembersbl_0 = 'msDS-AuthNPolicySiloMembersBL' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsauthenticatedatdc_0 = 'msDS-AuthenticatedAtDC' : ARRAY OF (
+            msdsauthenticatedatdc_0 = 'msDS-AuthenticatedAtDC' : REGISTER OF (
+                msdsauthenticatedatdc_0 = 'msDS-AuthenticatedAtDC' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdscachedmembership_0 = 'msDS-Cached-Membership' : 'java.lang.String' (OPT),
+        msdscachedmembershiptimestamp_0 = 'msDS-Cached-Membership-Time-Stamp' : 'java.lang.Long' (OPT),
+        msdsfailedinteractivelogoncount_0 = 'msDS-FailedInteractiveLogonCount' : 'java.lang.Integer' (OPT),
+        msdsfailedinteractivelogoncountatlastsuccessfullogon_0 = 'msDS-FailedInteractiveLogonCountAtLastSuccessfulLogon' : 'java.lang.Integer' (OPT),
+        msdskeycredentiallink_0 = 'msDS-KeyCredentialLink' : ARRAY OF (
+            msdskeycredentiallink_0 = 'msDS-KeyCredentialLink' : REGISTER OF (
+                msdskeycredentiallink_0 = 'msDS-KeyCredentialLink' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdskeyprincipalbl_0 = 'msDS-KeyPrincipalBL' : ARRAY OF (
+            msdskeyprincipalbl_0 = 'msDS-KeyPrincipalBL' : REGISTER OF (
+                msdskeyprincipalbl_0 = 'msDS-KeyPrincipalBL' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdslastfailedinteractivelogontime_0 = 'msDS-LastFailedInteractiveLogonTime' : 'java.lang.Long' (OPT),
+        msdslastsuccessfulinteractivelogontime_0 = 'msDS-LastSuccessfulInteractiveLogonTime' : 'java.lang.Long' (OPT),
+        msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : ARRAY OF (
+            msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : REGISTER OF (
+                msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsresultantpso_0 = 'msDS-ResultantPSO' : 'java.lang.String' (OPT),
+        msdssecondarykrbtgtnumber_0 = 'msDS-SecondaryKrbTgtNumber' : 'java.lang.Integer' (OPT),
+        msdssiteaffinity_0 = 'msDS-Site-Affinity' : ARRAY OF (
+            msdssiteaffinity_0 = 'msDS-Site-Affinity' : REGISTER OF (
+                msdssiteaffinity_0 = 'msDS-Site-Affinity' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdssourceobjectdn_0 = 'msDS-SourceObjectDN' : 'java.lang.String' (OPT),
+        msdssupportedencryptiontypes_0 = 'msDS-SupportedEncryptionTypes' : 'java.lang.Integer' (OPT),
+        msdssyncserverurl_0 = 'msDS-SyncServerUrl' : ARRAY OF (
+            msdssyncserverurl_0 = 'msDS-SyncServerUrl' : REGISTER OF (
+                msdssyncserverurl_0 = 'msDS-SyncServerUrl' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsuseraccountcontrolcomputed_0 = 'msDS-User-Account-Control-Computed' : 'java.lang.Integer' (OPT),
+        msdsuserpasswordexpirytimecomputed_0 = 'msDS-UserPasswordExpiryTimeComputed' : 'java.lang.Long' (OPT),
+        msdspreferreddatalocation_0 = 'msDS-preferredDataLocation' : 'java.lang.String' (OPT),
+        msexchconferencemailboxbl = 'msExchConferenceMailboxBL' : 'java.lang.String' (OPT),
+        msexchcontrollingzone = 'msExchControllingZone' : 'java.lang.String' (OPT),
+        msexchimapowaurlprefixoverride = 'msExchIMAPOWAURLPrefixOverride' : 'java.lang.String' (OPT),
+        msexchoriginatingforest = 'msExchOriginatingForest' : ARRAY OF (
+            msexchoriginatingforest = 'msExchOriginatingForest' : REGISTER OF (
+                msexchoriginatingforest = 'msExchOriginatingForest' : 'java.lang.String' (OPT)
+            )
+        ),
+        msexchquerybasedn = 'msExchQueryBaseDN' : 'java.lang.String' (OPT),
+        msexchresourceguid = 'msExchResourceGUID' : ARRAY OF (
+            msexchresourceguid = 'msExchResourceGUID' : REGISTER OF (
+                msexchresourceguid = 'msExchResourceGUID' : 'java.lang.String' (OPT)
+            )
+        ),
+        msexchresourceproperties = 'msExchResourceProperties' : ARRAY OF (
+            msexchresourceproperties = 'msExchResourceProperties' : REGISTER OF (
+                msexchresourceproperties = 'msExchResourceProperties' : 'java.lang.String' (OPT)
+            )
+        ),
+        msiisftpdir_0 = 'msIIS-FTPDir' : 'java.lang.String' (OPT),
+        msiisftproot_0 = 'msIIS-FTPRoot' : 'java.lang.String' (OPT),
+        msnpallowdialin = 'msNPAllowDialin' : 'java.lang.Boolean' (OPT),
+        msnpcallingstationid = 'msNPCallingStationID' : ARRAY OF (
+            msnpcallingstationid = 'msNPCallingStationID' : REGISTER OF (
+                msnpcallingstationid = 'msNPCallingStationID' : 'java.lang.String' (OPT)
+            )
+        ),
+        msnpsavedcallingstationid = 'msNPSavedCallingStationID' : ARRAY OF (
+            msnpsavedcallingstationid = 'msNPSavedCallingStationID' : REGISTER OF (
+                msnpsavedcallingstationid = 'msNPSavedCallingStationID' : 'java.lang.String' (OPT)
+            )
+        ),
+        mspkicredentialroamingtokens_0 = 'msPKI-CredentialRoamingTokens' : ARRAY OF (
+            mspkicredentialroamingtokens_0 = 'msPKI-CredentialRoamingTokens' : REGISTER OF (
+                mspkicredentialroamingtokens_0 = 'msPKI-CredentialRoamingTokens' : 'java.lang.String' (OPT)
+            )
+        ),
+        mspkiaccountcredentials = 'msPKIAccountCredentials' : ARRAY OF (
+            mspkiaccountcredentials = 'msPKIAccountCredentials' : REGISTER OF (
+                mspkiaccountcredentials = 'msPKIAccountCredentials' : 'java.lang.String' (OPT)
+            )
+        ),
+        mspkidpapimasterkeys = 'msPKIDPAPIMasterKeys' : ARRAY OF (
+            mspkidpapimasterkeys = 'msPKIDPAPIMasterKeys' : REGISTER OF (
+                mspkidpapimasterkeys = 'msPKIDPAPIMasterKeys' : 'java.lang.String' (OPT)
+            )
+        ),
+        mspkiroamingtimestamp = 'msPKIRoamingTimeStamp' : 'java.lang.String' (OPT),
+        msradiusframedinterfaceid_0 = 'msRADIUS-FramedInterfaceId' : 'java.lang.String' (OPT),
+        msradiusframedipv6prefix_0 = 'msRADIUS-FramedIpv6Prefix' : 'java.lang.String' (OPT),
+        msradiusframedipv6route_0 = 'msRADIUS-FramedIpv6Route' : ARRAY OF (
+            msradiusframedipv6route_0 = 'msRADIUS-FramedIpv6Route' : REGISTER OF (
+                msradiusframedipv6route_0 = 'msRADIUS-FramedIpv6Route' : 'java.lang.String' (OPT)
+            )
+        ),
+        msradiussavedframedinterfaceid_0 = 'msRADIUS-SavedFramedInterfaceId' : 'java.lang.String' (OPT),
+        msradiussavedframedipv6prefix_0 = 'msRADIUS-SavedFramedIpv6Prefix' : 'java.lang.String' (OPT),
+        msradiussavedframedipv6route_0 = 'msRADIUS-SavedFramedIpv6Route' : ARRAY OF (
+            msradiussavedframedipv6route_0 = 'msRADIUS-SavedFramedIpv6Route' : REGISTER OF (
+                msradiussavedframedipv6route_0 = 'msRADIUS-SavedFramedIpv6Route' : 'java.lang.String' (OPT)
+            )
+        ),
+        msradiuscallbacknumber = 'msRADIUSCallbackNumber' : 'java.lang.String' (OPT),
+        msradiusframedipaddress = 'msRADIUSFramedIPAddress' : 'java.lang.Integer' (OPT),
+        msradiusframedroute = 'msRADIUSFramedRoute' : ARRAY OF (
+            msradiusframedroute = 'msRADIUSFramedRoute' : REGISTER OF (
+                msradiusframedroute = 'msRADIUSFramedRoute' : 'java.lang.String' (OPT)
+            )
+        ),
+        msradiusservicetype = 'msRADIUSServiceType' : 'java.lang.Integer' (OPT),
+        msrassavedcallbacknumber = 'msRASSavedCallbackNumber' : 'java.lang.String' (OPT),
+        msrassavedframedipaddress = 'msRASSavedFramedIPAddress' : 'java.lang.Integer' (OPT),
+        msrassavedframedroute = 'msRASSavedFramedRoute' : ARRAY OF (
+            msrassavedframedroute = 'msRASSavedFramedRoute' : REGISTER OF (
+                msrassavedframedroute = 'msRASSavedFramedRoute' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipacpinfo_0 = 'msRTCSIP-AcpInfo' : ARRAY OF (
+            msrtcsipacpinfo_0 = 'msRTCSIP-AcpInfo' : REGISTER OF (
+                msrtcsipacpinfo_0 = 'msRTCSIP-AcpInfo' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipapplicationoptions_0 = 'msRTCSIP-ApplicationOptions' : 'java.lang.Integer' (OPT),
+        msrtcsiparchivingenabled_0 = 'msRTCSIP-ArchivingEnabled' : 'java.lang.Integer' (OPT),
+        msrtcsipdeploymentlocator_0 = 'msRTCSIP-DeploymentLocator' : 'java.lang.String' (OPT),
+        msrtcsipfederationenabled_0 = 'msRTCSIP-FederationEnabled' : 'java.lang.Boolean' (OPT),
+        msrtcsipgroupingid_0 = 'msRTCSIP-GroupingID' : 'java.lang.String' (OPT),
+        msrtcsipinternetaccessenabled_0 = 'msRTCSIP-InternetAccessEnabled' : 'java.lang.Boolean' (OPT),
+        msrtcsipline_0 = 'msRTCSIP-Line' : 'java.lang.String' (OPT),
+        msrtcsiplineserver_0 = 'msRTCSIP-LineServer' : 'java.lang.String' (OPT),
+        msrtcsipoptionflags_0 = 'msRTCSIP-OptionFlags' : 'java.lang.Integer' (OPT),
+        msrtcsiporiginatorsid_0 = 'msRTCSIP-OriginatorSid' : 'java.lang.String' (OPT),
+        msrtcsipownerurn_0 = 'msRTCSIP-OwnerUrn' : 'java.lang.String' (OPT),
+        msrtcsipprimaryhomeserver_0 = 'msRTCSIP-PrimaryHomeServer' : 'java.lang.String' (OPT),
+        msrtcsipprimaryuseraddress_0 = 'msRTCSIP-PrimaryUserAddress' : 'java.lang.String' (OPT),
+        msrtcsipprivateline_0 = 'msRTCSIP-PrivateLine' : 'java.lang.String' (OPT),
+        msrtcsiptargethomeserver_0 = 'msRTCSIP-TargetHomeServer' : 'java.lang.String' (OPT),
+        msrtcsiptargetuserpolicies_0 = 'msRTCSIP-TargetUserPolicies' : ARRAY OF (
+            msrtcsiptargetuserpolicies_0 = 'msRTCSIP-TargetUserPolicies' : REGISTER OF (
+                msrtcsiptargetuserpolicies_0 = 'msRTCSIP-TargetUserPolicies' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsiptenantid_0 = 'msRTCSIP-TenantId' : 'java.lang.String' (OPT),
+        msrtcsipuserenabled_0 = 'msRTCSIP-UserEnabled' : 'java.lang.Boolean' (OPT),
+        msrtcsipuserextension_0 = 'msRTCSIP-UserExtension' : ARRAY OF (
+            msrtcsipuserextension_0 = 'msRTCSIP-UserExtension' : REGISTER OF (
+                msrtcsipuserextension_0 = 'msRTCSIP-UserExtension' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipuserlocationprofile_0 = 'msRTCSIP-UserLocationProfile' : 'java.lang.String' (OPT),
+        msrtcsipuserpolicies_0 = 'msRTCSIP-UserPolicies' : ARRAY OF (
+            msrtcsipuserpolicies_0 = 'msRTCSIP-UserPolicies' : REGISTER OF (
+                msrtcsipuserpolicies_0 = 'msRTCSIP-UserPolicies' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipuserpolicy_0 = 'msRTCSIP-UserPolicy' : ARRAY OF (
+            msrtcsipuserpolicy_0 = 'msRTCSIP-UserPolicy' : REGISTER OF (
+                msrtcsipuserpolicy_0 = 'msRTCSIP-UserPolicy' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsipuserroutinggroupid_0 = 'msRTCSIP-UserRoutingGroupId' : 'java.lang.String' (OPT),
+        mssfu30name = 'msSFU30Name' : 'java.lang.String' (OPT),
+        mssfu30nisdomain = 'msSFU30NisDomain' : 'java.lang.String' (OPT),
+        mstsallowlogon = 'msTSAllowLogon' : 'java.lang.Boolean' (OPT),
+        mstsbrokenconnectionaction = 'msTSBrokenConnectionAction' : 'java.lang.Boolean' (OPT),
+        mstsconnectclientdrives = 'msTSConnectClientDrives' : 'java.lang.Boolean' (OPT),
+        mstsconnectprinterdrives = 'msTSConnectPrinterDrives' : 'java.lang.Boolean' (OPT),
+        mstsdefaulttomainprinter = 'msTSDefaultToMainPrinter' : 'java.lang.Boolean' (OPT),
+        mstsexpiredate = 'msTSExpireDate' : 'java.lang.String' (OPT),
+        mstsexpiredate2 = 'msTSExpireDate2' : 'java.lang.String' (OPT),
+        mstsexpiredate3 = 'msTSExpireDate3' : 'java.lang.String' (OPT),
+        mstsexpiredate4 = 'msTSExpireDate4' : 'java.lang.String' (OPT),
+        mstshomedirectory = 'msTSHomeDirectory' : 'java.lang.String' (OPT),
+        mstshomedrive = 'msTSHomeDrive' : 'java.lang.String' (OPT),
+        mstsinitialprogram = 'msTSInitialProgram' : 'java.lang.String' (OPT),
+        mstslsproperty01 = 'msTSLSProperty01' : ARRAY OF (
+            mstslsproperty01 = 'msTSLSProperty01' : REGISTER OF (
+                mstslsproperty01 = 'msTSLSProperty01' : 'java.lang.String' (OPT)
+            )
+        ),
+        mstslsproperty02 = 'msTSLSProperty02' : ARRAY OF (
+            mstslsproperty02 = 'msTSLSProperty02' : REGISTER OF (
+                mstslsproperty02 = 'msTSLSProperty02' : 'java.lang.String' (OPT)
+            )
+        ),
+        mstslicenseversion = 'msTSLicenseVersion' : 'java.lang.String' (OPT),
+        mstslicenseversion2 = 'msTSLicenseVersion2' : 'java.lang.String' (OPT),
+        mstslicenseversion3 = 'msTSLicenseVersion3' : 'java.lang.String' (OPT),
+        mstslicenseversion4 = 'msTSLicenseVersion4' : 'java.lang.String' (OPT),
+        mstsmanagingls = 'msTSManagingLS' : 'java.lang.String' (OPT),
+        mstsmanagingls2 = 'msTSManagingLS2' : 'java.lang.String' (OPT),
+        mstsmanagingls3 = 'msTSManagingLS3' : 'java.lang.String' (OPT),
+        mstsmanagingls4 = 'msTSManagingLS4' : 'java.lang.String' (OPT),
+        mstsmaxconnectiontime = 'msTSMaxConnectionTime' : 'java.lang.Integer' (OPT),
+        mstsmaxdisconnectiontime = 'msTSMaxDisconnectionTime' : 'java.lang.Integer' (OPT),
+        mstsmaxidletime = 'msTSMaxIdleTime' : 'java.lang.Integer' (OPT),
+        mstsprimarydesktop = 'msTSPrimaryDesktop' : 'java.lang.String' (OPT),
+        mstsprofilepath = 'msTSProfilePath' : 'java.lang.String' (OPT),
+        mstsproperty01 = 'msTSProperty01' : ARRAY OF (
+            mstsproperty01 = 'msTSProperty01' : REGISTER OF (
+                mstsproperty01 = 'msTSProperty01' : 'java.lang.String' (OPT)
+            )
+        ),
+        mstsproperty02 = 'msTSProperty02' : ARRAY OF (
+            mstsproperty02 = 'msTSProperty02' : REGISTER OF (
+                mstsproperty02 = 'msTSProperty02' : 'java.lang.String' (OPT)
+            )
+        ),
+        mstsreconnectionaction = 'msTSReconnectionAction' : 'java.lang.Boolean' (OPT),
+        mstsremotecontrol = 'msTSRemoteControl' : 'java.lang.Integer' (OPT),
+        mstssecondarydesktops = 'msTSSecondaryDesktops' : ARRAY OF (
+            mstssecondarydesktops = 'msTSSecondaryDesktops' : REGISTER OF (
+                mstssecondarydesktops = 'msTSSecondaryDesktops' : 'java.lang.String' (OPT)
+            )
+        ),
+        mstsworkdirectory = 'msTSWorkDirectory' : 'java.lang.String' (OPT),
+        networkaddress = 'networkAddress' : ARRAY OF (
+            networkaddress = 'networkAddress' : REGISTER OF (
+                networkaddress = 'networkAddress' : 'java.lang.String' (OPT)
+            )
+        ),
+        ntpwdhistory = 'ntPwdHistory' : ARRAY OF (
+            ntpwdhistory = 'ntPwdHistory' : REGISTER OF (
+                ntpwdhistory = 'ntPwdHistory' : 'java.lang.String' (OPT)
+            )
+        ),
+        o = 'o' : ARRAY OF (
+            o = 'O' : REGISTER OF (
+                o = 'o' : 'java.lang.String' (OPT)
+            )
+        ),
+        operatorcount = 'operatorCount' : 'java.lang.Integer' (OPT),
+        otherloginworkstations = 'otherLoginWorkstations' : ARRAY OF (
+            otherloginworkstations = 'otherLoginWorkstations' : REGISTER OF (
+                otherloginworkstations = 'otherLoginWorkstations' : 'java.lang.String' (OPT)
+            )
+        ),
+        pager = 'pager' : 'java.lang.String' (OPT),
+        photo = 'photo' : ARRAY OF (
+            photo = 'PHOTO' : REGISTER OF (
+                photo = 'photo' : 'java.lang.String' (OPT)
+            )
+        ),
+        preferredlanguage = 'preferredLanguage' : 'java.lang.String' (OPT),
+        preferredou = 'preferredOU' : 'java.lang.String' (OPT),
+        primarygroupid = 'primaryGroupID' : 'java.lang.Integer' (OPT),
+        profilepath = 'profilePath' : 'java.lang.String' (OPT),
+        pwdlastset = 'pwdLastSet' : 'java.lang.Long' (OPT),
+        roomnumber = 'roomNumber' : ARRAY OF (
+            roomnumber = 'roomNumber' : REGISTER OF (
+                roomnumber = 'roomNumber' : 'java.lang.String' (OPT)
+            )
+        ),
+        scriptpath = 'scriptPath' : 'java.lang.String' (OPT),
+        secretary = 'secretary' : ARRAY OF (
+            secretary = 'SECRETARY' : REGISTER OF (
+                secretary = 'secretary' : 'java.lang.String' (OPT)
+            )
+        ),
+        serviceprincipalname = 'servicePrincipalName' : ARRAY OF (
+            serviceprincipalname = 'servicePrincipalName' : REGISTER OF (
+                serviceprincipalname = 'servicePrincipalName' : 'java.lang.String' (OPT)
+            )
+        ),
+        terminalserver = 'terminalServer' : 'java.lang.String' (OPT),
+        uid = 'uid' : ARRAY OF (
+            uid = 'UID' : REGISTER OF (
+                uid = 'uid' : 'java.lang.String' (OPT)
+            )
+        ),
+        unicodepwd = 'unicodePwd' : 'java.lang.String' (OPT),
+        useraccountcontrol = 'userAccountControl' : 'java.lang.Integer' (OPT),
+        usercertificate = 'userCertificate' : ARRAY OF (
+            usercertificate = 'userCertificate' : REGISTER OF (
+                usercertificate = 'userCertificate' : 'java.lang.String' (OPT)
+            )
+        ),
+        userpkcs12 = 'userPKCS12' : ARRAY OF (
+            userpkcs12 = 'userPKCS12' : REGISTER OF (
+                userpkcs12 = 'userPKCS12' : 'java.lang.String' (OPT)
+            )
+        ),
+        userparameters = 'userParameters' : 'java.lang.String' (OPT),
+        userprincipalname = 'userPrincipalName' : 'java.lang.String' (OPT),
+        usersmimecertificate = 'userSMIMECertificate' : ARRAY OF (
+            usersmimecertificate = 'userSMIMECertificate' : REGISTER OF (
+                usersmimecertificate = 'userSMIMECertificate' : 'java.lang.String' (OPT)
+            )
+        ),
+        usersharedfolder = 'userSharedFolder' : 'java.lang.String' (OPT),
+        usersharedfolderother = 'userSharedFolderOther' : ARRAY OF (
+            usersharedfolderother = 'userSharedFolderOther' : REGISTER OF (
+                usersharedfolderother = 'userSharedFolderOther' : 'java.lang.String' (OPT)
+            )
+        ),
+        userworkstations = 'userWorkstations' : 'java.lang.String' (OPT),
+        x500uniqueidentifier = 'x500uniqueIdentifier' : ARRAY OF (
+            x500uniqueidentifier = 'x500uniqueIdentifier' : REGISTER OF (
+                x500uniqueidentifier = 'x500uniqueIdentifier' : 'java.lang.String' (OPT)
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE user_0_audio_audio AS REGISTER OF (audio:text);
+
+CREATE OR REPLACE TYPE user_0_audio AS ARRAY OF user_0_audio_audio;
+
+CREATE OR REPLACE TYPE user_0_businesscategory_businesscategory AS REGISTER OF (businesscategory:text);
+
+CREATE OR REPLACE TYPE user_0_businesscategory AS ARRAY OF user_0_businesscategory_businesscategory;
+
+CREATE OR REPLACE TYPE user_0_controlaccessrights_controlaccessrights AS REGISTER OF (controlaccessrights:text);
+
+CREATE OR REPLACE TYPE user_0_controlaccessrights AS ARRAY OF user_0_controlaccessrights_controlaccessrights;
+
+CREATE OR REPLACE TYPE user_0_defaultclassstore_defaultclassstore AS REGISTER OF (defaultclassstore:text);
+
+CREATE OR REPLACE TYPE user_0_defaultclassstore AS ARRAY OF user_0_defaultclassstore_defaultclassstore;
+
+CREATE OR REPLACE TYPE user_0_departmentnumber_departmentnumber AS REGISTER OF (departmentnumber:text);
+
+CREATE OR REPLACE TYPE user_0_departmentnumber AS ARRAY OF user_0_departmentnumber_departmentnumber;
+
+CREATE OR REPLACE TYPE user_0_grouppriority_grouppriority AS REGISTER OF (grouppriority:text);
+
+CREATE OR REPLACE TYPE user_0_grouppriority AS ARRAY OF user_0_grouppriority_grouppriority;
+
+CREATE OR REPLACE TYPE user_0_groupstoignore_groupstoignore AS REGISTER OF (groupstoignore:text);
+
+CREATE OR REPLACE TYPE user_0_groupstoignore AS ARRAY OF user_0_groupstoignore_groupstoignore;
+
+CREATE OR REPLACE TYPE user_0_jpegphoto_jpegphoto AS REGISTER OF (jpegphoto:text);
+
+CREATE OR REPLACE TYPE user_0_jpegphoto AS ARRAY OF user_0_jpegphoto_jpegphoto;
+
+CREATE OR REPLACE TYPE user_0_labeleduri_labeleduri AS REGISTER OF (labeleduri:text);
+
+CREATE OR REPLACE TYPE user_0_labeleduri AS ARRAY OF user_0_labeleduri_labeleduri;
+
+CREATE OR REPLACE TYPE user_0_lmpwdhistory_lmpwdhistory AS REGISTER OF (lmpwdhistory:text);
+
+CREATE OR REPLACE TYPE user_0_lmpwdhistory AS ARRAY OF user_0_lmpwdhistory_lmpwdhistory;
+
+CREATE OR REPLACE TYPE user_0_localeid_localeid AS REGISTER OF (localeid:int);
+
+CREATE OR REPLACE TYPE user_0_localeid AS ARRAY OF user_0_localeid_localeid;
+
+CREATE OR REPLACE TYPE user_0_msmqdigests_msmqdigests AS REGISTER OF (msmqdigests:text);
+
+CREATE OR REPLACE TYPE user_0_msmqdigests AS ARRAY OF user_0_msmqdigests_msmqdigests;
+
+CREATE OR REPLACE TYPE user_0_msmqdigestsmig_msmqdigestsmig AS REGISTER OF (msmqdigestsmig:text);
+
+CREATE OR REPLACE TYPE user_0_msmqdigestsmig AS ARRAY OF user_0_msmqdigestsmig_msmqdigestsmig;
+
+CREATE OR REPLACE TYPE user_0_msdrmidentitycertificate_0_msdrmidentitycertificate_0 AS REGISTER OF (msdrmidentitycertificate_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdrmidentitycertificate_0 AS ARRAY OF user_0_msdrmidentitycertificate_0_msdrmidentitycertificate_0;
+
+CREATE OR REPLACE TYPE user_0_msdsauthnpolicysilomembersbl_0_msdsauthnpolicysilomembersbl_0 AS REGISTER OF (msdsauthnpolicysilomembersbl_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdsauthnpolicysilomembersbl_0 AS ARRAY OF user_0_msdsauthnpolicysilomembersbl_0_msdsauthnpolicysilomembersbl_0;
+
+CREATE OR REPLACE TYPE user_0_msdsauthenticatedatdc_0_msdsauthenticatedatdc_0 AS REGISTER OF (msdsauthenticatedatdc_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdsauthenticatedatdc_0 AS ARRAY OF user_0_msdsauthenticatedatdc_0_msdsauthenticatedatdc_0;
+
+CREATE OR REPLACE TYPE user_0_msdskeycredentiallink_0_msdskeycredentiallink_0 AS REGISTER OF (msdskeycredentiallink_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdskeycredentiallink_0 AS ARRAY OF user_0_msdskeycredentiallink_0_msdskeycredentiallink_0;
+
+CREATE OR REPLACE TYPE user_0_msdskeyprincipalbl_0_msdskeyprincipalbl_0 AS REGISTER OF (msdskeyprincipalbl_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdskeyprincipalbl_0 AS ARRAY OF user_0_msdskeyprincipalbl_0_msdskeyprincipalbl_0;
+
+CREATE OR REPLACE TYPE user_0_msdsprimarycomputer_0_msdsprimarycomputer_0 AS REGISTER OF (msdsprimarycomputer_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdsprimarycomputer_0 AS ARRAY OF user_0_msdsprimarycomputer_0_msdsprimarycomputer_0;
+
+CREATE OR REPLACE TYPE user_0_msdssiteaffinity_0_msdssiteaffinity_0 AS REGISTER OF (msdssiteaffinity_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdssiteaffinity_0 AS ARRAY OF user_0_msdssiteaffinity_0_msdssiteaffinity_0;
+
+CREATE OR REPLACE TYPE user_0_msdssyncserverurl_0_msdssyncserverurl_0 AS REGISTER OF (msdssyncserverurl_0:text);
+
+CREATE OR REPLACE TYPE user_0_msdssyncserverurl_0 AS ARRAY OF user_0_msdssyncserverurl_0_msdssyncserverurl_0;
+
+CREATE OR REPLACE TYPE user_0_msexchoriginatingforest_msexchoriginatingforest AS REGISTER OF (msexchoriginatingforest:text);
+
+CREATE OR REPLACE TYPE user_0_msexchoriginatingforest AS ARRAY OF user_0_msexchoriginatingforest_msexchoriginatingforest;
+
+CREATE OR REPLACE TYPE user_0_msexchresourceguid_msexchresourceguid AS REGISTER OF (msexchresourceguid:text);
+
+CREATE OR REPLACE TYPE user_0_msexchresourceguid AS ARRAY OF user_0_msexchresourceguid_msexchresourceguid;
+
+CREATE OR REPLACE TYPE user_0_msexchresourceproperties_msexchresourceproperties AS REGISTER OF (msexchresourceproperties:text);
+
+CREATE OR REPLACE TYPE user_0_msexchresourceproperties AS ARRAY OF user_0_msexchresourceproperties_msexchresourceproperties;
+
+CREATE OR REPLACE TYPE user_0_msnpcallingstationid_msnpcallingstationid AS REGISTER OF (msnpcallingstationid:text);
+
+CREATE OR REPLACE TYPE user_0_msnpcallingstationid AS ARRAY OF user_0_msnpcallingstationid_msnpcallingstationid;
+
+CREATE OR REPLACE TYPE user_0_msnpsavedcallingstationid_msnpsavedcallingstationid AS REGISTER OF (msnpsavedcallingstationid:text);
+
+CREATE OR REPLACE TYPE user_0_msnpsavedcallingstationid AS ARRAY OF user_0_msnpsavedcallingstationid_msnpsavedcallingstationid;
+
+CREATE OR REPLACE TYPE user_0_mspkicredentialroamingtokens_0_mspkicredentialroamingtokens_0 AS REGISTER OF (mspkicredentialroamingtokens_0:text);
+
+CREATE OR REPLACE TYPE user_0_mspkicredentialroamingtokens_0 AS ARRAY OF user_0_mspkicredentialroamingtokens_0_mspkicredentialroamingtokens_0;
+
+CREATE OR REPLACE TYPE user_0_mspkiaccountcredentials_mspkiaccountcredentials AS REGISTER OF (mspkiaccountcredentials:text);
+
+CREATE OR REPLACE TYPE user_0_mspkiaccountcredentials AS ARRAY OF user_0_mspkiaccountcredentials_mspkiaccountcredentials;
+
+CREATE OR REPLACE TYPE user_0_mspkidpapimasterkeys_mspkidpapimasterkeys AS REGISTER OF (mspkidpapimasterkeys:text);
+
+CREATE OR REPLACE TYPE user_0_mspkidpapimasterkeys AS ARRAY OF user_0_mspkidpapimasterkeys_mspkidpapimasterkeys;
+
+CREATE OR REPLACE TYPE user_0_msradiusframedipv6route_0_msradiusframedipv6route_0 AS REGISTER OF (msradiusframedipv6route_0:text);
+
+CREATE OR REPLACE TYPE user_0_msradiusframedipv6route_0 AS ARRAY OF user_0_msradiusframedipv6route_0_msradiusframedipv6route_0;
+
+CREATE OR REPLACE TYPE user_0_msradiussavedframedipv6route_0_msradiussavedframedipv6route_0 AS REGISTER OF (msradiussavedframedipv6route_0:text);
+
+CREATE OR REPLACE TYPE user_0_msradiussavedframedipv6route_0 AS ARRAY OF user_0_msradiussavedframedipv6route_0_msradiussavedframedipv6route_0;
+
+CREATE OR REPLACE TYPE user_0_msradiusframedroute_msradiusframedroute AS REGISTER OF (msradiusframedroute:text);
+
+CREATE OR REPLACE TYPE user_0_msradiusframedroute AS ARRAY OF user_0_msradiusframedroute_msradiusframedroute;
+
+CREATE OR REPLACE TYPE user_0_msrassavedframedroute_msrassavedframedroute AS REGISTER OF (msrassavedframedroute:text);
+
+CREATE OR REPLACE TYPE user_0_msrassavedframedroute AS ARRAY OF user_0_msrassavedframedroute_msrassavedframedroute;
+
+CREATE OR REPLACE TYPE user_0_msrtcsipacpinfo_0_msrtcsipacpinfo_0 AS REGISTER OF (msrtcsipacpinfo_0:text);
+
+CREATE OR REPLACE TYPE user_0_msrtcsipacpinfo_0 AS ARRAY OF user_0_msrtcsipacpinfo_0_msrtcsipacpinfo_0;
+
+CREATE OR REPLACE TYPE user_0_msrtcsiptargetuserpolicies_0_msrtcsiptargetuserpolicies_0 AS REGISTER OF (msrtcsiptargetuserpolicies_0:text);
+
+CREATE OR REPLACE TYPE user_0_msrtcsiptargetuserpolicies_0 AS ARRAY OF user_0_msrtcsiptargetuserpolicies_0_msrtcsiptargetuserpolicies_0;
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserextension_0_msrtcsipuserextension_0 AS REGISTER OF (msrtcsipuserextension_0:text);
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserextension_0 AS ARRAY OF user_0_msrtcsipuserextension_0_msrtcsipuserextension_0;
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserpolicies_0_msrtcsipuserpolicies_0 AS REGISTER OF (msrtcsipuserpolicies_0:text);
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserpolicies_0 AS ARRAY OF user_0_msrtcsipuserpolicies_0_msrtcsipuserpolicies_0;
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserpolicy_0_msrtcsipuserpolicy_0 AS REGISTER OF (msrtcsipuserpolicy_0:text);
+
+CREATE OR REPLACE TYPE user_0_msrtcsipuserpolicy_0 AS ARRAY OF user_0_msrtcsipuserpolicy_0_msrtcsipuserpolicy_0;
+
+CREATE OR REPLACE TYPE user_0_mstslsproperty01_mstslsproperty01 AS REGISTER OF (mstslsproperty01:text);
+
+CREATE OR REPLACE TYPE user_0_mstslsproperty01 AS ARRAY OF user_0_mstslsproperty01_mstslsproperty01;
+
+CREATE OR REPLACE TYPE user_0_mstslsproperty02_mstslsproperty02 AS REGISTER OF (mstslsproperty02:text);
+
+CREATE OR REPLACE TYPE user_0_mstslsproperty02 AS ARRAY OF user_0_mstslsproperty02_mstslsproperty02;
+
+CREATE OR REPLACE TYPE user_0_mstsproperty01_mstsproperty01 AS REGISTER OF (mstsproperty01:text);
+
+CREATE OR REPLACE TYPE user_0_mstsproperty01 AS ARRAY OF user_0_mstsproperty01_mstsproperty01;
+
+CREATE OR REPLACE TYPE user_0_mstsproperty02_mstsproperty02 AS REGISTER OF (mstsproperty02:text);
+
+CREATE OR REPLACE TYPE user_0_mstsproperty02 AS ARRAY OF user_0_mstsproperty02_mstsproperty02;
+
+CREATE OR REPLACE TYPE user_0_mstssecondarydesktops_mstssecondarydesktops AS REGISTER OF (mstssecondarydesktops:text);
+
+CREATE OR REPLACE TYPE user_0_mstssecondarydesktops AS ARRAY OF user_0_mstssecondarydesktops_mstssecondarydesktops;
+
+CREATE OR REPLACE TYPE user_0_networkaddress_networkaddress AS REGISTER OF (networkaddress:text);
+
+CREATE OR REPLACE TYPE user_0_networkaddress AS ARRAY OF user_0_networkaddress_networkaddress;
+
+CREATE OR REPLACE TYPE user_0_ntpwdhistory_ntpwdhistory AS REGISTER OF (ntpwdhistory:text);
+
+CREATE OR REPLACE TYPE user_0_ntpwdhistory AS ARRAY OF user_0_ntpwdhistory_ntpwdhistory;
+
+CREATE OR REPLACE TYPE user_0_o_o AS REGISTER OF (o:text);
+
+CREATE OR REPLACE TYPE user_0_o AS ARRAY OF user_0_o_o;
+
+CREATE OR REPLACE TYPE user_0_otherloginworkstations_otherloginworkstations AS REGISTER OF (otherloginworkstations:text);
+
+CREATE OR REPLACE TYPE user_0_otherloginworkstations AS ARRAY OF user_0_otherloginworkstations_otherloginworkstations;
+
+CREATE OR REPLACE TYPE user_0_photo_photo AS REGISTER OF (photo:text);
+
+CREATE OR REPLACE TYPE user_0_photo AS ARRAY OF user_0_photo_photo;
+
+CREATE OR REPLACE TYPE user_0_roomnumber_roomnumber AS REGISTER OF (roomnumber:text);
+
+CREATE OR REPLACE TYPE user_0_roomnumber AS ARRAY OF user_0_roomnumber_roomnumber;
+
+CREATE OR REPLACE TYPE user_0_secretary_secretary AS REGISTER OF (secretary:text);
+
+CREATE OR REPLACE TYPE user_0_secretary AS ARRAY OF user_0_secretary_secretary;
+
+CREATE OR REPLACE TYPE user_0_serviceprincipalname_serviceprincipalname AS REGISTER OF (serviceprincipalname:text);
+
+CREATE OR REPLACE TYPE user_0_serviceprincipalname AS ARRAY OF user_0_serviceprincipalname_serviceprincipalname;
+
+CREATE OR REPLACE TYPE user_0_uid_uid AS REGISTER OF (uid:text);
+
+CREATE OR REPLACE TYPE user_0_uid AS ARRAY OF user_0_uid_uid;
+
+CREATE OR REPLACE TYPE user_0_usercertificate_usercertificate AS REGISTER OF (usercertificate:text);
+
+CREATE OR REPLACE TYPE user_0_usercertificate AS ARRAY OF user_0_usercertificate_usercertificate;
+
+CREATE OR REPLACE TYPE user_0_userpkcs12_userpkcs12 AS REGISTER OF (userpkcs12:text);
+
+CREATE OR REPLACE TYPE user_0_userpkcs12 AS ARRAY OF user_0_userpkcs12_userpkcs12;
+
+CREATE OR REPLACE TYPE user_0_usersmimecertificate_usersmimecertificate AS REGISTER OF (usersmimecertificate:text);
+
+CREATE OR REPLACE TYPE user_0_usersmimecertificate AS ARRAY OF user_0_usersmimecertificate_usersmimecertificate;
+
+CREATE OR REPLACE TYPE user_0_usersharedfolderother_usersharedfolderother AS REGISTER OF (usersharedfolderother:text);
+
+CREATE OR REPLACE TYPE user_0_usersharedfolderother AS ARRAY OF user_0_usersharedfolderother_usersharedfolderother;
+
+CREATE OR REPLACE TYPE user_0_x500uniqueidentifier_x500uniqueidentifier AS REGISTER OF (x500uniqueidentifier:text);
+
+CREATE OR REPLACE TYPE user_0_x500uniqueidentifier AS ARRAY OF user_0_x500uniqueidentifier_x500uniqueidentifier;
+
+CREATE OR REPLACE TABLE bv_ldap_user I18N de_euro (
+        acspolicyname:text, 
+        accountexpires:long, 
+        admincount:int, 
+        audio:user_0_audio, 
+        businesscategory:user_0_businesscategory, 
+        codepage:int, 
+        controlaccessrights:user_0_controlaccessrights, 
+        dbcspwd:text, 
+        defaultclassstore:user_0_defaultclassstore, 
+        departmentnumber:user_0_departmentnumber, 
+        desktopprofile:text, 
+        displayname:text, 
+        dynamicldapserver:text, 
+        employeenumber:text, 
+        employeetype:text, 
+        givenname:text, 
+        groupmembershipsam:text, 
+        grouppriority:user_0_grouppriority, 
+        groupstoignore:user_0_groupstoignore, 
+        homedirectory:text, 
+        homedrive:text, 
+        homephone:text, 
+        homepostaladdress:text, 
+        initials:text, 
+        jpegphoto:user_0_jpegphoto, 
+        kmserver:text, 
+        labeleduri:user_0_labeleduri, 
+        lastlogoff:long, 
+        lastlogon:long, 
+        lastlogontimestamp:long, 
+        lmpwdhistory:user_0_lmpwdhistory, 
+        localeid:user_0_localeid, 
+        lockouttime:long, 
+        logoncount:int, 
+        logonhours:text, 
+        logonworkstation:text, 
+        msdscreatorsid_0:text, 
+        msmqdigests:user_0_msmqdigests, 
+        msmqdigestsmig:user_0_msmqdigestsmig, 
+        msmqsigncertificates:text, 
+        msmqsigncertificatesmig:text, 
+        mail:text, 
+        manager:text, 
+        maxstorage:long, 
+        mobile:text, 
+        mscomuserpartitionsetlink_0:text, 
+        msdrmidentitycertificate_0:user_0_msdrmidentitycertificate_0, 
+        msdsassignedauthnpolicy_0:text, 
+        msdsassignedauthnpolicysilo_0:text, 
+        msdsauthnpolicysilomembersbl_0:user_0_msdsauthnpolicysilomembersbl_0, 
+        msdsauthenticatedatdc_0:user_0_msdsauthenticatedatdc_0, 
+        msdscachedmembership_0:text, 
+        msdscachedmembershiptimestamp_0:long, 
+        msdsfailedinteractivelogoncount_0:int, 
+        msdsfailedinteractivelogoncountatlastsuccessfullogon_0:int, 
+        msdskeycredentiallink_0:user_0_msdskeycredentiallink_0, 
+        msdskeyprincipalbl_0:user_0_msdskeyprincipalbl_0, 
+        msdslastfailedinteractivelogontime_0:long, 
+        msdslastsuccessfulinteractivelogontime_0:long, 
+        msdsprimarycomputer_0:user_0_msdsprimarycomputer_0, 
+        msdsresultantpso_0:text, 
+        msdssecondarykrbtgtnumber_0:int, 
+        msdssiteaffinity_0:user_0_msdssiteaffinity_0, 
+        msdssourceobjectdn_0:text, 
+        msdssupportedencryptiontypes_0:int, 
+        msdssyncserverurl_0:user_0_msdssyncserverurl_0, 
+        msdsuseraccountcontrolcomputed_0:int, 
+        msdsuserpasswordexpirytimecomputed_0:long, 
+        msdspreferreddatalocation_0:text, 
+        msexchconferencemailboxbl:text, 
+        msexchcontrollingzone:text, 
+        msexchimapowaurlprefixoverride:text, 
+        msexchoriginatingforest:user_0_msexchoriginatingforest, 
+        msexchquerybasedn:text, 
+        msexchresourceguid:user_0_msexchresourceguid, 
+        msexchresourceproperties:user_0_msexchresourceproperties, 
+        msiisftpdir_0:text, 
+        msiisftproot_0:text, 
+        msnpallowdialin:boolean, 
+        msnpcallingstationid:user_0_msnpcallingstationid, 
+        msnpsavedcallingstationid:user_0_msnpsavedcallingstationid, 
+        mspkicredentialroamingtokens_0:user_0_mspkicredentialroamingtokens_0, 
+        mspkiaccountcredentials:user_0_mspkiaccountcredentials, 
+        mspkidpapimasterkeys:user_0_mspkidpapimasterkeys, 
+        mspkiroamingtimestamp:text, 
+        msradiusframedinterfaceid_0:text, 
+        msradiusframedipv6prefix_0:text, 
+        msradiusframedipv6route_0:user_0_msradiusframedipv6route_0, 
+        msradiussavedframedinterfaceid_0:text, 
+        msradiussavedframedipv6prefix_0:text, 
+        msradiussavedframedipv6route_0:user_0_msradiussavedframedipv6route_0, 
+        msradiuscallbacknumber:text, 
+        msradiusframedipaddress:int, 
+        msradiusframedroute:user_0_msradiusframedroute, 
+        msradiusservicetype:int, 
+        msrassavedcallbacknumber:text, 
+        msrassavedframedipaddress:int, 
+        msrassavedframedroute:user_0_msrassavedframedroute, 
+        msrtcsipacpinfo_0:user_0_msrtcsipacpinfo_0, 
+        msrtcsipapplicationoptions_0:int, 
+        msrtcsiparchivingenabled_0:int, 
+        msrtcsipdeploymentlocator_0:text, 
+        msrtcsipfederationenabled_0:boolean, 
+        msrtcsipgroupingid_0:text, 
+        msrtcsipinternetaccessenabled_0:boolean, 
+        msrtcsipline_0:text, 
+        msrtcsiplineserver_0:text, 
+        msrtcsipoptionflags_0:int, 
+        msrtcsiporiginatorsid_0:text, 
+        msrtcsipownerurn_0:text, 
+        msrtcsipprimaryhomeserver_0:text, 
+        msrtcsipprimaryuseraddress_0:text, 
+        msrtcsipprivateline_0:text, 
+        msrtcsiptargethomeserver_0:text, 
+        msrtcsiptargetuserpolicies_0:user_0_msrtcsiptargetuserpolicies_0, 
+        msrtcsiptenantid_0:text, 
+        msrtcsipuserenabled_0:boolean, 
+        msrtcsipuserextension_0:user_0_msrtcsipuserextension_0, 
+        msrtcsipuserlocationprofile_0:text, 
+        msrtcsipuserpolicies_0:user_0_msrtcsipuserpolicies_0, 
+        msrtcsipuserpolicy_0:user_0_msrtcsipuserpolicy_0, 
+        msrtcsipuserroutinggroupid_0:text, 
+        mssfu30name:text, 
+        mssfu30nisdomain:text, 
+        mstsallowlogon:boolean, 
+        mstsbrokenconnectionaction:boolean, 
+        mstsconnectclientdrives:boolean, 
+        mstsconnectprinterdrives:boolean, 
+        mstsdefaulttomainprinter:boolean, 
+        mstsexpiredate:text, 
+        mstsexpiredate2:text, 
+        mstsexpiredate3:text, 
+        mstsexpiredate4:text, 
+        mstshomedirectory:text, 
+        mstshomedrive:text, 
+        mstsinitialprogram:text, 
+        mstslsproperty01:user_0_mstslsproperty01, 
+        mstslsproperty02:user_0_mstslsproperty02, 
+        mstslicenseversion:text, 
+        mstslicenseversion2:text, 
+        mstslicenseversion3:text, 
+        mstslicenseversion4:text, 
+        mstsmanagingls:text, 
+        mstsmanagingls2:text, 
+        mstsmanagingls3:text, 
+        mstsmanagingls4:text, 
+        mstsmaxconnectiontime:int, 
+        mstsmaxdisconnectiontime:int, 
+        mstsmaxidletime:int, 
+        mstsprimarydesktop:text, 
+        mstsprofilepath:text, 
+        mstsproperty01:user_0_mstsproperty01, 
+        mstsproperty02:user_0_mstsproperty02, 
+        mstsreconnectionaction:boolean, 
+        mstsremotecontrol:int, 
+        mstssecondarydesktops:user_0_mstssecondarydesktops, 
+        mstsworkdirectory:text, 
+        networkaddress:user_0_networkaddress, 
+        ntpwdhistory:user_0_ntpwdhistory, 
+        o:user_0_o, 
+        operatorcount:int, 
+        otherloginworkstations:user_0_otherloginworkstations, 
+        pager:text, 
+        photo:user_0_photo, 
+        preferredlanguage:text, 
+        preferredou:text, 
+        primarygroupid:int, 
+        profilepath:text, 
+        pwdlastset:long, 
+        roomnumber:user_0_roomnumber, 
+        scriptpath:text, 
+        secretary:user_0_secretary, 
+        serviceprincipalname:user_0_serviceprincipalname, 
+        terminalserver:text, 
+        uid:user_0_uid, 
+        unicodepwd:text, 
+        useraccountcontrol:int, 
+        usercertificate:user_0_usercertificate, 
+        userpkcs12:user_0_userpkcs12, 
+        userparameters:text, 
+        userprincipalname:text, 
+        usersmimecertificate:user_0_usersmimecertificate, 
+        usersharedfolder:text, 
+        usersharedfolderother:user_0_usersharedfolderother, 
+        userworkstations:text, 
+        x500uniqueidentifier:user_0_x500uniqueidentifier
+    )
+    FOLDER = '/privateworkspace/gundlachs/ldap'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD user_0(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD acspolicyname (any) OPT ANY
+             ADD accountexpires (any) OPT ANY
+             ADD admincount (any) OPT ANY
+             ADD audio NOS ZERO ()
+             ADD audio NOS ZERO ()
+             ADD audio.audio (any) OPT ANY
+             ADD businesscategory NOS ZERO ()
+             ADD businesscategory NOS ZERO ()
+             ADD businesscategory.businesscategory (any) OPT ANY
+             ADD codepage (any) OPT ANY
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights.controlaccessrights (any) OPT ANY
+             ADD dbcspwd (any) OPT ANY
+             ADD defaultclassstore NOS ZERO ()
+             ADD defaultclassstore NOS ZERO ()
+             ADD defaultclassstore.defaultclassstore (any) OPT ANY
+             ADD departmentnumber NOS ZERO ()
+             ADD departmentnumber NOS ZERO ()
+             ADD departmentnumber.departmentnumber (any) OPT ANY
+             ADD desktopprofile (any) OPT ANY
+             ADD displayname (any) OPT ANY
+             ADD dynamicldapserver (any) OPT ANY
+             ADD employeenumber (any) OPT ANY
+             ADD employeetype (any) OPT ANY
+             ADD givenname (any) OPT ANY
+             ADD groupmembershipsam (any) OPT ANY
+             ADD grouppriority NOS ZERO ()
+             ADD grouppriority NOS ZERO ()
+             ADD grouppriority.grouppriority (any) OPT ANY
+             ADD groupstoignore NOS ZERO ()
+             ADD groupstoignore NOS ZERO ()
+             ADD groupstoignore.groupstoignore (any) OPT ANY
+             ADD homedirectory (any) OPT ANY
+             ADD homedrive (any) OPT ANY
+             ADD homephone (any) OPT ANY
+             ADD homepostaladdress (any) OPT ANY
+             ADD initials (any) OPT ANY
+             ADD jpegphoto NOS ZERO ()
+             ADD jpegphoto NOS ZERO ()
+             ADD jpegphoto.jpegphoto (any) OPT ANY
+             ADD kmserver (any) OPT ANY
+             ADD labeleduri NOS ZERO ()
+             ADD labeleduri NOS ZERO ()
+             ADD labeleduri.labeleduri (any) OPT ANY
+             ADD lastlogoff (any) OPT ANY
+             ADD lastlogon (any) OPT ANY
+             ADD lastlogontimestamp (any) OPT ANY
+             ADD lmpwdhistory NOS ZERO ()
+             ADD lmpwdhistory NOS ZERO ()
+             ADD lmpwdhistory.lmpwdhistory (any) OPT ANY
+             ADD localeid NOS ZERO ()
+             ADD localeid NOS ZERO ()
+             ADD localeid.localeid (any) OPT ANY
+             ADD lockouttime (any) OPT ANY
+             ADD logoncount (any) OPT ANY
+             ADD logonhours (any) OPT ANY
+             ADD logonworkstation (any) OPT ANY
+             ADD msdscreatorsid_0 (any) OPT ANY
+             ADD msmqdigests NOS ZERO ()
+             ADD msmqdigests NOS ZERO ()
+             ADD msmqdigests.msmqdigests (any) OPT ANY
+             ADD msmqdigestsmig NOS ZERO ()
+             ADD msmqdigestsmig NOS ZERO ()
+             ADD msmqdigestsmig.msmqdigestsmig (any) OPT ANY
+             ADD msmqsigncertificates (any) OPT ANY
+             ADD msmqsigncertificatesmig (any) OPT ANY
+             ADD mail (any) OPT ANY
+             ADD manager (any) OPT ANY
+             ADD maxstorage (any) OPT ANY
+             ADD mobile (any) OPT ANY
+             ADD mscomuserpartitionsetlink_0 (any) OPT ANY
+             ADD msdrmidentitycertificate_0 NOS ZERO ()
+             ADD msdrmidentitycertificate_0 NOS ZERO ()
+             ADD msdrmidentitycertificate_0.msdrmidentitycertificate_0 (any) OPT ANY
+             ADD msdsassignedauthnpolicy_0 (any) OPT ANY
+             ADD msdsassignedauthnpolicysilo_0 (any) OPT ANY
+             ADD msdsauthnpolicysilomembersbl_0 NOS ZERO ()
+             ADD msdsauthnpolicysilomembersbl_0 NOS ZERO ()
+             ADD msdsauthnpolicysilomembersbl_0.msdsauthnpolicysilomembersbl_0 (any) OPT ANY
+             ADD msdsauthenticatedatdc_0 NOS ZERO ()
+             ADD msdsauthenticatedatdc_0 NOS ZERO ()
+             ADD msdsauthenticatedatdc_0.msdsauthenticatedatdc_0 (any) OPT ANY
+             ADD msdscachedmembership_0 (any) OPT ANY
+             ADD msdscachedmembershiptimestamp_0 (any) OPT ANY
+             ADD msdsfailedinteractivelogoncount_0 (any) OPT ANY
+             ADD msdsfailedinteractivelogoncountatlastsuccessfullogon_0 (any) OPT ANY
+             ADD msdskeycredentiallink_0 NOS ZERO ()
+             ADD msdskeycredentiallink_0 NOS ZERO ()
+             ADD msdskeycredentiallink_0.msdskeycredentiallink_0 (any) OPT ANY
+             ADD msdskeyprincipalbl_0 NOS ZERO ()
+             ADD msdskeyprincipalbl_0 NOS ZERO ()
+             ADD msdskeyprincipalbl_0.msdskeyprincipalbl_0 (any) OPT ANY
+             ADD msdslastfailedinteractivelogontime_0 (any) OPT ANY
+             ADD msdslastsuccessfulinteractivelogontime_0 (any) OPT ANY
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0.msdsprimarycomputer_0 (any) OPT ANY
+             ADD msdsresultantpso_0 (any) OPT ANY
+             ADD msdssecondarykrbtgtnumber_0 (any) OPT ANY
+             ADD msdssiteaffinity_0 NOS ZERO ()
+             ADD msdssiteaffinity_0 NOS ZERO ()
+             ADD msdssiteaffinity_0.msdssiteaffinity_0 (any) OPT ANY
+             ADD msdssourceobjectdn_0 (any) OPT ANY
+             ADD msdssupportedencryptiontypes_0 (any) OPT ANY
+             ADD msdssyncserverurl_0 NOS ZERO ()
+             ADD msdssyncserverurl_0 NOS ZERO ()
+             ADD msdssyncserverurl_0.msdssyncserverurl_0 (any) OPT ANY
+             ADD msdsuseraccountcontrolcomputed_0 (any) OPT ANY
+             ADD msdsuserpasswordexpirytimecomputed_0 (any) OPT ANY
+             ADD msdspreferreddatalocation_0 (any) OPT ANY
+             ADD msexchconferencemailboxbl (any) OPT ANY
+             ADD msexchcontrollingzone (any) OPT ANY
+             ADD msexchimapowaurlprefixoverride (any) OPT ANY
+             ADD msexchoriginatingforest NOS ZERO ()
+             ADD msexchoriginatingforest NOS ZERO ()
+             ADD msexchoriginatingforest.msexchoriginatingforest (any) OPT ANY
+             ADD msexchquerybasedn (any) OPT ANY
+             ADD msexchresourceguid NOS ZERO ()
+             ADD msexchresourceguid NOS ZERO ()
+             ADD msexchresourceguid.msexchresourceguid (any) OPT ANY
+             ADD msexchresourceproperties NOS ZERO ()
+             ADD msexchresourceproperties NOS ZERO ()
+             ADD msexchresourceproperties.msexchresourceproperties (any) OPT ANY
+             ADD msiisftpdir_0 (any) OPT ANY
+             ADD msiisftproot_0 (any) OPT ANY
+             ADD msnpallowdialin (any) OPT ANY
+             ADD msnpcallingstationid NOS ZERO ()
+             ADD msnpcallingstationid NOS ZERO ()
+             ADD msnpcallingstationid.msnpcallingstationid (any) OPT ANY
+             ADD msnpsavedcallingstationid NOS ZERO ()
+             ADD msnpsavedcallingstationid NOS ZERO ()
+             ADD msnpsavedcallingstationid.msnpsavedcallingstationid (any) OPT ANY
+             ADD mspkicredentialroamingtokens_0 NOS ZERO ()
+             ADD mspkicredentialroamingtokens_0 NOS ZERO ()
+             ADD mspkicredentialroamingtokens_0.mspkicredentialroamingtokens_0 (any) OPT ANY
+             ADD mspkiaccountcredentials NOS ZERO ()
+             ADD mspkiaccountcredentials NOS ZERO ()
+             ADD mspkiaccountcredentials.mspkiaccountcredentials (any) OPT ANY
+             ADD mspkidpapimasterkeys NOS ZERO ()
+             ADD mspkidpapimasterkeys NOS ZERO ()
+             ADD mspkidpapimasterkeys.mspkidpapimasterkeys (any) OPT ANY
+             ADD mspkiroamingtimestamp (any) OPT ANY
+             ADD msradiusframedinterfaceid_0 (any) OPT ANY
+             ADD msradiusframedipv6prefix_0 (any) OPT ANY
+             ADD msradiusframedipv6route_0 NOS ZERO ()
+             ADD msradiusframedipv6route_0 NOS ZERO ()
+             ADD msradiusframedipv6route_0.msradiusframedipv6route_0 (any) OPT ANY
+             ADD msradiussavedframedinterfaceid_0 (any) OPT ANY
+             ADD msradiussavedframedipv6prefix_0 (any) OPT ANY
+             ADD msradiussavedframedipv6route_0 NOS ZERO ()
+             ADD msradiussavedframedipv6route_0 NOS ZERO ()
+             ADD msradiussavedframedipv6route_0.msradiussavedframedipv6route_0 (any) OPT ANY
+             ADD msradiuscallbacknumber (any) OPT ANY
+             ADD msradiusframedipaddress (any) OPT ANY
+             ADD msradiusframedroute NOS ZERO ()
+             ADD msradiusframedroute NOS ZERO ()
+             ADD msradiusframedroute.msradiusframedroute (any) OPT ANY
+             ADD msradiusservicetype (any) OPT ANY
+             ADD msrassavedcallbacknumber (any) OPT ANY
+             ADD msrassavedframedipaddress (any) OPT ANY
+             ADD msrassavedframedroute NOS ZERO ()
+             ADD msrassavedframedroute NOS ZERO ()
+             ADD msrassavedframedroute.msrassavedframedroute (any) OPT ANY
+             ADD msrtcsipacpinfo_0 NOS ZERO ()
+             ADD msrtcsipacpinfo_0 NOS ZERO ()
+             ADD msrtcsipacpinfo_0.msrtcsipacpinfo_0 (any) OPT ANY
+             ADD msrtcsipapplicationoptions_0 (any) OPT ANY
+             ADD msrtcsiparchivingenabled_0 (any) OPT ANY
+             ADD msrtcsipdeploymentlocator_0 (any) OPT ANY
+             ADD msrtcsipfederationenabled_0 (any) OPT ANY
+             ADD msrtcsipgroupingid_0 (any) OPT ANY
+             ADD msrtcsipinternetaccessenabled_0 (any) OPT ANY
+             ADD msrtcsipline_0 (any) OPT ANY
+             ADD msrtcsiplineserver_0 (any) OPT ANY
+             ADD msrtcsipoptionflags_0 (any) OPT ANY
+             ADD msrtcsiporiginatorsid_0 (any) OPT ANY
+             ADD msrtcsipownerurn_0 (any) OPT ANY
+             ADD msrtcsipprimaryhomeserver_0 (any) OPT ANY
+             ADD msrtcsipprimaryuseraddress_0 (any) OPT ANY
+             ADD msrtcsipprivateline_0 (any) OPT ANY
+             ADD msrtcsiptargethomeserver_0 (any) OPT ANY
+             ADD msrtcsiptargetuserpolicies_0 NOS ZERO ()
+             ADD msrtcsiptargetuserpolicies_0 NOS ZERO ()
+             ADD msrtcsiptargetuserpolicies_0.msrtcsiptargetuserpolicies_0 (any) OPT ANY
+             ADD msrtcsiptenantid_0 (any) OPT ANY
+             ADD msrtcsipuserenabled_0 (any) OPT ANY
+             ADD msrtcsipuserextension_0 NOS ZERO ()
+             ADD msrtcsipuserextension_0 NOS ZERO ()
+             ADD msrtcsipuserextension_0.msrtcsipuserextension_0 (any) OPT ANY
+             ADD msrtcsipuserlocationprofile_0 (any) OPT ANY
+             ADD msrtcsipuserpolicies_0 NOS ZERO ()
+             ADD msrtcsipuserpolicies_0 NOS ZERO ()
+             ADD msrtcsipuserpolicies_0.msrtcsipuserpolicies_0 (any) OPT ANY
+             ADD msrtcsipuserpolicy_0 NOS ZERO ()
+             ADD msrtcsipuserpolicy_0 NOS ZERO ()
+             ADD msrtcsipuserpolicy_0.msrtcsipuserpolicy_0 (any) OPT ANY
+             ADD msrtcsipuserroutinggroupid_0 (any) OPT ANY
+             ADD mssfu30name (any) OPT ANY
+             ADD mssfu30nisdomain (any) OPT ANY
+             ADD mstsallowlogon (any) OPT ANY
+             ADD mstsbrokenconnectionaction (any) OPT ANY
+             ADD mstsconnectclientdrives (any) OPT ANY
+             ADD mstsconnectprinterdrives (any) OPT ANY
+             ADD mstsdefaulttomainprinter (any) OPT ANY
+             ADD mstsexpiredate (any) OPT ANY
+             ADD mstsexpiredate2 (any) OPT ANY
+             ADD mstsexpiredate3 (any) OPT ANY
+             ADD mstsexpiredate4 (any) OPT ANY
+             ADD mstshomedirectory (any) OPT ANY
+             ADD mstshomedrive (any) OPT ANY
+             ADD mstsinitialprogram (any) OPT ANY
+             ADD mstslsproperty01 NOS ZERO ()
+             ADD mstslsproperty01 NOS ZERO ()
+             ADD mstslsproperty01.mstslsproperty01 (any) OPT ANY
+             ADD mstslsproperty02 NOS ZERO ()
+             ADD mstslsproperty02 NOS ZERO ()
+             ADD mstslsproperty02.mstslsproperty02 (any) OPT ANY
+             ADD mstslicenseversion (any) OPT ANY
+             ADD mstslicenseversion2 (any) OPT ANY
+             ADD mstslicenseversion3 (any) OPT ANY
+             ADD mstslicenseversion4 (any) OPT ANY
+             ADD mstsmanagingls (any) OPT ANY
+             ADD mstsmanagingls2 (any) OPT ANY
+             ADD mstsmanagingls3 (any) OPT ANY
+             ADD mstsmanagingls4 (any) OPT ANY
+             ADD mstsmaxconnectiontime (any) OPT ANY
+             ADD mstsmaxdisconnectiontime (any) OPT ANY
+             ADD mstsmaxidletime (any) OPT ANY
+             ADD mstsprimarydesktop (any) OPT ANY
+             ADD mstsprofilepath (any) OPT ANY
+             ADD mstsproperty01 NOS ZERO ()
+             ADD mstsproperty01 NOS ZERO ()
+             ADD mstsproperty01.mstsproperty01 (any) OPT ANY
+             ADD mstsproperty02 NOS ZERO ()
+             ADD mstsproperty02 NOS ZERO ()
+             ADD mstsproperty02.mstsproperty02 (any) OPT ANY
+             ADD mstsreconnectionaction (any) OPT ANY
+             ADD mstsremotecontrol (any) OPT ANY
+             ADD mstssecondarydesktops NOS ZERO ()
+             ADD mstssecondarydesktops NOS ZERO ()
+             ADD mstssecondarydesktops.mstssecondarydesktops (any) OPT ANY
+             ADD mstsworkdirectory (any) OPT ANY
+             ADD networkaddress NOS ZERO ()
+             ADD networkaddress NOS ZERO ()
+             ADD networkaddress.networkaddress (any) OPT ANY
+             ADD ntpwdhistory NOS ZERO ()
+             ADD ntpwdhistory NOS ZERO ()
+             ADD ntpwdhistory.ntpwdhistory (any) OPT ANY
+             ADD o NOS ZERO ()
+             ADD o NOS ZERO ()
+             ADD o.o (any) OPT ANY
+             ADD operatorcount (any) OPT ANY
+             ADD otherloginworkstations NOS ZERO ()
+             ADD otherloginworkstations NOS ZERO ()
+             ADD otherloginworkstations.otherloginworkstations (any) OPT ANY
+             ADD pager (any) OPT ANY
+             ADD photo NOS ZERO ()
+             ADD photo NOS ZERO ()
+             ADD photo.photo (any) OPT ANY
+             ADD preferredlanguage (any) OPT ANY
+             ADD preferredou (any) OPT ANY
+             ADD primarygroupid (any) OPT ANY
+             ADD profilepath (any) OPT ANY
+             ADD pwdlastset (any) OPT ANY
+             ADD roomnumber NOS ZERO ()
+             ADD roomnumber NOS ZERO ()
+             ADD roomnumber.roomnumber (any) OPT ANY
+             ADD scriptpath (any) OPT ANY
+             ADD secretary NOS ZERO ()
+             ADD secretary NOS ZERO ()
+             ADD secretary.secretary (any) OPT ANY
+             ADD serviceprincipalname NOS ZERO ()
+             ADD serviceprincipalname NOS ZERO ()
+             ADD serviceprincipalname.serviceprincipalname (any) OPT ANY
+             ADD terminalserver (any) OPT ANY
+             ADD uid NOS ZERO ()
+             ADD uid NOS ZERO ()
+             ADD uid.uid (any) OPT ANY
+             ADD unicodepwd (any) OPT ANY
+             ADD useraccountcontrol (any) OPT ANY
+             ADD usercertificate NOS ZERO ()
+             ADD usercertificate NOS ZERO ()
+             ADD usercertificate.usercertificate (any) OPT ANY
+             ADD userpkcs12 NOS ZERO ()
+             ADD userpkcs12 NOS ZERO ()
+             ADD userpkcs12.userpkcs12 (any) OPT ANY
+             ADD userparameters (any) OPT ANY
+             ADD userprincipalname (any) OPT ANY
+             ADD usersmimecertificate NOS ZERO ()
+             ADD usersmimecertificate NOS ZERO ()
+             ADD usersmimecertificate.usersmimecertificate (any) OPT ANY
+             ADD usersharedfolder (any) OPT ANY
+             ADD usersharedfolderother NOS ZERO ()
+             ADD usersharedfolderother NOS ZERO ()
+             ADD usersharedfolderother.usersharedfolderother (any) OPT ANY
+             ADD userworkstations (any) OPT ANY
+             ADD x500uniqueidentifier NOS ZERO ()
+             ADD x500uniqueidentifier NOS ZERO ()
+             ADD x500uniqueidentifier.x500uniqueidentifier (any) OPT ANY
+        )
+        OUTPUTLIST (accountexpires, acspolicyname, admincount, audio, businesscategory, codepage, controlaccessrights, dbcspwd, defaultclassstore, departmentnumber, desktopprofile, displayname, dynamicldapserver, employeenumber, employeetype, givenname, groupmembershipsam, grouppriority, groupstoignore, homedirectory, homedrive, homephone, homepostaladdress, initials, jpegphoto, kmserver, labeleduri, lastlogoff, lastlogon, lastlogontimestamp, lmpwdhistory, localeid, lockouttime, logoncount, logonhours, logonworkstation, mail, manager, maxstorage, mobile, mscomuserpartitionsetlink_0, msdrmidentitycertificate_0, msdsassignedauthnpolicy_0, msdsassignedauthnpolicysilo_0, msdsauthenticatedatdc_0, msdsauthnpolicysilomembersbl_0, msdscachedmembership_0, msdscachedmembershiptimestamp_0, msdscreatorsid_0, msdsfailedinteractivelogoncount_0, msdsfailedinteractivelogoncountatlastsuccessfullogon_0, msdskeycredentiallink_0, msdskeyprincipalbl_0, msdslastfailedinteractivelogontime_0, msdslastsuccessfulinteractivelogontime_0, msdspreferreddatalocation_0, msdsprimarycomputer_0, msdsresultantpso_0, msdssecondarykrbtgtnumber_0, msdssiteaffinity_0, msdssourceobjectdn_0, msdssupportedencryptiontypes_0, msdssyncserverurl_0, msdsuseraccountcontrolcomputed_0, msdsuserpasswordexpirytimecomputed_0, msexchconferencemailboxbl, msexchcontrollingzone, msexchimapowaurlprefixoverride, msexchoriginatingforest, msexchquerybasedn, msexchresourceguid, msexchresourceproperties, msiisftpdir_0, msiisftproot_0, msmqdigests, msmqdigestsmig, msmqsigncertificates, msmqsigncertificatesmig, msnpallowdialin, msnpcallingstationid, msnpsavedcallingstationid, mspkiaccountcredentials, mspkicredentialroamingtokens_0, mspkidpapimasterkeys, mspkiroamingtimestamp, msradiuscallbacknumber, msradiusframedinterfaceid_0, msradiusframedipaddress, msradiusframedipv6prefix_0, msradiusframedipv6route_0, msradiusframedroute, msradiussavedframedinterfaceid_0, msradiussavedframedipv6prefix_0, msradiussavedframedipv6route_0, msradiusservicetype, msrassavedcallbacknumber, msrassavedframedipaddress, msrassavedframedroute, msrtcsipacpinfo_0, msrtcsipapplicationoptions_0, msrtcsiparchivingenabled_0, msrtcsipdeploymentlocator_0, msrtcsipfederationenabled_0, msrtcsipgroupingid_0, msrtcsipinternetaccessenabled_0, msrtcsipline_0, msrtcsiplineserver_0, msrtcsipoptionflags_0, msrtcsiporiginatorsid_0, msrtcsipownerurn_0, msrtcsipprimaryhomeserver_0, msrtcsipprimaryuseraddress_0, msrtcsipprivateline_0, msrtcsiptargethomeserver_0, msrtcsiptargetuserpolicies_0, msrtcsiptenantid_0, msrtcsipuserenabled_0, msrtcsipuserextension_0, msrtcsipuserlocationprofile_0, msrtcsipuserpolicies_0, msrtcsipuserpolicy_0, msrtcsipuserroutinggroupid_0, mssfu30name, mssfu30nisdomain, mstsallowlogon, mstsbrokenconnectionaction, mstsconnectclientdrives, mstsconnectprinterdrives, mstsdefaulttomainprinter, mstsexpiredate, mstsexpiredate2, mstsexpiredate3, mstsexpiredate4, mstshomedirectory, mstshomedrive, mstsinitialprogram, mstslicenseversion, mstslicenseversion2, mstslicenseversion3, mstslicenseversion4, mstslsproperty01, mstslsproperty02, mstsmanagingls, mstsmanagingls2, mstsmanagingls3, mstsmanagingls4, mstsmaxconnectiontime, mstsmaxdisconnectiontime, mstsmaxidletime, mstsprimarydesktop, mstsprofilepath, mstsproperty01, mstsproperty02, mstsreconnectionaction, mstsremotecontrol, mstssecondarydesktops, mstsworkdirectory, networkaddress, ntpwdhistory, o, operatorcount, otherloginworkstations, pager, photo, preferredlanguage, preferredou, primarygroupid, profilepath, pwdlastset, roomnumber, scriptpath, secretary, serviceprincipalname, terminalserver, uid, unicodepwd, useraccountcontrol, usercertificate, userparameters, userpkcs12, userprincipalname, usersharedfolder, usersharedfolderother, usersmimecertificate, userworkstations, x500uniqueidentifier
+        )
+        WRAPPER (ldap user_0)
+    );
+

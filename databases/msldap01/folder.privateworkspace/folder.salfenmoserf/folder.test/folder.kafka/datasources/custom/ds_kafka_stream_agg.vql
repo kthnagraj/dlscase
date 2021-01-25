@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_kafka_stream_agg
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    CLASSNAME='com.denodo.connect.kafka.wrapper.KafkaDateRangeConsumerWrapper'
+    JARS 'denodo-kafka-customwrapper-7.0'
+    PARAMETERS (
+      'Connection String *' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.kafka.datasources.custom.ds_kafka_stream_agg.Connection String *}',
+      'SSL Enabled' = false
+    );
+

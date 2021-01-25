@@ -1,0 +1,138 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM "livv-protect"
+    FOLDER = '/privateworkspace/wiedenmanns/00_datasources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM "livv-protect"
+    FOLDER = '/privateworkspace/wiedenmanns/01_connectivity'
+    DATASOURCENAME="livv-protect"
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.msldap01.folder.privateworkspace.folder.wiedenmanns.folder.01_connectivity.views.custom.livv-protect.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = true,
+      'Extract sheet name as a new column' = true,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        vnr = 'VNR' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        start = 'Start' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        polizzendatum_0 = 'Polizzen-Datum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        antragsdatum = 'Antragsdatum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        prämienetto_0 = 'Prämie
+netto' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        versicherungssteuer4vonnetto_0 = 'Versicherungs-
+steuer
+(4% von netto)' : 'java.lang.Float' (OPT) (sourcetypeid='6')  SORTABLE,
+        prämiezahlbeitragnettosteuer_0 = 'Prämie
+Zahlbeitrag
+(netto + Steuer)' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        prämiebruttonettosofortdividende_0 = 'Prämie brutto
+(netto + Sofortdividende)' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        summe = 'Summe' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        summezahlbeitragjährlich_0 = 'Summe Zahlbeitrag
+jährlich' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        versicherungsjahre = 'Versicherungsjahre' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        zahlungsintervall = 'Zahlungsintervall' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zuschlag = 'Zuschlag' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        vornamevn_0 = 'Vorname VN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        nachnamevn_0 = 'Nachname VN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        anrede = 'Anrede' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        titel = 'Titel' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        email = 'Email' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        telefonnummer = 'Telefonnummer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        adresse = 'Adresse' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        plz = 'PLZ' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        stadt = 'Stadt' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        land = 'Land' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        geburtsdatumvnwennnichtgleichvp_0 = 'Geburtsdatum VN wenn nicht gleich VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        vornamevp_0 = 'Vorname VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        nachnamevp_0 = 'Nachname VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        anredevp_0 = 'Anrede VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        titelvp_0 = 'Titel VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        adressevp_0 = 'Adresse VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        plz_29 = 'PLZ_29' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        stadt_30 = 'Stadt_30' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        land_31 = 'Land_31' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        postbevollmächtigter = 'Postbevollmächtigter' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        mailadressepostbevollmächtigter_0 = 'Mailadresse Postbevollmächtigter' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        betreuermakler_0 = 'Betreuer (Makler)' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        geburtsdatumvp_0 = 'Geburtsdatum VP' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        berufsschlüssel = 'Berufsschlüssel' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        berufsbezeichnung = 'Berufsbezeichnung' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        größecm_0 = 'Größe (cm)' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        gewichtkg_0 = 'Gewicht (kg)' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        kinder = 'Kinder' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        raucher_0 = 'Raucher?' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        inbehandlung_0 = 'In Behandlung' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        untersuchunggeplant_0 = 'Untersuchung geplant' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        medikamente = 'Medikamente' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        krankhausletzten10jahre_0 = 'Krankhaus letzten 10 Jahre' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        krankhausletzten5jahre_0 = 'Krankhaus letzten 5 Jahre' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        krebsaids_0 = 'Krebs/Aids' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        versuchtersuizid_0 = 'Versuchter Suizid' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        drogen = 'Drogen' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        lebensgefährlichesportarten_0 = 'Lebensgefährliche Sportarten' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        langerurlaubauslandgeplant_0 = 'Langer Urlaub Ausland geplant' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        hohesrisikoberuf_0 = 'Hohes Risiko Beruf' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        identifiziert = 'Identifiziert' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        identifizierungsstatusvideo_0 = 'Identifizierungsstatus Video' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        identifiziertdurchausweisdokument_0 = 'Identifiziert durch Ausweisdokument' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        keineauszahlungeinerversicherungsleistungwegenfehlenderidentifizierungjn_0 = 'Keine Auszahlung einer Versicherungsleistung wegen fehlender Identifizierung J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        hinweisidentifizierungdokumentenart_0 = 'Hinweis Identifizierung/Dokumentenart' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        ausweisnummer = 'Ausweisnummer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        ausstellungsdatumausweisdokument_0 = 'Ausstellungsdatum Ausweisdokument' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        gültigkeitsdatumausweisdokument_0 = 'Gültigkeitsdatum Ausweisdokument' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        ausstellendebehörde_0 = 'Ausstellende Behörde' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        vonösterreichabweichendestaatsbürgerschaft_0 = 'Von Österreich abweichende
+Staatsbürgerschaft' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        beendigungsgrund = 'Beendigungsgrund' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        abgangsdatum = 'Abgangsdatum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        datenschutzerklärungliegtvor_0 = 'Datenschutzerklärung
+liegt vor' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        vertragmanuellangelegt_0 = 'Vertrag manuell angelegt' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        mahnstatuszeebzahlungserinnerungerstbeitragebrfmahnungerstbeitrag_0 = 'Mahnstatus
+ZE EB Zahlungserinnerung Erstbeitrag
+EB RF Mahnung Erstbeitrag' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        iban = 'IBAN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        kontoinhaberabweichendvn_0 = 'Kontoinhaber abweichend VN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        österreicher_0 = 'Österreicher?' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        agbakzeptiert_0 = 'AGB akzeptiert' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        werbung = 'Werbung' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        sepaerlaubt_0 = 'SEPA erlaubt' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        persönlichbeauftragt_0 = 'Persönlich beauftragt' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        politischexponiert_0 = 'Politisch exponiert' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        elektrkommunikation_0 = 'Elektr. Kommunikation' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        begünstigter = 'Begünstigter' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        begünstigtervorname_0 = 'Begünstigter Vorname' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        begünstigernachname_0 = 'Begünstiger Nachname' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        begünstigergeburtsdatum_0 = 'Begünstiger Geburtsdatum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        produktname_0 = 'Produkt Name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        produktversion_0 = 'Produkt Version' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        trackingutmsource_0 = 'Tracking UTM Source' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        trackingutmmedium_0 = 'Tracking UTM Medium' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        trackingutmcampaign_0 = 'Tracking UTM Campaign' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        trackinghatunverbindlichesangebot_0 = 'Tracking Hat Unverbindliches Angebot' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        herkunftdereingebrachtenvermögenswerteauserwerbstätigkeitjanein_0 = 'Herkunft der eingebrachten Vermögenswerte aus Erwerbstätigkeit Ja/Nein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zweckderversicherungzurabsicherungversicherungjanein_0 = 'Zweck der Versicherung zur Absicherung/Versicherung Ja/Nein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        beratungsverzichtjanein_0 = 'Beratungsverzicht Ja/Nein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zessionliegtvorjn_0 = 'Zession liegt vor J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        artderzession_0 = 'Art der Zession' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zessionar = 'Zessionar' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        höhederzession_0 = 'Höhe der Zession' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        azderzession_0 = 'AZ der Zession' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        fristenverzichtselbstmordundvorvertraglicheanzeigepflichtjn_0 = 'Fristenverzicht Selbstmord und vorvertragliche Anzeigepflicht J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zusatzbeitragfürfristenverzichtinklverssteuer_0 = 'Zusatzbeitrag für Fristen- verzicht inkl. Vers.steuer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zusatzbeitragfristenverzichtbezahltjn_0 = 'Zusatzbeitrag Fristenver- zicht bezahlt J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        kontaktsperrefür_0 = 'Kontaktsperre für' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        hinweisezurkontaktsperrejn_0 = 'Hinweise zur Kontaktsperre J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        livvataccountaktivjn_0 = 'Livv.at Account aktiv J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        newsletterlivvatjn_0 = 'Newsletter Livv.at J/N' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        checkbmizusbeirauchern_0 = 'Check BMI-Zus bei Rauchern' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zuswgbmi_0 = 'Zus wg BMI' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        zus = 'ZUS' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        korrekt = 'korrekt' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        korrekterbeitragnachst_0 = 'korrekter Beitrag nach St' : 'java.lang.Float' (OPT) (sourcetypeid='6')  SORTABLE,
+        sheet_name = 'sheet_name' : 'java.lang.Float' (OPT) (sourcetypeid='6')  SORTABLE
+    );
+

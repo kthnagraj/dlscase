@@ -1,0 +1,37 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM schnellrechner_anfragen
+    FOLDER = '/privateworkspace/wiedenmanns/schnellrechneranfragen/00_datasource'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM schnellrechner_anfragen
+    FOLDER = '/privateworkspace/wiedenmanns/schnellrechneranfragen/01_connectivity'
+    DATASOURCENAME=schnellrechner_anfragen
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.msldap01.folder.privateworkspace.folder.wiedenmanns.folder.schnellrechneranfragen.folder.01_connectivity.views.custom.schnellrechner_anfragen.File location.ROUTE.LOCAL.PATH}',
+      'Worksheet' = 'Schnellrechner Liste',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        vertrageingereicht_0 = 'Vertrag eingereicht' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        wennneinerinnerung_0 = 'wenn nein, Erinnerung:' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        leer = 'leer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        anfragedatum = 'Anfragedatum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        tarif = 'Tarif' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        erstelltvon_0 = 'erstellt von' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        namevn_0 = 'Name VN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        vornamevn_0 = 'Vorname VN' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        gebdatum_0 = 'Geb.datum' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        beruf = 'Beruf' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        email = 'eMail' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        bemerkung = 'Bemerkung' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        telefonnummer = 'Telefonnummer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        doubleoptin_0 = 'Double-Optin' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        policiert = 'Policiert' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        erinnerungper_0 = 'Erinnerung per:' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        grundnichtmehrgewünscht_0 = 'Grund nicht mehr gewünscht:' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

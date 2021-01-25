@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW bv_v_d_kostenart_u_bv_v_d_kostenstelle FOLDER = '/privateworkspace/gundlachs/02.baseview/schulung' AS SELECT dwh_von, dwh_bis, dwh_quellsystem, mandant, nummer, kurzbezeichnung, bezeichnung, ebene1, ebene2, ebene3, ebene4, ebene5 FROM (SELECT dwh_quellsystem, dwh_eingefuegt_dt, dwh_status, dwh_geaendert_dt, kontonummer AS nummer, dwh_eingefuegt_gui, kurzbezeichnung, ebene3, ebene2, ebene1, mandant, dwh_vvon, bezeichnung, ebene5, ebene4, dwh_vbis, dwh_geaendert_gui, dwh_bis, dwh_von FROM bv_v_d_kostenart UNION SELECT kostenstelle AS nummer, kurzbezeichnung, ebene3, ebene2, mandant, ebene1, dwh_status, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_eingefuegt_dt, dwh_quellsystem, dwh_vvon, bezeichnung, ebene5, ebene4, dwh_geaendert_gui, dwh_vbis, dwh_von, dwh_bis FROM bv_v_d_kostenstelle) WHERE dwh_bis >= TIMESTAMP '2020-07-21 11:39:47.137';
+
+ALTER VIEW bv_v_d_kostenart_u_bv_v_d_kostenstelle
+ LAYOUT (bv_v_d_kostenart = [100, 101, 200, 225], bv_v_d_kostenstelle = [430, 100, 200, 225]);
+

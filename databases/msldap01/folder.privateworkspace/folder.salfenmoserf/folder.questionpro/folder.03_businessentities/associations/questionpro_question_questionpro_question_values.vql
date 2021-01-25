@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION questionpro_question_questionpro_question_values REFERENTIAL CONSTRAINT 
+FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities'
+    ENDPOINT question_questionvalues questionpro_question PRINCIPAL (1)
+    ENDPOINT questionvalues_question questionpro_question_values (0,*)
+    ADD MAPPING dwh_qpsquest_ik=dwh_qpsquest_ik;
+
+ALTER ASSOCIATION questionpro_question_questionpro_question_values
+ LAYOUT (questionpro_question = [20, 20, 200, 225], questionpro_question_values = [334, 405, 200, 186]);
+

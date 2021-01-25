@@ -1,0 +1,7 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON ds_template_streaming
+    FOLDER = '/privateworkspace/salfenmoserf/template_streaming'
+    ROUTE HTTP 'http.CommonsHttpClientConnection,120000' GET '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.template_streaming.datasources.json.ds_template_streaming.ROUTE.HTTP.URL}'
+    AUTHENTICATION OFF
+    PROXY OFF;
+

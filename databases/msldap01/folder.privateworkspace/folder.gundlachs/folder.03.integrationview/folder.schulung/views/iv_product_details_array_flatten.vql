@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_product_details_array_flatten FOLDER = '/privateworkspace/gundlachs/03.integrationview/schulung' AS SELECT code AS code, description AS description, warnings AS warnings, numresults AS numresults, productdetails AS productdetails, return_product_code AS return_product_code, return_product_description AS return_product_description, return_product_warnings AS return_product_warnings, return_product_numresults AS return_product_numresults, productid AS productid, productname AS productname, productprice AS productprice, accessories AS accessories, (category).categoryid AS categoryid, (category).categoryname AS categoryname, (characteristics).characteristic_dimensions AS characteristic_dimensions, (characteristics).characteristic_weight AS characteristic_weight, (characteristics).characteristic_details AS characteristic_details, (characteristics).characteristic_color AS characteristic_color FROM FLATTEN iv_product_details_array AS v ( v.return.product.productdetails);
+
+ALTER VIEW iv_product_details_array_flatten
+ LAYOUT (iv_product_details_array = [20, 20, 206, 433]);
+

@@ -1,0 +1,17 @@
+﻿CREATE OR REPLACE DATABASE msldap01 'SANDBOX: DON`T USE IN PRODUCTION OR LINK ANY VIEWS
+Test/Dev Umgebung'
+  AUTHENTICATION LDAP admin.ds_ldap
+    USERBASE = 'OU=LV1871;dc=muc;dc=lv1871;dc=de','OU=Administrative Konten;dc=muc;dc=lv1871;dc=de','OU=EXTERN;dc=muc;dc=lv1871;dc=de'
+    USERATTRIBUTENAME = 'cn'
+    USERSEARCH = '(&(objectclass=person))'
+    ROLEBASE = 'OU=Denodo,OU=GRUPPEN,dc=muc,dc=lv1871,dc=de'
+    ROLEATTRIBUTENAME = 'cn'
+    ROLESEARCH = '(&(member=@{{USERDN}}))';
+
+ALTER DATABASE msldap01
+  CHARSET DEFAULT;
+
+ALTER DATABASE msldap01
+  COST OPTIMIZATION ON
+  QUERY SIMPLIFICATION ON;
+

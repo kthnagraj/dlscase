@@ -1,0 +1,9 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test_join/test_join.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test_join/folder.same_vdb/same_vdb.vql
+/databases/msldap01/folder.datasources/datasources.vql
+/databases/msldap01/folder.datasources/folder.dwh/dwh.vql
+/databases/msldap01/folder.datasources/folder.dwh/datasources/jdbc/pdwhdb.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test_join/folder.same_vdb/views/bv_test_dm_antrag.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test_join/folder.same_vdb/views/bv_test_d_vermittler.vql

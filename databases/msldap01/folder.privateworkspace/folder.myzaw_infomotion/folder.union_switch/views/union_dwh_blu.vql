@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW union_dwh_blu FOLDER = '/privateworkspace/myzaw_infomotion/union_switch' AS SELECT dwh_vm_hk, dwh_vm_ik, dwh_vvon, dwh_vbis, dwh_von, dwh_bis, dwh_status, source FROM (SELECT * FROM p_p_bv_d_vermittler UNION SELECT dwh_vbis, dwh_vm_hk, source, dwh_vvon, dwh_vm_ik, dwh_status, dwh_von, dwh_bis FROM p_p_bv_blu_d_vermittler) WHERE source = 'BLU';
+
+ALTER VIEW union_dwh_blu
+ LAYOUT (p_p_bv_d_vermittler = [140, 190, 200, 186], p_p_bv_blu_d_vermittler = [677, 281, 200, 186]);
+

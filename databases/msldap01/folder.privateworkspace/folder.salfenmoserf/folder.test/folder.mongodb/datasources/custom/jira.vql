@@ -1,0 +1,15 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM jira
+    FOLDER = '/privateworkspace/salfenmoserf/test/mongodb'
+    CLASSNAME='com.denodo.connect.mongodb.wrapper.MongoDBWrapper'
+    JARS 'denodo-mongodb-customwrapper-7.0'
+    PARAMETERS (
+      'Host' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Host}',
+      'Port' = ${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Port},
+      'Pass-through session credentials' = false,
+      'User' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.User}',
+      'Password' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Password}' ${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Password.encrypted},
+      'Database' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Database}',
+      'Use SSL/TLS' = ${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.datasources.custom.jira.Use SSL/TLS}
+    );
+

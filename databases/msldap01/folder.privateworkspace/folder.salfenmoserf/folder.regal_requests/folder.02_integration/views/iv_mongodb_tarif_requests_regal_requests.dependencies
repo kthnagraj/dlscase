@@ -1,0 +1,10 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.regal_requests/regal_requests.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.regal_requests/folder.02_integration/02_integration.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.regal_requests/folder.01_connectivity/01_connectivity.vql
+/extensions/jars/denodo-mongodb-customwrapper-7.0.vql
+/databases/msldap01/folder.datasources/datasources.vql
+/databases/msldap01/folder.datasources/folder.mongodb/mongodb.vql
+/databases/msldap01/folder.datasources/folder.mongodb/datasources/custom/ds_mongodb_tarif_requests.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.regal_requests/folder.01_connectivity/views/bv_mongodb_tarif_requests_regal_requests.vql

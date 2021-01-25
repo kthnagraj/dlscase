@@ -1,0 +1,48 @@
+﻿CREATE OR REPLACE TABLE bv_schnellrechner_anfragen I18N de_euro (
+        vertrageingereicht_0:text (sourcetypeid = '12'), 
+        wennneinerinnerung_0:text (sourcetypeid = '12'), 
+        leer:text (sourcetypeid = '12'), 
+        anfragedatum:text (sourcetypeid = '12'), 
+        tarif:text (sourcetypeid = '12'), 
+        erstelltvon_0:text (sourcetypeid = '12'), 
+        namevn_0:text (sourcetypeid = '12'), 
+        vornamevn_0:text (sourcetypeid = '12'), 
+        gebdatum_0:text (sourcetypeid = '12'), 
+        beruf:text (sourcetypeid = '12'), 
+        email:text (sourcetypeid = '12'), 
+        bemerkung:text (sourcetypeid = '12'), 
+        telefonnummer:text (sourcetypeid = '12'), 
+        doubleoptin_0:text (sourcetypeid = '12'), 
+        policiert:text (sourcetypeid = '12'), 
+        erinnerungper_0:text (sourcetypeid = '12'), 
+        grundnichtmehrgewünscht_0:text (sourcetypeid = '12')
+    )
+    FOLDER = '/privateworkspace/wiedenmanns/schnellrechneranfragen/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD schnellrechner_anfragen(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD vertrageingereicht_0 (any) OPT ANY
+             ADD wennneinerinnerung_0 (any) OPT ANY
+             ADD leer (any) OPT ANY
+             ADD anfragedatum (any) OPT ANY
+             ADD tarif (any) OPT ANY
+             ADD erstelltvon_0 (any) OPT ANY
+             ADD namevn_0 (any) OPT ANY
+             ADD vornamevn_0 (any) OPT ANY
+             ADD gebdatum_0 (any) OPT ANY
+             ADD beruf (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD bemerkung (any) OPT ANY
+             ADD telefonnummer (any) OPT ANY
+             ADD doubleoptin_0 (any) OPT ANY
+             ADD policiert (any) OPT ANY
+             ADD erinnerungper_0 (any) OPT ANY
+             ADD grundnichtmehrgewünscht_0 (any) OPT ANY
+        )
+        OUTPUTLIST (anfragedatum, bemerkung, beruf, doubleoptin_0, email, erinnerungper_0, erstelltvon_0, gebdatum_0, grundnichtmehrgewünscht_0, leer, namevn_0, policiert, tarif, telefonnummer, vertrageingereicht_0, vornamevn_0, wennneinerinnerung_0
+        )
+        WRAPPER (custom schnellrechner_anfragen)
+    );
+

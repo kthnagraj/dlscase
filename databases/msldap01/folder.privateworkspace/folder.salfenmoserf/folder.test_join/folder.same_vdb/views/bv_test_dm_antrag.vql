@@ -1,0 +1,173 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_test_dm_antrag
+    FOLDER = '/privateworkspace/salfenmoserf/test_join/same_vdb'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test_join.folder.same_vdb.views.jdbc.bv_test_dm_antrag.SCHEMANAME}' 
+    RELATIONNAME='DM_ANTRAG' 
+    OUTPUTSCHEMA (
+        dwh_dm_antrag_hk = 'DWH_DM_ANTRAG_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_stichtag = 'DWH_STICHTAG' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_vt_ik = 'DWH_VT_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        vnr = 'VNR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        antragsstatus = 'ANTRAGSSTATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        mandant_code = 'MANDANT_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        erstbearbeitung_jahr = 'ERSTBEARBEITUNG_JAHR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        erstbearbeitungsdatum = 'ERSTBEARBEITUNGSDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        policierungsdatum = 'POLICIERUNGSDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        annullierungsdatum = 'ANNULLIERUNGSDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        vertragsbeginn = 'VERTRAGSBEGINN' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        wiedervorlagedatum = 'WIEDERVORLAGEDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        wiedervorlagegrund_code = 'WIEDERVORLAGEGRUND_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        wiedervorlagegrund_text = 'WIEDERVORLAGEGRUND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='60', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        bav_flag = 'BAV_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        zahlungsweise_code = 'ZAHLUNGSWEISE_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        beitragszahlungsdauer = 'BEITRAGSZAHLUNGSDAUER' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        bruttozahlbeitrag_zw = 'BRUTTOZAHLBEITRAG_ZW' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        verkaufsprodukt = 'VERKAUFSPRODUKT' :'java.lang.String' (OPT) (sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        beitragssumme_antrag = 'BEITRAGSSUMME_ANTRAG' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        versicherungssumme_antrag = 'VERSICHERUNGSSUMME_ANTRAG' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        antragsmodell_text = 'ANTRAGSMODELL_TEXT' :'java.lang.String' (OPT) (sourcetypesize='10', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        neuzugangsart_code = 'NEUZUGANGSART_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        teilvorgang_code = 'TEILVORGANG_CODE' :'java.lang.String' (OPT) (sourcetypesize='4', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        tarif_variante = 'TARIF_VARIANTE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        tarif_typ_kurz = 'TARIF_TYP_KURZ' :'java.lang.String' (OPT) (sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        tarif_typ_text = 'TARIF_TYP_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        dwh_rk_ik_hv = 'DWH_RK_IK_HV' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_pd_ik_hv = 'DWH_PD_IK_HV' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_ku_ik_vn = 'DWH_KU_IK_VN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_ku_ik_vp = 'DWH_KU_IK_VP' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vm_ik_abvm = 'DWH_VM_IK_ABVM' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        vmid = 'VMID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        dwh_org_ik = 'DWH_ORG_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        org = 'ORG' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        laufender_bruttojahresbeitrag = 'LAUFENDER_BRUTTOJAHRESBEITRAG' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        gewinnverwendung_code = 'GEWINNVERWENDUNG_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        gewinnverwendung_text = 'GEWINNVERWENDUNG_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    )
+    CONSTRAINT 'PK_DM_ANTRAG' PRIMARY KEY ( 'DWH_DM_ANTRAG_HK' )
+    INDEX 'NK_DM_ANTRAG' OTHER UNIQUE ( 'DWH_VT_IK' , 'DWH_VVON' , 'DWH_VBIS' )
+    INDEX 'PK_DM_ANTRAG' OTHER UNIQUE PRIMARY ( 'DWH_DM_ANTRAG_HK' )
+    INDEX 'DM_ANTRAG_I1' OTHER ( 'MANDANT_CODE' , 'ERSTBEARBEITUNG_JAHR' , 'ANTRAGSSTATUS' , 'ORG' , 'VMID' )
+    INDEX 'DM_ANTRAG_I2_VNR' OTHER ( 'DWH_STATUS' , 'VNR' )
+    INDEX 'DM_ANTRAG_I3_RK_IK_HV' OTHER ( 'DWH_STATUS' , 'DWH_RK_IK_HV' )
+    INDEX 'DM_ANTRAG_I4_PD_IK_HV' OTHER ( 'DWH_STATUS' , 'DWH_PD_IK_HV' )
+    INDEX 'DM_ANTRAG_I5_KU_IK_VN' OTHER ( 'DWH_STATUS' , 'DWH_KU_IK_VN' )
+    INDEX 'DM_ANTRAG_I6_KU_IK_VP' OTHER ( 'DWH_STATUS' , 'DWH_KU_IK_VP' )
+    INDEX 'DM_ANTRAG_I7_VM_IK_ABVM' OTHER ( 'DWH_STATUS' , 'DWH_VM_IK_ABVM' )
+    INDEX 'DM_ANTRAG_I8_ORG_IK' OTHER ( 'DWH_STATUS' , 'DWH_ORG_IK' );
+
+CREATE OR REPLACE TABLE bv_test_dm_antrag I18N de_euro (
+        dwh_dm_antrag_hk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_status:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_eingefuegt_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_geaendert_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_stichtag:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '20'), 
+        dwh_vt_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        vnr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        antragsstatus:text (sourcetypeid = '12', sourcetypesize = '1'), 
+        mandant_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        erstbearbeitung_jahr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        erstbearbeitungsdatum:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        policierungsdatum:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        annullierungsdatum:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        vertragsbeginn:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        wiedervorlagedatum:localdate (sourcetypeid = '91', sourcetypesize = '10'), 
+        wiedervorlagegrund_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        wiedervorlagegrund_text:text (sourcetypeid = '12', sourcetypesize = '60'), 
+        bav_flag:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        zahlungsweise_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        beitragszahlungsdauer:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        bruttozahlbeitrag_zw:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11'), 
+        verkaufsprodukt:text (sourcetypeid = '12', sourcetypesize = '30'), 
+        beitragssumme_antrag:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11'), 
+        versicherungssumme_antrag:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '11'), 
+        antragsmodell_text:text (sourcetypeid = '12', sourcetypesize = '10'), 
+        neuzugangsart_code:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        teilvorgang_code:text (sourcetypeid = '1', sourcetypesize = '4'), 
+        tarif_variante:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        tarif_typ_kurz:text (sourcetypeid = '12', sourcetypesize = '20'), 
+        tarif_typ_text:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        dwh_rk_ik_hv:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_pd_ik_hv:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_ku_ik_vn:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_ku_ik_vp:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vm_ik_abvm:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        vmid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_org_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        org:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        laufender_bruttojahresbeitrag:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11'), 
+        gewinnverwendung_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        gewinnverwendung_text:text (sourcetypeid = '12', sourcetypesize = '50')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/test_join/same_vdb'
+    CONSTRAINT 'PK_DM_ANTRAG' PRIMARY KEY ( 'dwh_dm_antrag_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_test_dm_antrag(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_dm_antrag_hk (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_stichtag (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD dwh_vt_ik (any) OPT ANY
+             ADD vnr (any) OPT ANY
+             ADD antragsstatus (any) OPT ANY
+             ADD mandant_code (any) OPT ANY
+             ADD erstbearbeitung_jahr (any) OPT ANY
+             ADD erstbearbeitungsdatum (any) OPT ANY
+             ADD policierungsdatum (any) OPT ANY
+             ADD annullierungsdatum (any) OPT ANY
+             ADD vertragsbeginn (any) OPT ANY
+             ADD wiedervorlagedatum (any) OPT ANY
+             ADD wiedervorlagegrund_code (any) OPT ANY
+             ADD wiedervorlagegrund_text (any) OPT ANY
+             ADD bav_flag (any) OPT ANY
+             ADD zahlungsweise_code (any) OPT ANY
+             ADD beitragszahlungsdauer (any) OPT ANY
+             ADD bruttozahlbeitrag_zw (any) OPT ANY
+             ADD verkaufsprodukt (any) OPT ANY
+             ADD beitragssumme_antrag (any) OPT ANY
+             ADD versicherungssumme_antrag (any) OPT ANY
+             ADD antragsmodell_text (any) OPT ANY
+             ADD neuzugangsart_code (any) OPT ANY
+             ADD teilvorgang_code (any) OPT ANY
+             ADD tarif_variante (any) OPT ANY
+             ADD tarif_typ_kurz (any) OPT ANY
+             ADD tarif_typ_text (any) OPT ANY
+             ADD dwh_rk_ik_hv (any) OPT ANY
+             ADD dwh_pd_ik_hv (any) OPT ANY
+             ADD dwh_ku_ik_vn (any) OPT ANY
+             ADD dwh_ku_ik_vp (any) OPT ANY
+             ADD dwh_vm_ik_abvm (any) OPT ANY
+             ADD vmid (any) OPT ANY
+             ADD dwh_org_ik (any) OPT ANY
+             ADD org (any) OPT ANY
+             ADD laufender_bruttojahresbeitrag (any) OPT ANY
+             ADD gewinnverwendung_code (any) OPT ANY
+             ADD gewinnverwendung_text (any) OPT ANY
+        )
+        OUTPUTLIST (annullierungsdatum, antragsmodell_text, antragsstatus, bav_flag, beitragssumme_antrag, beitragszahlungsdauer, bruttozahlbeitrag_zw, dwh_dm_antrag_hk, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_ku_ik_vn, dwh_ku_ik_vp, dwh_org_ik, dwh_pd_ik_hv, dwh_quellsystem, dwh_rk_ik_hv, dwh_status, dwh_stichtag, dwh_vbis, dwh_vm_ik_abvm, dwh_vt_ik, dwh_vvon, erstbearbeitung_jahr, erstbearbeitungsdatum, gewinnverwendung_code, gewinnverwendung_text, laufender_bruttojahresbeitrag, mandant_code, neuzugangsart_code, org, policierungsdatum, tarif_typ_kurz, tarif_typ_text, tarif_variante, teilvorgang_code, verkaufsprodukt, versicherungssumme_antrag, vertragsbeginn, vmid, vnr, wiedervorlagedatum, wiedervorlagegrund_code, wiedervorlagegrund_text, zahlungsweise_code
+        )
+        WRAPPER (jdbc bv_test_dm_antrag)
+    );
+

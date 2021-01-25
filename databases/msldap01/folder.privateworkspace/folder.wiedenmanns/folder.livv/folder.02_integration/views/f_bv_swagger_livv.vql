@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW f_bv_swagger_livv FOLDER = '/privateworkspace/wiedenmanns/livv/02_integration' AS SELECT f_tariftyp AS f_tariftyp, versicherungsnummer AS versicherungsnummer, art AS art, mandant AS mandant, status AS status, beitrag AS beitrag, versicherungsumfang AS versicherungsumfang, bonusdatenvp1 AS bonusdatenvp1, tarif AS tarif, id AS id, datumpolicierung AS datumpolicierung, userpolicierung AS userpolicierung, widerruf AS widerruf, garantiertewerte AS garantiertewerte FROM FLATTEN bv_swagger_livv AS v ( v.jsonarray);
+
+ALTER VIEW f_bv_swagger_livv
+ LAYOUT (bv_swagger_livv = [20, 20, 516, 766]);
+

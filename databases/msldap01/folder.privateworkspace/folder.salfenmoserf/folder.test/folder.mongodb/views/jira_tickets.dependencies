@@ -1,0 +1,6 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/test.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/folder.mongodb/mongodb.vql
+/extensions/jars/denodo-mongodb-customwrapper-7.0.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.test/folder.mongodb/datasources/custom/jira.vql

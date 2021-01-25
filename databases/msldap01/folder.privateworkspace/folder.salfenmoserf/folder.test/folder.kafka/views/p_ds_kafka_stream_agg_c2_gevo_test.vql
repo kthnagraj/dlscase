@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_ds_kafka_stream_agg_c2_gevo_test FOLDER = '/privateworkspace/salfenmoserf/test/kafka' AS SELECT ds_kafka_stream_agg_c2_gevo_test.key AS key, ds_kafka_stream_agg_c2_gevo_test.partition AS partition, ds_kafka_stream_agg_c2_gevo_test.position AS position, ds_kafka_stream_agg_c2_gevo_test.gevo AS gevo, ds_kafka_stream_agg_c2_gevo_test.timestamp AS timestamp, ds_kafka_stream_agg_c2_gevo_test.begindate AS begindate, ds_kafka_stream_agg_c2_gevo_test.enddate AS enddate, (ds_kafka_stream_agg_c2_gevo_test.gevo).vnr AS vnr, (ds_kafka_stream_agg_c2_gevo_test.gevo).lfdnr AS lfdnr, (ds_kafka_stream_agg_c2_gevo_test.gevo).gevotyp AS gevotyp, (ds_kafka_stream_agg_c2_gevo_test.gevo).status AS status, (ds_kafka_stream_agg_c2_gevo_test.gevo).bearbeitungsdatum AS bearbeitungsdatum, (ds_kafka_stream_agg_c2_gevo_test.gevo).wirksamkeitsdatum AS wirksamkeitsdatum, (ds_kafka_stream_agg_c2_gevo_test.gevo).beitrag AS beitrag, (ds_kafka_stream_agg_c2_gevo_test.gevo).zahlweise AS zahlweise FROM ds_kafka_stream_agg_c2_gevo_test;
+
+ALTER VIEW p_ds_kafka_stream_agg_c2_gevo_test
+ LAYOUT (ds_kafka_stream_agg_c2_gevo_test = [20, 20, 283, 166]);
+

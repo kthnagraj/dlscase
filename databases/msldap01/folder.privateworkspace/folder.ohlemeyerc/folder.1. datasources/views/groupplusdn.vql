@@ -1,0 +1,33 @@
+﻿CREATE OR REPLACE WRAPPER LDAP groupplusdn
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    OBJECTCLASSES='top'
+    LDAPEXPRESSION='(&(objectclass=group))'   
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String',
+        displayname = 'displayName' : 'java.lang.String',
+        distinguishedname = 'distinguishedName' : 'java.lang.String'
+    );
+
+CREATE OR REPLACE TABLE groupplusdn I18N de_euro (
+        cn:text, 
+        displayname:text, 
+        distinguishedname:text
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD groupplusdn(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn NOS ZERO ()
+             ADD displayname NOS ZERO ()
+             ADD distinguishedname NOS ZERO ()
+        )
+        OUTPUTLIST (cn, displayname, distinguishedname
+        )
+        WRAPPER (ldap groupplusdn)
+    );
+

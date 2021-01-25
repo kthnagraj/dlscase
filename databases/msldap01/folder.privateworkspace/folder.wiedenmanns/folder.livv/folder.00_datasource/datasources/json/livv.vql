@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON livv
+    FOLDER = '/privateworkspace/wiedenmanns/livv/00_datasource'
+    ROUTE HTTP 'http.CommonsHttpClientConnection,120000' GET '${databases.msldap01.folder.privateworkspace.folder.wiedenmanns.folder.livv.folder.00_datasource.datasources.json.livv.ROUTE.HTTP.URL}'
+    HEADERS (
+        'D3APIKEY'='93840834095093493093409309430940900'
+    )
+    AUTHENTICATION OFF
+    PROXY OFF;
+

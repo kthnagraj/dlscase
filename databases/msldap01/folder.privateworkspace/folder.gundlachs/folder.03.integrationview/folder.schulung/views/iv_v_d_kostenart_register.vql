@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_v_d_kostenart_register FOLDER = '/privateworkspace/gundlachs/03.integrationview/schulung' AS SELECT bv_v_d_kostenart.dwh_ka_hk AS dwh_ka_hk, bv_v_d_kostenart.dwh_ka_ik AS dwh_ka_ik, bv_v_d_kostenart.dwh_vvon AS dwh_vvon, bv_v_d_kostenart.dwh_vbis AS dwh_vbis, bv_v_d_kostenart.dwh_von AS dwh_von, bv_v_d_kostenart.dwh_bis AS dwh_bis, bv_v_d_kostenart.dwh_status AS dwh_status, bv_v_d_kostenart.dwh_eingefuegt_dt AS dwh_eingefuegt_dt, bv_v_d_kostenart.dwh_eingefuegt_gui AS dwh_eingefuegt_gui, bv_v_d_kostenart.dwh_geaendert_dt AS dwh_geaendert_dt, bv_v_d_kostenart.dwh_geaendert_gui AS dwh_geaendert_gui, bv_v_d_kostenart.dwh_quellsystem AS dwh_quellsystem, bv_v_d_kostenart.mandant AS mandant, bv_v_d_kostenart.kontonummer AS kontonummer, bv_v_d_kostenart.kurzbezeichnung AS kurzbezeichnung, bv_v_d_kostenart.bezeichnung AS bezeichnung, register(bv_v_d_kostenart.ebene1, bv_v_d_kostenart.ebene2, bv_v_d_kostenart.ebene3, bv_v_d_kostenart.ebene4, bv_v_d_kostenart.ebene5) AS hierarchieebenen FROM bv_v_d_kostenart;
+
+ALTER VIEW iv_v_d_kostenart_register
+ LAYOUT (bv_v_d_kostenart = [20, 20, 238, 446]);
+

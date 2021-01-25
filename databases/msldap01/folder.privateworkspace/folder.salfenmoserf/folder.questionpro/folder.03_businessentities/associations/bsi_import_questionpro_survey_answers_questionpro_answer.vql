@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION bsi_import_questionpro_survey_answers_questionpro_answer REFERENTIAL CONSTRAINT 
+FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities'
+    ENDPOINT answer_bsi_import bsi_import_questionpro_survey_answers (0,1)
+    ENDPOINT bsi_import_answer questionpro_answer PRINCIPAL (1)
+    ADD MAPPING answer_id=dwh_qpansw_ik;
+
+ALTER ASSOCIATION bsi_import_questionpro_survey_answers_questionpro_answer
+ LAYOUT (bsi_import_questionpro_survey_answers = [20, 90, 200, 225], questionpro_answer = [405, 115, 200, 225]);
+

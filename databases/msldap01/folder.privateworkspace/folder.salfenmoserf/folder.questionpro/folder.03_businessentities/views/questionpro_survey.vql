@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW questionpro_survey FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities' AS SELECT iv_data_dwh_d_questionpro_survey.dwh_qpsurv_ik AS dwh_qpsurv_ik, iv_data_dwh_d_questionpro_survey.dwh_eingefuegt_dt AS dwh_eingefuegt_dt, iv_data_dwh_d_questionpro_survey.dwh_eingefuegt_gui AS dwh_eingefuegt_gui, iv_data_dwh_d_questionpro_survey.survey_folder_id AS survey_folder_id, iv_data_dwh_d_questionpro_survey.survey_name AS survey_name, iv_data_dwh_d_questionpro_survey.survey_url AS survey_url, iv_data_dwh_d_questionpro_survey.survey_status AS survey_status, iv_data_dwh_d_questionpro_survey.survey_creation_date AS survey_creation_date, iv_data_dwh_d_questionpro_survey.survey_modified_date AS survey_modified_date, iv_data_dwh_d_questionpro_survey.survey_thank_you_message AS survey_thank_you_message, iv_data_dwh_d_questionpro_survey.survey_has_scoring_logic AS survey_has_scoring_logic, iv_data_dwh_d_questionpro_survey.survey_logo_url AS survey_logo_url FROM iv_data_dwh_d_questionpro_survey;
+
+ALTER VIEW questionpro_survey
+ LAYOUT (iv_data_dwh_d_questionpro_survey = [20, 20, 266, 266]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW f_p_bv_livvprotect FOLDER = '/privateworkspace/wiedenmanns/01_connectivity' AS SELECT f_tariftyp, versicherungsnummer, art, mandant, status, beitrag, versicherungsumfang, bonusdatenvp1, tarif, id, datumpolicierung, userpolicierung, widerruf, garantiertewerte FROM FLATTEN p_bv_livvprotect AS v ( v.jsonarray);
+
+ALTER VIEW f_p_bv_livvprotect
+ LAYOUT (p_bv_livvprotect = [20, 20, 461, 766]);
+

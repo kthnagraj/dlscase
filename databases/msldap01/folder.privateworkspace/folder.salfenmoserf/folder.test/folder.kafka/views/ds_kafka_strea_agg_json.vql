@@ -1,0 +1,37 @@
+﻿CREATE OR REPLACE WRAPPER JSON ds_kafka_strea_agg_json
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    DATASOURCENAME=ds_kafka_strea_agg_json
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        var_json_kafka = 'VAR_JSON_KAFKA' : 'java.lang.String' (OBL) (DEFAULTVALUE='{"id": 0, "name": "Denodo", "state": 1, "timestamp": "2020-07-22T12:22:48.667436"}') EXTERN,
+        id = 'id' : 'java.lang.Integer',
+        name = 'name' : 'java.lang.String',
+        state = 'state' : 'java.lang.Integer',
+        timestamp = 'timestamp' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE ds_kafka_strea_agg_json I18N de_euro (
+        var_json_kafka:text (extern), 
+        id:int, 
+        name:text, 
+        state:int, 
+        timestamp:timestamp
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_kafka_strea_agg_json(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD var_json_kafka (=) OBL ONE
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD state NOS ZERO ()
+             ADD timestamp NOS ZERO ()
+        )
+        OUTPUTLIST (id, name, state, timestamp
+        )
+        WRAPPER (json ds_kafka_strea_agg_json)
+    );
+

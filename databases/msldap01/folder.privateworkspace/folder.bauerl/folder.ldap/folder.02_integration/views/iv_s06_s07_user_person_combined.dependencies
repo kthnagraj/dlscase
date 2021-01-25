@@ -1,0 +1,10 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/bauerl.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/ldap.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.02_integration/02_integration.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.01_connectivity/01_connectivity.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.00_datasource/00_datasource.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.00_datasource/datasources/ldap/ds_ldap_s06.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.01_connectivity/views/bv_ldap_s06_user_person.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.00_datasource/datasources/ldap/ds_ldap_s07.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.01_connectivity/views/bv_ldap_s07_user_person.vql

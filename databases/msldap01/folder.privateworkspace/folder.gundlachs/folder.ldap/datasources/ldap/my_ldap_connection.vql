@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE LDAP my_ldap_connection
+    FOLDER = '/privateworkspace/gundlachs/ldap'
+    URI='${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.ldap.datasources.ldap.my_ldap_connection.URI}'
+    USERNAME='${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.ldap.datasources.ldap.my_ldap_connection.USERNAME}'
+    USERPASSWORD='${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.ldap.datasources.ldap.my_ldap_connection.USERPASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.ldap.datasources.ldap.my_ldap_connection.USERPASSWORD.ENCRYPTED}
+    USEPAGING=FALSE
+    MAXPAGESIZE=1000
+    POOL_ENABLED = TRUE;
+

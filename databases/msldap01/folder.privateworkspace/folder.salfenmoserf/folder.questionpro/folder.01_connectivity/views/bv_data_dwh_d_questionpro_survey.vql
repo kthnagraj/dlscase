@@ -1,0 +1,90 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_data_dwh_d_questionpro_survey
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.questionpro.folder.01_connectivity.views.jdbc.bv_data_dwh_d_questionpro_survey.SCHEMANAME}' 
+    RELATIONNAME='D_QUESTIONPRO_SURVEY' 
+    OUTPUTSCHEMA (
+        dwh_qpsurv_hk = 'DWH_QPSURV_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE IS_AUTOINCREMENT IS_GENERATEDCOLUMN,
+        dwh_qpsurv_ik = 'DWH_QPSURV_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        folder_id = 'folder_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  ESCAPE NOT NULL SORTABLE,
+        name = 'NAME' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        url = 'URL' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        status = 'STATUS' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        creation_date = 'creation_Date' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  ESCAPE NOT NULL SORTABLE,
+        modified_date = 'modified_Date' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  ESCAPE NOT NULL SORTABLE,
+        thank_you_message = 'thank_You_Message' :'java.lang.String' (OPT) (sourcetypesize='512', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        has_scoring_logic = 'has_Scoring_Logic' :'java.lang.Boolean' (OPT) (sourcetypesize='1', sourcetypeid='16', sourcetypename='BOOLEAN')  ESCAPE NOT SORTABLE,
+        logo_url = 'logo_Url' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'SQL200310114059530' PRIMARY KEY ( 'DWH_QPSURV_HK' )
+    INDEX 'SQL200310114059510' OTHER UNIQUE PRIMARY ( 'DWH_QPSURV_HK' )
+    INDEX 'SQL200310114059540' OTHER UNIQUE ( 'DWH_QPSURV_IK' );
+
+CREATE OR REPLACE TABLE bv_data_dwh_d_questionpro_survey I18N de_euro (
+        dwh_qpsurv_hk:int (autoincrement, generatedcolumn, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_qpsurv_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_status:text (sourcetypeid = '12', sourcetypesize = '1'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_eingefuegt_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_geaendert_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        folder_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        name:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        url:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        status:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        creation_date:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        modified_date:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        thank_you_message:text (sourcetypeid = '12', sourcetypesize = '512'), 
+        has_scoring_logic:boolean (sourcetypeid = '16', sourcetypesize = '1'), 
+        logo_url:text (sourcetypeid = '12', sourcetypesize = '256')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    CONSTRAINT 'SQL200310114059530' PRIMARY KEY ( 'dwh_qpsurv_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_data_dwh_d_questionpro_survey(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_qpsurv_hk (any) OPT ANY
+             ADD dwh_qpsurv_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD folder_id (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD url (any) OPT ANY
+             ADD status (any) OPT ANY
+             ADD creation_date (any) OPT ANY
+             ADD modified_date (any) OPT ANY
+             ADD thank_you_message (any) OPT ANY
+             ADD has_scoring_logic (any) OPT ANY
+             ADD logo_url (any) OPT ANY
+        )
+        OUTPUTLIST (creation_date, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_qpsurv_hk, dwh_qpsurv_ik, dwh_quellsystem, dwh_status, dwh_vbis, dwh_von, dwh_vvon, folder_id, has_scoring_logic, logo_url, modified_date, name, status, thank_you_message, url
+        )
+        WRAPPER (jdbc bv_data_dwh_d_questionpro_survey)
+    );
+

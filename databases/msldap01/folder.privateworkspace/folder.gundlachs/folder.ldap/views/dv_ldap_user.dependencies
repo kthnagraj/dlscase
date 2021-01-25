@@ -1,0 +1,5 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.gundlachs/gundlachs.vql
+/databases/msldap01/folder.privateworkspace/folder.gundlachs/folder.ldap/ldap.vql
+/databases/msldap01/folder.privateworkspace/folder.gundlachs/folder.ldap/datasources/ldap/my_ldap_connection.vql
+/databases/msldap01/folder.privateworkspace/folder.gundlachs/folder.ldap/views/bv_ldap_user.vql

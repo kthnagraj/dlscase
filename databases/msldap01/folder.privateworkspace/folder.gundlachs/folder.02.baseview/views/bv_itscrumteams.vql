@@ -1,0 +1,159 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_itscrumteams
+    FOLDER = '/privateworkspace/gundlachs/02.baseview'
+    DATASOURCENAME=itscrumteams
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        id = 'id' : 'java.lang.String',
+        type = 'type' : 'java.lang.String',
+        status = 'status' : 'java.lang.String',
+        title = 'title' : 'java.lang.String',
+        space = 'space' : REGISTER OF (
+            id = 'id' : 'java.lang.Integer',
+            key = 'key' : 'java.lang.String',
+            name = 'name' : 'java.lang.String',
+            type = 'type' : 'java.lang.String',
+            _links = '_links' : REGISTER OF (
+                webui = 'webui' : 'java.lang.String',
+                self = 'self' : 'java.lang.String'
+            ),
+            _expandable = '_expandable' : REGISTER OF (
+                metadata = 'metadata' : 'java.lang.String',
+                icon = 'icon' : 'java.lang.String',
+                description = 'description' : 'java.lang.String',
+                homepage = 'homepage' : 'java.lang.String'
+            )
+        ),
+        body = 'body' : REGISTER OF (
+            storage = 'storage' : REGISTER OF (
+                value = 'value' : 'java.lang.String',
+                representation = 'representation' : 'java.lang.String',
+                _expandable = '_expandable' : REGISTER OF (
+                    content = 'content' : 'java.lang.String'
+                )
+            ),
+            _expandable = '_expandable' : REGISTER OF (
+                editor = 'editor' : 'java.lang.String',
+                view_0 = 'view' : 'java.lang.String',
+                export_view = 'export_view' : 'java.lang.String',
+                styled_view = 'styled_view' : 'java.lang.String',
+                anonymous_export_view = 'anonymous_export_view' : 'java.lang.String'
+            )
+        ),
+        extensions = 'extensions' : REGISTER OF (
+            position = 'position' : 'java.lang.Integer'
+        ),
+        _links = '_links' : REGISTER OF (
+            webui = 'webui' : 'java.lang.String',
+            edit = 'edit' : 'java.lang.String',
+            tinyui = 'tinyui' : 'java.lang.String',
+            collection = 'collection' : 'java.lang.String',
+            base_0 = 'base' : 'java.lang.String',
+            context_0 = 'context' : 'java.lang.String',
+            self = 'self' : 'java.lang.String'
+        ),
+        _expandable = '_expandable' : REGISTER OF (
+            container = 'container' : 'java.lang.String',
+            metadata = 'metadata' : 'java.lang.String',
+            operations = 'operations' : 'java.lang.String',
+            children = 'children' : 'java.lang.String',
+            restrictions = 'restrictions' : 'java.lang.String',
+            history = 'history' : 'java.lang.String',
+            ancestors = 'ancestors' : 'java.lang.String',
+            version = 'version' : 'java.lang.String',
+            descendants = 'descendants' : 'java.lang.String'
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE itscrumteams_space__links AS REGISTER OF (webui:text, self:text);
+
+CREATE OR REPLACE TYPE itscrumteams_space__expandable AS REGISTER OF (metadata:text, icon:text, description:text, homepage:text);
+
+CREATE OR REPLACE TYPE itscrumteams_space AS REGISTER OF (id:int, key:text, name:text, type:text, _links:itscrumteams_space__links, _expandable:itscrumteams_space__expandable);
+
+CREATE OR REPLACE TYPE itscrumteams_body_storage__expandable AS REGISTER OF (content:text);
+
+CREATE OR REPLACE TYPE itscrumteams_body_storage AS REGISTER OF (value:text, representation:text, _expandable:itscrumteams_body_storage__expandable);
+
+CREATE OR REPLACE TYPE itscrumteams_body__expandable AS REGISTER OF (editor:text, view_0:text, export_view:text, styled_view:text, anonymous_export_view:text);
+
+CREATE OR REPLACE TYPE itscrumteams_body AS REGISTER OF (storage:itscrumteams_body_storage, _expandable:itscrumteams_body__expandable);
+
+CREATE OR REPLACE TYPE itscrumteams_extensions AS REGISTER OF (position:int);
+
+CREATE OR REPLACE TYPE itscrumteams__links AS REGISTER OF (webui:text, edit:text, tinyui:text, collection:text, base_0:text, context_0:text, self:text);
+
+CREATE OR REPLACE TYPE itscrumteams__expandable AS REGISTER OF (container:text, metadata:text, operations:text, children:text, restrictions:text, history:text, ancestors:text, version:text, descendants:text);
+
+CREATE OR REPLACE TABLE bv_itscrumteams I18N de_euro (
+        id:text, 
+        type:text, 
+        status:text, 
+        title:text, 
+        space:itscrumteams_space, 
+        body:itscrumteams_body, 
+        extensions:itscrumteams_extensions, 
+        _links:itscrumteams__links, 
+        _expandable:itscrumteams__expandable
+    )
+    FOLDER = '/privateworkspace/gundlachs/02.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_itscrumteams(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD id NOS ZERO ()
+             ADD type NOS ZERO ()
+             ADD status NOS ZERO ()
+             ADD title NOS ZERO ()
+             ADD space NOS ZERO ()
+             ADD space.id NOS ZERO ()
+             ADD space.key NOS ZERO ()
+             ADD space.name NOS ZERO ()
+             ADD space.type NOS ZERO ()
+             ADD space._links NOS ZERO ()
+             ADD space._links.webui NOS ZERO ()
+             ADD space._links.self NOS ZERO ()
+             ADD space._expandable NOS ZERO ()
+             ADD space._expandable.metadata NOS ZERO ()
+             ADD space._expandable.icon NOS ZERO ()
+             ADD space._expandable.description NOS ZERO ()
+             ADD space._expandable.homepage NOS ZERO ()
+             ADD body NOS ZERO ()
+             ADD body.storage NOS ZERO ()
+             ADD body.storage.value NOS ZERO ()
+             ADD body.storage.representation NOS ZERO ()
+             ADD body.storage._expandable NOS ZERO ()
+             ADD body.storage._expandable.content NOS ZERO ()
+             ADD body._expandable NOS ZERO ()
+             ADD body._expandable.editor NOS ZERO ()
+             ADD body._expandable.view_0 NOS ZERO ()
+             ADD body._expandable.export_view NOS ZERO ()
+             ADD body._expandable.styled_view NOS ZERO ()
+             ADD body._expandable.anonymous_export_view NOS ZERO ()
+             ADD extensions NOS ZERO ()
+             ADD extensions.position NOS ZERO ()
+             ADD _links NOS ZERO ()
+             ADD _links.webui NOS ZERO ()
+             ADD _links.edit NOS ZERO ()
+             ADD _links.tinyui NOS ZERO ()
+             ADD _links.collection NOS ZERO ()
+             ADD _links.base_0 NOS ZERO ()
+             ADD _links.context_0 NOS ZERO ()
+             ADD _links.self NOS ZERO ()
+             ADD _expandable NOS ZERO ()
+             ADD _expandable.container NOS ZERO ()
+             ADD _expandable.metadata NOS ZERO ()
+             ADD _expandable.operations NOS ZERO ()
+             ADD _expandable.children NOS ZERO ()
+             ADD _expandable.restrictions NOS ZERO ()
+             ADD _expandable.history NOS ZERO ()
+             ADD _expandable.ancestors NOS ZERO ()
+             ADD _expandable.version NOS ZERO ()
+             ADD _expandable.descendants NOS ZERO ()
+        )
+        OUTPUTLIST (_expandable, _links, body, extensions, id, space, status, title, type
+        )
+        WRAPPER (json bv_itscrumteams)
+    );
+

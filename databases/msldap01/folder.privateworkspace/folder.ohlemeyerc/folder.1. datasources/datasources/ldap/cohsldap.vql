@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE LDAP cohsldap
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    URI='${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ldap.cohsldap.URI}'
+    USERNAME='${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ldap.cohsldap.USERNAME}'
+    USERPASSWORD='${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ldap.cohsldap.USERPASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ldap.cohsldap.USERPASSWORD.ENCRYPTED}
+    USEPAGING=FALSE
+    MAXPAGESIZE=1000
+    POOL_ENABLED = TRUE;
+

@@ -1,0 +1,15 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/questionpro.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.03_businessentities/03_businessentities.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.02_integration/02_integration.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.01_connectivity/01_connectivity.vql
+/databases/msldap01/folder.datasources/datasources.vql
+/databases/msldap01/folder.datasources/folder.dwh/dwh.vql
+/databases/msldap01/folder.datasources/folder.dwh/datasources/jdbc/pdwhdb.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.01_connectivity/views/bv_data_dwh_f_questionpro_answer.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.02_integration/views/iv_data_dwh_f_questionpro_answer.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.03_businessentities/views/questionpro_answer.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.01_connectivity/views/bv_data_dwh_d_questionpro_survey.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.02_integration/views/iv_data_dwh_d_questionpro_survey.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.questionpro/folder.03_businessentities/views/questionpro_survey.vql

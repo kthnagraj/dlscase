@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION questionpro_answer_questionpro_survey REFERENTIAL CONSTRAINT 
+FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities'
+    ENDPOINT answer_survey questionpro_answer (0,*)
+    ENDPOINT survey_answer questionpro_survey PRINCIPAL (1)
+    ADD MAPPING dwh_qpsurv_ik=dwh_qpsurv_ik;
+
+ALTER ASSOCIATION questionpro_answer_questionpro_survey
+ LAYOUT (questionpro_answer = [40, 60, 200, 225], questionpro_survey = [330, 110, 200, 225]);
+

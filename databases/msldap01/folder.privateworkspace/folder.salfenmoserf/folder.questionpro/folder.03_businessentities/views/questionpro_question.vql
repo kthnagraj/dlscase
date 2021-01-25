@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW questionpro_question FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities' AS SELECT iv_data_dwh_d_questionpro_question.dwh_qpsquest_ik AS dwh_qpsquest_ik, iv_data_dwh_d_questionpro_question.dwh_qpsurv_ik AS dwh_qpsurv_ik, iv_data_dwh_d_questionpro_question.dwh_eingefuegt_dt AS dwh_eingefuegt_dt, iv_data_dwh_d_questionpro_question.dwh_eingefuegt_gui AS dwh_eingefuegt_gui, iv_data_dwh_d_questionpro_question.question_type AS question_type, iv_data_dwh_d_questionpro_question.question_code AS question_code, iv_data_dwh_d_questionpro_question.question_text AS question_text, iv_data_dwh_d_questionpro_question.question_sub_order_number AS question_sub_order_number, iv_data_dwh_d_questionpro_question.question_sub_text AS question_sub_text, iv_data_dwh_d_questionpro_question.question_order_number AS question_order_number, iv_data_dwh_d_questionpro_question.question_required AS question_required FROM iv_data_dwh_d_questionpro_question;
+
+ALTER VIEW questionpro_question
+ LAYOUT (iv_data_dwh_d_questionpro_question = [20, 20, 288, 246]);
+

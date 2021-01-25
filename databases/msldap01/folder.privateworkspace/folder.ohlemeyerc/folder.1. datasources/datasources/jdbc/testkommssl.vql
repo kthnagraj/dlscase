@@ -1,0 +1,31 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC testkommssl
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DRIVERCLASSNAME = 'net.sourceforge.jtds.jdbc.Driver'
+    DATABASEURI = '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.jdbc.testkommssl.DATABASEURI}'
+    USERNAME = '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.jdbc.testkommssl.USERNAME}'
+    USERPASSWORD = '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.jdbc.testkommssl.USERPASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.jdbc.testkommssl.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'denodo-jtds-1.3.1'
+    DATABASENAME = 'sqlserver'
+    DATABASEVERSION = '2016'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXSLEEPINGPS = 4
+    INITIALCAPACITYPS = 8
+    PROPERTIES ('SSL'='require')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 1000
+    );
+

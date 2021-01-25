@@ -1,0 +1,15 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_mongodb_data_test
+    FOLDER = '/datasources/mongodb'
+    CLASSNAME='com.denodo.connect.mongodb.wrapper.MongoDBWrapper'
+    JARS 'denodo-mongodb-customwrapper-7.0'
+    PARAMETERS (
+      'Host' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Host}',
+      'Port' = ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Port},
+      'Pass-through session credentials' = false,
+      'User' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.User}',
+      'Password' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Password}' ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Password.encrypted},
+      'Database' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Database}',
+      'Use SSL/TLS' = ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_data_test.Use SSL/TLS}
+    );
+

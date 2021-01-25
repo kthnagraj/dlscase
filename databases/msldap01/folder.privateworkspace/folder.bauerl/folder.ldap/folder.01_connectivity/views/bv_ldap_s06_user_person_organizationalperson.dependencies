@@ -1,0 +1,6 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/bauerl.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/ldap.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.01_connectivity/01_connectivity.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.00_datasource/00_datasource.vql
+/databases/msldap01/folder.privateworkspace/folder.bauerl/folder.ldap/folder.00_datasource/datasources/ldap/ds_ldap_s06.vql

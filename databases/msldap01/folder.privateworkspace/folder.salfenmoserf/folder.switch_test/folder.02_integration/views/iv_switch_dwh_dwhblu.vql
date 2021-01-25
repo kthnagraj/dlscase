@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_switch_dwh_dwhblu FOLDER = '/privateworkspace/salfenmoserf/switch_test/02_integration' AS SELECT bv_switch_dwh_dwhblu.switch_parameter AS switch_parameter, _param_modus FROM bv_switch_dwh_dwhblu WHERE switch_parameter = _param_modus USING PARAMETERS ( _param_modus : text 'blu');
+
+ALTER VIEW iv_switch_dwh_dwhblu
+ LAYOUT (bv_switch_dwh_dwhblu = [20, 20, 233, 46]);
+

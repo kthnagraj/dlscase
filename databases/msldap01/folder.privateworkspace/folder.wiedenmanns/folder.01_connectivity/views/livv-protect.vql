@@ -1,0 +1,230 @@
+﻿CREATE OR REPLACE TABLE "livv-protect" I18N de_euro (
+        vnr:int (sourcetypeid = '4'), 
+        start:text (sourcetypeid = '12'), 
+        polizzendatum_0:text (sourcetypeid = '12'), 
+        antragsdatum:text (sourcetypeid = '12'), 
+        prämienetto_0:text (sourcetypeid = '12'), 
+        versicherungssteuer4vonnetto_0:float (sourcetypeid = '6'), 
+        prämiezahlbeitragnettosteuer_0:text (sourcetypeid = '12'), 
+        prämiebruttonettosofortdividende_0:text (sourcetypeid = '12'), 
+        summe:text (sourcetypeid = '12'), 
+        summezahlbeitragjährlich_0:text (sourcetypeid = '12'), 
+        versicherungsjahre:int (sourcetypeid = '4'), 
+        zahlungsintervall:text (sourcetypeid = '12'), 
+        zuschlag:text (sourcetypeid = '12'), 
+        vornamevn_0:text (sourcetypeid = '12'), 
+        nachnamevn_0:text (sourcetypeid = '12'), 
+        anrede:text (sourcetypeid = '12'), 
+        titel:text (sourcetypeid = '12'), 
+        email:text (sourcetypeid = '12'), 
+        telefonnummer:text (sourcetypeid = '12'), 
+        adresse:text (sourcetypeid = '12'), 
+        plz:text (sourcetypeid = '12'), 
+        stadt:text (sourcetypeid = '12'), 
+        land:text (sourcetypeid = '12'), 
+        geburtsdatumvnwennnichtgleichvp_0:text (sourcetypeid = '12'), 
+        vornamevp_0:text (sourcetypeid = '12'), 
+        nachnamevp_0:text (sourcetypeid = '12'), 
+        anredevp_0:text (sourcetypeid = '12'), 
+        titelvp_0:text (sourcetypeid = '12'), 
+        adressevp_0:text (sourcetypeid = '12'), 
+        plz_29:int (sourcetypeid = '4'), 
+        stadt_30:text (sourcetypeid = '12'), 
+        land_31:text (sourcetypeid = '12'), 
+        postbevollmächtigter:text (sourcetypeid = '12'), 
+        mailadressepostbevollmächtigter_0:text (sourcetypeid = '12'), 
+        betreuermakler_0:text (sourcetypeid = '12'), 
+        geburtsdatumvp_0:text (sourcetypeid = '12'), 
+        berufsschlüssel:int (sourcetypeid = '4'), 
+        berufsbezeichnung:text (sourcetypeid = '12'), 
+        größecm_0:int (sourcetypeid = '4'), 
+        gewichtkg_0:int (sourcetypeid = '4'), 
+        kinder:text (sourcetypeid = '12'), 
+        raucher_0:text (sourcetypeid = '12'), 
+        inbehandlung_0:text (sourcetypeid = '12'), 
+        untersuchunggeplant_0:text (sourcetypeid = '12'), 
+        medikamente:text (sourcetypeid = '12'), 
+        krankhausletzten10jahre_0:text (sourcetypeid = '12'), 
+        krankhausletzten5jahre_0:text (sourcetypeid = '12'), 
+        krebsaids_0:text (sourcetypeid = '12'), 
+        versuchtersuizid_0:text (sourcetypeid = '12'), 
+        drogen:text (sourcetypeid = '12'), 
+        lebensgefährlichesportarten_0:text (sourcetypeid = '12'), 
+        langerurlaubauslandgeplant_0:text (sourcetypeid = '12'), 
+        hohesrisikoberuf_0:text (sourcetypeid = '12'), 
+        identifiziert:text (sourcetypeid = '12'), 
+        identifizierungsstatusvideo_0:text (sourcetypeid = '12'), 
+        identifiziertdurchausweisdokument_0:text (sourcetypeid = '12'), 
+        keineauszahlungeinerversicherungsleistungwegenfehlenderidentifizierungjn_0:text (sourcetypeid = '12'), 
+        hinweisidentifizierungdokumentenart_0:text (sourcetypeid = '12'), 
+        ausweisnummer:text (sourcetypeid = '12'), 
+        ausstellungsdatumausweisdokument_0:text (sourcetypeid = '12'), 
+        gültigkeitsdatumausweisdokument_0:text (sourcetypeid = '12'), 
+        ausstellendebehörde_0:text (sourcetypeid = '12'), 
+        vonösterreichabweichendestaatsbürgerschaft_0:text (sourcetypeid = '12'), 
+        beendigungsgrund:text (sourcetypeid = '12'), 
+        abgangsdatum:text (sourcetypeid = '12'), 
+        datenschutzerklärungliegtvor_0:text (sourcetypeid = '12'), 
+        vertragmanuellangelegt_0:text (sourcetypeid = '12'), 
+        mahnstatuszeebzahlungserinnerungerstbeitragebrfmahnungerstbeitrag_0:text (sourcetypeid = '12'), 
+        iban:text (sourcetypeid = '12'), 
+        kontoinhaberabweichendvn_0:text (sourcetypeid = '12'), 
+        österreicher_0:text (sourcetypeid = '12'), 
+        agbakzeptiert_0:text (sourcetypeid = '12'), 
+        werbung:text (sourcetypeid = '12'), 
+        sepaerlaubt_0:text (sourcetypeid = '12'), 
+        persönlichbeauftragt_0:text (sourcetypeid = '12'), 
+        politischexponiert_0:text (sourcetypeid = '12'), 
+        elektrkommunikation_0:text (sourcetypeid = '12'), 
+        begünstigter:text (sourcetypeid = '12'), 
+        begünstigtervorname_0:text (sourcetypeid = '12'), 
+        begünstigernachname_0:text (sourcetypeid = '12'), 
+        begünstigergeburtsdatum_0:text (sourcetypeid = '12'), 
+        produktname_0:text (sourcetypeid = '12'), 
+        produktversion_0:int (sourcetypeid = '4'), 
+        trackingutmsource_0:text (sourcetypeid = '12'), 
+        trackingutmmedium_0:text (sourcetypeid = '12'), 
+        trackingutmcampaign_0:text (sourcetypeid = '12'), 
+        trackinghatunverbindlichesangebot_0:text (sourcetypeid = '12'), 
+        herkunftdereingebrachtenvermögenswerteauserwerbstätigkeitjanein_0:text (sourcetypeid = '12'), 
+        zweckderversicherungzurabsicherungversicherungjanein_0:text (sourcetypeid = '12'), 
+        beratungsverzichtjanein_0:text (sourcetypeid = '12'), 
+        zessionliegtvorjn_0:text (sourcetypeid = '12'), 
+        artderzession_0:text (sourcetypeid = '12'), 
+        zessionar:text (sourcetypeid = '12'), 
+        höhederzession_0:text (sourcetypeid = '12'), 
+        azderzession_0:text (sourcetypeid = '12'), 
+        fristenverzichtselbstmordundvorvertraglicheanzeigepflichtjn_0:text (sourcetypeid = '12'), 
+        zusatzbeitragfürfristenverzichtinklverssteuer_0:text (sourcetypeid = '12'), 
+        zusatzbeitragfristenverzichtbezahltjn_0:text (sourcetypeid = '12'), 
+        kontaktsperrefür_0:text (sourcetypeid = '12'), 
+        hinweisezurkontaktsperrejn_0:text (sourcetypeid = '12'), 
+        livvataccountaktivjn_0:text (sourcetypeid = '12'), 
+        newsletterlivvatjn_0:text (sourcetypeid = '12'), 
+        checkbmizusbeirauchern_0:text (sourcetypeid = '12'), 
+        zuswgbmi_0:text (sourcetypeid = '12'), 
+        zus:int (sourcetypeid = '4'), 
+        korrekt:text (sourcetypeid = '12'), 
+        korrekterbeitragnachst_0:float (sourcetypeid = '6'), 
+        sheet_name:float (sourcetypeid = '6')
+    )
+    FOLDER = '/privateworkspace/wiedenmanns/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "livv-protect"(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD vnr (any) OPT ANY
+             ADD start (any) OPT ANY
+             ADD polizzendatum_0 (any) OPT ANY
+             ADD antragsdatum (any) OPT ANY
+             ADD prämienetto_0 (any) OPT ANY
+             ADD versicherungssteuer4vonnetto_0 (any) OPT ANY
+             ADD prämiezahlbeitragnettosteuer_0 (any) OPT ANY
+             ADD prämiebruttonettosofortdividende_0 (any) OPT ANY
+             ADD summe (any) OPT ANY
+             ADD summezahlbeitragjährlich_0 (any) OPT ANY
+             ADD versicherungsjahre (any) OPT ANY
+             ADD zahlungsintervall (any) OPT ANY
+             ADD zuschlag (any) OPT ANY
+             ADD vornamevn_0 (any) OPT ANY
+             ADD nachnamevn_0 (any) OPT ANY
+             ADD anrede (any) OPT ANY
+             ADD titel (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD telefonnummer (any) OPT ANY
+             ADD adresse (any) OPT ANY
+             ADD plz (any) OPT ANY
+             ADD stadt (any) OPT ANY
+             ADD land (any) OPT ANY
+             ADD geburtsdatumvnwennnichtgleichvp_0 (any) OPT ANY
+             ADD vornamevp_0 (any) OPT ANY
+             ADD nachnamevp_0 (any) OPT ANY
+             ADD anredevp_0 (any) OPT ANY
+             ADD titelvp_0 (any) OPT ANY
+             ADD adressevp_0 (any) OPT ANY
+             ADD plz_29 (any) OPT ANY
+             ADD stadt_30 (any) OPT ANY
+             ADD land_31 (any) OPT ANY
+             ADD postbevollmächtigter (any) OPT ANY
+             ADD mailadressepostbevollmächtigter_0 (any) OPT ANY
+             ADD betreuermakler_0 (any) OPT ANY
+             ADD geburtsdatumvp_0 (any) OPT ANY
+             ADD berufsschlüssel (any) OPT ANY
+             ADD berufsbezeichnung (any) OPT ANY
+             ADD größecm_0 (any) OPT ANY
+             ADD gewichtkg_0 (any) OPT ANY
+             ADD kinder (any) OPT ANY
+             ADD raucher_0 (any) OPT ANY
+             ADD inbehandlung_0 (any) OPT ANY
+             ADD untersuchunggeplant_0 (any) OPT ANY
+             ADD medikamente (any) OPT ANY
+             ADD krankhausletzten10jahre_0 (any) OPT ANY
+             ADD krankhausletzten5jahre_0 (any) OPT ANY
+             ADD krebsaids_0 (any) OPT ANY
+             ADD versuchtersuizid_0 (any) OPT ANY
+             ADD drogen (any) OPT ANY
+             ADD lebensgefährlichesportarten_0 (any) OPT ANY
+             ADD langerurlaubauslandgeplant_0 (any) OPT ANY
+             ADD hohesrisikoberuf_0 (any) OPT ANY
+             ADD identifiziert (any) OPT ANY
+             ADD identifizierungsstatusvideo_0 (any) OPT ANY
+             ADD identifiziertdurchausweisdokument_0 (any) OPT ANY
+             ADD keineauszahlungeinerversicherungsleistungwegenfehlenderidentifizierungjn_0 (any) OPT ANY
+             ADD hinweisidentifizierungdokumentenart_0 (any) OPT ANY
+             ADD ausweisnummer (any) OPT ANY
+             ADD ausstellungsdatumausweisdokument_0 (any) OPT ANY
+             ADD gültigkeitsdatumausweisdokument_0 (any) OPT ANY
+             ADD ausstellendebehörde_0 (any) OPT ANY
+             ADD vonösterreichabweichendestaatsbürgerschaft_0 (any) OPT ANY
+             ADD beendigungsgrund (any) OPT ANY
+             ADD abgangsdatum (any) OPT ANY
+             ADD datenschutzerklärungliegtvor_0 (any) OPT ANY
+             ADD vertragmanuellangelegt_0 (any) OPT ANY
+             ADD mahnstatuszeebzahlungserinnerungerstbeitragebrfmahnungerstbeitrag_0 (any) OPT ANY
+             ADD iban (any) OPT ANY
+             ADD kontoinhaberabweichendvn_0 (any) OPT ANY
+             ADD österreicher_0 (any) OPT ANY
+             ADD agbakzeptiert_0 (any) OPT ANY
+             ADD werbung (any) OPT ANY
+             ADD sepaerlaubt_0 (any) OPT ANY
+             ADD persönlichbeauftragt_0 (any) OPT ANY
+             ADD politischexponiert_0 (any) OPT ANY
+             ADD elektrkommunikation_0 (any) OPT ANY
+             ADD begünstigter (any) OPT ANY
+             ADD begünstigtervorname_0 (any) OPT ANY
+             ADD begünstigernachname_0 (any) OPT ANY
+             ADD begünstigergeburtsdatum_0 (any) OPT ANY
+             ADD produktname_0 (any) OPT ANY
+             ADD produktversion_0 (any) OPT ANY
+             ADD trackingutmsource_0 (any) OPT ANY
+             ADD trackingutmmedium_0 (any) OPT ANY
+             ADD trackingutmcampaign_0 (any) OPT ANY
+             ADD trackinghatunverbindlichesangebot_0 (any) OPT ANY
+             ADD herkunftdereingebrachtenvermögenswerteauserwerbstätigkeitjanein_0 (any) OPT ANY
+             ADD zweckderversicherungzurabsicherungversicherungjanein_0 (any) OPT ANY
+             ADD beratungsverzichtjanein_0 (any) OPT ANY
+             ADD zessionliegtvorjn_0 (any) OPT ANY
+             ADD artderzession_0 (any) OPT ANY
+             ADD zessionar (any) OPT ANY
+             ADD höhederzession_0 (any) OPT ANY
+             ADD azderzession_0 (any) OPT ANY
+             ADD fristenverzichtselbstmordundvorvertraglicheanzeigepflichtjn_0 (any) OPT ANY
+             ADD zusatzbeitragfürfristenverzichtinklverssteuer_0 (any) OPT ANY
+             ADD zusatzbeitragfristenverzichtbezahltjn_0 (any) OPT ANY
+             ADD kontaktsperrefür_0 (any) OPT ANY
+             ADD hinweisezurkontaktsperrejn_0 (any) OPT ANY
+             ADD livvataccountaktivjn_0 (any) OPT ANY
+             ADD newsletterlivvatjn_0 (any) OPT ANY
+             ADD checkbmizusbeirauchern_0 (any) OPT ANY
+             ADD zuswgbmi_0 (any) OPT ANY
+             ADD zus (any) OPT ANY
+             ADD korrekt (any) OPT ANY
+             ADD korrekterbeitragnachst_0 (any) OPT ANY
+             ADD sheet_name (any) OPT ANY
+        )
+        OUTPUTLIST (abgangsdatum, adresse, adressevp_0, agbakzeptiert_0, anrede, anredevp_0, antragsdatum, artderzession_0, ausstellendebehörde_0, ausstellungsdatumausweisdokument_0, ausweisnummer, azderzession_0, beendigungsgrund, begünstigergeburtsdatum_0, begünstigernachname_0, begünstigter, begünstigtervorname_0, beratungsverzichtjanein_0, berufsbezeichnung, berufsschlüssel, betreuermakler_0, checkbmizusbeirauchern_0, datenschutzerklärungliegtvor_0, drogen, elektrkommunikation_0, email, fristenverzichtselbstmordundvorvertraglicheanzeigepflichtjn_0, geburtsdatumvnwennnichtgleichvp_0, geburtsdatumvp_0, gewichtkg_0, größecm_0, gültigkeitsdatumausweisdokument_0, herkunftdereingebrachtenvermögenswerteauserwerbstätigkeitjanein_0, hinweisezurkontaktsperrejn_0, hinweisidentifizierungdokumentenart_0, hohesrisikoberuf_0, höhederzession_0, iban, identifiziert, identifiziertdurchausweisdokument_0, identifizierungsstatusvideo_0, inbehandlung_0, keineauszahlungeinerversicherungsleistungwegenfehlenderidentifizierungjn_0, kinder, kontaktsperrefür_0, kontoinhaberabweichendvn_0, korrekt, korrekterbeitragnachst_0, krankhausletzten10jahre_0, krankhausletzten5jahre_0, krebsaids_0, land, land_31, langerurlaubauslandgeplant_0, lebensgefährlichesportarten_0, livvataccountaktivjn_0, mahnstatuszeebzahlungserinnerungerstbeitragebrfmahnungerstbeitrag_0, mailadressepostbevollmächtigter_0, medikamente, nachnamevn_0, nachnamevp_0, newsletterlivvatjn_0, persönlichbeauftragt_0, plz, plz_29, politischexponiert_0, polizzendatum_0, postbevollmächtigter, produktname_0, produktversion_0, prämiebruttonettosofortdividende_0, prämienetto_0, prämiezahlbeitragnettosteuer_0, raucher_0, sepaerlaubt_0, sheet_name, stadt, stadt_30, start, summe, summezahlbeitragjährlich_0, telefonnummer, titel, titelvp_0, trackinghatunverbindlichesangebot_0, trackingutmcampaign_0, trackingutmmedium_0, trackingutmsource_0, untersuchunggeplant_0, versicherungsjahre, versicherungssteuer4vonnetto_0, versuchtersuizid_0, vertragmanuellangelegt_0, vnr, vonösterreichabweichendestaatsbürgerschaft_0, vornamevn_0, vornamevp_0, werbung, zahlungsintervall, zessionar, zessionliegtvorjn_0, zus, zusatzbeitragfristenverzichtbezahltjn_0, zusatzbeitragfürfristenverzichtinklverssteuer_0, zuschlag, zuswgbmi_0, zweckderversicherungzurabsicherungversicherungjanein_0, österreicher_0
+        )
+        WRAPPER (custom "livv-protect")
+    );
+

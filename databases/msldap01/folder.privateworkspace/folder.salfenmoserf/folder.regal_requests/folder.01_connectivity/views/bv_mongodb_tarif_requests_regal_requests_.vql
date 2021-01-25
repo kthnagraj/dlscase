@@ -1,0 +1,174 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM bv_mongodb_tarif_requests_regal_requests_
+    FOLDER = '/privateworkspace/salfenmoserf/regal_requests/01_connectivity'
+    DATASOURCENAME=ds_mongodb_tarif_requests
+    PARAMETERS (
+      'Collection' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.regal_requests.folder.01_connectivity.views.custom.bv_mongodb_tarif_requests_regal_requests_.Collection}',
+      'Fields' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.regal_requests.folder.01_connectivity.views.custom.bv_mongodb_tarif_requests_regal_requests_.Fields}',
+      'Introspection query' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.regal_requests.folder.01_connectivity.views.custom.bv_mongodb_tarif_requests_regal_requests_.Introspection query}'
+    )
+    OUTPUTSCHEMA (
+        _id = '_id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _insert_date = '_insert_date' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+        _sender = '_sender' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _repo = '_repo' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _data_version = '_data_version' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _service_version = '_service_version' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _url = '_url' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _data_hash = '_data_hash' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _additional_information = '_additional_information' : REGISTER OF (
+            request_received = 'request_received' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE
+        ),
+        _data = '_data' : REGISTER OF (
+            regalrequest = 'regalrequest' : REGISTER OF (
+                eingabedaten = 'eingabedaten' : REGISTER OF (
+                    tarif = 'tarif' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    apitoken = 'apiToken' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    unternehmen = 'unternehmen' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    technischedaten = 'technischedaten' : REGISTER OF (
+                        versicherungsbeginn = 'versicherungsbeginn' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        beitragszahlungsweise = 'beitragszahlungsweise' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        zusatzbausteine = 'zusatzbausteine' : REGISTER OF (
+                            sofortleistungzusatzbaustein = 'sofortleistungZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            extraleistungpflegezusatzbaustein = 'extraleistungPflegeZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            extraleistungschwerekrankheitzusatzbaustein = 'extraleistungSchwereKrankheitZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            verlaengerungsoptionzusatzbaustein = 'verlaengerungsoptionZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            kindersoforthilfezusatzbaustein = 'kinderSoforthilfeZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            nachversicherungpluszusatzbaustein = 'nachversicherungPlusZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            vorableistungzusatzbaustein = 'vorableistungZusatzbaustein' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        ),
+                        versicherungsdauer = 'versicherungsdauer' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                        beitragszahlungsdauer = 'beitragszahlungsdauer' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                    ),
+                    ersteversicherteperson = 'ersteversicherteperson' : REGISTER OF (
+                        rauchgewohnheit = 'rauchgewohnheit' : REGISTER OF (
+                            seit = 'seit' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            raucherstatus = 'raucherStatus' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        ),
+                        geburtsdatum = 'geburtsdatum' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+                        berufid = 'berufId' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                        koerpergroesse = 'koerpergroesse' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                        gewicht = 'gewicht' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                        geschlecht = 'geschlecht' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    ),
+                    risikodaten = 'risikodaten' : REGISTER OF (
+                        versicherungssummetod = 'versicherungssummetod' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                    )
+                ),
+                xmlnsxsi_0 = 'xmlns:xsi' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                steuerdaten = 'steuerdaten' : REGISTER OF (
+                    gevo = 'gevo' : REGISTER OF (
+                        xsitype_0 = 'xsi:type' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    )
+                )
+            ),
+            _calculations = '_calculations' : REGISTER OF (
+                birthday_on_first_of_january = 'birthday_on_first_of_january' : ARRAY OF (
+                    birthday_on_first_of_january_record = 'birthday_on_first_of_january_record' : REGISTER OF (
+                        birthday_on_first_of_january_item = 'birthday_on_first_of_january_ITEM' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE
+                    )
+                )
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__additional_information AS REGISTER OF (request_received:timestamp (sourcetypeid = '93'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_technischedaten_zusatzbausteine AS REGISTER OF (sofortleistungzusatzbaustein:text (sourcetypeid = '12'), extraleistungpflegezusatzbaustein:text (sourcetypeid = '12'), extraleistungschwerekrankheitzusatzbaustein:text (sourcetypeid = '12'), verlaengerungsoptionzusatzbaustein:text (sourcetypeid = '12'), kindersoforthilfezusatzbaustein:text (sourcetypeid = '12'), nachversicherungpluszusatzbaustein:text (sourcetypeid = '12'), vorableistungzusatzbaustein:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_technischedaten_5103 AS REGISTER OF (versicherungsbeginn:text (sourcetypeid = '12'), beitragszahlungsweise:text (sourcetypeid = '12'), zusatzbausteine:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_technischedaten_zusatzbausteine, versicherungsdauer:int (sourcetypeid = '4'), beitragszahlungsdauer:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_ersteversicherteperson_rauchgewohnhei_9209 AS REGISTER OF (seit:text (sourcetypeid = '12'), raucherstatus:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_ersteversicherteperson_1109 AS REGISTER OF (rauchgewohnheit:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_ersteversicherteperson_rauchgewohnhei_9209, geburtsdatum:timestamp (sourcetypeid = '93'), berufid:int (sourcetypeid = '4'), koerpergroesse:int (sourcetypeid = '4'), gewicht:int (sourcetypeid = '4'), geschlecht:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_risikodaten AS REGISTER OF (versicherungssummetod:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_9078 AS REGISTER OF (tarif:text (sourcetypeid = '12'), apitoken:text (sourcetypeid = '12'), unternehmen:text (sourcetypeid = '12'), technischedaten:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_technischedaten_5103, ersteversicherteperson:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_ersteversicherteperson_1109, risikodaten:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_risikodaten);
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_steuerdaten_gevo AS REGISTER OF (xsitype_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_steuerdaten AS REGISTER OF (gevo:ds_mongodb_tarif_requests__data_regalrequest_steuerdaten_gevo);
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_regalrequest_9345 AS REGISTER OF (eingabedaten:ds_mongodb_tarif_requests__data_regalrequest_eingabedaten_9078, xmlnsxsi_0:text (sourcetypeid = '12'), steuerdaten:ds_mongodb_tarif_requests__data_regalrequest_steuerdaten);
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data__calculations_birthday_on_first_of_january_birthday_on_first_of_ja_0 AS REGISTER OF (birthday_on_first_of_january_item:boolean (sourcetypeid = '16'));
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data__calculations_birthday_on_first_of_january AS ARRAY OF ds_mongodb_tarif_requests__data__calculations_birthday_on_first_of_january_birthday_on_first_of_ja_0;
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data__calculations AS REGISTER OF (birthday_on_first_of_january:ds_mongodb_tarif_requests__data__calculations_birthday_on_first_of_january);
+
+CREATE OR REPLACE TYPE ds_mongodb_tarif_requests__data_1190 AS REGISTER OF (regalrequest:ds_mongodb_tarif_requests__data_regalrequest_9345, _calculations:ds_mongodb_tarif_requests__data__calculations);
+
+CREATE OR REPLACE TABLE bv_mongodb_tarif_requests_regal_requests_ I18N de_euro (
+        _id:text (sourcetypeid = '12'), 
+        _insert_date:timestamp (sourcetypeid = '93'), 
+        _sender:text (sourcetypeid = '12'), 
+        _repo:text (sourcetypeid = '12'), 
+        _data_version:text (sourcetypeid = '12'), 
+        _service_version:text (sourcetypeid = '12'), 
+        _url:text (sourcetypeid = '12'), 
+        _data_hash:text (sourcetypeid = '12'), 
+        _additional_information:ds_mongodb_tarif_requests__additional_information, 
+        _data:ds_mongodb_tarif_requests__data_1190
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/regal_requests/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_mongodb_tarif_requests_regal_requests_(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD _id (any) OPT ANY
+             ADD _insert_date (any) OPT ANY
+             ADD _sender (any) OPT ANY
+             ADD _repo (any) OPT ANY
+             ADD _data_version (any) OPT ANY
+             ADD _service_version (any) OPT ANY
+             ADD _url (any) OPT ANY
+             ADD _data_hash (any) OPT ANY
+             ADD _additional_information NOS ZERO ()
+             ADD _additional_information.request_received (any) OPT ANY
+             ADD _data NOS ZERO ()
+             ADD _data.regalrequest NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.tarif (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.apitoken (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.unternehmen (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.technischedaten.versicherungsbeginn (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.beitragszahlungsweise (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.sofortleistungzusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.extraleistungpflegezusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.extraleistungschwerekrankheitzusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.verlaengerungsoptionzusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.kindersoforthilfezusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.nachversicherungpluszusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.zusatzbausteine.vorableistungzusatzbaustein (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.versicherungsdauer (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.technischedaten.beitragszahlungsdauer (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.rauchgewohnheit NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.rauchgewohnheit.seit (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.rauchgewohnheit.raucherstatus (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.geburtsdatum (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.berufid (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.koerpergroesse (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.gewicht (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.ersteversicherteperson.geschlecht (any) OPT ANY
+             ADD _data.regalrequest.eingabedaten.risikodaten NOS ZERO ()
+             ADD _data.regalrequest.eingabedaten.risikodaten.versicherungssummetod (any) OPT ANY
+             ADD _data.regalrequest.xmlnsxsi_0 (any) OPT ANY
+             ADD _data.regalrequest.steuerdaten NOS ZERO ()
+             ADD _data.regalrequest.steuerdaten.gevo NOS ZERO ()
+             ADD _data.regalrequest.steuerdaten.gevo.xsitype_0 (any) OPT ANY
+             ADD _data._calculations NOS ZERO ()
+             ADD _data._calculations.birthday_on_first_of_january NOS ZERO ()
+             ADD _data._calculations.birthday_on_first_of_january NOS ZERO ()
+             ADD _data._calculations.birthday_on_first_of_january.birthday_on_first_of_january_item (any) OPT ANY
+        )
+        OUTPUTLIST (_additional_information, _data, _data_hash, _data_version, _id, _insert_date, _repo, _sender, _service_version, _url
+        )
+        WRAPPER (custom bv_mongodb_tarif_requests_regal_requests_)
+    );
+

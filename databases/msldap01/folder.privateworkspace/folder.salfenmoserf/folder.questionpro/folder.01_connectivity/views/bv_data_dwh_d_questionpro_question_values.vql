@@ -1,0 +1,77 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_data_dwh_d_questionpro_question_values
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.questionpro.folder.01_connectivity.views.jdbc.bv_data_dwh_d_questionpro_question_values.SCHEMANAME}' 
+    RELATIONNAME='D_QUESTIONPRO_QUESTION_VALUES' 
+    OUTPUTSCHEMA (
+        dwh_qpquestval_hk = 'DWH_QPQUESTVAL_HK' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_qpquestval_ik = 'DWH_QPQUESTVAL_IK' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        dwh_qpsquest_ik = 'DWH_QPSQUEST_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_qpsurv_ik = 'DWH_QPSURV_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        answer_text = 'ANSWER_TEXT' :'java.lang.String' (OPT) (sourcetypesize='512', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        exclude_randomization = 'EXCLUDE_RANDOMIZATION' :'java.lang.Boolean' (OPT) (sourcetypesize='1', sourcetypeid='16', sourcetypename='BOOLEAN')  NOT SORTABLE,
+        is_default = 'IS_DEFAULT' :'java.lang.Boolean' (OPT) (sourcetypesize='1', sourcetypeid='16', sourcetypename='BOOLEAN')  NOT SORTABLE
+    )
+    CONSTRAINT 'SQL200310114059890' PRIMARY KEY ( 'DWH_QPQUESTVAL_HK' )
+    INDEX 'SQL200310114059880' OTHER UNIQUE PRIMARY ( 'DWH_QPQUESTVAL_HK' );
+
+CREATE OR REPLACE TABLE bv_data_dwh_d_questionpro_question_values I18N de_euro (
+        dwh_qpquestval_hk:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        dwh_qpquestval_ik:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        dwh_qpsquest_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_qpsurv_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_status:text (sourcetypeid = '12', sourcetypesize = '1'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_eingefuegt_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_geaendert_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        answer_text:text (sourcetypeid = '12', sourcetypesize = '512'), 
+        exclude_randomization:boolean (sourcetypeid = '16', sourcetypesize = '1'), 
+        is_default:boolean (sourcetypeid = '16', sourcetypesize = '1')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    CONSTRAINT 'SQL200310114059890' PRIMARY KEY ( 'dwh_qpquestval_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_data_dwh_d_questionpro_question_values(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_qpquestval_hk (any) OPT ANY
+             ADD dwh_qpquestval_ik (any) OPT ANY
+             ADD dwh_qpsquest_ik (any) OPT ANY
+             ADD dwh_qpsurv_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD answer_text (any) OPT ANY
+             ADD exclude_randomization (any) OPT ANY
+             ADD is_default (any) OPT ANY
+        )
+        OUTPUTLIST (answer_text, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_qpquestval_hk, dwh_qpquestval_ik, dwh_qpsquest_ik, dwh_qpsurv_ik, dwh_quellsystem, dwh_status, dwh_vbis, dwh_von, dwh_vvon, exclude_randomization, is_default
+        )
+        WRAPPER (jdbc bv_data_dwh_d_questionpro_question_values)
+    );
+

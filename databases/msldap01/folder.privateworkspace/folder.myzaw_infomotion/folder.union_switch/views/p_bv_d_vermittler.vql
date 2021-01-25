@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW p_bv_d_vermittler FOLDER = '/privateworkspace/myzaw_infomotion/union_switch'
+    PRIMARY KEY ( 'dwh_vm_hk' ) AS SELECT datauniversum.bv_d_vermittler.dwh_vm_hk AS dwh_vm_hk, datauniversum.bv_d_vermittler.dwh_vm_ik AS dwh_vm_ik, datauniversum.bv_d_vermittler.dwh_vvon AS dwh_vvon, datauniversum.bv_d_vermittler.dwh_vbis AS dwh_vbis, datauniversum.bv_d_vermittler.dwh_von AS dwh_von, datauniversum.bv_d_vermittler.dwh_bis AS dwh_bis, datauniversum.bv_d_vermittler.dwh_status AS dwh_status, 'DWH' AS source FROM datauniversum.bv_d_vermittler;
+
+ALTER VIEW p_bv_d_vermittler
+ LAYOUT (bv_d_vermittler = [20, 20, 377, 645]);
+

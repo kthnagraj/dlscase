@@ -1,0 +1,15 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_mongodb_tarif_requests
+    FOLDER = '/datasources/mongodb'
+    CLASSNAME='com.denodo.connect.mongodb.wrapper.MongoDBWrapper'
+    JARS 'denodo-mongodb-customwrapper-7.0'
+    PARAMETERS (
+      'Host' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Host}',
+      'Port' = ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Port},
+      'Pass-through session credentials' = false,
+      'User' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.User}',
+      'Password' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Password}' ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Password.encrypted},
+      'Database' = '${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Database}',
+      'Use SSL/TLS' = ${databases.msldap01.folder.datasources.folder.mongodb.datasources.custom.ds_mongodb_tarif_requests.Use SSL/TLS}
+    );
+

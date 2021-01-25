@@ -1,0 +1,38 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_ldap_s06_user_person
+    FOLDER = '/privateworkspace/bauerl/ldap/01_connectivity'
+    DATASOURCENAME=ds_ldap_s06
+    OBJECTCLASSES='person', 'user'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String' (OPT),
+        displayname = 'displayName' : 'java.lang.String' (OPT),
+        lastlogon = 'lastLogon' : 'java.lang.Long' (OPT),
+        lastlogontimestamp = 'lastLogonTimestamp' : 'java.lang.Long' (OPT),
+        userprincipalname = 'userPrincipalName' : 'java.lang.String' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_ldap_s06_user_person I18N de_euro (
+        cn:text, 
+        displayname:text, 
+        lastlogon:long, 
+        lastlogontimestamp:long, 
+        userprincipalname:text
+    )
+    FOLDER = '/privateworkspace/bauerl/ldap/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_ldap_s06_user_person(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn (any) OPT ANY
+             ADD displayname (any) OPT ANY
+             ADD lastlogon (any) OPT ANY
+             ADD lastlogontimestamp (any) OPT ANY
+             ADD userprincipalname (any) OPT ANY
+        )
+        OUTPUTLIST (cn, displayname, lastlogon, lastlogontimestamp, userprincipalname
+        )
+        WRAPPER (ldap bv_ldap_s06_user_person)
+    );
+

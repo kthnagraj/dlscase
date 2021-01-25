@@ -1,0 +1,15 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE SAPERP k01_data_700
+    FOLDER = '/privateworkspace/gundlachs/01.datasource'
+    SYSTEMNAME = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.SYSTEMNAME}'
+    HOSTNAME = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.HOSTNAME}'
+    CLIENTID = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.CLIENTID}'
+    SYSTEMNUMBER = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.SYSTEMNUMBER}'
+    USERNAME = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.USERNAME}'
+    USERPASSWORD = '${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.USERPASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.01..datasource.datasources.saperp.k01_data_700.USERPASSWORD.ENCRYPTED}
+    MAX_ACTIVE = 20
+    MAX_IDLE = 4
+    MAX_WAIT = 60000
+    MIN_EVICTABLE_IDLE_TIME = 100000
+    TIME_BETWEEN_EVICTION = 150000;
+

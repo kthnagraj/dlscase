@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_p_bv_d_vermittler FOLDER = '/privateworkspace/myzaw_infomotion/union_switch' AS SELECT p_bv_d_vermittler.dwh_vm_hk AS dwh_vm_hk, p_bv_d_vermittler.dwh_vm_ik AS dwh_vm_ik, p_bv_d_vermittler.dwh_vvon AS dwh_vvon, p_bv_d_vermittler.dwh_vbis AS dwh_vbis, p_bv_d_vermittler.dwh_von AS dwh_von, p_bv_d_vermittler.dwh_bis AS dwh_bis, p_bv_d_vermittler.dwh_status AS dwh_status, p_bv_d_vermittler.source AS source FROM p_bv_d_vermittler WHERE source = 'DWH';
+
+ALTER VIEW p_p_bv_d_vermittler
+ LAYOUT (p_bv_d_vermittler = [20, 20, 217, 186]);
+

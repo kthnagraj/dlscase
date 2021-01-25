@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW ds_kafka_stream_agg_j_ds_kafka_strea_agg_json FOLDER = '/privateworkspace/salfenmoserf/test/kafka' DESCRIPTION = 'https://community.denodo.com/answers/question/details?questionId=9060g00000009xUAAQ&title=Reading+JSON+form+a+database+column'  AS SELECT ds_kafka_stream_agg.key AS key, ds_kafka_stream_agg.partition AS partition, ds_kafka_stream_agg.position AS position, ds_kafka_stream_agg.timestamp AS kafka_timestamp, ds_kafka_stream_agg.begindate AS begindate, ds_kafka_stream_agg.enddate AS enddate, ds_kafka_strea_agg_json.id AS id, ds_kafka_strea_agg_json.name AS name, ds_kafka_strea_agg_json.state AS state, ds_kafka_strea_agg_json.timestamp AS timestamp FROM ds_kafka_stream_agg AS ds_kafka_stream_agg INNER JOIN ds_kafka_strea_agg_json AS ds_kafka_strea_agg_json ON ds_kafka_stream_agg.message = ds_kafka_strea_agg_json.var_json_kafka ;
+
+ALTER VIEW ds_kafka_stream_agg_j_ds_kafka_strea_agg_json
+ LAYOUT (ds_kafka_stream_agg = [159, 292, 200, 166], ds_kafka_strea_agg_json = [440, 320, 200, 126]);
+

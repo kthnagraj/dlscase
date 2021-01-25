@@ -1,0 +1,32 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_miteingabelang
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    LDAPEXPRESSION='(&(objectCategory=person)(objectClass=user)(memberOf:1.2.840.113556.1.4.1941:=@{{GRUPPE}}))'   
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String',
+        displayname = 'displayName' : 'java.lang.String',
+        gruppe = 'gruppe' : 'java.lang.String' (OBL) (DEFAULTVALUE='CN=dv_aktuariat,OU=Denodo,OU=GRUPPEN,DC=muc,DC=lv1871,DC=de') EXTERN
+    );
+
+CREATE OR REPLACE TABLE bv_miteingabelang I18N de_euro (
+        cn:text, 
+        displayname:text, 
+        gruppe:text (extern)
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_miteingabelang(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn NOS ZERO ()
+             ADD displayname NOS ZERO ()
+             ADD gruppe (=) OBL ONE
+        )
+        OUTPUTLIST (cn, displayname
+        )
+        WRAPPER (ldap bv_miteingabelang)
+    );
+

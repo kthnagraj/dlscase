@@ -1,0 +1,941 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM jira
+    FOLDER = '/privateworkspace/salfenmoserf/test/mongodb'
+    DATASOURCENAME=jira
+    PARAMETERS (
+      'Collection' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.mongodb.views.custom.jira.Collection}'
+    )
+    OUTPUTSCHEMA (
+        _id = '_id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _insert_date = '_insert_date' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+        _sender = '_sender' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _repo = '_repo' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _data_version = '_data_version' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _service_version = '_service_version' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _url = '_url' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _data_hash = '_data_hash' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _additional_information = '_additional_information' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        _data = '_data' : REGISTER OF (
+            expand = 'expand' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+            key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+            fields = 'fields' : REGISTER OF (
+                customfield_13100 = 'customfield_13100' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11200 = 'customfield_11200' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                resolution = 'resolution' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10500 = 'customfield_10500' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12800 = 'customfield_12800' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12802 = 'customfield_12802' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10107 = 'customfield_10107' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12801 = 'customfield_12801' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10108 = 'customfield_10108' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10900 = 'customfield_10900' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                lastviewed = 'lastViewed' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10100 = 'customfield_10100' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12400 = 'customfield_12400' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10101 = 'customfield_10101' : 'java.lang.Double' (OPT) (sourcetypeid='8')  SORTABLE,
+                customfield_10102 = 'customfield_10102' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11700 = 'customfield_11700' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11702 = 'customfield_11702' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11701 = 'customfield_11701' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11704 = 'customfield_11704' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                timeestimate = 'timeestimate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                aggregatetimeoriginalestimate = 'aggregatetimeoriginalestimate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11703 = 'customfield_11703' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11705 = 'customfield_11705' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                assignee = 'assignee' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                status = 'status' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    statuscategory = 'statusCategory' : REGISTER OF (
+                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        id = 'id' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                        key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        colorname = 'colorName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    )
+                ),
+                customfield_12512 = 'customfield_12512' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12900 = 'customfield_12900' : 'java.lang.Object' (OPT) (sourcetypeid='2000')  SORTABLE,
+                aggregatetimeestimate = 'aggregatetimeestimate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                creator = 'creator' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    avatarurls = 'avatarUrls' : REGISTER OF (
+                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    ),
+                    displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                    timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                ),
+                reporter = 'reporter' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    avatarurls = 'avatarUrls' : REGISTER OF (
+                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    ),
+                    displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                    timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                ),
+                customfield_12101 = 'customfield_12101' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12100 = 'customfield_12100' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                aggregateprogress = 'aggregateprogress' : REGISTER OF (
+                    progress = 'progress' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    total = 'total' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                ),
+                customfield_11800 = 'customfield_11800' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                progress = 'progress' : REGISTER OF (
+                    progress = 'progress' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    total = 'total' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                ),
+                votes = 'votes' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    votes = 'votes' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    hasvoted = 'hasVoted' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE
+                ),
+                worklog = 'worklog' : REGISTER OF (
+                    startat = 'startAt' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    maxresults = 'maxResults' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    total = 'total' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                ),
+                issuetype = 'issuetype' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    subtask = 'subtask' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                    avatarid = 'avatarId' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                ),
+                timespent = 'timespent' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                project = 'project' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    projecttypekey = 'projectTypeKey' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    avatarurls = 'avatarUrls' : REGISTER OF (
+                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    )
+                ),
+                customfield_11000 = 'customfield_11000' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    avatarurls = 'avatarUrls' : REGISTER OF (
+                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                    ),
+                    displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                    timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                ),
+                customfield_11001 = 'customfield_11001' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                aggregatetimespent = 'aggregatetimespent' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11400 = 'customfield_11400' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12602 = 'customfield_12602' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12205 = 'customfield_12205' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12601 = 'customfield_12601' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12604 = 'customfield_12604' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10701 = 'customfield_10701' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                resolutiondate = 'resolutiondate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                workratio = 'workratio' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                watches = 'watches' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    watchcount = 'watchCount' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    iswatching = 'isWatching' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE
+                ),
+                created = 'created' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12204 = 'customfield_12204' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12600 = 'customfield_12600' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12203 = 'customfield_12203' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13404 = 'customfield_13404' : REGISTER OF (
+                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                    id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                ),
+                customfield_13407 = 'customfield_13407' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11900 = 'customfield_11900' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11503 = 'customfield_11503' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13406 = 'customfield_13406' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13409 = 'customfield_13409' : ARRAY OF (
+                    customfield_13409_record = 'customfield_13409_record' : REGISTER OF (
+                        customfield_13409_item = 'customfield_13409_ITEM' : REGISTER OF (
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        )
+                    )
+                ),
+                customfield_11505 = 'customfield_11505' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13408 = 'customfield_13408' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                updated = 'updated' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                timeoriginalestimate = 'timeoriginalestimate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13401 = 'customfield_13401' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13400 = 'customfield_13400' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11500 = 'customfield_11500' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13402 = 'customfield_13402' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12701 = 'customfield_12701' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10006 = 'customfield_10006' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10402 = 'customfield_10402' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12700 = 'customfield_12700' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10403 = 'customfield_10403' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10800 = 'customfield_10800' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10801 = 'customfield_10801' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10806 = 'customfield_10806' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                summary = 'summary' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10001 = 'customfield_10001' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12301 = 'customfield_12301' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_10002 = 'customfield_10002' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12300 = 'customfield_12300' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12302 = 'customfield_12302' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11601 = 'customfield_11601' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11600 = 'customfield_11600' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                environment = 'environment' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_11602 = 'customfield_11602' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                duedate = 'duedate' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                comment = 'comment' : REGISTER OF (
+                    maxresults = 'maxResults' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    total = 'total' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    startat = 'startAt' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                    comments = 'comments' : ARRAY OF (
+                        comments_record = 'comments_record' : REGISTER OF (
+                            comments_item = 'comments_ITEM' : REGISTER OF (
+                                self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                author = 'author' : REGISTER OF (
+                                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    avatarurls = 'avatarUrls' : REGISTER OF (
+                                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                    ),
+                                    displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                                    timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                ),
+                                body = 'body' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                updateauthor = 'updateAuthor' : REGISTER OF (
+                                    self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    avatarurls = 'avatarUrls' : REGISTER OF (
+                                        x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                    ),
+                                    displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                                    timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                ),
+                                created = 'created' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                updated = 'updated' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                visibility = 'visibility' : REGISTER OF (
+                                    type = 'type' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                )
+                            )
+                        )
+                    )
+                ),
+                attachment = 'attachment' : ARRAY OF (
+                    attachment_record = 'attachment_record' : REGISTER OF (
+                        attachment_item = 'attachment_ITEM' : REGISTER OF (
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            filename = 'filename' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            author = 'author' : REGISTER OF (
+                                self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                emailaddress = 'emailAddress' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                avatarurls = 'avatarUrls' : REGISTER OF (
+                                    x48_0 = '48x48' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    x24_0 = '24x24' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    x16_0 = '16x16' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    x32_0 = '32x32' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                ),
+                                displayname = 'displayName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                active = 'active' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                                timezone = 'timeZone' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                            ),
+                            created = 'created' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            size = 'size' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                            mimetype = 'mimeType' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            content = 'content' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            thumbnail = 'thumbnail' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        )
+                    )
+                ),
+                issuelinks = 'issuelinks' : ARRAY OF (
+                    issuelinks_record = 'issuelinks_record' : REGISTER OF (
+                        issuelinks_item = 'issuelinks_ITEM' : REGISTER OF (
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            type = 'type' : REGISTER OF (
+                                id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                inward = 'inward' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                outward = 'outward' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                            ),
+                            inwardissue = 'inwardIssue' : REGISTER OF (
+                                id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                fields = 'fields' : REGISTER OF (
+                                    summary = 'summary' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    status = 'status' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        statuscategory = 'statusCategory' : REGISTER OF (
+                                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            id = 'id' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                                            key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            colorname = 'colorName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                        )
+                                    ),
+                                    issuetype = 'issuetype' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        subtask = 'subtask' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                                        avatarid = 'avatarId' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                                    ),
+                                    priority = 'priority' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                    )
+                                )
+                            ),
+                            outwardissue = 'outwardIssue' : REGISTER OF (
+                                id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                fields = 'fields' : REGISTER OF (
+                                    summary = 'summary' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                    status = 'status' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        statuscategory = 'statusCategory' : REGISTER OF (
+                                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            id = 'id' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+                                            key = 'key' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            colorname = 'colorName' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                            name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                        )
+                                    ),
+                                    issuetype = 'issuetype' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        description = 'description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        subtask = 'subtask' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+                                        avatarid = 'avatarId' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+                                    ),
+                                    priority = 'priority' : REGISTER OF (
+                                        self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        iconurl = 'iconUrl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                                        id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                customfield_13603 = 'customfield_13603' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13602 = 'customfield_13602' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_13601 = 'customfield_13601' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12510 = 'customfield_12510' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12503 = 'customfield_12503' : ARRAY OF (
+                    customfield_12503_record = 'customfield_12503_record' : REGISTER OF (
+                        customfield_12503_item = 'customfield_12503_ITEM' : REGISTER OF (
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        )
+                    )
+                ),
+                customfield_12505 = 'customfield_12505' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12504 = 'customfield_12504' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12507 = 'customfield_12507' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12506 = 'customfield_12506' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12509 = 'customfield_12509' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12508 = 'customfield_12508' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                customfield_12501 = 'customfield_12501' : ARRAY OF (
+                    customfield_12501_record = 'customfield_12501_record' : REGISTER OF (
+                        customfield_12501_item = 'customfield_12501_ITEM' : REGISTER OF (
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        )
+                    )
+                ),
+                customfield_12500 = 'customfield_12500' : ARRAY OF (
+                    customfield_12500_record = 'customfield_12500_record' : REGISTER OF (
+                        customfield_12500_item = 'customfield_12500_ITEM' : REGISTER OF (
+                            self = 'self' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            value = 'value' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+                            id = 'id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                        )
+                    )
+                )
+            ),
+            errormessages = 'errorMessages' : ARRAY OF (
+                errormessages_record = 'errorMessages_record' : REGISTER OF (
+                    errormessages_item = 'errorMessages_ITEM' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+                )
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE jira__data_fields_status_statuscategory AS REGISTER OF (self:text (sourcetypeid = '12'), id:int (sourcetypeid = '4'), key:text (sourcetypeid = '12'), colorname:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_status AS REGISTER OF (self:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), statuscategory:jira__data_fields_status_statuscategory);
+
+CREATE OR REPLACE TYPE jira__data_fields_creator_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_creator AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_creator_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_reporter_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_reporter AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_reporter_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_aggregateprogress AS REGISTER OF (progress:int (sourcetypeid = '4'), total:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_progress AS REGISTER OF (progress:int (sourcetypeid = '4'), total:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_votes AS REGISTER OF (self:text (sourcetypeid = '12'), votes:int (sourcetypeid = '4'), hasvoted:boolean (sourcetypeid = '16'));
+
+CREATE OR REPLACE TYPE jira__data_fields_worklog AS REGISTER OF (startat:int (sourcetypeid = '4'), maxresults:int (sourcetypeid = '4'), total:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuetype AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), subtask:boolean (sourcetypeid = '16'), avatarid:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_project_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_project AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), projecttypekey:text (sourcetypeid = '12'), avatarurls:jira__data_fields_project_avatarurls);
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_11000_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_11000 AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_customfield_11000_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_watches AS REGISTER OF (self:text (sourcetypeid = '12'), watchcount:int (sourcetypeid = '4'), iswatching:boolean (sourcetypeid = '16'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_13404 AS REGISTER OF (self:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_13409_customfield_13409_record_customfield_13409_item AS REGISTER OF (self:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_13409_customfield_13409_record AS REGISTER OF (customfield_13409_item:jira__data_fields_customfield_13409_customfield_13409_record_customfield_13409_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_13409 AS ARRAY OF jira__data_fields_customfield_13409_customfield_13409_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item_author_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item_author AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_comment_comments_comments_record_comments_item_author_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item_updateauthor_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item_updateauthor AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_comment_comments_comments_record_comments_item_updateauthor_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item_visibility AS REGISTER OF (type:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record_comments_item AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), author:jira__data_fields_comment_comments_comments_record_comments_item_author, body:text (sourcetypeid = '12'), updateauthor:jira__data_fields_comment_comments_comments_record_comments_item_updateauthor, created:text (sourcetypeid = '12'), updated:text (sourcetypeid = '12'), visibility:jira__data_fields_comment_comments_comments_record_comments_item_visibility);
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments_comments_record AS REGISTER OF (comments_item:jira__data_fields_comment_comments_comments_record_comments_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_comment_comments AS ARRAY OF jira__data_fields_comment_comments_comments_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_comment AS REGISTER OF (maxresults:int (sourcetypeid = '4'), total:int (sourcetypeid = '4'), startat:int (sourcetypeid = '4'), comments:jira__data_fields_comment_comments);
+
+CREATE OR REPLACE TYPE jira__data_fields_attachment_attachment_record_attachment_item_author_avatarurls AS REGISTER OF (x48_0:text (sourcetypeid = '12'), x24_0:text (sourcetypeid = '12'), x16_0:text (sourcetypeid = '12'), x32_0:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_attachment_attachment_record_attachment_item_author AS REGISTER OF (self:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), emailaddress:text (sourcetypeid = '12'), avatarurls:jira__data_fields_attachment_attachment_record_attachment_item_author_avatarurls, displayname:text (sourcetypeid = '12'), active:boolean (sourcetypeid = '16'), timezone:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_attachment_attachment_record_attachment_item AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), filename:text (sourcetypeid = '12'), author:jira__data_fields_attachment_attachment_record_attachment_item_author, created:text (sourcetypeid = '12'), size:int (sourcetypeid = '4'), mimetype:text (sourcetypeid = '12'), content:text (sourcetypeid = '12'), thumbnail:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_attachment_attachment_record AS REGISTER OF (attachment_item:jira__data_fields_attachment_attachment_record_attachment_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_attachment AS ARRAY OF jira__data_fields_attachment_attachment_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_type AS REGISTER OF (id:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), inward:text (sourcetypeid = '12'), outward:text (sourcetypeid = '12'), self:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_status_statuscat_0 AS REGISTER OF (self:text (sourcetypeid = '12'), id:int (sourcetypeid = '4'), key:text (sourcetypeid = '12'), colorname:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_status AS REGISTER OF (self:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), statuscategory:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_status_statuscat_0);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_issuetype AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), subtask:boolean (sourcetypeid = '16'), avatarid:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_priority AS REGISTER OF (self:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields AS REGISTER OF (summary:text (sourcetypeid = '12'), status:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_status, issuetype:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_issuetype, priority:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields_priority);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue AS REGISTER OF (id:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), self:text (sourcetypeid = '12'), fields:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue_fields);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_status_statusca_0 AS REGISTER OF (self:text (sourcetypeid = '12'), id:int (sourcetypeid = '4'), key:text (sourcetypeid = '12'), colorname:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_status AS REGISTER OF (self:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), statuscategory:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_status_statusca_0);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_issuetype AS REGISTER OF (self:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), subtask:boolean (sourcetypeid = '16'), avatarid:int (sourcetypeid = '4'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_priority AS REGISTER OF (self:text (sourcetypeid = '12'), iconurl:text (sourcetypeid = '12'), name:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields AS REGISTER OF (summary:text (sourcetypeid = '12'), status:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_status, issuetype:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_issuetype, priority:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields_priority);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue AS REGISTER OF (id:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), self:text (sourcetypeid = '12'), fields:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue_fields);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record_issuelinks_item AS REGISTER OF (id:text (sourcetypeid = '12'), self:text (sourcetypeid = '12'), type:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_type, inwardissue:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_inwardissue, outwardissue:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item_outwardissue);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks_issuelinks_record AS REGISTER OF (issuelinks_item:jira__data_fields_issuelinks_issuelinks_record_issuelinks_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_issuelinks AS ARRAY OF jira__data_fields_issuelinks_issuelinks_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12503_customfield_12503_record_customfield_12503_item AS REGISTER OF (self:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12503_customfield_12503_record AS REGISTER OF (customfield_12503_item:jira__data_fields_customfield_12503_customfield_12503_record_customfield_12503_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12503 AS ARRAY OF jira__data_fields_customfield_12503_customfield_12503_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12501_customfield_12501_record_customfield_12501_item AS REGISTER OF (self:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12501_customfield_12501_record AS REGISTER OF (customfield_12501_item:jira__data_fields_customfield_12501_customfield_12501_record_customfield_12501_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12501 AS ARRAY OF jira__data_fields_customfield_12501_customfield_12501_record;
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12500_customfield_12500_record_customfield_12500_item AS REGISTER OF (self:text (sourcetypeid = '12'), value:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12500_customfield_12500_record AS REGISTER OF (customfield_12500_item:jira__data_fields_customfield_12500_customfield_12500_record_customfield_12500_item);
+
+CREATE OR REPLACE TYPE jira__data_fields_customfield_12500 AS ARRAY OF jira__data_fields_customfield_12500_customfield_12500_record;
+
+CREATE OR REPLACE TYPE jira__data_fields AS REGISTER OF (customfield_13100:text (sourcetypeid = '12'), customfield_11200:text (sourcetypeid = '12'), resolution:text (sourcetypeid = '12'), customfield_10500:text (sourcetypeid = '12'), customfield_12800:text (sourcetypeid = '12'), customfield_12802:text (sourcetypeid = '12'), customfield_10107:text (sourcetypeid = '12'), customfield_12801:text (sourcetypeid = '12'), customfield_10108:text (sourcetypeid = '12'), customfield_10900:text (sourcetypeid = '12'), lastviewed:text (sourcetypeid = '12'), customfield_10100:text (sourcetypeid = '12'), customfield_12400:text (sourcetypeid = '12'), customfield_10101:double (sourcetypeid = '8'), customfield_10102:text (sourcetypeid = '12'), customfield_11700:text (sourcetypeid = '12'), customfield_11702:text (sourcetypeid = '12'), customfield_11701:text (sourcetypeid = '12'), customfield_11704:text (sourcetypeid = '12'), timeestimate:text (sourcetypeid = '12'), aggregatetimeoriginalestimate:text (sourcetypeid = '12'), customfield_11703:text (sourcetypeid = '12'), customfield_11705:text (sourcetypeid = '12'), assignee:text (sourcetypeid = '12'), status:jira__data_fields_status, customfield_12512:text (sourcetypeid = '12'), customfield_12900:text, aggregatetimeestimate:text (sourcetypeid = '12'), creator:jira__data_fields_creator, reporter:jira__data_fields_reporter, customfield_12101:text (sourcetypeid = '12'), customfield_12100:text (sourcetypeid = '12'), aggregateprogress:jira__data_fields_aggregateprogress, customfield_11800:text (sourcetypeid = '12'), progress:jira__data_fields_progress, votes:jira__data_fields_votes, worklog:jira__data_fields_worklog, issuetype:jira__data_fields_issuetype, timespent:text (sourcetypeid = '12'), project:jira__data_fields_project, customfield_11000:jira__data_fields_customfield_11000, customfield_11001:text (sourcetypeid = '12'), aggregatetimespent:text (sourcetypeid = '12'), customfield_11400:text (sourcetypeid = '12'), customfield_12602:text (sourcetypeid = '12'), customfield_12205:text (sourcetypeid = '12'), customfield_12601:text (sourcetypeid = '12'), customfield_12604:text (sourcetypeid = '12'), customfield_10701:text (sourcetypeid = '12'), resolutiondate:text (sourcetypeid = '12'), workratio:int (sourcetypeid = '4'), watches:jira__data_fields_watches, created:text (sourcetypeid = '12'), customfield_12204:text (sourcetypeid = '12'), customfield_12600:text (sourcetypeid = '12'), customfield_12203:text (sourcetypeid = '12'), customfield_13404:jira__data_fields_customfield_13404, customfield_13407:text (sourcetypeid = '12'), customfield_11900:text (sourcetypeid = '12'), customfield_11503:text (sourcetypeid = '12'), customfield_13406:text (sourcetypeid = '12'), customfield_13409:jira__data_fields_customfield_13409, customfield_11505:text (sourcetypeid = '12'), customfield_13408:text (sourcetypeid = '12'), updated:text (sourcetypeid = '12'), timeoriginalestimate:text (sourcetypeid = '12'), description:text (sourcetypeid = '12'), customfield_13401:text (sourcetypeid = '12'), customfield_13400:text (sourcetypeid = '12'), customfield_11500:text (sourcetypeid = '12'), customfield_13402:text (sourcetypeid = '12'), customfield_12701:text (sourcetypeid = '12'), customfield_10006:text (sourcetypeid = '12'), customfield_10402:text (sourcetypeid = '12'), customfield_12700:text (sourcetypeid = '12'), customfield_10403:text (sourcetypeid = '12'), customfield_10800:text (sourcetypeid = '12'), customfield_10801:text (sourcetypeid = '12'), customfield_10806:text (sourcetypeid = '12'), summary:text (sourcetypeid = '12'), customfield_10001:text (sourcetypeid = '12'), customfield_12301:text (sourcetypeid = '12'), customfield_10002:text (sourcetypeid = '12'), customfield_12300:text (sourcetypeid = '12'), customfield_12302:text (sourcetypeid = '12'), customfield_11601:text (sourcetypeid = '12'), customfield_11600:text (sourcetypeid = '12'), environment:text (sourcetypeid = '12'), customfield_11602:text (sourcetypeid = '12'), duedate:text (sourcetypeid = '12'), comment:jira__data_fields_comment, attachment:jira__data_fields_attachment, issuelinks:jira__data_fields_issuelinks, customfield_13603:text (sourcetypeid = '12'), customfield_13602:text (sourcetypeid = '12'), customfield_13601:text (sourcetypeid = '12'), customfield_12510:text (sourcetypeid = '12'), customfield_12503:jira__data_fields_customfield_12503, customfield_12505:text (sourcetypeid = '12'), customfield_12504:text (sourcetypeid = '12'), customfield_12507:text (sourcetypeid = '12'), customfield_12506:text (sourcetypeid = '12'), customfield_12509:text (sourcetypeid = '12'), customfield_12508:text (sourcetypeid = '12'), customfield_12501:jira__data_fields_customfield_12501, customfield_12500:jira__data_fields_customfield_12500);
+
+CREATE OR REPLACE TYPE jira__data_errormessages_errormessages_record AS REGISTER OF (errormessages_item:text (sourcetypeid = '12'));
+
+CREATE OR REPLACE TYPE jira__data_errormessages AS ARRAY OF jira__data_errormessages_errormessages_record;
+
+CREATE OR REPLACE TYPE jira__data AS REGISTER OF (expand:text (sourcetypeid = '12'), id:text (sourcetypeid = '12'), self:text (sourcetypeid = '12'), key:text (sourcetypeid = '12'), fields:jira__data_fields, errormessages:jira__data_errormessages);
+
+CREATE OR REPLACE TABLE jira I18N de_euro (
+        _id:text (sourcetypeid = '12'), 
+        _insert_date:timestamp (sourcetypeid = '93'), 
+        _sender:text (sourcetypeid = '12'), 
+        _repo:text (sourcetypeid = '12'), 
+        _data_version:text (sourcetypeid = '12'), 
+        _service_version:text (sourcetypeid = '12'), 
+        _url:text (sourcetypeid = '12'), 
+        _data_hash:text (sourcetypeid = '12'), 
+        _additional_information:text (sourcetypeid = '12'), 
+        _data:jira__data
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/test/mongodb'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD jira(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD _id (any) OPT ANY
+             ADD _insert_date (any) OPT ANY
+             ADD _sender (any) OPT ANY
+             ADD _repo (any) OPT ANY
+             ADD _data_version (any) OPT ANY
+             ADD _service_version (any) OPT ANY
+             ADD _url (any) OPT ANY
+             ADD _data_hash (any) OPT ANY
+             ADD _additional_information (any) OPT ANY
+             ADD _data NOS ZERO ()
+             ADD _data.expand (any) OPT ANY
+             ADD _data.id (any) OPT ANY
+             ADD _data.self (any) OPT ANY
+             ADD _data.key (any) OPT ANY
+             ADD _data.fields NOS ZERO ()
+             ADD _data.fields.customfield_13100 (any) OPT ANY
+             ADD _data.fields.customfield_11200 (any) OPT ANY
+             ADD _data.fields.resolution (any) OPT ANY
+             ADD _data.fields.customfield_10500 (any) OPT ANY
+             ADD _data.fields.customfield_12800 (any) OPT ANY
+             ADD _data.fields.customfield_12802 (any) OPT ANY
+             ADD _data.fields.customfield_10107 (any) OPT ANY
+             ADD _data.fields.customfield_12801 (any) OPT ANY
+             ADD _data.fields.customfield_10108 (any) OPT ANY
+             ADD _data.fields.customfield_10900 (any) OPT ANY
+             ADD _data.fields.lastviewed (any) OPT ANY
+             ADD _data.fields.customfield_10100 (any) OPT ANY
+             ADD _data.fields.customfield_12400 (any) OPT ANY
+             ADD _data.fields.customfield_10101 (any) OPT ANY
+             ADD _data.fields.customfield_10102 (any) OPT ANY
+             ADD _data.fields.customfield_11700 (any) OPT ANY
+             ADD _data.fields.customfield_11702 (any) OPT ANY
+             ADD _data.fields.customfield_11701 (any) OPT ANY
+             ADD _data.fields.customfield_11704 (any) OPT ANY
+             ADD _data.fields.timeestimate (any) OPT ANY
+             ADD _data.fields.aggregatetimeoriginalestimate (any) OPT ANY
+             ADD _data.fields.customfield_11703 (any) OPT ANY
+             ADD _data.fields.customfield_11705 (any) OPT ANY
+             ADD _data.fields.assignee (any) OPT ANY
+             ADD _data.fields.status NOS ZERO ()
+             ADD _data.fields.status.self (any) OPT ANY
+             ADD _data.fields.status.description (any) OPT ANY
+             ADD _data.fields.status.iconurl (any) OPT ANY
+             ADD _data.fields.status.name (any) OPT ANY
+             ADD _data.fields.status.id (any) OPT ANY
+             ADD _data.fields.status.statuscategory NOS ZERO ()
+             ADD _data.fields.status.statuscategory.self (any) OPT ANY
+             ADD _data.fields.status.statuscategory.id (any) OPT ANY
+             ADD _data.fields.status.statuscategory.key (any) OPT ANY
+             ADD _data.fields.status.statuscategory.colorname (any) OPT ANY
+             ADD _data.fields.status.statuscategory.name (any) OPT ANY
+             ADD _data.fields.customfield_12512 (any) OPT ANY
+             ADD _data.fields.customfield_12900 (any) OPT ANY
+             ADD _data.fields.aggregatetimeestimate (any) OPT ANY
+             ADD _data.fields.creator NOS ZERO ()
+             ADD _data.fields.creator.self (any) OPT ANY
+             ADD _data.fields.creator.name (any) OPT ANY
+             ADD _data.fields.creator.key (any) OPT ANY
+             ADD _data.fields.creator.emailaddress (any) OPT ANY
+             ADD _data.fields.creator.avatarurls NOS ZERO ()
+             ADD _data.fields.creator.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.creator.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.creator.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.creator.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.creator.displayname (any) OPT ANY
+             ADD _data.fields.creator.active (any) OPT ANY
+             ADD _data.fields.creator.timezone (any) OPT ANY
+             ADD _data.fields.reporter NOS ZERO ()
+             ADD _data.fields.reporter.self (any) OPT ANY
+             ADD _data.fields.reporter.name (any) OPT ANY
+             ADD _data.fields.reporter.key (any) OPT ANY
+             ADD _data.fields.reporter.emailaddress (any) OPT ANY
+             ADD _data.fields.reporter.avatarurls NOS ZERO ()
+             ADD _data.fields.reporter.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.reporter.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.reporter.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.reporter.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.reporter.displayname (any) OPT ANY
+             ADD _data.fields.reporter.active (any) OPT ANY
+             ADD _data.fields.reporter.timezone (any) OPT ANY
+             ADD _data.fields.customfield_12101 (any) OPT ANY
+             ADD _data.fields.customfield_12100 (any) OPT ANY
+             ADD _data.fields.aggregateprogress NOS ZERO ()
+             ADD _data.fields.aggregateprogress.progress (any) OPT ANY
+             ADD _data.fields.aggregateprogress.total (any) OPT ANY
+             ADD _data.fields.customfield_11800 (any) OPT ANY
+             ADD _data.fields.progress NOS ZERO ()
+             ADD _data.fields.progress.progress (any) OPT ANY
+             ADD _data.fields.progress.total (any) OPT ANY
+             ADD _data.fields.votes NOS ZERO ()
+             ADD _data.fields.votes.self (any) OPT ANY
+             ADD _data.fields.votes.votes (any) OPT ANY
+             ADD _data.fields.votes.hasvoted (any) OPT ANY
+             ADD _data.fields.worklog NOS ZERO ()
+             ADD _data.fields.worklog.startat (any) OPT ANY
+             ADD _data.fields.worklog.maxresults (any) OPT ANY
+             ADD _data.fields.worklog.total (any) OPT ANY
+             ADD _data.fields.issuetype NOS ZERO ()
+             ADD _data.fields.issuetype.self (any) OPT ANY
+             ADD _data.fields.issuetype.id (any) OPT ANY
+             ADD _data.fields.issuetype.description (any) OPT ANY
+             ADD _data.fields.issuetype.iconurl (any) OPT ANY
+             ADD _data.fields.issuetype.name (any) OPT ANY
+             ADD _data.fields.issuetype.subtask (any) OPT ANY
+             ADD _data.fields.issuetype.avatarid (any) OPT ANY
+             ADD _data.fields.timespent (any) OPT ANY
+             ADD _data.fields.project NOS ZERO ()
+             ADD _data.fields.project.self (any) OPT ANY
+             ADD _data.fields.project.id (any) OPT ANY
+             ADD _data.fields.project.key (any) OPT ANY
+             ADD _data.fields.project.name (any) OPT ANY
+             ADD _data.fields.project.projecttypekey (any) OPT ANY
+             ADD _data.fields.project.avatarurls NOS ZERO ()
+             ADD _data.fields.project.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.project.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.project.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.project.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.customfield_11000 NOS ZERO ()
+             ADD _data.fields.customfield_11000.self (any) OPT ANY
+             ADD _data.fields.customfield_11000.name (any) OPT ANY
+             ADD _data.fields.customfield_11000.key (any) OPT ANY
+             ADD _data.fields.customfield_11000.emailaddress (any) OPT ANY
+             ADD _data.fields.customfield_11000.avatarurls NOS ZERO ()
+             ADD _data.fields.customfield_11000.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.customfield_11000.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.customfield_11000.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.customfield_11000.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.customfield_11000.displayname (any) OPT ANY
+             ADD _data.fields.customfield_11000.active (any) OPT ANY
+             ADD _data.fields.customfield_11000.timezone (any) OPT ANY
+             ADD _data.fields.customfield_11001 (any) OPT ANY
+             ADD _data.fields.aggregatetimespent (any) OPT ANY
+             ADD _data.fields.customfield_11400 (any) OPT ANY
+             ADD _data.fields.customfield_12602 (any) OPT ANY
+             ADD _data.fields.customfield_12205 (any) OPT ANY
+             ADD _data.fields.customfield_12601 (any) OPT ANY
+             ADD _data.fields.customfield_12604 (any) OPT ANY
+             ADD _data.fields.customfield_10701 (any) OPT ANY
+             ADD _data.fields.resolutiondate (any) OPT ANY
+             ADD _data.fields.workratio (any) OPT ANY
+             ADD _data.fields.watches NOS ZERO ()
+             ADD _data.fields.watches.self (any) OPT ANY
+             ADD _data.fields.watches.watchcount (any) OPT ANY
+             ADD _data.fields.watches.iswatching (any) OPT ANY
+             ADD _data.fields.created (any) OPT ANY
+             ADD _data.fields.customfield_12204 (any) OPT ANY
+             ADD _data.fields.customfield_12600 (any) OPT ANY
+             ADD _data.fields.customfield_12203 (any) OPT ANY
+             ADD _data.fields.customfield_13404 NOS ZERO ()
+             ADD _data.fields.customfield_13404.self (any) OPT ANY
+             ADD _data.fields.customfield_13404.value (any) OPT ANY
+             ADD _data.fields.customfield_13404.id (any) OPT ANY
+             ADD _data.fields.customfield_13407 (any) OPT ANY
+             ADD _data.fields.customfield_11900 (any) OPT ANY
+             ADD _data.fields.customfield_11503 (any) OPT ANY
+             ADD _data.fields.customfield_13406 (any) OPT ANY
+             ADD _data.fields.customfield_13409 NOS ZERO ()
+             ADD _data.fields.customfield_13409 NOS ZERO ()
+             ADD _data.fields.customfield_13409.customfield_13409_item NOS ZERO ()
+             ADD _data.fields.customfield_13409.customfield_13409_item.self (any) OPT ANY
+             ADD _data.fields.customfield_13409.customfield_13409_item.value (any) OPT ANY
+             ADD _data.fields.customfield_13409.customfield_13409_item.id (any) OPT ANY
+             ADD _data.fields.customfield_11505 (any) OPT ANY
+             ADD _data.fields.customfield_13408 (any) OPT ANY
+             ADD _data.fields.updated (any) OPT ANY
+             ADD _data.fields.timeoriginalestimate (any) OPT ANY
+             ADD _data.fields.description (any) OPT ANY
+             ADD _data.fields.customfield_13401 (any) OPT ANY
+             ADD _data.fields.customfield_13400 (any) OPT ANY
+             ADD _data.fields.customfield_11500 (any) OPT ANY
+             ADD _data.fields.customfield_13402 (any) OPT ANY
+             ADD _data.fields.customfield_12701 (any) OPT ANY
+             ADD _data.fields.customfield_10006 (any) OPT ANY
+             ADD _data.fields.customfield_10402 (any) OPT ANY
+             ADD _data.fields.customfield_12700 (any) OPT ANY
+             ADD _data.fields.customfield_10403 (any) OPT ANY
+             ADD _data.fields.customfield_10800 (any) OPT ANY
+             ADD _data.fields.customfield_10801 (any) OPT ANY
+             ADD _data.fields.customfield_10806 (any) OPT ANY
+             ADD _data.fields.summary (any) OPT ANY
+             ADD _data.fields.customfield_10001 (any) OPT ANY
+             ADD _data.fields.customfield_12301 (any) OPT ANY
+             ADD _data.fields.customfield_10002 (any) OPT ANY
+             ADD _data.fields.customfield_12300 (any) OPT ANY
+             ADD _data.fields.customfield_12302 (any) OPT ANY
+             ADD _data.fields.customfield_11601 (any) OPT ANY
+             ADD _data.fields.customfield_11600 (any) OPT ANY
+             ADD _data.fields.environment (any) OPT ANY
+             ADD _data.fields.customfield_11602 (any) OPT ANY
+             ADD _data.fields.duedate (any) OPT ANY
+             ADD _data.fields.comment NOS ZERO ()
+             ADD _data.fields.comment.maxresults (any) OPT ANY
+             ADD _data.fields.comment.total (any) OPT ANY
+             ADD _data.fields.comment.startat (any) OPT ANY
+             ADD _data.fields.comment.comments NOS ZERO ()
+             ADD _data.fields.comment.comments NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.self (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.id (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.author.self (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.name (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.key (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.emailaddress (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.avatarurls NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.author.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.displayname (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.active (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.author.timezone (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.body (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.updateauthor.self (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.name (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.key (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.emailaddress (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.avatarurls NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.updateauthor.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.displayname (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.active (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updateauthor.timezone (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.created (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.updated (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.visibility NOS ZERO ()
+             ADD _data.fields.comment.comments.comments_item.visibility.type (any) OPT ANY
+             ADD _data.fields.comment.comments.comments_item.visibility.value (any) OPT ANY
+             ADD _data.fields.attachment NOS ZERO ()
+             ADD _data.fields.attachment NOS ZERO ()
+             ADD _data.fields.attachment.attachment_item NOS ZERO ()
+             ADD _data.fields.attachment.attachment_item.self (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.id (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.filename (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author NOS ZERO ()
+             ADD _data.fields.attachment.attachment_item.author.self (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.name (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.key (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.emailaddress (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.avatarurls NOS ZERO ()
+             ADD _data.fields.attachment.attachment_item.author.avatarurls.x48_0 (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.avatarurls.x24_0 (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.avatarurls.x16_0 (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.avatarurls.x32_0 (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.displayname (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.active (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.author.timezone (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.created (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.size (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.mimetype (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.content (any) OPT ANY
+             ADD _data.fields.attachment.attachment_item.thumbnail (any) OPT ANY
+             ADD _data.fields.issuelinks NOS ZERO ()
+             ADD _data.fields.issuelinks NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.type NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.type.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.type.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.type.inward (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.type.outward (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.type.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.key (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.summary (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.description (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory.key (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory.colorname (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.status.statuscategory.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.description (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.subtask (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.issuetype.avatarid (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.priority NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.priority.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.priority.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.priority.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.inwardissue.fields.priority.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.key (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.summary (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.description (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory.key (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory.colorname (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.status.statuscategory.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.id (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.description (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.subtask (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.issuetype.avatarid (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.priority NOS ZERO ()
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.priority.self (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.priority.iconurl (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.priority.name (any) OPT ANY
+             ADD _data.fields.issuelinks.issuelinks_item.outwardissue.fields.priority.id (any) OPT ANY
+             ADD _data.fields.customfield_13603 (any) OPT ANY
+             ADD _data.fields.customfield_13602 (any) OPT ANY
+             ADD _data.fields.customfield_13601 (any) OPT ANY
+             ADD _data.fields.customfield_12510 (any) OPT ANY
+             ADD _data.fields.customfield_12503 NOS ZERO ()
+             ADD _data.fields.customfield_12503 NOS ZERO ()
+             ADD _data.fields.customfield_12503.customfield_12503_item NOS ZERO ()
+             ADD _data.fields.customfield_12503.customfield_12503_item.self (any) OPT ANY
+             ADD _data.fields.customfield_12503.customfield_12503_item.value (any) OPT ANY
+             ADD _data.fields.customfield_12503.customfield_12503_item.id (any) OPT ANY
+             ADD _data.fields.customfield_12505 (any) OPT ANY
+             ADD _data.fields.customfield_12504 (any) OPT ANY
+             ADD _data.fields.customfield_12507 (any) OPT ANY
+             ADD _data.fields.customfield_12506 (any) OPT ANY
+             ADD _data.fields.customfield_12509 (any) OPT ANY
+             ADD _data.fields.customfield_12508 (any) OPT ANY
+             ADD _data.fields.customfield_12501 NOS ZERO ()
+             ADD _data.fields.customfield_12501 NOS ZERO ()
+             ADD _data.fields.customfield_12501.customfield_12501_item NOS ZERO ()
+             ADD _data.fields.customfield_12501.customfield_12501_item.self (any) OPT ANY
+             ADD _data.fields.customfield_12501.customfield_12501_item.value (any) OPT ANY
+             ADD _data.fields.customfield_12501.customfield_12501_item.id (any) OPT ANY
+             ADD _data.fields.customfield_12500 NOS ZERO ()
+             ADD _data.fields.customfield_12500 NOS ZERO ()
+             ADD _data.fields.customfield_12500.customfield_12500_item NOS ZERO ()
+             ADD _data.fields.customfield_12500.customfield_12500_item.self (any) OPT ANY
+             ADD _data.fields.customfield_12500.customfield_12500_item.value (any) OPT ANY
+             ADD _data.fields.customfield_12500.customfield_12500_item.id (any) OPT ANY
+             ADD _data.errormessages NOS ZERO ()
+             ADD _data.errormessages NOS ZERO ()
+             ADD _data.errormessages.errormessages_item (any) OPT ANY
+        )
+        OUTPUTLIST (_additional_information, _data, _data_hash, _data_version, _id, _insert_date, _repo, _sender, _service_version, _url
+        )
+        WRAPPER (custom jira)
+    );
+

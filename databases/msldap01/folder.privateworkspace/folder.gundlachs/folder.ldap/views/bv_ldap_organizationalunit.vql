@@ -1,0 +1,285 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_ldap_organizationalunit
+    FOLDER = '/privateworkspace/gundlachs/ldap'
+    DATASOURCENAME=my_ldap_connection
+    OBJECTCLASSES='organizationalUnit'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        businesscategory = 'businessCategory' : ARRAY OF (
+            businesscategory = 'businessCategory' : REGISTER OF (
+                businesscategory = 'businessCategory' : 'java.lang.String' (OPT)
+            )
+        ),
+        c = 'c' : 'java.lang.String' (OPT),
+        co = 'co' : 'java.lang.String' (OPT),
+        countrycode = 'countryCode' : 'java.lang.Integer' (OPT),
+        defaultgroup = 'defaultGroup' : 'java.lang.String' (OPT),
+        desktopprofile = 'desktopProfile' : 'java.lang.String' (OPT),
+        destinationindicator = 'destinationIndicator' : ARRAY OF (
+            destinationindicator = 'destinationIndicator' : REGISTER OF (
+                destinationindicator = 'destinationIndicator' : 'java.lang.String' (OPT)
+            )
+        ),
+        facsimiletelephonenumber = 'facsimileTelephoneNumber' : 'java.lang.String' (OPT),
+        gplink = 'gPLink' : 'java.lang.String' (OPT),
+        gpoptions = 'gPOptions' : 'java.lang.Integer' (OPT),
+        internationalisdnnumber = 'internationalISDNNumber' : ARRAY OF (
+            internationalisdnnumber = 'internationalISDNNumber' : REGISTER OF (
+                internationalisdnnumber = 'internationalISDNNumber' : 'java.lang.String' (OPT)
+            )
+        ),
+        l = 'l' : 'java.lang.String' (OPT),
+        managedby = 'managedBy' : 'java.lang.String' (OPT),
+        mscomuserpartitionsetlink_0 = 'msCOM-UserPartitionSetLink' : 'java.lang.String' (OPT),
+        msexchpolicylist = 'msExchPolicyList' : ARRAY OF (
+            msexchpolicylist = 'msExchPolicyList' : REGISTER OF (
+                msexchpolicylist = 'msExchPolicyList' : 'java.lang.String' (OPT)
+            )
+        ),
+        msrtcsiptenantid_0 = 'msRTCSIP-TenantId' : 'java.lang.String' (OPT),
+        ou = 'ou' : ARRAY OF (
+            ou = 'OU' : REGISTER OF (
+                ou = 'ou' : 'java.lang.String' (OPT)
+            )
+        ),
+        physicaldeliveryofficename = 'physicalDeliveryOfficeName' : 'java.lang.String' (OPT),
+        postofficebox = 'postOfficeBox' : ARRAY OF (
+            postofficebox = 'postOfficeBox' : REGISTER OF (
+                postofficebox = 'postOfficeBox' : 'java.lang.String' (OPT)
+            )
+        ),
+        postaladdress = 'postalAddress' : ARRAY OF (
+            postaladdress = 'postalAddress' : REGISTER OF (
+                postaladdress = 'postalAddress' : 'java.lang.String' (OPT)
+            )
+        ),
+        postalcode = 'postalCode' : 'java.lang.String' (OPT),
+        preferreddeliverymethod = 'preferredDeliveryMethod' : ARRAY OF (
+            preferreddeliverymethod = 'preferredDeliveryMethod' : REGISTER OF (
+                preferreddeliverymethod = 'preferredDeliveryMethod' : 'java.lang.Integer' (OPT)
+            )
+        ),
+        registeredaddress = 'registeredAddress' : ARRAY OF (
+            registeredaddress = 'registeredAddress' : REGISTER OF (
+                registeredaddress = 'registeredAddress' : 'java.lang.String' (OPT)
+            )
+        ),
+        searchguide = 'searchGuide' : ARRAY OF (
+            searchguide = 'searchGuide' : REGISTER OF (
+                searchguide = 'searchGuide' : 'java.lang.String' (OPT)
+            )
+        ),
+        seealso = 'seeAlso' : ARRAY OF (
+            seealso = 'seeAlso' : REGISTER OF (
+                seealso = 'seeAlso' : 'java.lang.String' (OPT)
+            )
+        ),
+        st = 'st' : 'java.lang.String' (OPT),
+        street = 'street' : 'java.lang.String' (OPT),
+        telephonenumber = 'telephoneNumber' : 'java.lang.String' (OPT),
+        teletexterminalidentifier = 'teletexTerminalIdentifier' : ARRAY OF (
+            teletexterminalidentifier = 'teletexTerminalIdentifier' : REGISTER OF (
+                teletexterminalidentifier = 'teletexTerminalIdentifier' : 'java.lang.String' (OPT)
+            )
+        ),
+        telexnumber = 'telexNumber' : ARRAY OF (
+            telexnumber = 'telexNumber' : REGISTER OF (
+                telexnumber = 'telexNumber' : 'java.lang.String' (OPT)
+            )
+        ),
+        thumbnaillogo = 'thumbnailLogo' : 'java.lang.String' (OPT),
+        upnsuffixes = 'uPNSuffixes' : ARRAY OF (
+            upnsuffixes = 'uPNSuffixes' : REGISTER OF (
+                upnsuffixes = 'uPNSuffixes' : 'java.lang.String' (OPT)
+            )
+        ),
+        userpassword = 'userPassword' : ARRAY OF (
+            userpassword = 'userPassword' : REGISTER OF (
+                userpassword = 'userPassword' : 'java.lang.String' (OPT)
+            )
+        ),
+        x121address = 'x121Address' : ARRAY OF (
+            x121address = 'x121Address' : REGISTER OF (
+                x121address = 'x121Address' : 'java.lang.String' (OPT)
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE organizationalunit_businesscategory_businesscategory AS REGISTER OF (businesscategory:text);
+
+CREATE OR REPLACE TYPE organizationalunit_businesscategory AS ARRAY OF organizationalunit_businesscategory_businesscategory;
+
+CREATE OR REPLACE TYPE organizationalunit_destinationindicator_destinationindicator AS REGISTER OF (destinationindicator:text);
+
+CREATE OR REPLACE TYPE organizationalunit_destinationindicator AS ARRAY OF organizationalunit_destinationindicator_destinationindicator;
+
+CREATE OR REPLACE TYPE organizationalunit_internationalisdnnumber_internationalisdnnumber AS REGISTER OF (internationalisdnnumber:text);
+
+CREATE OR REPLACE TYPE organizationalunit_internationalisdnnumber AS ARRAY OF organizationalunit_internationalisdnnumber_internationalisdnnumber;
+
+CREATE OR REPLACE TYPE organizationalunit_msexchpolicylist_msexchpolicylist AS REGISTER OF (msexchpolicylist:text);
+
+CREATE OR REPLACE TYPE organizationalunit_msexchpolicylist AS ARRAY OF organizationalunit_msexchpolicylist_msexchpolicylist;
+
+CREATE OR REPLACE TYPE organizationalunit_ou_ou AS REGISTER OF (ou:text);
+
+CREATE OR REPLACE TYPE organizationalunit_ou AS ARRAY OF organizationalunit_ou_ou;
+
+CREATE OR REPLACE TYPE organizationalunit_postofficebox_postofficebox AS REGISTER OF (postofficebox:text);
+
+CREATE OR REPLACE TYPE organizationalunit_postofficebox AS ARRAY OF organizationalunit_postofficebox_postofficebox;
+
+CREATE OR REPLACE TYPE organizationalunit_postaladdress_postaladdress AS REGISTER OF (postaladdress:text);
+
+CREATE OR REPLACE TYPE organizationalunit_postaladdress AS ARRAY OF organizationalunit_postaladdress_postaladdress;
+
+CREATE OR REPLACE TYPE organizationalunit_preferreddeliverymethod_preferreddeliverymethod AS REGISTER OF (preferreddeliverymethod:int);
+
+CREATE OR REPLACE TYPE organizationalunit_preferreddeliverymethod AS ARRAY OF organizationalunit_preferreddeliverymethod_preferreddeliverymethod;
+
+CREATE OR REPLACE TYPE organizationalunit_registeredaddress_registeredaddress AS REGISTER OF (registeredaddress:text);
+
+CREATE OR REPLACE TYPE organizationalunit_registeredaddress AS ARRAY OF organizationalunit_registeredaddress_registeredaddress;
+
+CREATE OR REPLACE TYPE organizationalunit_searchguide_searchguide AS REGISTER OF (searchguide:text);
+
+CREATE OR REPLACE TYPE organizationalunit_searchguide AS ARRAY OF organizationalunit_searchguide_searchguide;
+
+CREATE OR REPLACE TYPE organizationalunit_seealso_seealso AS REGISTER OF (seealso:text);
+
+CREATE OR REPLACE TYPE organizationalunit_seealso AS ARRAY OF organizationalunit_seealso_seealso;
+
+CREATE OR REPLACE TYPE organizationalunit_teletexterminalidentifier_teletexterminalidentifier AS REGISTER OF (teletexterminalidentifier:text);
+
+CREATE OR REPLACE TYPE organizationalunit_teletexterminalidentifier AS ARRAY OF organizationalunit_teletexterminalidentifier_teletexterminalidentifier;
+
+CREATE OR REPLACE TYPE organizationalunit_telexnumber_telexnumber AS REGISTER OF (telexnumber:text);
+
+CREATE OR REPLACE TYPE organizationalunit_telexnumber AS ARRAY OF organizationalunit_telexnumber_telexnumber;
+
+CREATE OR REPLACE TYPE organizationalunit_upnsuffixes_upnsuffixes AS REGISTER OF (upnsuffixes:text);
+
+CREATE OR REPLACE TYPE organizationalunit_upnsuffixes AS ARRAY OF organizationalunit_upnsuffixes_upnsuffixes;
+
+CREATE OR REPLACE TYPE organizationalunit_userpassword_userpassword AS REGISTER OF (userpassword:text);
+
+CREATE OR REPLACE TYPE organizationalunit_userpassword AS ARRAY OF organizationalunit_userpassword_userpassword;
+
+CREATE OR REPLACE TYPE organizationalunit_x121address_x121address AS REGISTER OF (x121address:text);
+
+CREATE OR REPLACE TYPE organizationalunit_x121address AS ARRAY OF organizationalunit_x121address_x121address;
+
+CREATE OR REPLACE TABLE bv_ldap_organizationalunit I18N de_euro (
+        businesscategory:organizationalunit_businesscategory, 
+        c:text, 
+        co:text, 
+        countrycode:int, 
+        defaultgroup:text, 
+        desktopprofile:text, 
+        destinationindicator:organizationalunit_destinationindicator, 
+        facsimiletelephonenumber:text, 
+        gplink:text, 
+        gpoptions:int, 
+        internationalisdnnumber:organizationalunit_internationalisdnnumber, 
+        l:text, 
+        managedby:text, 
+        mscomuserpartitionsetlink_0:text, 
+        msexchpolicylist:organizationalunit_msexchpolicylist, 
+        msrtcsiptenantid_0:text, 
+        ou:organizationalunit_ou, 
+        physicaldeliveryofficename:text, 
+        postofficebox:organizationalunit_postofficebox, 
+        postaladdress:organizationalunit_postaladdress, 
+        postalcode:text, 
+        preferreddeliverymethod:organizationalunit_preferreddeliverymethod, 
+        registeredaddress:organizationalunit_registeredaddress, 
+        searchguide:organizationalunit_searchguide, 
+        seealso:organizationalunit_seealso, 
+        st:text, 
+        street:text, 
+        telephonenumber:text, 
+        teletexterminalidentifier:organizationalunit_teletexterminalidentifier, 
+        telexnumber:organizationalunit_telexnumber, 
+        thumbnaillogo:text, 
+        upnsuffixes:organizationalunit_upnsuffixes, 
+        userpassword:organizationalunit_userpassword, 
+        x121address:organizationalunit_x121address
+    )
+    FOLDER = '/privateworkspace/gundlachs/ldap'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_ldap_organizationalunit(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD businesscategory NOS ZERO ()
+             ADD businesscategory NOS ZERO ()
+             ADD businesscategory.businesscategory (any) OPT ANY
+             ADD c (any) OPT ANY
+             ADD co (any) OPT ANY
+             ADD countrycode (any) OPT ANY
+             ADD defaultgroup (any) OPT ANY
+             ADD desktopprofile (any) OPT ANY
+             ADD destinationindicator NOS ZERO ()
+             ADD destinationindicator NOS ZERO ()
+             ADD destinationindicator.destinationindicator (any) OPT ANY
+             ADD facsimiletelephonenumber (any) OPT ANY
+             ADD gplink (any) OPT ANY
+             ADD gpoptions (any) OPT ANY
+             ADD internationalisdnnumber NOS ZERO ()
+             ADD internationalisdnnumber NOS ZERO ()
+             ADD internationalisdnnumber.internationalisdnnumber (any) OPT ANY
+             ADD l (any) OPT ANY
+             ADD managedby (any) OPT ANY
+             ADD mscomuserpartitionsetlink_0 (any) OPT ANY
+             ADD msexchpolicylist NOS ZERO ()
+             ADD msexchpolicylist NOS ZERO ()
+             ADD msexchpolicylist.msexchpolicylist (any) OPT ANY
+             ADD msrtcsiptenantid_0 (any) OPT ANY
+             ADD ou NOS ZERO ()
+             ADD ou NOS ZERO ()
+             ADD ou.ou (any) OPT ANY
+             ADD physicaldeliveryofficename (any) OPT ANY
+             ADD postofficebox NOS ZERO ()
+             ADD postofficebox NOS ZERO ()
+             ADD postofficebox.postofficebox (any) OPT ANY
+             ADD postaladdress NOS ZERO ()
+             ADD postaladdress NOS ZERO ()
+             ADD postaladdress.postaladdress (any) OPT ANY
+             ADD postalcode (any) OPT ANY
+             ADD preferreddeliverymethod NOS ZERO ()
+             ADD preferreddeliverymethod NOS ZERO ()
+             ADD preferreddeliverymethod.preferreddeliverymethod (any) OPT ANY
+             ADD registeredaddress NOS ZERO ()
+             ADD registeredaddress NOS ZERO ()
+             ADD registeredaddress.registeredaddress (any) OPT ANY
+             ADD searchguide NOS ZERO ()
+             ADD searchguide NOS ZERO ()
+             ADD searchguide.searchguide (any) OPT ANY
+             ADD seealso NOS ZERO ()
+             ADD seealso NOS ZERO ()
+             ADD seealso.seealso (any) OPT ANY
+             ADD st (any) OPT ANY
+             ADD street (any) OPT ANY
+             ADD telephonenumber (any) OPT ANY
+             ADD teletexterminalidentifier NOS ZERO ()
+             ADD teletexterminalidentifier NOS ZERO ()
+             ADD teletexterminalidentifier.teletexterminalidentifier (any) OPT ANY
+             ADD telexnumber NOS ZERO ()
+             ADD telexnumber NOS ZERO ()
+             ADD telexnumber.telexnumber (any) OPT ANY
+             ADD thumbnaillogo (any) OPT ANY
+             ADD upnsuffixes NOS ZERO ()
+             ADD upnsuffixes NOS ZERO ()
+             ADD upnsuffixes.upnsuffixes (any) OPT ANY
+             ADD userpassword NOS ZERO ()
+             ADD userpassword NOS ZERO ()
+             ADD userpassword.userpassword (any) OPT ANY
+             ADD x121address NOS ZERO ()
+             ADD x121address NOS ZERO ()
+             ADD x121address.x121address (any) OPT ANY
+        )
+        OUTPUTLIST (businesscategory, c, co, countrycode, defaultgroup, desktopprofile, destinationindicator, facsimiletelephonenumber, gplink, gpoptions, internationalisdnnumber, l, managedby, mscomuserpartitionsetlink_0, msexchpolicylist, msrtcsiptenantid_0, ou, physicaldeliveryofficename, postaladdress, postalcode, postofficebox, preferreddeliverymethod, registeredaddress, searchguide, seealso, st, street, telephonenumber, teletexterminalidentifier, telexnumber, thumbnaillogo, upnsuffixes, userpassword, x121address
+        )
+        WRAPPER (ldap bv_ldap_organizationalunit)
+    );
+

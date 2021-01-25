@@ -1,0 +1,40 @@
+﻿CREATE OR REPLACE WRAPPER JSON ds_template_streaming
+    FOLDER = '/privateworkspace/salfenmoserf/template_streaming'
+    DATASOURCENAME=ds_template_streaming
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        last_update = 'last_update' : 'java.lang.String',
+        data = 'data' : ARRAY OF (
+            data = 'data' : REGISTER OF (
+                system = 'system' : 'java.lang.String',
+                state = 'state' : 'java.lang.Integer'
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_template_streaming_data_data AS REGISTER OF (system:text, state:int);
+
+CREATE OR REPLACE TYPE ds_template_streaming_data AS ARRAY OF ds_template_streaming_data_data;
+
+CREATE OR REPLACE TABLE ds_template_streaming I18N de_euro (
+        last_update:text, 
+        data:ds_template_streaming_data
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/template_streaming'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_template_streaming(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD last_update NOS ZERO ()
+             ADD data NOS ZERO ()
+             ADD data NOS ZERO ()
+             ADD data.system NOS ZERO ()
+             ADD data.state NOS ZERO ()
+        )
+        OUTPUTLIST (data, last_update
+        )
+        WRAPPER (json ds_template_streaming)
+    );
+

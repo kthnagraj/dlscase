@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_v_d_kostenstelle_array FOLDER = '/privateworkspace/gundlachs/03.integrationview/schulung' AS SELECT ebene1 AS ebene1, ebene2 AS ebene2, ebene3 AS ebene3, nest(ebene4, ebene5, ebene6, kostenstelle, kurzbezeichnung) AS hierarchie_detail FROM bv_v_d_kostenstelle GROUP BY ebene1, ebene2, ebene3;
+
+ALTER VIEW iv_v_d_kostenstelle_array
+ LAYOUT (bv_v_d_kostenstelle = [20, 20, 248, 506]);
+

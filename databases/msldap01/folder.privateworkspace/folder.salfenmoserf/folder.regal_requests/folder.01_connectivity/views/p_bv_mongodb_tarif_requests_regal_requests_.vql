@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_bv_mongodb_tarif_requests_regal_requests_ FOLDER = '/privateworkspace/salfenmoserf/regal_requests/01_connectivity' AS SELECT bv_mongodb_tarif_requests_regal_requests_._id AS _id, bv_mongodb_tarif_requests_regal_requests_._insert_date AS _insert_date, bv_mongodb_tarif_requests_regal_requests_._data_version AS _data_version, bv_mongodb_tarif_requests_regal_requests_._service_version AS _service_version, bv_mongodb_tarif_requests_regal_requests_._data AS _data, (bv_mongodb_tarif_requests_regal_requests_._data).regalrequest.steuerdaten.gevo.xsitype_0 AS gevo, (bv_mongodb_tarif_requests_regal_requests_._data).regalrequest.eingabedaten.risikodaten.versicherungssummetod AS versicherungssummetod FROM bv_mongodb_tarif_requests_regal_requests_;
+
+ALTER VIEW p_bv_mongodb_tarif_requests_regal_requests_
+ LAYOUT (bv_mongodb_tarif_requests_regal_requests_ = [20, 20, 491, 226]);
+

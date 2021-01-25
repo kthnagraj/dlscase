@@ -1,0 +1,4 @@
+﻿CREATE OR REPLACE DATASOURCE JSON ds_kafka_strea_agg_json
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    ROUTE LOCAL 'VariableConnection' 'var_json_kafka';
+

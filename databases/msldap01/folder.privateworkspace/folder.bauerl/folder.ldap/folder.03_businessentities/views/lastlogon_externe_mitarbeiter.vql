@@ -1,0 +1,73 @@
+﻿CREATE OR REPLACE VIEW lastlogon_externe_mitarbeiter FOLDER = '/privateworkspace/bauerl/ldap/03_businessentities' DESCRIPTION = '<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>In dieser Tabelle werden alle externen LV 1871 Mitarbeiter mitsamt ihrer letzten Logon Zeit gelistet, die im LDAP unter OU=EXTERN vertreten sind. </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    <ul>
+        <li>Die Daten sind datenschutzrechtlich sehr sensibel</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Fakten</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    <ul>
+        <li><strong><span style="color:#444444">-</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default:</span></strong>
+            <ul>
+                <li><span style="color:#444444">-</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">-</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>-</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+        <li><strong><span style="color:#444444">-</span></strong>
+        <ul style="list-style-type:square">
+            <li><strong><span style="color:#444444">Default: </span></strong>
+            <ul>
+                <li>-</li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Format: </span></strong>
+            <ul>
+                <li><span style="color:#444444">-</span></li>
+            </ul>
+            </li>
+            <li><strong><span style="color:#444444">Beispiel: </span></strong>
+            <ul style="list-style-type:square">
+                <li>-</li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+        <li></li>
+    </ul>
+    </li>
+</ul>'  (
+    lastlogon (description = 'timestamp in European/Paris timezone which contains the user''s latest logontime'),
+    displayname (description = 'Full name of the LDAP User (only OU=EXTERN)'),
+    cn (description = 'cn of the LDAP user')
+)
+ AS SELECT iv_s06_s07_user_person_combined.cn AS cn, iv_s06_s07_user_person_combined.displayname AS displayname, lv1871_ldaptime_to_timestamp(iv_s06_s07_user_person_combined.lastlogon) AS lastlogon FROM iv_s06_s07_user_person_combined;
+
+ALTER VIEW lastlogon_externe_mitarbeiter
+ LAYOUT (iv_s06_s07_user_person_combined = [20, 20, 272, 126]);
+

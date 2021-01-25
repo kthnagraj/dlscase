@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW groupplusdn_j_bv_miteingabelang FOLDER = '/privateworkspace/ohlemeyerc/1. datasources' AS SELECT groupplusdn.cn AS group_cn, groupplusdn.displayname AS group_displayname, groupplusdn.distinguishedname AS group_distinguishedname, bv_miteingabelang.cn AS person_cn, bv_miteingabelang.displayname AS person_displayname, bv_miteingabelang.gruppe AS gruppe FROM groupplusdn AS groupplusdn INNER JOIN bv_miteingabelang AS bv_miteingabelang ON groupplusdn.distinguishedname = bv_miteingabelang.gruppe  WHERE groupplusdn.cn like 'denodo%';
+
+ALTER VIEW groupplusdn_j_bv_miteingabelang
+ LAYOUT (groupplusdn = [20, 20, 200, 86], bv_miteingabelang = [496, 190, 200, 86]);
+

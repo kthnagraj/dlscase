@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_ldap_group FOLDER = '/privateworkspace/gundlachs/ldap' AS SELECT bv_ldap_group.admincount AS admincount, bv_ldap_group.grouptype AS grouptype, bv_ldap_group.location AS location, bv_ldap_group.mail AS mail, bv_ldap_group.managedby AS managedby, bv_ldap_group.member AS member, bv_ldap_group.msexchcomanagedbylink AS msexchcomanagedbylink, bv_ldap_group.msexchgroupdepartrestriction AS msexchgroupdepartrestriction, bv_ldap_group.msexchgroupjoinrestriction AS msexchgroupjoinrestriction, bv_ldap_group.primarygrouptoken AS primarygrouptoken FROM bv_ldap_group;
+
+ALTER VIEW dv_ldap_group
+ LAYOUT (bv_ldap_group = [20, 20, 473, 909]);
+

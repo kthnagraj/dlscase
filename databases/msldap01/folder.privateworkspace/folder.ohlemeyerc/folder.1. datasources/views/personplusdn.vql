@@ -1,0 +1,75 @@
+﻿CREATE OR REPLACE WRAPPER LDAP personplusdn
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    OBJECTCLASSES='person', 'top', 'user'
+    LDAPEXPRESSION='(&(objectclass=person))'   
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String',
+        displayname = 'displayName' : 'java.lang.String',
+        distinguishedname = 'distinguishedName' : 'java.lang.String',
+        objectcategory = 'objectCategory' : 'java.lang.String',
+        objectclass = 'objectClass' : ARRAY OF (
+            objectclass = 'objectClass' : REGISTER OF (
+                objectclass = 'objectClass' : 'java.lang.String'
+            )
+        ),
+        structuralobjectclass = 'structuralObjectClass' : ARRAY OF (
+            structuralobjectclass = 'structuralObjectClass' : REGISTER OF (
+                structuralobjectclass = 'structuralObjectClass' : 'java.lang.String'
+            )
+        ),
+        uid = 'uid' : ARRAY OF (
+            uid = 'UID' : REGISTER OF (
+                uid = 'uid' : 'java.lang.String'
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE personplusdn_objectclass_objectclass AS REGISTER OF (objectclass:text);
+
+CREATE OR REPLACE TYPE personplusdn_objectclass AS ARRAY OF personplusdn_objectclass_objectclass;
+
+CREATE OR REPLACE TYPE personplusdn_structuralobjectclass_structuralobjectclass AS REGISTER OF (structuralobjectclass:text);
+
+CREATE OR REPLACE TYPE personplusdn_structuralobjectclass AS ARRAY OF personplusdn_structuralobjectclass_structuralobjectclass;
+
+CREATE OR REPLACE TYPE personplusdn_uid_uid AS REGISTER OF (uid:text);
+
+CREATE OR REPLACE TYPE personplusdn_uid AS ARRAY OF personplusdn_uid_uid;
+
+CREATE OR REPLACE TABLE personplusdn I18N de_euro (
+        cn:text, 
+        displayname:text, 
+        distinguishedname:text, 
+        objectcategory:text, 
+        objectclass:personplusdn_objectclass, 
+        structuralobjectclass:personplusdn_structuralobjectclass, 
+        uid:personplusdn_uid
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD personplusdn(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn NOS ZERO ()
+             ADD displayname NOS ZERO ()
+             ADD distinguishedname NOS ZERO ()
+             ADD objectcategory NOS ZERO ()
+             ADD objectclass NOS ZERO ()
+             ADD objectclass NOS ZERO ()
+             ADD objectclass.objectclass NOS ZERO ()
+             ADD structuralobjectclass NOS ZERO ()
+             ADD structuralobjectclass NOS ZERO ()
+             ADD structuralobjectclass.structuralobjectclass NOS ZERO ()
+             ADD uid NOS ZERO ()
+             ADD uid NOS ZERO ()
+             ADD uid.uid NOS ZERO ()
+        )
+        OUTPUTLIST (cn, displayname, distinguishedname, objectcategory, objectclass, structuralobjectclass, uid
+        )
+        WRAPPER (ldap personplusdn)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_itscrumteams_html FOLDER = '/privateworkspace/gundlachs/02.baseview' AS SELECT (bv_itscrumteams.body).storage.value AS value_scrumteams_html_table FROM bv_itscrumteams;
+
+ALTER VIEW iv_itscrumteams_html
+ LAYOUT (bv_itscrumteams = [20, 20, 292, 206]);
+

@@ -1,0 +1,54 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_ds_ladap_oc_group
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    OBJECTCLASSES='group', 'top'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String' (OPT),
+        createtimestamp = 'createTimeStamp' : 'java.lang.String' (OPT),
+        displayname = 'displayName' : 'java.lang.String' (OPT),
+        distinguishedname = 'distinguishedName' : 'java.lang.String' (OPT),
+        mail = 'mail' : 'java.lang.String' (OPT),
+        managedby = 'managedBy' : 'java.lang.String' (OPT),
+        member = 'member' : ARRAY OF (
+            member = 'MEMBER' : REGISTER OF (
+                member = 'member' : 'java.lang.String' (OPT)
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE _top_member_member AS REGISTER OF (member:text);
+
+CREATE OR REPLACE TYPE _top_member AS ARRAY OF _top_member_member;
+
+CREATE OR REPLACE TABLE bv_ds_ladap_oc_group I18N de_euro (
+        cn:text, 
+        createtimestamp:text, 
+        displayname:text, 
+        distinguishedname:text, 
+        mail:text, 
+        managedby:text, 
+        member:_top_member
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_ds_ladap_oc_group(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn (any) OPT ANY
+             ADD createtimestamp (any) OPT ANY
+             ADD displayname (any) OPT ANY
+             ADD distinguishedname (any) OPT ANY
+             ADD mail (any) OPT ANY
+             ADD managedby (any) OPT ANY
+             ADD member NOS ZERO ()
+             ADD member NOS ZERO ()
+             ADD member.member (any) OPT ANY
+        )
+        OUTPUTLIST (cn, createtimestamp, displayname, distinguishedname, mail, managedby, member
+        )
+        WRAPPER (ldap bv_ds_ladap_oc_group)
+    );
+

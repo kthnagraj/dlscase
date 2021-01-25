@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW schnellrechner_anfragen FOLDER = '/privateworkspace/wiedenmanns/schnellrechneranfragen/03_businessentities' AS SELECT p_schnellrechner_anfragen.anfragedatum AS anfragedatum, p_schnellrechner_anfragen.tarif AS tarif, p_schnellrechner_anfragen.gebdatum_0 AS gebdatum_0 FROM p_schnellrechner_anfragen;
+
+ALTER VIEW schnellrechner_anfragen
+ LAYOUT (p_schnellrechner_anfragen = [20, 20, 220, 86]);
+

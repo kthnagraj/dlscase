@@ -1,0 +1,26 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM "ds_text.xlsx"
+    FOLDER = '/privateworkspace/salfenmoserf/test'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM "ds_text.xlsx"
+    FOLDER = '/privateworkspace/salfenmoserf/test'
+    DATASOURCENAME="ds_text.xlsx"
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE HTTP 'http.CommonsHttpClientConnection,120000' POST '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.views.custom.ds_text..xlsx.File location.ROUTE.HTTP.URL}'
+        AUTHENTICATION OFF
+        PROXY OFF,
+      'Worksheet' = 'Tabelle1',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = true,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        e = 'E' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        f = 'F' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        g = 'G' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        sheet_name = 'sheet_name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

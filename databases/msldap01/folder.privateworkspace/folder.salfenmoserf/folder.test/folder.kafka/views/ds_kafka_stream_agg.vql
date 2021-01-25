@@ -1,0 +1,46 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM ds_kafka_stream_agg
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    DATASOURCENAME=ds_kafka_stream_agg
+    PARAMETERS (
+      'Topic *' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.kafka.views.custom.ds_kafka_stream_agg.Topic *}',
+      'Message Format *' = '${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test.folder.kafka.views.custom.ds_kafka_stream_agg.Message Format *}'
+    )
+    OUTPUTSCHEMA (
+        key = 'key' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        partition = 'partition' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        position = 'position' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        message = 'message' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        timestamp = 'timestamp' : 'java.time.LocalDateTime' (sourcetypeid='93')  NOT SORTABLE NOT UPDATEABLE,
+        begindate = 'begindate' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  NOT SORTABLE NOT UPDATEABLE,
+        enddate = 'enddate' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE ds_kafka_stream_agg I18N de_euro (
+        key:text (sourcetypeid = '12'), 
+        partition:text (sourcetypeid = '12'), 
+        position:text (sourcetypeid = '12'), 
+        message:text (sourcetypeid = '12'), 
+        timestamp:timestamp (sourcetypeid = '93'), 
+        begindate:timestamp (sourcetypeid = '93'), 
+        enddate:timestamp (sourcetypeid = '93')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/test/kafka'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_kafka_stream_agg(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD key NOS ZERO ()
+             ADD partition NOS ZERO ()
+             ADD position NOS ZERO ()
+             ADD message NOS ZERO ()
+             ADD timestamp NOS ZERO ()
+             ADD begindate (any) OPT ANY
+             ADD enddate (any) OPT ANY
+        )
+        OUTPUTLIST (begindate, enddate, key, message, partition, position, timestamp
+        )
+        WRAPPER (custom ds_kafka_stream_agg)
+    );
+

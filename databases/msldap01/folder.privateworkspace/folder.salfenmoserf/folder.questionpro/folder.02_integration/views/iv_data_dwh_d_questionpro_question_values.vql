@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_data_dwh_d_questionpro_question_values FOLDER = '/privateworkspace/salfenmoserf/questionpro/02_integration' AS SELECT bv_data_dwh_d_questionpro_question_values.dwh_qpquestval_ik AS dwh_qpquestval_ik, bv_data_dwh_d_questionpro_question_values.dwh_qpsquest_ik AS dwh_qpsquest_ik, bv_data_dwh_d_questionpro_question_values.dwh_qpsurv_ik AS dwh_qpsurv_ik, bv_data_dwh_d_questionpro_question_values.dwh_eingefuegt_dt AS dwh_eingefuegt_dt, bv_data_dwh_d_questionpro_question_values.dwh_eingefuegt_gui AS dwh_eingefuegt_gui, bv_data_dwh_d_questionpro_question_values.answer_text AS question_values_answer_text, bv_data_dwh_d_questionpro_question_values.exclude_randomization AS question_values_exclude_randomization, bv_data_dwh_d_questionpro_question_values.is_default AS question_values_is_default FROM bv_data_dwh_d_questionpro_question_values WHERE dwh_status = 'V';
+
+ALTER VIEW iv_data_dwh_d_questionpro_question_values
+ LAYOUT (bv_data_dwh_d_questionpro_question_values = [20, 20, 326, 366]);
+

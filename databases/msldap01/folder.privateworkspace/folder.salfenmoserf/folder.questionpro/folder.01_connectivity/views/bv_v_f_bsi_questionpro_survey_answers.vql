@@ -1,0 +1,79 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_v_f_bsi_questionpro_survey_answers
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.questionpro.folder.01_connectivity.views.jdbc.bv_v_f_bsi_questionpro_survey_answers.SCHEMANAME}' 
+    RELATIONNAME='V_F_BSI_QUESTIONPRO_SURVEY_ANSWERS' 
+    OUTPUTSCHEMA (
+        vmid = 'VMID' :'java.lang.String' (OPT) (sourcetypesize='5120', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        valid_vmid_flag = 'VALID_VMID_FLAG' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        response_status = 'RESPONSE_STATUS' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        dwh_qpansw_ik = 'DWH_QPANSW_IK' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        dwh_qpsurv_ik = 'DWH_QPSURV_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        dwh_qpresp_ik = 'DWH_QPRESP_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        question_description = 'QUESTION_DESCRIPTION' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        question_code = 'QUESTION_CODE' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        question_text = 'QUESTION_TEXT' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_order_no = 'ANSWER_ORDER_NO' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        answer_text = 'ANSWER_TEXT' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_scale = 'ANSWER_VALUE_SCALE' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_other = 'ANSWER_VALUE_OTHER' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_dynamic_explode_text = 'ANSWER_VALUE_DYNAMIC_EXPLODE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_text = 'ANSWER_VALUE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='5120', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_result = 'ANSWER_VALUE_RESULT' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_file_link = 'ANSWER_VALUE_FILE_LINK' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        answer_value_weight = 'ANSWER_VALUE_WEIGHT' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='53', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_v_f_bsi_questionpro_survey_answers I18N de_euro (
+        vmid:text (sourcetypeid = '12', sourcetypesize = '5120'), 
+        valid_vmid_flag:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        response_status:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        dwh_qpansw_ik:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        dwh_qpsurv_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_qpresp_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        question_description:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        question_code:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        question_text:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_order_no:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        answer_text:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_value_scale:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        answer_value_other:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_value_dynamic_explode_text:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_value_text:text (sourcetypeid = '12', sourcetypesize = '5120'), 
+        answer_value_result:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_value_file_link:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        answer_value_weight:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '53')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_v_f_bsi_questionpro_survey_answers(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD vmid (any) OPT ANY
+             ADD valid_vmid_flag (any) OPT ANY
+             ADD response_status (any) OPT ANY
+             ADD dwh_qpansw_ik (any) OPT ANY
+             ADD dwh_qpsurv_ik (any) OPT ANY
+             ADD dwh_qpresp_ik (any) OPT ANY
+             ADD question_description (any) OPT ANY
+             ADD question_code (any) OPT ANY
+             ADD question_text (any) OPT ANY
+             ADD answer_order_no (any) OPT ANY
+             ADD answer_text (any) OPT ANY
+             ADD answer_value_scale (any) OPT ANY
+             ADD answer_value_other (any) OPT ANY
+             ADD answer_value_dynamic_explode_text (any) OPT ANY
+             ADD answer_value_text (any) OPT ANY
+             ADD answer_value_result (any) OPT ANY
+             ADD answer_value_file_link (any) OPT ANY
+             ADD answer_value_weight (any) OPT ANY
+        )
+        OUTPUTLIST (answer_order_no, answer_text, answer_value_dynamic_explode_text, answer_value_file_link, answer_value_other, answer_value_result, answer_value_scale, answer_value_text, answer_value_weight, dwh_qpansw_ik, dwh_qpresp_ik, dwh_qpsurv_ik, question_code, question_description, question_text, response_status, valid_vmid_flag, vmid
+        )
+        WRAPPER (jdbc bv_v_f_bsi_questionpro_survey_answers)
+    )
+    SMART_ONLY;
+

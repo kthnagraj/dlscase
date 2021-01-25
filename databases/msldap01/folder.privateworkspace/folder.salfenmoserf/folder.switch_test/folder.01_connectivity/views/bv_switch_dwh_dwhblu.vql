@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW bv_switch_dwh_dwhblu FOLDER = '/privateworkspace/salfenmoserf/switch_test/01_connectivity' AS SELECT 'blu' AS switch_parameter FROM dual() UNION SELECT 'dwh' AS switch_parameter FROM dual();
+

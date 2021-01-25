@@ -1,0 +1,129 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_data_dwh_d_questionpro_response
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.questionpro.folder.01_connectivity.views.jdbc.bv_data_dwh_d_questionpro_response.SCHEMANAME}' 
+    RELATIONNAME='D_QUESTIONPRO_RESPONSE' 
+    OUTPUTSCHEMA (
+        dwh_qpresp_hk = 'DWH_QPRESP_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE IS_AUTOINCREMENT IS_GENERATEDCOLUMN,
+        dwh_qpresp_ik = 'DWH_QPRESP_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_qpsurv_ik = 'DWH_QPSURV_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        ip_adress = 'IP_ADRESS' :'java.lang.String' (OPT) (sourcetypesize='56', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        response_timestamp = 'RESPONSE_TIMESTAMP' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  SORTABLE,
+        location_country = 'LOCATION_COUNTRY' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        location_region = 'LOCATION_REGION' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        location_latitude = 'LOCATION_LATITUDE' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='53', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        location_longitude = 'LOCATION_LONGITUDE' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='53', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        location_radius = 'LOCATION_RADIUS' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='53', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        duplicate = 'DUPLICATE' :'java.lang.Boolean' (OPT) (sourcetypesize='1', sourcetypeid='16', sourcetypename='BOOLEAN')  NOT SORTABLE,
+        time_taken = 'TIME_TAKEN' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        response_status = 'RESPONSE_STATUS' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        external_reference = 'EXTERNAL_REFERENCE' :'java.lang.String' (OPT) (sourcetypesize='512', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        custom_variable_1 = 'CUSTOM_VARIABLE_1' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        custom_variable_2 = 'CUSTOM_VARIABLE_2' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        custom_variable_3 = 'CUSTOM_VARIABLE_3' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        custom_variable_4 = 'CUSTOM_VARIABLE_4' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        custom_variable_5 = 'CUSTOM_VARIABLE_5' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        language = 'LANGUAGE' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        current_inset = 'CURRENT_INSET' :'java.lang.String' (OPT) (sourcetypesize='1024', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        operating_system = 'OPERATING_SYSTEM' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        operating_system_device_type = 'OPERATING_SYSTEM_DEVICE_TYPE' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        browser = 'BROWSER' :'java.lang.String' (OPT) (sourcetypesize='256', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    )
+    CONSTRAINT 'SQL200310114059820' PRIMARY KEY ( 'DWH_QPRESP_HK' )
+    INDEX 'SQL200310114059810' OTHER UNIQUE PRIMARY ( 'DWH_QPRESP_HK' )
+    INDEX 'SQL200310114059830' OTHER UNIQUE ( 'DWH_QPRESP_IK' );
+
+CREATE OR REPLACE TABLE bv_data_dwh_d_questionpro_response I18N de_euro (
+        dwh_qpresp_hk:int (autoincrement, generatedcolumn, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_qpresp_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_qpsurv_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_status:text (sourcetypeid = '12', sourcetypesize = '1'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_eingefuegt_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_geaendert_gui:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        ip_adress:text (sourcetypeid = '12', sourcetypesize = '56'), 
+        response_timestamp:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        location_country:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        location_region:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        location_latitude:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '53'), 
+        location_longitude:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '53'), 
+        location_radius:double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '53'), 
+        duplicate:boolean (sourcetypeid = '16', sourcetypesize = '1'), 
+        time_taken:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        response_status:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        external_reference:text (sourcetypeid = '12', sourcetypesize = '512'), 
+        custom_variable_1:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        custom_variable_2:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        custom_variable_3:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        custom_variable_4:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        custom_variable_5:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        language:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        current_inset:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        operating_system:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        operating_system_device_type:text (sourcetypeid = '12', sourcetypesize = '256'), 
+        browser:text (sourcetypeid = '12', sourcetypesize = '256')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/questionpro/01_connectivity'
+    CONSTRAINT 'SQL200310114059820' PRIMARY KEY ( 'dwh_qpresp_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_data_dwh_d_questionpro_response(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_qpresp_hk (any) OPT ANY
+             ADD dwh_qpresp_ik (any) OPT ANY
+             ADD dwh_qpsurv_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD ip_adress (any) OPT ANY
+             ADD response_timestamp (any) OPT ANY
+             ADD location_country (any) OPT ANY
+             ADD location_region (any) OPT ANY
+             ADD location_latitude (any) OPT ANY
+             ADD location_longitude (any) OPT ANY
+             ADD location_radius (any) OPT ANY
+             ADD duplicate (any) OPT ANY
+             ADD time_taken (any) OPT ANY
+             ADD response_status (any) OPT ANY
+             ADD external_reference (any) OPT ANY
+             ADD custom_variable_1 (any) OPT ANY
+             ADD custom_variable_2 (any) OPT ANY
+             ADD custom_variable_3 (any) OPT ANY
+             ADD custom_variable_4 (any) OPT ANY
+             ADD custom_variable_5 (any) OPT ANY
+             ADD language (any) OPT ANY
+             ADD current_inset (any) OPT ANY
+             ADD operating_system (any) OPT ANY
+             ADD operating_system_device_type (any) OPT ANY
+             ADD browser (any) OPT ANY
+        )
+        OUTPUTLIST (browser, current_inset, custom_variable_1, custom_variable_2, custom_variable_3, custom_variable_4, custom_variable_5, duplicate, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_qpresp_hk, dwh_qpresp_ik, dwh_qpsurv_ik, dwh_quellsystem, dwh_status, dwh_vbis, dwh_von, dwh_vvon, external_reference, ip_adress, language, location_country, location_latitude, location_longitude, location_radius, location_region, operating_system, operating_system_device_type, response_status, response_timestamp, time_taken
+        )
+        WRAPPER (jdbc bv_data_dwh_d_questionpro_response)
+    );
+

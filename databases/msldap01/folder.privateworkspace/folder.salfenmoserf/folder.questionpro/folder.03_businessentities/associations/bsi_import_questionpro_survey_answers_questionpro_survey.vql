@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION bsi_import_questionpro_survey_answers_questionpro_survey REFERENTIAL CONSTRAINT 
+FOLDER = '/privateworkspace/salfenmoserf/questionpro/03_businessentities'
+    ENDPOINT bsi_import_survey bsi_import_questionpro_survey_answers (0,1)
+    ENDPOINT survey_bsi_import questionpro_survey PRINCIPAL (1)
+    ADD MAPPING survey_id=dwh_qpsurv_ik;
+
+ALTER ASSOCIATION bsi_import_questionpro_survey_answers_questionpro_survey
+ LAYOUT (bsi_import_questionpro_survey_answers = [20, 20, 200, 225], questionpro_survey = [394, 145, 200, 225]);
+

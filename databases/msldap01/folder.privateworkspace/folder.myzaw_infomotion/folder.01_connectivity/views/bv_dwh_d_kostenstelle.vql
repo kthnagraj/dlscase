@@ -1,0 +1,101 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_dwh_d_kostenstelle
+    FOLDER = '/privateworkspace/myzaw_infomotion/01_connectivity'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.myzaw_infomotion.folder.01_connectivity.views.jdbc.bv_dwh_d_kostenstelle.SCHEMANAME}' 
+    RELATIONNAME='D_KOSTENSTELLE' 
+    OUTPUTSCHEMA (
+        dwh_ks_hk = 'DWH_KS_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld Historical Key', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_ks_ik = 'DWH_KS_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld Internal Key', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Versionierung - Start', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Versionierung - Ende', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Historisierung - Start', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Historisierung - Ende', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', description='Verwaltungsfeld ob der Datensatz gültig ist (VALID / OLD)', sourcetypeid='1', sourcetypename='CHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld, wann der Datensatz eingefügt wurde', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld, durch welchen Job / Workflow der Datensatz eingefügt wurde', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld, wann der Datensatz geändert wurde', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld, durch welchen Job / Workflow der Datensatz geändert wurde', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='20', description='Quellsystem, aus dem der Datensatz kommt', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        mandant = 'MANDANT' :'java.lang.String' (OPT) (sourcetypesize='3', description='Buchungsmandant aus dem SAP FI/CO', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        kostenstelle = 'KOSTENSTELLE' :'java.lang.String' (OPT) (sourcetypesize='10', description='Nummer der Kostenstelle', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        kurzbezeichnung = 'KURZBEZEICHNUNG' :'java.lang.String' (OPT) (sourcetypesize='30', description='Kurzbezeichnung der Kostenstelle ', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        bezeichnung = 'BEZEICHNUNG' :'java.lang.String' (OPT) (sourcetypesize='50', description='Langbezeichnung der Kostenstelle ', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene1 = 'EBENE1' :'java.lang.String' (OPT) (sourcetypesize='64', description='Oberste Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene2 = 'EBENE2' :'java.lang.String' (OPT) (sourcetypesize='64', description='2. Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene3 = 'EBENE3' :'java.lang.String' (OPT) (sourcetypesize='64', description='3. Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene4 = 'EBENE4' :'java.lang.String' (OPT) (sourcetypesize='64', description='4. Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene5 = 'EBENE5' :'java.lang.String' (OPT) (sourcetypesize='64', description='5. Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene6 = 'EBENE6' :'java.lang.String' (OPT) (sourcetypesize='64', description='6. Ebende der Kostenstellenhierarchie', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kostenstelle_art_code = 'KOSTENSTELLE_ART_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='Art der Kostenstelle (Code)', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        kostenstelle_art_text = 'KOSTENSTELLE_ART_TEXT' :'java.lang.String' (OPT) (sourcetypesize='40', description='Art der Kostenstelle (Text)', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    )
+    CONSTRAINT 'PK_D_KOSTENSTELLE' PRIMARY KEY ( 'DWH_KS_HK' )
+    INDEX 'NK_D_KOSTENSTELLE' OTHER UNIQUE ( 'DWH_KS_IK' , 'DWH_VON' , 'DWH_BIS' , 'DWH_VVON' , 'DWH_VBIS' )
+    INDEX 'PK_D_KOSTENSTELLE' OTHER UNIQUE PRIMARY ( 'DWH_KS_HK' )
+    INDEX 'IX_D_KOSTENSTELLE_KONTONUMMER' OTHER ( 'DWH_STATUS' , 'KOSTENSTELLE' , 'DWH_VON' , 'DWH_BIS' , 'DWH_KS_IK' )
+    INDEX 'IX_D_KOSTENSTELLE_STATUS_KA' OTHER ( 'DWH_STATUS' , 'DWH_KS_IK' , 'DWH_VON' , 'DWH_BIS' );
+
+CREATE OR REPLACE TABLE bv_dwh_d_kostenstelle I18N de_euro (
+        dwh_ks_hk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld Historical Key'), 
+        dwh_ks_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld Internal Key'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Versionierung - Start'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Versionierung - Ende'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Historisierung - Start'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Historisierung - Ende'), 
+        dwh_status:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Verwaltungsfeld ob der Datensatz gültig ist (VALID / OLD)'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld, wann der Datensatz eingefügt wurde'), 
+        dwh_eingefuegt_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld, durch welchen Job / Workflow der Datensatz eingefügt wurde'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld, wann der Datensatz geändert wurde'), 
+        dwh_geaendert_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld, durch welchen Job / Workflow der Datensatz geändert wurde'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '20', description = 'Quellsystem, aus dem der Datensatz kommt'), 
+        mandant:text (sourcetypeid = '12', sourcetypesize = '3', description = 'Buchungsmandant aus dem SAP FI/CO'), 
+        kostenstelle:text (sourcetypeid = '12', sourcetypesize = '10', description = 'Nummer der Kostenstelle'), 
+        kurzbezeichnung:text (sourcetypeid = '12', sourcetypesize = '30', description = 'Kurzbezeichnung der Kostenstelle '), 
+        bezeichnung:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Langbezeichnung der Kostenstelle '), 
+        ebene1:text (sourcetypeid = '12', sourcetypesize = '64', description = 'Oberste Ebende der Kostenstellenhierarchie'), 
+        ebene2:text (sourcetypeid = '12', sourcetypesize = '64', description = '2. Ebende der Kostenstellenhierarchie'), 
+        ebene3:text (sourcetypeid = '12', sourcetypesize = '64', description = '3. Ebende der Kostenstellenhierarchie'), 
+        ebene4:text (sourcetypeid = '12', sourcetypesize = '64', description = '4. Ebende der Kostenstellenhierarchie'), 
+        ebene5:text (sourcetypeid = '12', sourcetypesize = '64', description = '5. Ebende der Kostenstellenhierarchie'), 
+        ebene6:text (sourcetypeid = '12', sourcetypesize = '64', description = '6. Ebende der Kostenstellenhierarchie'), 
+        kostenstelle_art_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Art der Kostenstelle (Code)'), 
+        kostenstelle_art_text:text (sourcetypeid = '12', sourcetypesize = '40', description = 'Art der Kostenstelle (Text)')
+    )
+    FOLDER = '/privateworkspace/myzaw_infomotion/01_connectivity'
+    CONSTRAINT 'PK_D_KOSTENSTELLE' PRIMARY KEY ( 'dwh_ks_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_dwh_d_kostenstelle(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_ks_hk (any) OPT ANY
+             ADD dwh_ks_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD mandant (any) OPT ANY
+             ADD kostenstelle (any) OPT ANY
+             ADD kurzbezeichnung (any) OPT ANY
+             ADD bezeichnung (any) OPT ANY
+             ADD ebene1 (any) OPT ANY
+             ADD ebene2 (any) OPT ANY
+             ADD ebene3 (any) OPT ANY
+             ADD ebene4 (any) OPT ANY
+             ADD ebene5 (any) OPT ANY
+             ADD ebene6 (any) OPT ANY
+             ADD kostenstelle_art_code (any) OPT ANY
+             ADD kostenstelle_art_text (any) OPT ANY
+        )
+        OUTPUTLIST (bezeichnung, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_ks_hk, dwh_ks_ik, dwh_quellsystem, dwh_status, dwh_vbis, dwh_von, dwh_vvon, ebene1, ebene2, ebene3, ebene4, ebene5, ebene6, kostenstelle, kostenstelle_art_code, kostenstelle_art_text, kurzbezeichnung, mandant
+        )
+        WRAPPER (jdbc bv_dwh_d_kostenstelle)
+    );
+

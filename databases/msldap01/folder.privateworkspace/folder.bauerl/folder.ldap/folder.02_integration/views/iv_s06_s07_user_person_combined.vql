@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_s06_s07_user_person_combined FOLDER = '/privateworkspace/bauerl/ldap/02_integration' AS SELECT bv_ldap_s06_user_person.cn AS cn, bv_ldap_s06_user_person.displayname AS displayname, bv_ldap_s06_user_person.userprincipalname AS userprincipalname, case WHEN (bv_ldap_s06_user_person.lastlogon >= bv_ldap_s07_user_person.lastlogon) THEN bv_ldap_s06_user_person.lastlogon ELSE bv_ldap_s07_user_person.lastlogon END AS lastlogon, case WHEN (bv_ldap_s06_user_person.lastlogontimestamp >= bv_ldap_s07_user_person.lastlogontimestamp) THEN bv_ldap_s06_user_person.lastlogontimestamp ELSE bv_ldap_s07_user_person.lastlogontimestamp END AS lastlogontimestamp FROM bv_ldap_s06_user_person AS bv_ldap_s06_user_person INNER JOIN bv_ldap_s07_user_person AS bv_ldap_s07_user_person ON bv_ldap_s06_user_person.cn = bv_ldap_s07_user_person.cn ;
+
+ALTER VIEW iv_s06_s07_user_person_combined
+ LAYOUT (bv_ldap_s06_user_person = [160, 219, 200, 126], bv_ldap_s07_user_person = [594, 278, 200, 126]);
+

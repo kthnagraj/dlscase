@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW f_ds_template_streaming FOLDER = '/privateworkspace/salfenmoserf/template_streaming' AS SELECT last_update AS last_update, system AS system, state AS state, lv1871_hash_salt(system, 'SYSTEM') AS hash_0 FROM FLATTEN ds_template_streaming AS v ( v.data);
+
+ALTER VIEW f_ds_template_streaming
+ LAYOUT (ds_template_streaming = [20, 20, 295, 106]);
+

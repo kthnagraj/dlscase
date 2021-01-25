@@ -1,0 +1,29 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_ohneeingabe
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=cohsldap
+    LDAPEXPRESSION='(&(objectCategory=person)(objectClass=user)(memberOf:1.2.840.113556.1.4.1941:=CN=dv_aktuariat,OU=Denodo,OU=GRUPPEN,DC=muc,DC=lv1871,DC=de))'   
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String',
+        displayname = 'displayName' : 'java.lang.String'
+    );
+
+CREATE OR REPLACE TABLE bv_ohneeingabe I18N de_euro (
+        cn:text, 
+        displayname:text
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_ohneeingabe(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD cn NOS ZERO ()
+             ADD displayname NOS ZERO ()
+        )
+        OUTPUTLIST (cn, displayname
+        )
+        WRAPPER (ldap bv_ohneeingabe)
+    );
+

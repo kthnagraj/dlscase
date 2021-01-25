@@ -1,0 +1,37 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM ds_mongodb_data_test
+    FOLDER = '/datasources/mongodb/debug'
+    DATASOURCENAME=ds_mongodb_data_test
+    PARAMETERS (
+      'Collection' = '${databases.msldap01.folder.datasources.folder.mongodb.folder.debug.views.custom.ds_mongodb_data_test.Collection}'
+    )
+    OUTPUTSCHEMA (
+        _id = '_id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        id = 'Id' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        name = 'Name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        address = 'Address' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE ds_mongodb_data_test I18N de_euro (
+        _id:text (sourcetypeid = '12'), 
+        id:text (sourcetypeid = '12'), 
+        name:text (sourcetypeid = '12'), 
+        address:text (sourcetypeid = '12')
+    )
+    FOLDER = '/datasources/mongodb/debug'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_mongodb_data_test(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD _id (any) OPT ANY
+             ADD id (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD address (any) OPT ANY
+        )
+        OUTPUTLIST (_id, address, id, name
+        )
+        WRAPPER (custom ds_mongodb_data_test)
+    );
+

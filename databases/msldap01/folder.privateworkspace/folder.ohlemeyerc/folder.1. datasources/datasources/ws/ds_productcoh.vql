@@ -1,0 +1,11 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE WS ds_productcoh
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    WSDLURI = '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ws.ds_productcoh.WSDLURI}'
+    MAXCONNECTIONS 50
+    CONNECTIONPOOLTIMEOUT 0
+    AUTHENTICATION WSS BASIC( 
+      USER '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ws.ds_productcoh.USER}'
+      PASSWORD '${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ws.ds_productcoh.PASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.datasources.ws.ds_productcoh.PASSWORD.ENCRYPTED} )
+    PROXY OFF;
+

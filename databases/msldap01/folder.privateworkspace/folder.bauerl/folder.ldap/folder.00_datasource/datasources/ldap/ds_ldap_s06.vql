@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE LDAP ds_ldap_s06
+    FOLDER = '/privateworkspace/bauerl/ldap/00_datasource'
+    URI='${databases.msldap01.folder.privateworkspace.folder.bauerl.folder.ldap.folder.00_datasource.datasources.ldap.ds_ldap_s06.URI}'
+    USERNAME='${databases.msldap01.folder.privateworkspace.folder.bauerl.folder.ldap.folder.00_datasource.datasources.ldap.ds_ldap_s06.USERNAME}'
+    USERPASSWORD='${databases.msldap01.folder.privateworkspace.folder.bauerl.folder.ldap.folder.00_datasource.datasources.ldap.ds_ldap_s06.USERPASSWORD}' ${databases.msldap01.folder.privateworkspace.folder.bauerl.folder.ldap.folder.00_datasource.datasources.ldap.ds_ldap_s06.USERPASSWORD.ENCRYPTED}
+    USEPAGING=FALSE
+    MAXPAGESIZE=1000
+    POOL_ENABLED = TRUE;
+

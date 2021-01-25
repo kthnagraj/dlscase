@@ -1,0 +1,55 @@
+﻿CREATE OR REPLACE WRAPPER JSON tv_mongodb_tarif_requests_regal_requests_zusatzbausteine
+    FOLDER = '/privateworkspace/salfenmoserf/regal_requests/01_connectivity'
+    DATASOURCENAME=tv_mongodb_tarif_requests_regal_requests_zusatzbausteine
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        zusatzbausteine = 'ZUSATZBAUSTEINE' : 'java.lang.String' (OBL) (DEFAULTVALUE=' {
+                        "sofortleistungZusatzbaustein" : "#ANONYMIZED",
+                        "extraleistungPflegeZusatzbaustein" : "nein",
+                        "extraleistungSchwereKrankheitZusatzbaustein" : "nein",
+                        "verlaengerungsoptionZusatzbaustein" : "nein",
+                        "kinderSoforthilfeZusatzbaustein" : "#ANONYMIZED",
+                        "nachversicherungPlusZusatzbaustein" : "nein",
+                        "vorableistungZusatzbaustein" : "nein"
+                    }') EXTERN,
+        sofortleistungzusatzbaustein = 'sofortleistungZusatzbaustein' : 'java.lang.String',
+        extraleistungpflegezusatzbaustein = 'extraleistungPflegeZusatzbaustein' : 'java.lang.String',
+        extraleistungschwerekrankheitzusatzbaustein = 'extraleistungSchwereKrankheitZusatzbaustein' : 'java.lang.String',
+        verlaengerungsoptionzusatzbaustein = 'verlaengerungsoptionZusatzbaustein' : 'java.lang.String',
+        kindersoforthilfezusatzbaustein = 'kinderSoforthilfeZusatzbaustein' : 'java.lang.String',
+        nachversicherungpluszusatzbaustein = 'nachversicherungPlusZusatzbaustein' : 'java.lang.String',
+        vorableistungzusatzbaustein = 'vorableistungZusatzbaustein' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE bv_tv_mongodb_tarif_requests_regal_requests_zusatzbausteine I18N de_euro (
+        zusatzbausteine:text (extern), 
+        sofortleistungzusatzbaustein:text, 
+        extraleistungpflegezusatzbaustein:text, 
+        extraleistungschwerekrankheitzusatzbaustein:text, 
+        verlaengerungsoptionzusatzbaustein:text, 
+        kindersoforthilfezusatzbaustein:text, 
+        nachversicherungpluszusatzbaustein:text, 
+        vorableistungzusatzbaustein:text
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/regal_requests/01_connectivity'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD tv_mongodb_tarif_requests_regal_requests_zusatzbausteine(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD sofortleistungzusatzbaustein NOS ZERO ()
+             ADD extraleistungpflegezusatzbaustein NOS ZERO ()
+             ADD extraleistungschwerekrankheitzusatzbaustein NOS ZERO ()
+             ADD verlaengerungsoptionzusatzbaustein NOS ZERO ()
+             ADD kindersoforthilfezusatzbaustein NOS ZERO ()
+             ADD nachversicherungpluszusatzbaustein NOS ZERO ()
+             ADD vorableistungzusatzbaustein NOS ZERO ()
+             ADD zusatzbausteine (=) OBL ONE
+        )
+        OUTPUTLIST (extraleistungpflegezusatzbaustein, extraleistungschwerekrankheitzusatzbaustein, kindersoforthilfezusatzbaustein, nachversicherungpluszusatzbaustein, sofortleistungzusatzbaustein, verlaengerungsoptionzusatzbaustein, vorableistungzusatzbaustein
+        )
+        WRAPPER (json tv_mongodb_tarif_requests_regal_requests_zusatzbausteine)
+    );
+

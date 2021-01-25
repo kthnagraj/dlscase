@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATASOURCE JSON tv_mongodb_tarif_requests_regal_requests_zusatzbausteine
+    FOLDER = '/privateworkspace/salfenmoserf/regal_requests/00_datasource'
+    ROUTE LOCAL 'VariableConnection' 'zusatzbausteine'
+    IGNORE_ROUTE_ERRORS = TRUE;
+

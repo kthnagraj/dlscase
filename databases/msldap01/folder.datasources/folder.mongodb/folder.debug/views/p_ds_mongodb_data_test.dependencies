@@ -1,0 +1,6 @@
+﻿/databases/msldap01/folder.datasources/datasources.vql
+/databases/msldap01/folder.datasources/folder.mongodb/mongodb.vql
+/databases/msldap01/folder.datasources/folder.mongodb/folder.debug/debug.vql
+/extensions/jars/denodo-mongodb-customwrapper-7.0.vql
+/databases/msldap01/folder.datasources/folder.mongodb/datasources/custom/ds_mongodb_data_test.vql
+/databases/msldap01/folder.datasources/folder.mongodb/folder.debug/views/ds_mongodb_data_test.vql

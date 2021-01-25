@@ -1,0 +1,95 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC v_d_kostenstelle
+    FOLDER = '/privateworkspace/gundlachs/02.baseview/schulung'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.gundlachs.folder.02..baseview.folder.schulung.views.jdbc.v_d_kostenstelle.SCHEMANAME}' 
+    RELATIONNAME='V_D_KOSTENSTELLE' 
+    OUTPUTSCHEMA (
+        dwh_ks_hk = 'DWH_KS_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_ks_ik = 'DWH_KS_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_quellsystem = 'DWH_QUELLSYSTEM' :'java.lang.String' (OPT) (sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        mandant = 'MANDANT' :'java.lang.String' (OPT) (sourcetypesize='3', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        kostenstelle = 'KOSTENSTELLE' :'java.lang.String' (OPT) (sourcetypesize='10', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        kurzbezeichnung = 'KURZBEZEICHNUNG' :'java.lang.String' (OPT) (sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        bezeichnung = 'BEZEICHNUNG' :'java.lang.String' (OPT) (sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene1 = 'EBENE1' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene2 = 'EBENE2' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene3 = 'EBENE3' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene4 = 'EBENE4' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene5 = 'EBENE5' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ebene6 = 'EBENE6' :'java.lang.String' (OPT) (sourcetypesize='64', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kostenstelle_art_code = 'KOSTENSTELLE_ART_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        kostenstelle_art_text = 'KOSTENSTELLE_ART_TEXT' :'java.lang.String' (OPT) (sourcetypesize='40', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_v_d_kostenstelle I18N de_euro (
+        dwh_ks_hk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_ks_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_status:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_eingefuegt_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26'), 
+        dwh_geaendert_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dwh_quellsystem:text (sourcetypeid = '12', sourcetypesize = '20'), 
+        mandant:text (sourcetypeid = '12', sourcetypesize = '3'), 
+        kostenstelle:text (sourcetypeid = '12', sourcetypesize = '10'), 
+        kurzbezeichnung:text (sourcetypeid = '12', sourcetypesize = '30'), 
+        bezeichnung:text (sourcetypeid = '12', sourcetypesize = '50'), 
+        ebene1:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        ebene2:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        ebene3:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        ebene4:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        ebene5:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        ebene6:text (sourcetypeid = '12', sourcetypesize = '64'), 
+        kostenstelle_art_code:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        kostenstelle_art_text:text (sourcetypeid = '12', sourcetypesize = '40')
+    )
+    FOLDER = '/privateworkspace/gundlachs/02.baseview/schulung'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD v_d_kostenstelle(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_ks_hk (any) OPT ANY
+             ADD dwh_ks_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_quellsystem (any) OPT ANY
+             ADD mandant (any) OPT ANY
+             ADD kostenstelle (any) OPT ANY
+             ADD kurzbezeichnung (any) OPT ANY
+             ADD bezeichnung (any) OPT ANY
+             ADD ebene1 (any) OPT ANY
+             ADD ebene2 (any) OPT ANY
+             ADD ebene3 (any) OPT ANY
+             ADD ebene4 (any) OPT ANY
+             ADD ebene5 (any) OPT ANY
+             ADD ebene6 (any) OPT ANY
+             ADD kostenstelle_art_code (any) OPT ANY
+             ADD kostenstelle_art_text (any) OPT ANY
+        )
+        OUTPUTLIST (bezeichnung, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_ks_hk, dwh_ks_ik, dwh_quellsystem, dwh_status, dwh_vbis, dwh_von, dwh_vvon, ebene1, ebene2, ebene3, ebene4, ebene5, ebene6, kostenstelle, kostenstelle_art_code, kostenstelle_art_text, kurzbezeichnung, mandant
+        )
+        WRAPPER (jdbc v_d_kostenstelle)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_bv_livvprotect FOLDER = '/privateworkspace/wiedenmanns/01_connectivity' AS SELECT bv_livvprotect.f_tariftyp AS f_tariftyp, bv_livvprotect.jsonarray AS jsonarray FROM bv_livvprotect WHERE f_tariftyp = 'L_R1';
+
+ALTER VIEW p_bv_livvprotect
+ LAYOUT (bv_livvprotect = [20, 20, 380, 326]);
+

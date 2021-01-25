@@ -1,0 +1,221 @@
+﻿CREATE OR REPLACE TABLE "bv_denodo fehler" I18N us_utc_iso (
+        vertragsnummer:int (sourcetypeid = '4'), 
+        gvbsl_hv:int (sourcetypeid = '4'), 
+        gvbsl:int (sourcetypeid = '4'), 
+        tariftyp:text (sourcetypeid = '12'), 
+        tarifgeneration:int (sourcetypeid = '4'), 
+        garantiestufe:text (sourcetypeid = '12'), 
+        fondsvermögeneröffnung_0:float (sourcetypeid = '6'), 
+        garantiefondsvermögeneröffnung_0:float (sourcetypeid = '6'), 
+        konventionellesdeckungskapitaleröffnung_0:float (sourcetypeid = '6'), 
+        vorfineröffnung_0:int (sourcetypeid = '4'), 
+        fondsausschüttungen:float (sourcetypeid = '6'), 
+        laufendebeiträgefbuz_0:int (sourcetypeid = '4'), 
+        laufendekostenaufbeiträgefbuz_0:int (sourcetypeid = '4'), 
+        risikoprämienfrauenfbuz_0:int (sourcetypeid = '4'), 
+        risikoprämienmännerfbuz_0:int (sourcetypeid = '4'), 
+        bonusrisiko_0:float (sourcetypeid = '6'), 
+        bonusverwaltungskosten_0:float (sourcetypeid = '6'), 
+        dividendeassistance_0:int (sourcetypeid = '4'), 
+        prämiendividende:int (sourcetypeid = '4'), 
+        todesfallleistungenfrauen_0:int (sourcetypeid = '4'), 
+        todesfallleistungenmänner_0:int (sourcetypeid = '4'), 
+        todesfallleistungenfrauendkfsbuzv_0:int (sourcetypeid = '4'), 
+        todesfallleistungenmännerdkfsbuzv_0:int (sourcetypeid = '4'), 
+        rückkaufsleistungenfonds_0:int (sourcetypeid = '4'), 
+        ablaufleistungfonds_0:int (sourcetypeid = '4'), 
+        rentenleistungfonds_0:int (sourcetypeid = '4'), 
+        verwaltungskostenkappa_0:float (sourcetypeid = '6'), 
+        abgangfreistellung_0:int (sourcetypeid = '4'), 
+        kursgewinnverlust_0:int (sourcetypeid = '4'), 
+        fondsvermögenschluss_0:float (sourcetypeid = '6'), 
+        garantiefondsvermögenschluss_0:float (sourcetypeid = '6'), 
+        vorfinschluss_0:float (sourcetypeid = '6'), 
+        beteiligungstillereserven_0:int (sourcetypeid = '4'), 
+        laufendebeiträge_0:float (sourcetypeid = '6'), 
+        einmalbeiträge:int (sourcetypeid = '4'), 
+        übernahmeausbeitragsfreistellung_0:int (sourcetypeid = '4'), 
+        sofortbonus:float (sourcetypeid = '6'), 
+        invaliditätsbonusbeitrag:int (sourcetypeid = '4'), 
+        provisionen:float (sourcetypeid = '6'), 
+        policierungskosten:int (sourcetypeid = '4'), 
+        verwaltungskostenalphagamma_0:float (sourcetypeid = '6'), 
+        amortisierungskosten:float (sourcetypeid = '6'), 
+        verwaltungsgebührl_0:int (sourcetypeid = '4'), 
+        mutationskosten:int (sourcetypeid = '4'), 
+        rechnungsmässiggedeckteabschlusskosten_0:float (sourcetypeid = '6'), 
+        laufendekostenaufbeiträge_0:float (sourcetypeid = '6'), 
+        beiträgeassistance_0:int (sourcetypeid = '4'), 
+        risikobeitragprämienfrauen_0:int (sourcetypeid = '4'), 
+        risikobeitragprämienmänner_0:int (sourcetypeid = '4'), 
+        risikoprämienfrauen_0:float (sourcetypeid = '6'), 
+        risikoprämienmänner_0:float (sourcetypeid = '6'), 
+        risikozuschlägefrauen_0:int (sourcetypeid = '4'), 
+        risikozuschlägemänner_0:int (sourcetypeid = '4'), 
+        vererbungfrauen_0:float (sourcetypeid = '6'), 
+        vererbungmänner_0:float (sourcetypeid = '6'), 
+        risikobeiträgeuzv_0:int (sourcetypeid = '4'), 
+        risikobeiträgefürzv_0:int (sourcetypeid = '4'), 
+        beitragszuschlag:float (sourcetypeid = '6'), 
+        konventionellesdeckungskapitalschluss_0:float (sourcetypeid = '6'), 
+        technischerzins_0:float (sourcetypeid = '6'), 
+        zinsdividende:int (sourcetypeid = '4'), 
+        risikoprämienfrauendk_0:int (sourcetypeid = '4'), 
+        risikoprämienmännerdk_0:float (sourcetypeid = '6'), 
+        verwaltungskostenkappadk_0:int (sourcetypeid = '4'), 
+        bilanzreserve:float (sourcetypeid = '6'), 
+        aktivierungsposten:float (sourcetypeid = '6'), 
+        entnahmeausrfb_0:float (sourcetypeid = '6'), 
+        beitragsübertrag:int (sourcetypeid = '4'), 
+        dividendenübertrag:int (sourcetypeid = '4'), 
+        sparbeiträge:float (sourcetypeid = '6'), 
+        zahlbeitragjährlich_0:float (sourcetypeid = '6'), 
+        gezillmerternettojahresbeitrag_0:float (sourcetypeid = '6'), 
+        rückkaufsleistungen_0:int (sourcetypeid = '4'), 
+        rückkaufsleistungendkfsbuzv_0:int (sourcetypeid = '4'), 
+        ablaufleistung_0:int (sourcetypeid = '4'), 
+        rentenleistung_0:int (sourcetypeid = '4'), 
+        stornogebühr:int (sourcetypeid = '4'), 
+        übertragungbilanzreserve_0:int (sourcetypeid = '4'), 
+        suaffondsvermögeneröffnung_0:float (sourcetypeid = '6'), 
+        suafzinsdividende_0:float (sourcetypeid = '6'), 
+        suafbonusverwaltungskosten_0:float (sourcetypeid = '6'), 
+        suaftodesfallleistungfrauen_0:int (sourcetypeid = '4'), 
+        suaftodesfallleistungmänner_0:int (sourcetypeid = '4'), 
+        suafrückkaufsleistung_0:int (sourcetypeid = '4'), 
+        suafablaufleistung_0:int (sourcetypeid = '4'), 
+        suafrentenleistung_0:int (sourcetypeid = '4'), 
+        suafkursgewinnverlust_0:int (sourcetypeid = '4'), 
+        suaffondsvermögenschluss_0:float (sourcetypeid = '6'), 
+        unnamed88_0:text (sourcetypeid = '12'), 
+        s_rgp:float (sourcetypeid = '6'), 
+        s_zzr:int (sourcetypeid = '4'), 
+        s_ap:float (sourcetypeid = '6'), 
+        s_fonds:float (sourcetypeid = '6'), 
+        s_vs:int (sourcetypeid = '4'), 
+        s_jr:int (sourcetypeid = '4'), 
+        s_rbos1:int (sourcetypeid = '4'), 
+        s_bosjr1:int (sourcetypeid = '4'), 
+        s_nfinsoll:int (sourcetypeid = '4'), 
+        s_zbj:float (sourcetypeid = '6'), 
+        bilanzreserve_100:float (sourcetypeid = '6'), 
+        dk:float (sourcetypeid = '6'), 
+        rgp:float (sourcetypeid = '6'), 
+        diff:float (sourcetypeid = '6')
+    )
+    FOLDER = '/privateworkspace/gundlachs/01.datasource'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "denodo fehler"(
+        I18N us_utc_iso
+        CONSTRAINTS (
+             ADD vertragsnummer (any) OPT ANY
+             ADD gvbsl_hv (any) OPT ANY
+             ADD gvbsl (any) OPT ANY
+             ADD tariftyp (any) OPT ANY
+             ADD tarifgeneration (any) OPT ANY
+             ADD garantiestufe (any) OPT ANY
+             ADD fondsvermögeneröffnung_0 (any) OPT ANY
+             ADD garantiefondsvermögeneröffnung_0 (any) OPT ANY
+             ADD konventionellesdeckungskapitaleröffnung_0 (any) OPT ANY
+             ADD vorfineröffnung_0 (any) OPT ANY
+             ADD fondsausschüttungen (any) OPT ANY
+             ADD laufendebeiträgefbuz_0 (any) OPT ANY
+             ADD laufendekostenaufbeiträgefbuz_0 (any) OPT ANY
+             ADD risikoprämienfrauenfbuz_0 (any) OPT ANY
+             ADD risikoprämienmännerfbuz_0 (any) OPT ANY
+             ADD bonusrisiko_0 (any) OPT ANY
+             ADD bonusverwaltungskosten_0 (any) OPT ANY
+             ADD dividendeassistance_0 (any) OPT ANY
+             ADD prämiendividende (any) OPT ANY
+             ADD todesfallleistungenfrauen_0 (any) OPT ANY
+             ADD todesfallleistungenmänner_0 (any) OPT ANY
+             ADD todesfallleistungenfrauendkfsbuzv_0 (any) OPT ANY
+             ADD todesfallleistungenmännerdkfsbuzv_0 (any) OPT ANY
+             ADD rückkaufsleistungenfonds_0 (any) OPT ANY
+             ADD ablaufleistungfonds_0 (any) OPT ANY
+             ADD rentenleistungfonds_0 (any) OPT ANY
+             ADD verwaltungskostenkappa_0 (any) OPT ANY
+             ADD abgangfreistellung_0 (any) OPT ANY
+             ADD kursgewinnverlust_0 (any) OPT ANY
+             ADD fondsvermögenschluss_0 (any) OPT ANY
+             ADD garantiefondsvermögenschluss_0 (any) OPT ANY
+             ADD vorfinschluss_0 (any) OPT ANY
+             ADD beteiligungstillereserven_0 (any) OPT ANY
+             ADD laufendebeiträge_0 (any) OPT ANY
+             ADD einmalbeiträge (any) OPT ANY
+             ADD übernahmeausbeitragsfreistellung_0 (any) OPT ANY
+             ADD sofortbonus (any) OPT ANY
+             ADD invaliditätsbonusbeitrag (any) OPT ANY
+             ADD provisionen (any) OPT ANY
+             ADD policierungskosten (any) OPT ANY
+             ADD verwaltungskostenalphagamma_0 (any) OPT ANY
+             ADD amortisierungskosten (any) OPT ANY
+             ADD verwaltungsgebührl_0 (any) OPT ANY
+             ADD mutationskosten (any) OPT ANY
+             ADD rechnungsmässiggedeckteabschlusskosten_0 (any) OPT ANY
+             ADD laufendekostenaufbeiträge_0 (any) OPT ANY
+             ADD beiträgeassistance_0 (any) OPT ANY
+             ADD risikobeitragprämienfrauen_0 (any) OPT ANY
+             ADD risikobeitragprämienmänner_0 (any) OPT ANY
+             ADD risikoprämienfrauen_0 (any) OPT ANY
+             ADD risikoprämienmänner_0 (any) OPT ANY
+             ADD risikozuschlägefrauen_0 (any) OPT ANY
+             ADD risikozuschlägemänner_0 (any) OPT ANY
+             ADD vererbungfrauen_0 (any) OPT ANY
+             ADD vererbungmänner_0 (any) OPT ANY
+             ADD risikobeiträgeuzv_0 (any) OPT ANY
+             ADD risikobeiträgefürzv_0 (any) OPT ANY
+             ADD beitragszuschlag (any) OPT ANY
+             ADD konventionellesdeckungskapitalschluss_0 (any) OPT ANY
+             ADD technischerzins_0 (any) OPT ANY
+             ADD zinsdividende (any) OPT ANY
+             ADD risikoprämienfrauendk_0 (any) OPT ANY
+             ADD risikoprämienmännerdk_0 (any) OPT ANY
+             ADD verwaltungskostenkappadk_0 (any) OPT ANY
+             ADD bilanzreserve (any) OPT ANY
+             ADD aktivierungsposten (any) OPT ANY
+             ADD entnahmeausrfb_0 (any) OPT ANY
+             ADD beitragsübertrag (any) OPT ANY
+             ADD dividendenübertrag (any) OPT ANY
+             ADD sparbeiträge (any) OPT ANY
+             ADD zahlbeitragjährlich_0 (any) OPT ANY
+             ADD gezillmerternettojahresbeitrag_0 (any) OPT ANY
+             ADD rückkaufsleistungen_0 (any) OPT ANY
+             ADD rückkaufsleistungendkfsbuzv_0 (any) OPT ANY
+             ADD ablaufleistung_0 (any) OPT ANY
+             ADD rentenleistung_0 (any) OPT ANY
+             ADD stornogebühr (any) OPT ANY
+             ADD übertragungbilanzreserve_0 (any) OPT ANY
+             ADD suaffondsvermögeneröffnung_0 (any) OPT ANY
+             ADD suafzinsdividende_0 (any) OPT ANY
+             ADD suafbonusverwaltungskosten_0 (any) OPT ANY
+             ADD suaftodesfallleistungfrauen_0 (any) OPT ANY
+             ADD suaftodesfallleistungmänner_0 (any) OPT ANY
+             ADD suafrückkaufsleistung_0 (any) OPT ANY
+             ADD suafablaufleistung_0 (any) OPT ANY
+             ADD suafrentenleistung_0 (any) OPT ANY
+             ADD suafkursgewinnverlust_0 (any) OPT ANY
+             ADD suaffondsvermögenschluss_0 (any) OPT ANY
+             ADD unnamed88_0 (any) OPT ANY
+             ADD s_rgp (any) OPT ANY
+             ADD s_zzr (any) OPT ANY
+             ADD s_ap (any) OPT ANY
+             ADD s_fonds (any) OPT ANY
+             ADD s_vs (any) OPT ANY
+             ADD s_jr (any) OPT ANY
+             ADD s_rbos1 (any) OPT ANY
+             ADD s_bosjr1 (any) OPT ANY
+             ADD s_nfinsoll (any) OPT ANY
+             ADD s_zbj (any) OPT ANY
+             ADD bilanzreserve_100 (any) OPT ANY
+             ADD dk (any) OPT ANY
+             ADD rgp (any) OPT ANY
+             ADD diff (any) OPT ANY
+        )
+        OUTPUTLIST (abgangfreistellung_0, ablaufleistung_0, ablaufleistungfonds_0, aktivierungsposten, amortisierungskosten, beitragszuschlag, beitragsübertrag, beiträgeassistance_0, beteiligungstillereserven_0, bilanzreserve, bilanzreserve_100, bonusrisiko_0, bonusverwaltungskosten_0, diff, dividendeassistance_0, dividendenübertrag, dk, einmalbeiträge, entnahmeausrfb_0, fondsausschüttungen, fondsvermögeneröffnung_0, fondsvermögenschluss_0, garantiefondsvermögeneröffnung_0, garantiefondsvermögenschluss_0, garantiestufe, gezillmerternettojahresbeitrag_0, gvbsl, gvbsl_hv, invaliditätsbonusbeitrag, konventionellesdeckungskapitaleröffnung_0, konventionellesdeckungskapitalschluss_0, kursgewinnverlust_0, laufendebeiträge_0, laufendebeiträgefbuz_0, laufendekostenaufbeiträge_0, laufendekostenaufbeiträgefbuz_0, mutationskosten, policierungskosten, provisionen, prämiendividende, rechnungsmässiggedeckteabschlusskosten_0, rentenleistung_0, rentenleistungfonds_0, rgp, risikobeitragprämienfrauen_0, risikobeitragprämienmänner_0, risikobeiträgefürzv_0, risikobeiträgeuzv_0, risikoprämienfrauen_0, risikoprämienfrauendk_0, risikoprämienfrauenfbuz_0, risikoprämienmänner_0, risikoprämienmännerdk_0, risikoprämienmännerfbuz_0, risikozuschlägefrauen_0, risikozuschlägemänner_0, rückkaufsleistungen_0, rückkaufsleistungendkfsbuzv_0, rückkaufsleistungenfonds_0, s_ap, s_bosjr1, s_fonds, s_jr, s_nfinsoll, s_rbos1, s_rgp, s_vs, s_zbj, s_zzr, sofortbonus, sparbeiträge, stornogebühr, suafablaufleistung_0, suafbonusverwaltungskosten_0, suaffondsvermögeneröffnung_0, suaffondsvermögenschluss_0, suafkursgewinnverlust_0, suafrentenleistung_0, suafrückkaufsleistung_0, suaftodesfallleistungfrauen_0, suaftodesfallleistungmänner_0, suafzinsdividende_0, tarifgeneration, tariftyp, technischerzins_0, todesfallleistungenfrauen_0, todesfallleistungenfrauendkfsbuzv_0, todesfallleistungenmänner_0, todesfallleistungenmännerdkfsbuzv_0, unnamed88_0, vererbungfrauen_0, vererbungmänner_0, vertragsnummer, verwaltungsgebührl_0, verwaltungskostenalphagamma_0, verwaltungskostenkappa_0, verwaltungskostenkappadk_0, vorfineröffnung_0, vorfinschluss_0, zahlbeitragjährlich_0, zinsdividende, übernahmeausbeitragsfreistellung_0, übertragungbilanzreserve_0
+        )
+        WRAPPER (custom "denodo fehler")
+    );
+

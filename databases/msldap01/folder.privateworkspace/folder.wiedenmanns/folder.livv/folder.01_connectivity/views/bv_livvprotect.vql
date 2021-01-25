@@ -1,0 +1,130 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_livvprotect
+    FOLDER = '/privateworkspace/wiedenmanns/livv/01_connectivity'
+    DATASOURCENAME=livv
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        f_tariftyp = 'F_TARIFTYP' : 'java.lang.String' (OBL) (DEFAULTVALUE='L_R1') EXTERN,
+        jsonarray = 'JSONArray' : ARRAY OF (
+            jsonarray = 'JSONArray' : REGISTER OF (
+                versicherungsnummer = 'versicherungsnummer' : 'java.lang.Integer',
+                art = 'art' : REGISTER OF (
+                    vertragstyp = 'vertragstyp' : 'java.lang.String',
+                    bav = 'bav' : 'java.lang.String',
+                    riester = 'riester' : 'java.lang.String',
+                    rente = 'rente' : 'java.lang.String'
+                ),
+                mandant = 'mandant' : 'java.lang.String',
+                status = 'status' : REGISTER OF (
+                    leistungmaschinellgerechnet = 'leistungMaschinellGerechnet' : 'java.lang.String',
+                    art = 'art' : 'java.lang.String',
+                    abgangsdatum = 'abgangsdatum' : 'java.lang.String'
+                ),
+                beitrag = 'beitrag' : REGISTER OF (
+                    status = 'status' : 'java.lang.String',
+                    zahlungsweise = 'zahlungsweise' : 'java.lang.String',
+                    versicherungssteuer = 'versicherungssteuer' : 'java.lang.Double',
+                    beitrag = 'beitrag' : 'java.lang.Double',
+                    beitragbrutto = 'beitragBrutto' : 'java.lang.Double',
+                    beitragnetto = 'beitragNetto' : 'java.lang.Double'
+                ),
+                versicherungsumfang = 'versicherungsumfang' : REGISTER OF (
+                    versicherungsbeginn = 'versicherungsbeginn' : 'java.lang.String',
+                    versicherungsende = 'versicherungsende' : 'java.lang.String'
+                ),
+                bonusdatenvp1 = 'bonusdatenVp1' : REGISTER OF (
+                    raucherstatus = 'raucherstatus' : 'java.lang.String'
+                ),
+                tarif = 'tarif' : REGISTER OF (
+                    tariftyp = 'tarifTyp' : 'java.lang.String',
+                    tarifversion = 'tarifVersion' : 'java.lang.String',
+                    kurzbezeichnung = 'kurzbezeichnung' : 'java.lang.String'
+                ),
+                id = 'id' : 'java.lang.String',
+                datumpolicierung = 'datumPolicierung' : 'java.lang.String',
+                userpolicierung = 'userPolicierung' : 'java.lang.String',
+                widerruf = 'widerruf' : REGISTER OF (
+                    datum = 'datum' : 'java.lang.String',
+                    grund = 'grund' : 'java.lang.String'
+                ),
+                garantiertewerte = 'garantierteWerte' : REGISTER OF (
+                    todesfallsumme = 'todesfallsumme' : 'java.lang.Double'
+                )
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_art AS REGISTER OF (vertragstyp:text, bav:text, riester:text, rente:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_status AS REGISTER OF (leistungmaschinellgerechnet:text, art:text, abgangsdatum:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_beitrag AS REGISTER OF (status:text, zahlungsweise:text, versicherungssteuer:double, beitrag:double (sourcetypeid = '3'), beitragbrutto:double (sourcetypeid = '3'), beitragnetto:double);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_versicherungsumfang AS REGISTER OF (versicherungsbeginn:text, versicherungsende:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_bonusdatenvp1 AS REGISTER OF (raucherstatus:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_tarif AS REGISTER OF (tariftyp:text, tarifversion:text, kurzbezeichnung:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_widerruf AS REGISTER OF (datum:text, grund:text);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray_garantiertewerte AS REGISTER OF (todesfallsumme:double);
+
+CREATE OR REPLACE TYPE livv_jsonarray_jsonarray AS REGISTER OF (versicherungsnummer:int, art:livv_jsonarray_jsonarray_art, mandant:text, status:livv_jsonarray_jsonarray_status, beitrag:livv_jsonarray_jsonarray_beitrag, versicherungsumfang:livv_jsonarray_jsonarray_versicherungsumfang, bonusdatenvp1:livv_jsonarray_jsonarray_bonusdatenvp1, tarif:livv_jsonarray_jsonarray_tarif, id:text, datumpolicierung:text, userpolicierung:text, widerruf:livv_jsonarray_jsonarray_widerruf, garantiertewerte:livv_jsonarray_jsonarray_garantiertewerte);
+
+CREATE OR REPLACE TYPE livv_jsonarray AS ARRAY OF livv_jsonarray_jsonarray;
+
+CREATE OR REPLACE TABLE bv_livvprotect I18N de_euro (
+        f_tariftyp:text (extern), 
+        jsonarray:livv_jsonarray
+    )
+    FOLDER = '/privateworkspace/wiedenmanns/livv/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_livvprotect(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD f_tariftyp (=) OBL ONE
+             ADD jsonarray NOS ZERO ()
+             ADD jsonarray NOS ZERO ()
+             ADD jsonarray.versicherungsnummer NOS ZERO ()
+             ADD jsonarray.art NOS ZERO ()
+             ADD jsonarray.art.vertragstyp NOS ZERO ()
+             ADD jsonarray.art.bav NOS ZERO ()
+             ADD jsonarray.art.riester NOS ZERO ()
+             ADD jsonarray.art.rente NOS ZERO ()
+             ADD jsonarray.mandant NOS ZERO ()
+             ADD jsonarray.status NOS ZERO ()
+             ADD jsonarray.status.leistungmaschinellgerechnet NOS ZERO ()
+             ADD jsonarray.status.art NOS ZERO ()
+             ADD jsonarray.status.abgangsdatum NOS ZERO ()
+             ADD jsonarray.beitrag NOS ZERO ()
+             ADD jsonarray.beitrag.status NOS ZERO ()
+             ADD jsonarray.beitrag.zahlungsweise NOS ZERO ()
+             ADD jsonarray.beitrag.versicherungssteuer NOS ZERO ()
+             ADD jsonarray.beitrag.beitrag NOS ZERO ()
+             ADD jsonarray.beitrag.beitragbrutto NOS ZERO ()
+             ADD jsonarray.beitrag.beitragnetto NOS ZERO ()
+             ADD jsonarray.versicherungsumfang NOS ZERO ()
+             ADD jsonarray.versicherungsumfang.versicherungsbeginn NOS ZERO ()
+             ADD jsonarray.versicherungsumfang.versicherungsende NOS ZERO ()
+             ADD jsonarray.bonusdatenvp1 NOS ZERO ()
+             ADD jsonarray.bonusdatenvp1.raucherstatus NOS ZERO ()
+             ADD jsonarray.tarif NOS ZERO ()
+             ADD jsonarray.tarif.tariftyp NOS ZERO ()
+             ADD jsonarray.tarif.tarifversion NOS ZERO ()
+             ADD jsonarray.tarif.kurzbezeichnung NOS ZERO ()
+             ADD jsonarray.id NOS ZERO ()
+             ADD jsonarray.datumpolicierung NOS ZERO ()
+             ADD jsonarray.userpolicierung NOS ZERO ()
+             ADD jsonarray.widerruf NOS ZERO ()
+             ADD jsonarray.widerruf.datum NOS ZERO ()
+             ADD jsonarray.widerruf.grund NOS ZERO ()
+             ADD jsonarray.garantiertewerte NOS ZERO ()
+             ADD jsonarray.garantiertewerte.todesfallsumme NOS ZERO ()
+        )
+        OUTPUTLIST (jsonarray
+        )
+        WRAPPER (json bv_livvprotect)
+    );
+

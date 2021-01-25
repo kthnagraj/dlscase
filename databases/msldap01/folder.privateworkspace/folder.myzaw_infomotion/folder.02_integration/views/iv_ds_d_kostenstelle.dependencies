@@ -1,0 +1,8 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.myzaw_infomotion/myzaw_infomotion.vql
+/databases/msldap01/folder.privateworkspace/folder.myzaw_infomotion/folder.02_integration/02_integration.vql
+/databases/msldap01/folder.privateworkspace/folder.myzaw_infomotion/folder.01_connectivity/01_connectivity.vql
+/databases/msldap01/folder.datasources/datasources.vql
+/databases/msldap01/folder.datasources/folder.dwh/dwh.vql
+/databases/msldap01/folder.datasources/folder.dwh/datasources/jdbc/pdwhdb.vql
+/databases/msldap01/folder.privateworkspace/folder.myzaw_infomotion/folder.01_connectivity/views/bv_dwhblu_d_kostenstelle.vql

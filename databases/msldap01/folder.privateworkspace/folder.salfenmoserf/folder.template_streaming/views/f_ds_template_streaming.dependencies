@@ -1,0 +1,6 @@
+﻿/databases/msldap01/folder.privateworkspace/privateworkspace.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/salfenmoserf.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.template_streaming/template_streaming.vql
+/extensions/jars/lv1871-denodo-custom-functions.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.template_streaming/datasources/json/ds_template_streaming.vql
+/databases/msldap01/folder.privateworkspace/folder.salfenmoserf/folder.template_streaming/views/ds_template_streaming.vql

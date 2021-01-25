@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_ds_mongodb_data_test FOLDER = '/datasources/mongodb/debug' AS SELECT ds_mongodb_data_test._id AS _id, ds_mongodb_data_test.id AS id, ds_mongodb_data_test.name AS name, case WHEN ((ds_mongodb_data_test.address = '' OR ds_mongodb_data_test.address = ' ' OR ds_mongodb_data_test.address is null )) THEN NULL ELSE replace(substring(replace(ds_mongodb_data_test.address, 'Document', ''), 1), '}}}}', '}}') END AS address FROM ds_mongodb_data_test;
+
+ALTER VIEW p_ds_mongodb_data_test
+ LAYOUT (ds_mongodb_data_test = [20, 20, 200, 106]);
+

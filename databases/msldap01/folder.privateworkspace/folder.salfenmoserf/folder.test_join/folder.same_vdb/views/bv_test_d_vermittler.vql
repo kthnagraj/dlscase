@@ -1,0 +1,385 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_test_d_vermittler
+    FOLDER = '/privateworkspace/salfenmoserf/test_join/same_vdb'
+    DATASOURCENAME=pdwhdb
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.salfenmoserf.folder.test_join.folder.same_vdb.views.jdbc.bv_test_d_vermittler.SCHEMANAME}' 
+    RELATIONNAME='D_VERMITTLER' 
+    OUTPUTSCHEMA (
+        dwh_vm_hk = 'DWH_VM_HK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld Historical Key', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vm_ik = 'DWH_VM_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld Internal Key', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_vvon = 'DWH_VVON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Versionierung - Start', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_vbis = 'DWH_VBIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Versionierung - Ende', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_von = 'DWH_VON' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Historisierung - Start', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_bis = 'DWH_BIS' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld Historisierung - Ende', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_status = 'DWH_STATUS' :'java.lang.String' (OPT) (sourcetypesize='1', description='Verwaltungsfeld ob der Datensatz gültig ist (VALID / OLD)', sourcetypeid='1', sourcetypename='CHAR')  NOT NULL SORTABLE,
+        dwh_eingefuegt_dt = 'DWH_EINGEFUEGT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld, wann der Datensatz eingefügt wurde', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_eingefuegt_gui = 'DWH_EINGEFUEGT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld, durch welchen Job / Workflow der Datensatz eingefügt  wurde', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_geaendert_dt = 'DWH_GEAENDERT_DT' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetypesize='26', description='Verwaltungsfeld, wann der Datensatz geändert wurde', sourcetypeid='93', sourcetypename='TIMESTAMP')  NOT NULL SORTABLE,
+        dwh_geaendert_gui = 'DWH_GEAENDERT_GUI' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Verwaltungsfeld, durch welchen Job / Workflow der Datensatz geändert wurde', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        dwh_org_ik = 'DWH_ORG_IK' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Fremdschlüssel D_ORGANISATION', sourcetypeid='4', sourcetypename='INTEGER')  NOT NULL SORTABLE,
+        vmid = 'VMID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Vermittler ID (5-stellig), operativer Schlüssel', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        tgnr = 'TGNR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Teilgeschäftsnummer, operativer Schlüssel', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        vmnr = 'VMNR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Vermittlernummer (8-stellig) ORGID+VMID+TGNR', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        anrede_code = 'ANREDE_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel der Anrede', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        anrede_text = 'ANREDE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        titel = 'TITEL' :'java.lang.String' (OPT) (sourcetypesize='15', description='Titel des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        vorname = 'VORNAME' :'java.lang.String' (OPT) (sourcetypesize='40', description='Vorname des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        name = 'NAME' :'java.lang.String' (OPT) (sourcetypesize='80', description='Nachname des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        name_vorsatz = 'NAME_VORSATZ' :'java.lang.String' (OPT) (sourcetypesize='20', description='Namensvorsatz des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        name_zusatz = 'NAME_ZUSATZ' :'java.lang.String' (OPT) (sourcetypesize='20', description='Namenszusatz des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        strasse_hausnummer = 'STRASSE_HAUSNUMMER' :'java.lang.String' (OPT) (sourcetypesize='80', description='Straße und Hausnummer der Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        strasse_ergaenzung = 'STRASSE_ERGAENZUNG' :'java.lang.String' (OPT) (sourcetypesize='50', description='Zusatz zu Straße der Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        plz = 'PLZ' :'java.lang.String' (OPT) (sourcetypesize='6', description='PLZ der Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ort = 'ORT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Ort der Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        ort_ergaenzung = 'ORT_ERGAENZUNG' :'java.lang.String' (OPT) (sourcetypesize='50', description='Zusatz zum Ort der Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        laenderschluessel = 'LAENDERSCHLUESSEL' :'java.lang.String' (OPT) (sourcetypesize='3', description='Länderkürzel zur Vermittlerhauptadresse', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        telefon = 'TELEFON' :'java.lang.String' (OPT) (sourcetypesize='40', description='Haupt-Festnetznummer des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        mobil = 'MOBIL' :'java.lang.String' (OPT) (sourcetypesize='40', description='Haupt-Mobilnummer des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        fax = 'FAX' :'java.lang.String' (OPT) (sourcetypesize='40', description='Haupt-Faxnummer des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        email = 'EMAIL' :'java.lang.String' (OPT) (sourcetypesize='75', description='Haupt-Email des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        homepage = 'HOMEPAGE' :'java.lang.String' (OPT) (sourcetypesize='60', description='Homepage des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        staatsangehoerigkeit = 'STAATSANGEHOERIGKEIT' :'java.lang.String' (OPT) (sourcetypesize='3', description='Staatsangehörigkeit des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        vmid_werber = 'VMID_WERBER' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Operativer Schlüssel des Vermittlers, der diesen Vermittler geworben hat', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        vtrnr = 'VTRNR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Nummer der ORG Einheit, der dieser Vermittlers angehört', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        haupt_neben_konto = 'HAUPT_NEBEN_KONTO' :'java.lang.String' (OPT) (sourcetypesize='2', description='Unterscheidung Hauptkonto/Nebenkonto', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        status_code = 'STATUS_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel des Status (ist der Vermittler aktiv)', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        status_text = 'STATUS_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        taetig_ab = 'TAETIG_AB' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='Beginn des aktuell laufenden Vertrages', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        tatsaechliche_betriebszugehoerigkeit_ab = 'TATSAECHLICHE_BETRIEBSZUGEHOERIGKEIT_AB' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='Tatsächliche Betriebszugehörigkeit', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        ausgeschieden_am = 'AUSGESCHIEDEN_AM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='Datum, an dem der Vermittler ausgeschieden ist', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        werbung = 'WERBUNG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Werbungsversandweg des Vermittler', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        vertragsart_code = 'VERTRAGSART_CODE' :'java.lang.String' (OPT) (sourcetypesize='2', description='technischer Schlüssel der Vertragsart ', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        vertragsart_kurz = 'VERTRAGSART_KURZ' :'java.lang.String' (OPT) (sourcetypesize='10', description='Übersetzung des tech. Schlüssel in Abkürzung', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        vertragsart_text = 'VERTRAGSART_TEXT' :'java.lang.String' (OPT) (sourcetypesize='70', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        register_nummer = 'REGISTER_NUMMER' :'java.lang.String' (OPT) (sourcetypesize='30', description='Handelsregisternummer des Vermittlers', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        gruendungsdatum = 'GRUENDUNGSDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='Gründungsdatum / Geburtsdatum des Vermittlers', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        gesellschaftsform_code = 'GESELLSCHAFTSFORM_CODE' :'java.lang.String' (OPT) (sourcetypesize='2', description='technischer Schlüssel der Gesellschaftsform', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        gesellschaftsform_text = 'GESELLSCHAFTSFORM_TEXT' :'java.lang.String' (OPT) (sourcetypesize='80', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kategorie_code = 'KATEGORIE_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel der Kategorie', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        kategorie_text = 'KATEGORIE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        hauszeitung_flag = 'HAUSZEITUNG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler die Hauszeitung erhält', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        mahnstatus_code = 'MAHNSTATUS_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='technischer Schlüssel des Mahnstatus', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        mahnstatus_text = 'MAHNSTATUS_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel für Mahnstatus in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        mahndatum = 'MAHNDATUM' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='Datum, an dem der Mahnstatus erreicht wurde', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        policierungstop_flag = 'POLICIERUNGSTOP_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob sich der Vermittler im Policierungsstop befindet', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        tarifsoftware_code = 'TARIFSOFTWARE_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='Code, welche Tarifsoftware der Vermittler hat', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        berufshaftpflicht_flag = 'BERUFSHAFTPFLICHT_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler eine Berufshaftpflicht hat', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        beratungsprotokoll_code = 'BERATUNGSPROTOKOLL_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel des Beratungsprotokolls', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        beratungsprotokoll_text = 'BERATUNGSPROTOKOLL_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        vertriebsweg_code = 'VERTRIEBSWEG_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel des Vertriebsweges', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        vertriebsweg_text1 = 'VERTRIEBSWEG_TEXT1' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        vertriebsweg_text2 = 'VERTRIEBSWEG_TEXT2' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        postversand_flag = 'POSTVERSAND_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler für den Postversand eingetragen ist', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        riester_vertrag_flag = 'RIESTER_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler Riester-Verträge vermitteln darf', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        delta_vertrag_flag = 'DELTA_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler Delta-Verträge vermitteln darf', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        delta_tarif_variante_code = 'DELTA_TARIF_VARIANTE_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel des Tarifvariante für den Vermittler', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        delta_tarif_variante_text = 'DELTA_TARIF_VARIANTE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kpk_vertrag_flag = 'KPK_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler Kölner Pensionskasse vermittlen darf', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        berufsverband_code = 'BERUFSVERBAND_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='technischer Schlüssel des Berufsverbandes', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        berufsverband_text = 'BERUFSVERBAND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        auszahlweise_code = 'AUSZAHLWEISE_CODE' :'java.lang.String' (OPT) (sourcetypesize='1', description='technischer Schlüssel der Provisions-Auszahlweise', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        auszahlweise_text = 'AUSZAHLWEISE_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        fremdvermittler = 'FREMDVERMITTLER' :'java.lang.String' (OPT) (sourcetypesize='17', description='externe Vermittlernummer einer externen Organisation', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kautionsvereinbarung_prz = 'KAUTIONSVEREINBARUNG_PRZ' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='1', sourcetyperadix='10', sourcetypesize='3', description='Höhe der Kautionsvereinbarung ', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        maximaler_kautionseinbehalt_eur = 'MAXIMALER_KAUTIONSEINBEHALT_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='maximaler Kautionseinbehalt in Euro für diesen Vermittler', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        kautionsversicherung_zuerich_prz = 'KAUTIONSVERSICHERUNG_ZUERICH_PRZ' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='1', sourcetyperadix='10', sourcetypesize='3', description='Kautionsversicherung bei der Züricher Versicherung in %', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        kautionsversicherung_1_eur = 'KAUTIONSVERSICHERUNG_1_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='Kautionsversicherung Nr 1 in Euro', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        gesellschaft_kautionsversicherung_1_code = 'GESELLSCHAFT_KAUTIONSVERSICHERUNG_1_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='technischer Schlüssel der Kautionsversicherung 1', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        gesellschaft_kautionsversicherung_1_text = 'GESELLSCHAFT_KAUTIONSVERSICHERUNG_1_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        kautionsversicherung_2_eur = 'KAUTIONSVERSICHERUNG_2_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='Kautionsversicherung 2 in Euro', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        gesellschaft_kautionsversicherung_2_code = 'GESELLSCHAFT_KAUTIONSVERSICHERUNG_2_CODE' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='technischer Schlüssel der Kautionsversicherung 2', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        gesellschaft_kautionsversicherung_2_text = 'GESELLSCHAFT_KAUTIONSVERSICHERUNG_2_TEXT' :'java.lang.String' (OPT) (sourcetypesize='50', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        bankbuergschaft_eur = 'BANKBUERGSCHAFT_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='Höhe der Bankbürgschaft in Euro', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        sonstige_sicherheit = 'SONSTIGE_SICHERHEIT' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Sonstige Sicherheiten', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        sonstige_sicherheit_eur = 'SONSTIGE_SICHERHEIT_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='Sonstige Sicherheiten in Euro', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        persoenliche_buergschaft_flag = 'PERSOENLICHE_BUERGSCHAFT_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob eine persönliche Bürgschaft vorliegt', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        keine_besicherung_flag = 'KEINE_BESICHERUNG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob keine Besicherung vorliegt', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        maximale_unterdeckung_eur = 'MAXIMALE_UNTERDECKUNG_EUR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', description='Maximale Unterdeckung in Euro', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        single_sign_on_flag = 'SINGLE_SIGN_ON_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob Single Sign On für den Vermittler aktiviert ist', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        starterbu_vertrag_flag = 'STARTERBU_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler Starter-BU-Vertraege vermitteln?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        apvp_flag = 'APVP_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler APVP-Vertraege vermitteln?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        bestandssicht_flag = 'BESTANDSSICHT_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler die Informer Plus-Bestandssicht nutzen?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        nettotarif_vertrag_flag = 'NETTOTARIF_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler Nettotarif-Vertraege vermitteln?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        pensionsfonds_vertrag_flag = 'PENSIONSFONDS_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler Pensionsfonds-Vertraege vermitteln?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        lvpa_vertrag_flag = 'LVPA_VERTRAG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Darf der Vermittler LVPA-Vertraege vermitteln?', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        zahlungsstop_flag = 'ZAHLUNGSSTOP_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob sich der Vermittler im Zahlungsstop befindet', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        bgv_flag = 'BGV_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', description='Flag, ob der Vermittler BGV-Verträge vermitteln darf', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        partner_id = 'PARTNER_ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Partner_ID des Vermittlers (AuDiS)', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        angebotsversand_code = 'ANGEBOTSVERSAND_CODE' :'java.lang.String' (OPT) (sourcetypesize='2', description='technischer Schlüssel der Angebotsversandsweise', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        angebotsversand_text = 'ANGEBOTSVERSAND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        policenversand_code = 'POLICENVERSAND_CODE' :'java.lang.String' (OPT) (sourcetypesize='2', description='technischer Schlüssel der Policenversandsweise', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        policenversand_text = 'POLICENVERSAND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', description='Übersetzung des tech. Schlüssel in Text', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        bgv_gueltig_ab = 'BGV_GUELTIG_AB' :'java.time.LocalDate' (OPT) (sourcetypesize='10', description='BGV Konditionssatz Gültig ab', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        bgv_courtage = 'BGV_COURTAGE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='1', sourcetyperadix='10', sourcetypesize='3', description='BGV Konditionssatz', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        weiterbildung_kontonummer = 'WEITERBILDUNG_KONTONUMMER' :'java.lang.String' (OPT) (sourcetypesize='18', description='Kontonummer des Vermittlers bei gut-beraten.de', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        frv_stufentarif_flag = 'FRV_STUFENTARIF_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        delta_netto_flag = 'DELTA_NETTO_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        sbug_flag = 'SBUG_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        frv_verguetungsvarianten_flag = 'FRV_VERGUETUNGSVARIANTEN_FLAG' :'java.lang.String' (OPT) (sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        qualifizierungs_weiterbildungsstunden = 'QUALIFIZIERUNGS_WEITERBILDUNGSSTUNDEN' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        qualifizierungs_gueltigkeitsjahr = 'QUALIFIZIERUNGS_GUELTIGKEITSJAHR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='INTEGER')  SORTABLE,
+        policierungsstopp_sperrgrund_code = 'POLICIERUNGSSTOPP_SPERRGRUND_CODE' :'java.lang.String' (OPT) (sourcetypesize='6', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        policierungsstopp_sperrgrund_text = 'POLICIERUNGSSTOPP_SPERRGRUND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        zahlungsstopp_sperrgrund_code = 'ZAHLUNGSSTOPP_SPERRGRUND_CODE' :'java.lang.String' (OPT) (sourcetypesize='6', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE,
+        zahlungsstopp_sperrgrund_text = 'ZAHLUNGSSTOPP_SPERRGRUND_TEXT' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    )
+    CONSTRAINT 'PK_D_VERMITTLER' PRIMARY KEY ( 'DWH_VM_HK' )
+    INDEX 'NK_D_VERMITTLER' OTHER UNIQUE ( 'VMID' , 'TGNR' , 'DWH_VON' , 'DWH_BIS' , 'DWH_VVON' , 'DWH_VBIS' , 'DWH_VM_IK' , 'DWH_ORG_IK' )
+    INDEX 'PK_D_VERMITTLER' OTHER UNIQUE PRIMARY ( 'DWH_VM_HK' )
+    INDEX 'UX_D_VERMITTLER_BBW' OTHER UNIQUE ( 'DWH_VM_HK' , 'VMID' , 'NAME' , 'VERTRIEBSWEG_TEXT1' )
+    INDEX 'UX_D_VERMITTLER_VM' OTHER UNIQUE ( 'DWH_VM_IK' , 'DWH_VON' , 'DWH_BIS' , 'DWH_VVON' , 'DWH_VBIS' , 'DWH_ORG_IK' )
+    INDEX 'IX_D_VERMITTLER_STATUS_VMID_TGNR' CLUSTER ( 'DWH_STATUS' , 'VMID' , 'TGNR' , 'DWH_VON' , 'DWH_BIS' , 'DWH_VM_IK' , 'DWH_ORG_IK' )
+    INDEX 'ARS_D3_VERM_EXP1' OTHER ( 'DWH_STATUS' , 'HAUPT_NEBEN_KONTO' , 'DWH_VON' , 'NAME' , 'VMNR' , 'DWH_BIS' )
+    INDEX 'ARS_D3_VERM_EXP2' OTHER ( 'VMNR' , 'DWH_STATUS' , 'DWH_BIS' )
+    INDEX 'IX_D_VERMITTLER_STATUS_VERTRAGSART_NAME_VMID' OTHER ( 'DWH_ORG_IK' , 'DWH_STATUS' , 'VERTRAGSART_CODE' , 'NAME' , 'VMID' , 'DWH_VM_IK' , 'DWH_BIS' , 'DWH_VON' )
+    INDEX 'IX_D_VERMITTLER_STATUS_VM_ORG' OTHER ( 'DWH_STATUS' , 'DWH_VM_IK' , 'DWH_ORG_IK' , 'DWH_VON' , 'DWH_BIS' );
+
+CREATE OR REPLACE TABLE bv_test_d_vermittler I18N de_euro (
+        dwh_vm_hk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld Historical Key'), 
+        dwh_vm_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld Internal Key'), 
+        dwh_vvon:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Versionierung - Start'), 
+        dwh_vbis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Versionierung - Ende'), 
+        dwh_von:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Historisierung - Start'), 
+        dwh_bis:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld Historisierung - Ende'), 
+        dwh_status:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Verwaltungsfeld ob der Datensatz gültig ist (VALID / OLD)'), 
+        dwh_eingefuegt_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld, wann der Datensatz eingefügt wurde'), 
+        dwh_eingefuegt_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld, durch welchen Job / Workflow der Datensatz eingefügt  wurde'), 
+        dwh_geaendert_dt:timestamp (sourcetypeid = '93', sourcetypedecimals = '6', sourcetypesize = '26', description = 'Verwaltungsfeld, wann der Datensatz geändert wurde'), 
+        dwh_geaendert_gui:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Verwaltungsfeld, durch welchen Job / Workflow der Datensatz geändert wurde'), 
+        dwh_org_ik:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Fremdschlüssel D_ORGANISATION'), 
+        vmid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Vermittler ID (5-stellig), operativer Schlüssel'), 
+        tgnr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Teilgeschäftsnummer, operativer Schlüssel'), 
+        vmnr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Vermittlernummer (8-stellig) ORGID+VMID+TGNR'), 
+        anrede_code:text (sourcetypeid = '12', sourcetypesize = '1', description = 'technischer Schlüssel der Anrede'), 
+        anrede_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        titel:text (sourcetypeid = '12', sourcetypesize = '15', description = 'Titel des Vermittlers'), 
+        vorname:text (sourcetypeid = '12', sourcetypesize = '40', description = 'Vorname des Vermittlers'), 
+        name:text (sourcetypeid = '12', sourcetypesize = '80', description = 'Nachname des Vermittlers'), 
+        name_vorsatz:text (sourcetypeid = '12', sourcetypesize = '20', description = 'Namensvorsatz des Vermittlers'), 
+        name_zusatz:text (sourcetypeid = '12', sourcetypesize = '20', description = 'Namenszusatz des Vermittlers'), 
+        strasse_hausnummer:text (sourcetypeid = '12', sourcetypesize = '80', description = 'Straße und Hausnummer der Vermittlerhauptadresse'), 
+        strasse_ergaenzung:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Zusatz zu Straße der Vermittlerhauptadresse'), 
+        plz:text (sourcetypeid = '12', sourcetypesize = '6', description = 'PLZ der Vermittlerhauptadresse'), 
+        ort:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Ort der Vermittlerhauptadresse'), 
+        ort_ergaenzung:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Zusatz zum Ort der Vermittlerhauptadresse'), 
+        laenderschluessel:text (sourcetypeid = '12', sourcetypesize = '3', description = 'Länderkürzel zur Vermittlerhauptadresse'), 
+        telefon:text (sourcetypeid = '12', sourcetypesize = '40', description = 'Haupt-Festnetznummer des Vermittlers'), 
+        mobil:text (sourcetypeid = '12', sourcetypesize = '40', description = 'Haupt-Mobilnummer des Vermittlers'), 
+        fax:text (sourcetypeid = '12', sourcetypesize = '40', description = 'Haupt-Faxnummer des Vermittlers'), 
+        email:text (sourcetypeid = '12', sourcetypesize = '75', description = 'Haupt-Email des Vermittlers'), 
+        homepage:text (sourcetypeid = '12', sourcetypesize = '60', description = 'Homepage des Vermittlers'), 
+        staatsangehoerigkeit:text (sourcetypeid = '12', sourcetypesize = '3', description = 'Staatsangehörigkeit des Vermittlers'), 
+        vmid_werber:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Operativer Schlüssel des Vermittlers, der diesen Vermittler geworben hat'), 
+        vtrnr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Nummer der ORG Einheit, der dieser Vermittlers angehört'), 
+        haupt_neben_konto:text (sourcetypeid = '1', sourcetypesize = '2', description = 'Unterscheidung Hauptkonto/Nebenkonto'), 
+        status_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel des Status (ist der Vermittler aktiv)'), 
+        status_text:text (sourcetypeid = '12', sourcetypesize = '100', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        taetig_ab:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'Beginn des aktuell laufenden Vertrages'), 
+        tatsaechliche_betriebszugehoerigkeit_ab:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'Tatsächliche Betriebszugehörigkeit'), 
+        ausgeschieden_am:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'Datum, an dem der Vermittler ausgeschieden ist'), 
+        werbung:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Werbungsversandweg des Vermittler'), 
+        vertragsart_code:text (sourcetypeid = '1', sourcetypesize = '2', description = 'technischer Schlüssel der Vertragsart '), 
+        vertragsart_kurz:text (sourcetypeid = '1', sourcetypesize = '10', description = 'Übersetzung des tech. Schlüssel in Abkürzung'), 
+        vertragsart_text:text (sourcetypeid = '12', sourcetypesize = '70', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        register_nummer:text (sourcetypeid = '12', sourcetypesize = '30', description = 'Handelsregisternummer des Vermittlers'), 
+        gruendungsdatum:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'Gründungsdatum / Geburtsdatum des Vermittlers'), 
+        gesellschaftsform_code:text (sourcetypeid = '1', sourcetypesize = '2', description = 'technischer Schlüssel der Gesellschaftsform'), 
+        gesellschaftsform_text:text (sourcetypeid = '12', sourcetypesize = '80', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        kategorie_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel der Kategorie'), 
+        kategorie_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        hauszeitung_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler die Hauszeitung erhält'), 
+        mahnstatus_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'technischer Schlüssel des Mahnstatus'), 
+        mahnstatus_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel für Mahnstatus in Text'), 
+        mahndatum:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'Datum, an dem der Mahnstatus erreicht wurde'), 
+        policierungstop_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob sich der Vermittler im Policierungsstop befindet'), 
+        tarifsoftware_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Code, welche Tarifsoftware der Vermittler hat'), 
+        berufshaftpflicht_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler eine Berufshaftpflicht hat'), 
+        beratungsprotokoll_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel des Beratungsprotokolls'), 
+        beratungsprotokoll_text:text (sourcetypeid = '1', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        vertriebsweg_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel des Vertriebsweges'), 
+        vertriebsweg_text1:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        vertriebsweg_text2:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        postversand_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler für den Postversand eingetragen ist'), 
+        riester_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler Riester-Verträge vermitteln darf'), 
+        delta_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler Delta-Verträge vermitteln darf'), 
+        delta_tarif_variante_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel des Tarifvariante für den Vermittler'), 
+        delta_tarif_variante_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        kpk_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler Kölner Pensionskasse vermittlen darf'), 
+        berufsverband_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'technischer Schlüssel des Berufsverbandes'), 
+        berufsverband_text:text (sourcetypeid = '12', sourcetypesize = '100', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        auszahlweise_code:text (sourcetypeid = '1', sourcetypesize = '1', description = 'technischer Schlüssel der Provisions-Auszahlweise'), 
+        auszahlweise_text:text (sourcetypeid = '12', sourcetypesize = '100', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        fremdvermittler:text (sourcetypeid = '12', sourcetypesize = '17', description = 'externe Vermittlernummer einer externen Organisation'), 
+        kautionsvereinbarung_prz:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '1', sourcetypesize = '3', description = 'Höhe der Kautionsvereinbarung '), 
+        maximaler_kautionseinbehalt_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'maximaler Kautionseinbehalt in Euro für diesen Vermittler'), 
+        kautionsversicherung_zuerich_prz:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '1', sourcetypesize = '3', description = 'Kautionsversicherung bei der Züricher Versicherung in %'), 
+        kautionsversicherung_1_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'Kautionsversicherung Nr 1 in Euro'), 
+        gesellschaft_kautionsversicherung_1_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'technischer Schlüssel der Kautionsversicherung 1'), 
+        gesellschaft_kautionsversicherung_1_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        kautionsversicherung_2_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'Kautionsversicherung 2 in Euro'), 
+        gesellschaft_kautionsversicherung_2_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'technischer Schlüssel der Kautionsversicherung 2'), 
+        gesellschaft_kautionsversicherung_2_text:text (sourcetypeid = '12', sourcetypesize = '50', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        bankbuergschaft_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'Höhe der Bankbürgschaft in Euro'), 
+        sonstige_sicherheit:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Sonstige Sicherheiten'), 
+        sonstige_sicherheit_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'Sonstige Sicherheiten in Euro'), 
+        persoenliche_buergschaft_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob eine persönliche Bürgschaft vorliegt'), 
+        keine_besicherung_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob keine Besicherung vorliegt'), 
+        maximale_unterdeckung_eur:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11', description = 'Maximale Unterdeckung in Euro'), 
+        single_sign_on_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob Single Sign On für den Vermittler aktiviert ist'), 
+        starterbu_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler Starter-BU-Vertraege vermitteln?'), 
+        apvp_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler APVP-Vertraege vermitteln?'), 
+        bestandssicht_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler die Informer Plus-Bestandssicht nutzen?'), 
+        nettotarif_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler Nettotarif-Vertraege vermitteln?'), 
+        pensionsfonds_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler Pensionsfonds-Vertraege vermitteln?'), 
+        lvpa_vertrag_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Darf der Vermittler LVPA-Vertraege vermitteln?'), 
+        zahlungsstop_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob sich der Vermittler im Zahlungsstop befindet'), 
+        bgv_flag:text (sourcetypeid = '1', sourcetypesize = '1', description = 'Flag, ob der Vermittler BGV-Verträge vermitteln darf'), 
+        partner_id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Partner_ID des Vermittlers (AuDiS)'), 
+        angebotsversand_code:text (sourcetypeid = '1', sourcetypesize = '2', description = 'technischer Schlüssel der Angebotsversandsweise'), 
+        angebotsversand_text:text (sourcetypeid = '12', sourcetypesize = '100', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        policenversand_code:text (sourcetypeid = '1', sourcetypesize = '2', description = 'technischer Schlüssel der Policenversandsweise'), 
+        policenversand_text:text (sourcetypeid = '12', sourcetypesize = '100', description = 'Übersetzung des tech. Schlüssel in Text'), 
+        bgv_gueltig_ab:localdate (sourcetypeid = '91', sourcetypesize = '10', description = 'BGV Konditionssatz Gültig ab'), 
+        bgv_courtage:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '1', sourcetypesize = '3', description = 'BGV Konditionssatz'), 
+        weiterbildung_kontonummer:text (sourcetypeid = '12', sourcetypesize = '18', description = 'Kontonummer des Vermittlers bei gut-beraten.de'), 
+        frv_stufentarif_flag:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        delta_netto_flag:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        sbug_flag:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        frv_verguetungsvarianten_flag:text (sourcetypeid = '1', sourcetypesize = '1'), 
+        qualifizierungs_weiterbildungsstunden:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '11'), 
+        qualifizierungs_gueltigkeitsjahr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        policierungsstopp_sperrgrund_code:text (sourcetypeid = '1', sourcetypesize = '6'), 
+        policierungsstopp_sperrgrund_text:text (sourcetypeid = '12', sourcetypesize = '100'), 
+        zahlungsstopp_sperrgrund_code:text (sourcetypeid = '1', sourcetypesize = '6'), 
+        zahlungsstopp_sperrgrund_text:text (sourcetypeid = '12', sourcetypesize = '100')
+    )
+    FOLDER = '/privateworkspace/salfenmoserf/test_join/same_vdb'
+    CONSTRAINT 'PK_D_VERMITTLER' PRIMARY KEY ( 'dwh_vm_hk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_test_d_vermittler(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD dwh_vm_hk (any) OPT ANY
+             ADD dwh_vm_ik (any) OPT ANY
+             ADD dwh_vvon (any) OPT ANY
+             ADD dwh_vbis (any) OPT ANY
+             ADD dwh_von (any) OPT ANY
+             ADD dwh_bis (any) OPT ANY
+             ADD dwh_status (any) OPT ANY
+             ADD dwh_eingefuegt_dt (any) OPT ANY
+             ADD dwh_eingefuegt_gui (any) OPT ANY
+             ADD dwh_geaendert_dt (any) OPT ANY
+             ADD dwh_geaendert_gui (any) OPT ANY
+             ADD dwh_org_ik (any) OPT ANY
+             ADD vmid (any) OPT ANY
+             ADD tgnr (any) OPT ANY
+             ADD vmnr (any) OPT ANY
+             ADD anrede_code (any) OPT ANY
+             ADD anrede_text (any) OPT ANY
+             ADD titel (any) OPT ANY
+             ADD vorname (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD name_vorsatz (any) OPT ANY
+             ADD name_zusatz (any) OPT ANY
+             ADD strasse_hausnummer (any) OPT ANY
+             ADD strasse_ergaenzung (any) OPT ANY
+             ADD plz (any) OPT ANY
+             ADD ort (any) OPT ANY
+             ADD ort_ergaenzung (any) OPT ANY
+             ADD laenderschluessel (any) OPT ANY
+             ADD telefon (any) OPT ANY
+             ADD mobil (any) OPT ANY
+             ADD fax (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD homepage (any) OPT ANY
+             ADD staatsangehoerigkeit (any) OPT ANY
+             ADD vmid_werber (any) OPT ANY
+             ADD vtrnr (any) OPT ANY
+             ADD haupt_neben_konto (any) OPT ANY
+             ADD status_code (any) OPT ANY
+             ADD status_text (any) OPT ANY
+             ADD taetig_ab (any) OPT ANY
+             ADD tatsaechliche_betriebszugehoerigkeit_ab (any) OPT ANY
+             ADD ausgeschieden_am (any) OPT ANY
+             ADD werbung (any) OPT ANY
+             ADD vertragsart_code (any) OPT ANY
+             ADD vertragsart_kurz (any) OPT ANY
+             ADD vertragsart_text (any) OPT ANY
+             ADD register_nummer (any) OPT ANY
+             ADD gruendungsdatum (any) OPT ANY
+             ADD gesellschaftsform_code (any) OPT ANY
+             ADD gesellschaftsform_text (any) OPT ANY
+             ADD kategorie_code (any) OPT ANY
+             ADD kategorie_text (any) OPT ANY
+             ADD hauszeitung_flag (any) OPT ANY
+             ADD mahnstatus_code (any) OPT ANY
+             ADD mahnstatus_text (any) OPT ANY
+             ADD mahndatum (any) OPT ANY
+             ADD policierungstop_flag (any) OPT ANY
+             ADD tarifsoftware_code (any) OPT ANY
+             ADD berufshaftpflicht_flag (any) OPT ANY
+             ADD beratungsprotokoll_code (any) OPT ANY
+             ADD beratungsprotokoll_text (any) OPT ANY
+             ADD vertriebsweg_code (any) OPT ANY
+             ADD vertriebsweg_text1 (any) OPT ANY
+             ADD vertriebsweg_text2 (any) OPT ANY
+             ADD postversand_flag (any) OPT ANY
+             ADD riester_vertrag_flag (any) OPT ANY
+             ADD delta_vertrag_flag (any) OPT ANY
+             ADD delta_tarif_variante_code (any) OPT ANY
+             ADD delta_tarif_variante_text (any) OPT ANY
+             ADD kpk_vertrag_flag (any) OPT ANY
+             ADD berufsverband_code (any) OPT ANY
+             ADD berufsverband_text (any) OPT ANY
+             ADD auszahlweise_code (any) OPT ANY
+             ADD auszahlweise_text (any) OPT ANY
+             ADD fremdvermittler (any) OPT ANY
+             ADD kautionsvereinbarung_prz (any) OPT ANY
+             ADD maximaler_kautionseinbehalt_eur (any) OPT ANY
+             ADD kautionsversicherung_zuerich_prz (any) OPT ANY
+             ADD kautionsversicherung_1_eur (any) OPT ANY
+             ADD gesellschaft_kautionsversicherung_1_code (any) OPT ANY
+             ADD gesellschaft_kautionsversicherung_1_text (any) OPT ANY
+             ADD kautionsversicherung_2_eur (any) OPT ANY
+             ADD gesellschaft_kautionsversicherung_2_code (any) OPT ANY
+             ADD gesellschaft_kautionsversicherung_2_text (any) OPT ANY
+             ADD bankbuergschaft_eur (any) OPT ANY
+             ADD sonstige_sicherheit (any) OPT ANY
+             ADD sonstige_sicherheit_eur (any) OPT ANY
+             ADD persoenliche_buergschaft_flag (any) OPT ANY
+             ADD keine_besicherung_flag (any) OPT ANY
+             ADD maximale_unterdeckung_eur (any) OPT ANY
+             ADD single_sign_on_flag (any) OPT ANY
+             ADD starterbu_vertrag_flag (any) OPT ANY
+             ADD apvp_flag (any) OPT ANY
+             ADD bestandssicht_flag (any) OPT ANY
+             ADD nettotarif_vertrag_flag (any) OPT ANY
+             ADD pensionsfonds_vertrag_flag (any) OPT ANY
+             ADD lvpa_vertrag_flag (any) OPT ANY
+             ADD zahlungsstop_flag (any) OPT ANY
+             ADD bgv_flag (any) OPT ANY
+             ADD partner_id (any) OPT ANY
+             ADD angebotsversand_code (any) OPT ANY
+             ADD angebotsversand_text (any) OPT ANY
+             ADD policenversand_code (any) OPT ANY
+             ADD policenversand_text (any) OPT ANY
+             ADD bgv_gueltig_ab (any) OPT ANY
+             ADD bgv_courtage (any) OPT ANY
+             ADD weiterbildung_kontonummer (any) OPT ANY
+             ADD frv_stufentarif_flag (any) OPT ANY
+             ADD delta_netto_flag (any) OPT ANY
+             ADD sbug_flag (any) OPT ANY
+             ADD frv_verguetungsvarianten_flag (any) OPT ANY
+             ADD qualifizierungs_weiterbildungsstunden (any) OPT ANY
+             ADD qualifizierungs_gueltigkeitsjahr (any) OPT ANY
+             ADD policierungsstopp_sperrgrund_code (any) OPT ANY
+             ADD policierungsstopp_sperrgrund_text (any) OPT ANY
+             ADD zahlungsstopp_sperrgrund_code (any) OPT ANY
+             ADD zahlungsstopp_sperrgrund_text (any) OPT ANY
+        )
+        OUTPUTLIST (angebotsversand_code, angebotsversand_text, anrede_code, anrede_text, apvp_flag, ausgeschieden_am, auszahlweise_code, auszahlweise_text, bankbuergschaft_eur, beratungsprotokoll_code, beratungsprotokoll_text, berufshaftpflicht_flag, berufsverband_code, berufsverband_text, bestandssicht_flag, bgv_courtage, bgv_flag, bgv_gueltig_ab, delta_netto_flag, delta_tarif_variante_code, delta_tarif_variante_text, delta_vertrag_flag, dwh_bis, dwh_eingefuegt_dt, dwh_eingefuegt_gui, dwh_geaendert_dt, dwh_geaendert_gui, dwh_org_ik, dwh_status, dwh_vbis, dwh_vm_hk, dwh_vm_ik, dwh_von, dwh_vvon, email, fax, fremdvermittler, frv_stufentarif_flag, frv_verguetungsvarianten_flag, gesellschaft_kautionsversicherung_1_code, gesellschaft_kautionsversicherung_1_text, gesellschaft_kautionsversicherung_2_code, gesellschaft_kautionsversicherung_2_text, gesellschaftsform_code, gesellschaftsform_text, gruendungsdatum, haupt_neben_konto, hauszeitung_flag, homepage, kategorie_code, kategorie_text, kautionsvereinbarung_prz, kautionsversicherung_1_eur, kautionsversicherung_2_eur, kautionsversicherung_zuerich_prz, keine_besicherung_flag, kpk_vertrag_flag, laenderschluessel, lvpa_vertrag_flag, mahndatum, mahnstatus_code, mahnstatus_text, maximale_unterdeckung_eur, maximaler_kautionseinbehalt_eur, mobil, name, name_vorsatz, name_zusatz, nettotarif_vertrag_flag, ort, ort_ergaenzung, partner_id, pensionsfonds_vertrag_flag, persoenliche_buergschaft_flag, plz, policenversand_code, policenversand_text, policierungsstopp_sperrgrund_code, policierungsstopp_sperrgrund_text, policierungstop_flag, postversand_flag, qualifizierungs_gueltigkeitsjahr, qualifizierungs_weiterbildungsstunden, register_nummer, riester_vertrag_flag, sbug_flag, single_sign_on_flag, sonstige_sicherheit, sonstige_sicherheit_eur, staatsangehoerigkeit, starterbu_vertrag_flag, status_code, status_text, strasse_ergaenzung, strasse_hausnummer, taetig_ab, tarifsoftware_code, tatsaechliche_betriebszugehoerigkeit_ab, telefon, tgnr, titel, vertragsart_code, vertragsart_kurz, vertragsart_text, vertriebsweg_code, vertriebsweg_text1, vertriebsweg_text2, vmid, vmid_werber, vmnr, vorname, vtrnr, weiterbildung_kontonummer, werbung, zahlungsstop_flag, zahlungsstopp_sperrgrund_code, zahlungsstopp_sperrgrund_text
+        )
+        WRAPPER (jdbc bv_test_d_vermittler)
+    );
+

@@ -1,0 +1,71 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC test_cc90_contactcode
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    DATASOURCENAME=testkommssl
+    CATALOGNAME='${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.views.jdbc.test_cc90_contactcode.CATALOGNAME}' 
+    SCHEMANAME='${databases.msldap01.folder.privateworkspace.folder.ohlemeyerc.folder.1.. datasources.views.jdbc.test_cc90_contactcode.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactCode' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique Identifier of the CC Instance to which Contact code belongs', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactcodeid = 'ContactCodeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier of the Contact code entry', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        parentid = 'ParentID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier of the Contact code''s parent', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        name = 'Name' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='128', description='Name of the Contact code', sourcetypeid='12', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        description = 'Description' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='512', description='Description of the Contact code', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE,
+        ishidden = 'IsHidden' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if Contact code is hidden', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        isactive = 'IsActive' :'java.lang.Boolean' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='1', description='Flag indicating if Contact code is active', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE,
+        position = 'Position' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Ordinal number of the Contact code among siblings', sourcetypeid='4', sourcetypename='int')  ESCAPE NOT NULL SORTABLE,
+        appuserid = 'AppUserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique Identifier of the user who invoked last table data modification from application', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='8', description='Rowversion of the last modification of the record', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE,
+        queueid = 'QueueID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Value is NULL if the ContactCode is a general ContactCode or the QueueID of the Queue that owns the ContactCode', sourcetypeid='4', sourcetypename='int')  SORTABLE,
+        cc80_contactcodeid = 'CC80_ContactCodeID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original ContactCodeID of the ContactCode in the CC80.', sourcetypeid='4', sourcetypename='int')  SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactCode' PRIMARY KEY ( 'InstanceID' , 'ContactCodeID' )
+    CONSTRAINT 'FK_CC90_ContactCode_CC90_ContactCode' FOREIGN KEY ( 'InstanceID' , 'ParentID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_ContactCode'( 'InstanceID' , 'ContactCodeID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_ContactCode_CC90_Queue_QueueID' FOREIGN KEY ( 'InstanceID' , 'QueueID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Queue'( 'InstanceID' , 'QueueID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_ContactCode_DS10_Instance' FOREIGN KEY ( 'InstanceID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'DS10_Instance'( 'InstanceID' )  ON UPDATE RESTRICT  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactCode' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactCodeID' )
+    INDEX 'IX_CC90_ContactCode_LastUpdateRowversion' OTHER UNIQUE ( 'LastUpdateRowversion' )
+    INDEX 'IX_CC90_UniqueContactCodePerInstanceAndParent' OTHER ( 'InstanceID' , 'Name' , 'ParentID' );
+
+CREATE OR REPLACE TABLE test_cc90_contactcode I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique Identifier of the CC Instance to which Contact code belongs'), 
+        contactcodeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier of the Contact code entry'), 
+        parentid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier of the Contact code''s parent'), 
+        name:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '128', description = 'Name of the Contact code'), 
+        description:text (sourcetypeid = '-9', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '512', description = 'Description of the Contact code'), 
+        ishidden:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if Contact code is hidden'), 
+        isactive:boolean (sourcetypeid = '-7', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '1', description = 'Flag indicating if Contact code is active'), 
+        position:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Ordinal number of the Contact code among siblings'), 
+        appuserid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique Identifier of the user who invoked last table data modification from application'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '8', description = 'Rowversion of the last modification of the record'), 
+        queueid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Value is NULL if the ContactCode is a general ContactCode or the QueueID of the Queue that owns the ContactCode'), 
+        cc80_contactcodeid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'This column is only used in case of a CC80 upgrade to CC90. In that case, the column contains the original ContactCodeID of the ContactCode in the CC80.')
+    )
+    FOLDER = '/privateworkspace/ohlemeyerc/1. datasources'
+    CONSTRAINT 'PK_CC90_ContactCode' PRIMARY KEY ( 'instanceid' , 'contactcodeid' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD test_cc90_contactcode(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactcodeid (any) OPT ANY
+             ADD parentid (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD description (any) OPT ANY
+             ADD ishidden (any) OPT ANY
+             ADD isactive (any) OPT ANY
+             ADD position (any) OPT ANY
+             ADD appuserid (any) OPT ANY
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD queueid (any) OPT ANY
+             ADD cc80_contactcodeid (any) OPT ANY
+        )
+        OUTPUTLIST (appuserid, cc80_contactcodeid, contactcodeid, description, instanceid, isactive, ishidden, lastupdaterowversion, name, parentid, position, queueid
+        )
+        WRAPPER (jdbc test_cc90_contactcode)
+    );
+
