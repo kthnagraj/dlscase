@@ -1,0 +1,47 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_servicenummern
+    FOLDER = '/voxtron/00_datasource'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper'
+    DESCRIPTION='<ul style="list-style-type:square">
+    <li><span style="color:#007757"><strong>Beschreibung:</strong></span>
+    <ul>
+        <li>Diese Data Source beinhaltet alle aktuellen Servicenummern und zugehörige Attribute wie Abteilung, Öffnungszeiten etc.. Die Liste wird manuell gepflegt - es kann also sein, dass sie nicht immer auf dem aktuellen Stand ist.</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Anwendungshinweis</strong></span>:
+    </li>
+    <li><span style="color:#007757"><strong>Tabellenart:</strong></span>
+    <ul>
+        <li>Lookup</li>
+    </ul>
+    </li>
+    <li><span style="color:#007757"><strong>Parameter:</strong></span>
+    </li>
+    <li><span style="color:#007757"><strong>Glossar: </strong></span>
+    <ul>
+    </ul>
+    </li>
+</ul>';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_servicenummern
+    FOLDER = '/voxtron/00_datasource'
+    DATASOURCENAME=ds_servicenummern
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.kommunikation.folder.voxtron.folder.00_datasource.views.custom.ds_servicenummern.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        hotlinenummer = 'Hotlinenummer' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        hotlinenamedienstname_0 = 'Hotlinename (Dienstname)' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        abteilung = 'Abteilung' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        wochentag = 'Wochentag' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        beginnservicezeit_0 = 'Beginn Servicezeit' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        endeservicezeit_0 = 'Ende Servicezeit' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        emailfürvoicemail_0 = 'E-Mail für Voicemail' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        verantwortlicher = 'Verantwortlicher' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

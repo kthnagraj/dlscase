@@ -1,0 +1,48 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_voxtron_cc90_contactuser
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    CATALOGNAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.bv_voxtron_cc90_contactuser.CATALOGNAME}' 
+    SCHEMANAME='${databases.kommunikation.folder.voxtron.folder.01_connectivity.views.jdbc.bv_voxtron_cc90_contactuser.SCHEMANAME}' 
+    RELATIONNAME='CC90_ContactUser' 
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the ContactCenter Server Instance', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        contactid = 'ContactID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='36', description='Unique identifier of the contact', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE,
+        userid = 'UserID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='Unique identifier of the user from the table CC90_User', sourcetypeid='4', sourcetypename='int')  NOT NULL SORTABLE,
+        assignedcount = 'AssignedCount' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='This column counts the number of times that the contact was assigned to the user.', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        handledcount = 'HandledCount' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', description='This column counts the number of times that the contact was handled by the user.', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'PK_CC90_ContactUser' PRIMARY KEY ( 'InstanceID' , 'ContactID' , 'UserID' )
+    CONSTRAINT 'FK_CC90_ContactUser_CC90_Contact' FOREIGN KEY ( 'InstanceID' , 'ContactID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_Contact'( 'InstanceID' , 'ContactID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    CONSTRAINT 'FK_CC90_ContactUser_CC90_User' FOREIGN KEY ( 'InstanceID' , 'UserID' ) 
+    REFERENCES 'Voxtron10_Warehouse'.'dbo'.'CC90_User'( 'InstanceID' , 'UserID' )  ON UPDATE CASCADE  ON DELETE CASCADE NOT DEFERRABLE 
+    INDEX 'PK_CC90_ContactUser' CLUSTER UNIQUE PRIMARY ( 'InstanceID' , 'ContactID' , 'UserID' );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contactuser I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the ContactCenter Server Instance'), 
+        contactid:text (sourcetypeid = '1', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '36', description = 'Unique identifier of the contact'), 
+        userid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Unique identifier of the user from the table CC90_User'), 
+        assignedcount:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'This column counts the number of times that the contact was assigned to the user.'), 
+        handledcount:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5', description = 'This column counts the number of times that the contact was handled by the user.')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    CONSTRAINT 'PK_CC90_ContactUser' PRIMARY KEY ( 'instanceid' , 'contactid' , 'userid' )
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_voxtron_cc90_contactuser(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid (any) OPT ANY
+             ADD contactid (any) OPT ANY
+             ADD userid (any) OPT ANY
+             ADD assignedcount (any) OPT ANY
+             ADD handledcount (any) OPT ANY
+        )
+        OUTPUTLIST (assignedcount, contactid, handledcount, instanceid, userid
+        )
+        WRAPPER (jdbc bv_voxtron_cc90_contactuser)
+    )
+    SMART_ONLY;
+

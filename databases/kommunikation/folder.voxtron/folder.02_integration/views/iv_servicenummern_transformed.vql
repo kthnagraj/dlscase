@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_servicenummern_transformed FOLDER = '/voxtron/02_integration' AS SELECT case WHEN (abteilung like 'FD%') THEN abteilung ELSE hotlinenummer END AS skill_name, bv_servicenummern.hotlinenummer AS hotlinenummer, bv_servicenummern.hotlinenamedienstname_0 AS hotlinenamedienstname_0, bv_servicenummern.abteilung AS abteilung, bv_servicenummern.wochentag AS wochentag, case WHEN (wochentag like 'Montag%') THEN 1 ELSE case WHEN (wochentag like 'Dienstag%') THEN 2 ELSE case WHEN (wochentag like 'Mittwoch%') THEN 3 ELSE case WHEN (wochentag like 'Donnerstag%') THEN 4 ELSE case WHEN (wochentag like 'Freitag%') THEN 5 ELSE NULL END END END END END AS wochentag_int, bv_servicenummern.beginnservicezeit_0 AS beginnservicezeit_0, bv_servicenummern.endeservicezeit_0 AS endeservicezeit_0, bv_servicenummern.emailfürvoicemail_0 AS emailfürvoicemail_0, bv_servicenummern.verantwortlicher AS verantwortlicher FROM bv_servicenummern;
+
+ALTER VIEW iv_servicenummern_transformed
+ LAYOUT (bv_servicenummern = [20, 20, 234, 186]);
+

@@ -1,0 +1,6 @@
+﻿/databases/kommunikation/folder.voxtron/voxtron.vql
+/databases/kommunikation/folder.voxtron/folder.02_integration/02_integration.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/01_connectivity.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/00_datasource.vql
+/databases/kommunikation/folder.voxtron/folder.00_datasource/datasources/custom/ds_servicenummern.vql
+/databases/kommunikation/folder.voxtron/folder.01_connectivity/views/bv_servicenummern.vql

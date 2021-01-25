@@ -1,0 +1,123 @@
+﻿CREATE OR REPLACE WRAPPER JDBC bv_voxtron_cc90_contact_with_queue_and_skill
+    FOLDER = '/voxtron/01_connectivity'
+    DATASOURCENAME=ds_voxtron
+    SQLSENTENCE='select CC90_Contact.*, CC90_ContactSkill.SkillID, CC90_ContactQueue.QueueID from CC90_Contact
+left join CC90_ContactSkill on CC90_ContactSkill.ContactID = CC90_Contact.ContactID
+left join CC90_ContactQueue on CC90_ContactQueue.ContactID = CC90_Contact.ContactID'   
+    OUTPUTSCHEMA (
+        instanceid = 'InstanceID' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='36', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        contactid = 'ContactID' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='36', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        conferenceid = 'ConferenceID' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='36', sourcetypeid='1', sourcetypename='uniqueidentifier')  NOT SORTABLE NOT UPDATEABLE,
+        contacttypeid = 'ContactTypeID' :'java.lang.Short' (sourcetypedecimals='0', sourcetypesize='5', sourcetypeid='5', sourcetypename='smallint')  SORTABLE NOT UPDATEABLE,
+        from_0 = 'From' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='nvarchar')  ESCAPE SORTABLE NOT UPDATEABLE,
+        to_0 = 'To' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='nvarchar')  ESCAPE SORTABLE NOT UPDATEABLE,
+        timecreated = 'TimeCreated' :'java.time.LocalDateTime' (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime')  SORTABLE NOT UPDATEABLE,
+        waitingtimelength = 'WaitingTimeLength' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        conversationlength = 'ConversationLength' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        handledby = 'HandledBy' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        sentby = 'SentBy' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        senderid = 'SenderId' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        receiverid = 'ReceiverId' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        companyname = 'CompanyName' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='256', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        recipientname = 'RecipientName' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='256', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        isshortcontact = 'IsShortContact' :'java.lang.Boolean' (sourcetypedecimals='0', sourcetypesize='1', sourcetypeid='-7', sourcetypename='bit')  SORTABLE NOT UPDATEABLE,
+        lastupdaterowversion = 'LastUpdateRowversion' :'java.sql.Blob' (sourcetypedecimals='0', sourcetypesize='8', sourcetypeid='-2', sourcetypename='binary')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        callsetupdatetime = 'CallSetupDatetime' :'java.time.LocalDateTime' (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime')  SORTABLE NOT UPDATEABLE,
+        resultcode = 'ResultCode' :'java.lang.Short' (sourcetypedecimals='0', sourcetypesize='5', sourcetypeid='5', sourcetypename='smallint')  SORTABLE NOT UPDATEABLE,
+        lastassignedagent = 'LastAssignedAgent' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        lastassignedqueue = 'LastAssignedQueue' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        hascontent = 'HasContent' :'java.lang.Boolean' (sourcetypedecimals='0', sourcetypesize='1', sourcetypeid='-7', sourcetypename='bit')  NOT NULL SORTABLE NOT UPDATEABLE,
+        customerid = 'CustomerID' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        subtype = 'SubType' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='256', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        contactdate = 'ContactDate' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        contacttime = 'ContactTime' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='8', sourcetypeid='12', sourcetypename='nvarchar')  SORTABLE NOT UPDATEABLE,
+        year = 'Year' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE NOT UPDATEABLE,
+        month = 'Month' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE NOT UPDATEABLE,
+        day = 'Day' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  ESCAPE SORTABLE NOT UPDATEABLE,
+        dayofweek = 'DayOfWeek' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        wrapuplength = 'WrapupLength' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        skillid = 'SkillID' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE,
+        queueid = 'QueueID' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int')  SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE bv_voxtron_cc90_contact_with_queue_and_skill I18N de_euro (
+        instanceid:text (sourcetypeid = '1', sourcetypedecimals = '0', sourcetypesize = '36'), 
+        contactid:text (sourcetypeid = '1', sourcetypedecimals = '0', sourcetypesize = '36'), 
+        conferenceid:text (sourcetypeid = '1', sourcetypedecimals = '0', sourcetypesize = '36'), 
+        contacttypeid:int (sourcetypeid = '5', sourcetypedecimals = '0', sourcetypesize = '5'), 
+        from_0:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'), 
+        to_0:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'), 
+        timecreated:timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23'), 
+        waitingtimelength:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        conversationlength:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        handledby:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        sentby:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        senderid:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'), 
+        receiverid:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'), 
+        companyname:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '256'), 
+        recipientname:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '256'), 
+        isshortcontact:boolean (sourcetypeid = '-7', sourcetypedecimals = '0', sourcetypesize = '1'), 
+        lastupdaterowversion:blob (sourcetypeid = '-2', sourcetypedecimals = '0', sourcetypesize = '8'), 
+        callsetupdatetime:timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23'), 
+        resultcode:int (sourcetypeid = '5', sourcetypedecimals = '0', sourcetypesize = '5'), 
+        lastassignedagent:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        lastassignedqueue:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        hascontent:boolean (sourcetypeid = '-7', sourcetypedecimals = '0', sourcetypesize = '1'), 
+        customerid:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'), 
+        subtype:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '256'), 
+        contactdate:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        contacttime:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '8'), 
+        year:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        month:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        day:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        dayofweek:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        wrapuplength:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        skillid:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        queueid:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_voxtron_cc90_contact_with_queue_and_skill(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD instanceid NOS ZERO ()
+             ADD contactid NOS ZERO ()
+             ADD conferenceid NOS ZERO ()
+             ADD contacttypeid NOS ZERO ()
+             ADD from_0 NOS ZERO ()
+             ADD to_0 NOS ZERO ()
+             ADD timecreated NOS ZERO ()
+             ADD waitingtimelength NOS ZERO ()
+             ADD conversationlength NOS ZERO ()
+             ADD handledby NOS ZERO ()
+             ADD sentby NOS ZERO ()
+             ADD senderid NOS ZERO ()
+             ADD receiverid NOS ZERO ()
+             ADD companyname NOS ZERO ()
+             ADD recipientname NOS ZERO ()
+             ADD isshortcontact NOS ZERO ()
+             ADD lastupdaterowversion NOS ZERO ()
+             ADD callsetupdatetime NOS ZERO ()
+             ADD resultcode NOS ZERO ()
+             ADD lastassignedagent NOS ZERO ()
+             ADD lastassignedqueue NOS ZERO ()
+             ADD hascontent NOS ZERO ()
+             ADD customerid NOS ZERO ()
+             ADD subtype NOS ZERO ()
+             ADD contactdate NOS ZERO ()
+             ADD contacttime NOS ZERO ()
+             ADD year NOS ZERO ()
+             ADD month NOS ZERO ()
+             ADD day NOS ZERO ()
+             ADD dayofweek NOS ZERO ()
+             ADD wrapuplength NOS ZERO ()
+             ADD skillid NOS ZERO ()
+             ADD queueid NOS ZERO ()
+        )
+        OUTPUTLIST (callsetupdatetime, companyname, conferenceid, contactdate, contactid, contacttime, contacttypeid, conversationlength, customerid, day, dayofweek, from_0, handledby, hascontent, instanceid, isshortcontact, lastassignedagent, lastassignedqueue, lastupdaterowversion, month, queueid, receiverid, recipientname, resultcode, senderid, sentby, skillid, subtype, timecreated, to_0, waitingtimelength, wrapuplength, year
+        )
+        WRAPPER (jdbc bv_voxtron_cc90_contact_with_queue_and_skill)
+    );
+

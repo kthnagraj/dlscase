@@ -1,0 +1,15 @@
+﻿CREATE OR REPLACE DATABASE kommunikation 'enthält Voxtron Datenbank'
+  AUTHENTICATION LDAP admin.ds_ldap
+    USERBASE = 'OU=LV1871;dc=muc;dc=lv1871;dc=de','OU=Administrative Konten;dc=muc;dc=lv1871;dc=de'
+    USERATTRIBUTENAME = 'cn'
+    USERSEARCH = '(&(objectclass=person))'
+    ROLEBASE = 'OU=Denodo,OU=GRUPPEN,dc=muc,dc=lv1871,dc=de'
+    ROLEATTRIBUTENAME = 'cn'
+    ROLESEARCH = '(&(member=@{{USERDN}}))';
+
+ALTER DATABASE kommunikation
+  CHARSET DEFAULT;
+
+ALTER DATABASE kommunikation
+  COST OPTIMIZATION ON;
+

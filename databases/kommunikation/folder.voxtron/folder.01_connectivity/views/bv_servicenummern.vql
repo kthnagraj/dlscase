@@ -1,0 +1,30 @@
+﻿CREATE OR REPLACE TABLE bv_servicenummern I18N de_euro (
+        hotlinenummer:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        hotlinenamedienstname_0:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        abteilung:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        wochentag:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        beginnservicezeit_0:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        endeservicezeit_0:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        emailfürvoicemail_0:text (sourcetypeid = '12', sourcetypesize = '1024'), 
+        verantwortlicher:text (sourcetypeid = '12', sourcetypesize = '1024')
+    )
+    FOLDER = '/voxtron/01_connectivity'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_servicenummern(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD hotlinenummer (any) OPT ANY
+             ADD hotlinenamedienstname_0 (any) OPT ANY
+             ADD abteilung (any) OPT ANY
+             ADD wochentag (any) OPT ANY
+             ADD beginnservicezeit_0 (any) OPT ANY
+             ADD endeservicezeit_0 (any) OPT ANY
+             ADD emailfürvoicemail_0 (any) OPT ANY
+             ADD verantwortlicher (any) OPT ANY
+        )
+        OUTPUTLIST (abteilung, beginnservicezeit_0, emailfürvoicemail_0, endeservicezeit_0, hotlinenamedienstname_0, hotlinenummer, verantwortlicher, wochentag
+        )
+        WRAPPER (custom ds_servicenummern)
+    );
+
