@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE FOLDER '/dwh/02_integration/02.01_Integration' ;
+
