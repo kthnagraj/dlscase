@@ -1,0 +1,67 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_dept
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_dept.SCHEMANAME}' 
+    RELATIONNAME='CDB_DEPT' 
+    OUTPUTSCHEMA (
+        cdbdept_code = 'CDBDEPT_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', description='Department Code', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbdept_desc = 'CDBDEPT_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', description='Department Name', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_adesc = 'CDBDEPT_ADESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', description='Abbre Department Name', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_headstaff = 'CDBDEPT_HEADSTAFF' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='12', description='Head of Department, Employee Number', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_active_flag = 'CDBDEPT_ACTIVE_FLAG' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='A=ACTIVE, D=DEFUNCT, N=NOT ACTIVE', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_officer = 'CDBDEPT_OFFICER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='60', description='Dept head designation', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_parent_dept = 'CDBDEPT_PARENT_DEPT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', description='Parent Dept', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_create_dt = 'CDBDEPT_CREATE_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Date created', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbdept_defunct_dt = 'CDBDEPT_DEFUNCT_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Defunct date', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbdept_campus = 'CDBDEPT_CAMPUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Campus code', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_type = 'CDBDEPT_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Dept type, eg. D:Dept, S:School, U: unit', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_college = 'CDBDEPT_COLLEGE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='College code', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_hr_code = 'CDBDEPT_HR_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', description='HR code', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbdept_type2 = 'CDBDEPT_TYPE2' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='Dept type, eg. Research Institute: RI', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    INDEX 'CDB_DEPT_INDX' CLUSTER UNIQUE ( 'CDBDEPT_CODE' )
+    INDEX 'CDB_DEPT_INDX2' CLUSTER ( 'CDBDEPT_PARENT_DEPT' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_dept I18N sg (
+        cdbdept_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '10', description = 'Department Code'), 
+        cdbdept_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100', description = 'Department Name'), 
+        cdbdept_adesc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30', description = 'Abbre Department Name'), 
+        cdbdept_headstaff:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '12', description = 'Head of Department, Employee Number'), 
+        cdbdept_active_flag:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'A=ACTIVE, D=DEFUNCT, N=NOT ACTIVE'), 
+        cdbdept_officer:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '60', description = 'Dept head designation'), 
+        cdbdept_parent_dept:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '10', description = 'Parent Dept'), 
+        cdbdept_create_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Date created'), 
+        cdbdept_defunct_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Defunct date'), 
+        cdbdept_campus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Campus code'), 
+        cdbdept_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Dept type, eg. D:Dept, S:School, U: unit'), 
+        cdbdept_college:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'College code'), 
+        cdbdept_hr_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2', description = 'HR code'), 
+        cdbdept_type2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'Dept type, eg. Research Institute: RI')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_dept(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbdept_code (any) OPT ANY
+             ADD cdbdept_desc (any) OPT ANY
+             ADD cdbdept_adesc (any) OPT ANY
+             ADD cdbdept_headstaff (any) OPT ANY
+             ADD cdbdept_active_flag (any) OPT ANY
+             ADD cdbdept_officer (any) OPT ANY
+             ADD cdbdept_parent_dept (any) OPT ANY
+             ADD cdbdept_create_dt (any) OPT ANY
+             ADD cdbdept_defunct_dt (any) OPT ANY
+             ADD cdbdept_campus (any) OPT ANY
+             ADD cdbdept_type (any) OPT ANY
+             ADD cdbdept_college (any) OPT ANY
+             ADD cdbdept_hr_code (any) OPT ANY
+             ADD cdbdept_type2 (any) OPT ANY
+        )
+        OUTPUTLIST (cdbdept_active_flag, cdbdept_adesc, cdbdept_campus, cdbdept_code, cdbdept_college, cdbdept_create_dt, cdbdept_defunct_dt, cdbdept_desc, cdbdept_headstaff, cdbdept_hr_code, cdbdept_officer, cdbdept_parent_dept, cdbdept_type, cdbdept_type2
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_dept)
+    );
+

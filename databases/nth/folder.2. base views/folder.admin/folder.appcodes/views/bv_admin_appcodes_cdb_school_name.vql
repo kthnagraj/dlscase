@@ -1,0 +1,65 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_school_name
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_school_name.SCHEMANAME}' 
+    RELATIONNAME='CDB_SCHOOL_NAME' 
+    OUTPUTSCHEMA (
+        cdbschl_code = 'CDBSCHL_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbschl_name = 'CDBSCHL_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_country_code = 'CDBSCHL_COUNTRY_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_state_code = 'CDBSCHL_STATE_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_principal = 'CDBSCHL_PRINCIPAL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_addr = 'CDBSCHL_ADDR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='80', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_tel = 'CDBSCHL_TEL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_fax = 'CDBSCHL_FAX' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_email = 'CDBSCHL_EMAIL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_rank = 'CDBSCHL_RANK' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_active = 'CDBSCHL_ACTIVE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_old_code = 'CDBSCHL_OLD_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbschl_level = 'CDBSCHL_LEVEL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    CONSTRAINT 'CDB_SCHOOL_NAME_PK' PRIMARY KEY ( 'CDBSCHL_CODE' )
+    INDEX 'CDB_SCHOOL_NAME_IDX1' CLUSTER UNIQUE PRIMARY ( 'CDBSCHL_CODE' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_school_name I18N sg (
+        cdbschl_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5'), 
+        cdbschl_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '200'), 
+        cdbschl_country_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4'), 
+        cdbschl_state_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4'), 
+        cdbschl_principal:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '40'), 
+        cdbschl_addr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '80'), 
+        cdbschl_tel:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'), 
+        cdbschl_fax:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'), 
+        cdbschl_email:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '40'), 
+        cdbschl_rank:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbschl_active:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbschl_old_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbschl_level:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    PRIMARY KEY ( 'cdbschl_code' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_school_name(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbschl_code (any) OPT ANY
+             ADD cdbschl_name (any) OPT ANY
+             ADD cdbschl_country_code (any) OPT ANY
+             ADD cdbschl_state_code (any) OPT ANY
+             ADD cdbschl_principal (any) OPT ANY
+             ADD cdbschl_addr (any) OPT ANY
+             ADD cdbschl_tel (any) OPT ANY
+             ADD cdbschl_fax (any) OPT ANY
+             ADD cdbschl_email (any) OPT ANY
+             ADD cdbschl_rank (any) OPT ANY
+             ADD cdbschl_active (any) OPT ANY
+             ADD cdbschl_old_code (any) OPT ANY
+             ADD cdbschl_level (any) OPT ANY
+        )
+        OUTPUTLIST (cdbschl_active, cdbschl_addr, cdbschl_code, cdbschl_country_code, cdbschl_email, cdbschl_fax, cdbschl_level, cdbschl_name, cdbschl_old_code, cdbschl_principal, cdbschl_rank, cdbschl_state_code, cdbschl_tel
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_school_name)
+    );
+

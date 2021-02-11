@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_residence_type
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_residence_type.SCHEMANAME}' 
+    RELATIONNAME='CDB_RESIDENCE_TYPE' 
+    OUTPUTSCHEMA (
+        cdbresidencetype_code = 'CDBRESIDENCETYPE_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbresidencetype_desc = 'CDBRESIDENCETYPE_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    INDEX 'CDB_RESIDENCE_TYPE_IDX1' CLUSTER UNIQUE ( 'CDBRESIDENCETYPE_CODE' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_residence_type I18N sg (
+        cdbresidencetype_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2'), 
+        cdbresidencetype_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '40')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_residence_type(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbresidencetype_code (any) OPT ANY
+             ADD cdbresidencetype_desc (any) OPT ANY
+        )
+        OUTPUTLIST (cdbresidencetype_code, cdbresidencetype_desc
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_residence_type)
+    );
+

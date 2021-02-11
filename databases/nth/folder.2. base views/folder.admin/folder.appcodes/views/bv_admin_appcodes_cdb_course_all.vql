@@ -1,0 +1,188 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_course_all
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_course_all.SCHEMANAME}' 
+    RELATIONNAME='CDB_COURSE_ALL' 
+    OUTPUTSCHEMA (
+        cdbcourse_code = 'CDBCOURSE_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='Programme Code', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbcourse_desc = 'CDBCOURSE_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', description='Programme Description', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_dept = 'CDBCOURSE_DEPT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='College/Department/School Code, lookup CDB_DEPT', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_deg = 'CDBCOURSE_DEG' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='150', description='Degree name for this programme', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_beg_yr = 'CDBCOURSE_BEG_YR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Starting Study Yr', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_end_yr = 'CDBCOURSE_END_YR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Ending Study Yr', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_adesc = 'CDBCOURSE_ADESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', description='Abbreviated Description of Programme', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fullpart = 'CDBCOURSE_FULLPART' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='(F)ull or (P)art-Time', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_type = 'CDBCOURSE_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Type of Programme,(UND)ergraduate,(MAS)ter,MBA,PHD,(ADM)ission use,SAF,NG', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbcourse_coursewk = 'CDBCOURSE_COURSEWK' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='For course-work', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_research = 'CDBCOURSE_RESEARCH' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='For research', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_min_period = 'CDBCOURSE_MIN_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Minimum period', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_max_period = 'CDBCOURSE_MAX_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Maximum period', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_totmodule = 'CDBCOURSE_TOTMODULE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_honours_yr = 'CDBCOURSE_HONOURS_YR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_min_candid_dt = 'CDBCOURSE_MIN_CANDID_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Minimum candidature date', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbcourse_max_candid_dt = 'CDBCOURSE_MAX_CANDID_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Maximum candidature date', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbcourse_term_per_yr = 'CDBCOURSE_TERM_PER_YR' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cdbcourse_n_core_req = 'CDBCOURSE_N_CORE_REQ' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cdbcourse_n_func_req = 'CDBCOURSE_N_FUNC_REQ' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cdbcourse_n_func_c_req = 'CDBCOURSE_N_FUNC_C_REQ' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cdbcourse_statue_course_desc = 'CDBCOURSE_STATUE_COURSE_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='200', description='Statue description of programme', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_admyr_begin = 'CDBCOURSE_ADMYR_BEGIN' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='Starting AY', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_admyr_end = 'CDBCOURSE_ADMYR_END' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='Ending AY', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_candid_term = 'CDBCOURSE_CANDID_TERM' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', description='No. of candidature terms required to graduate', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cdbcourse_finance_type = 'CDBCOURSE_FINANCE_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', description='whether programme is Subsidized or Self-Financing', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_programme_launch_dt = 'CDBCOURSE_PROGRAMME_LAUNCH_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Programme Launch Date', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbcourse_programme_end_dt = 'CDBCOURSE_PROGRAMME_END_DT' :'java.time.LocalDateTime' (OPT) (sourcetyperadix='10', sourcetypesize='7', description='Programme End Date', sourcetypeid='93', sourcetypename='DATE')  SORTABLE,
+        cdbcourse_lab_status = 'CDBCOURSE_LAB_STATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_affiliated_type = 'CDBCOURSE_AFFILIATED_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_study_option = 'CDBCOURSE_STUDY_OPTION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_cluster = 'CDBCOURSE_CLUSTER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', description='Cluster=College eg. NIE,ENGINEERING,BUSINESS,SCIENCES,HUMANITIES & ARTS', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_double_degree = 'CDBCOURSE_DOUBLE_DEGREE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Double Degree, (Y)es', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_short_desc = 'CDBCOURSE_SHORT_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='27', description='Short Description of Programme', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_code1 = 'CDBCOURSE_CODE1' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='For Double Degree, Programme Code of 1st Degree', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_code2 = 'CDBCOURSE_CODE2' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='For Double Degree, Programme Code of 2nd Degree', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_college_matric_code = 'CDBCOURSE_COLLEGE_MATRIC_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='College Code in Matric Number', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_normal_period = 'CDBCOURSE_NORMAL_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Norrmal Period of Candidature', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_code1_area_special = 'CDBCOURSE_CODE1_AREA_SPECIAL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='For Double Degree, Area Special of 1st Degree, lookup CDB_AREA_SPECIAL', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_code2_area_special = 'CDBCOURSE_CODE2_AREA_SPECIAL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', description='For Double Degree, Area Special of 2nd Degree, lookup CDB_AREA_SPECIAL', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_dt_beg_yr = 'CDBCOURSE_DT_BEG_YR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Direct Entry Begin Study Yr', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_dt_min_period = 'CDBCOURSE_DT_MIN_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Direct Entry Minimum Candidature', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_dt_max_period = 'CDBCOURSE_DT_MAX_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Direct Entry Maximum Candidature', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_dt_normal_period = 'CDBCOURSE_DT_NORMAL_PERIOD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', description='Direct Entry Normal Candidature', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_nmc_cluster = 'CDBCOURSE_NMC_CLUSTER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', description='NMC Cluster', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_double_major = 'CDBCOURSE_DOUBLE_MAJOR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', description='Double Major (Y/N) [For for reporting to Department of Statistics]', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos1 = 'CDBCOURSE_FOS1' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 1 (Singapore Standard Educational Classification (SSEC 2015)) [For for reporting to Department of Statistics]', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos2 = 'CDBCOURSE_FOS2' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 2 (Singapore Standard Educational Classification (SSEC 2015)) [For for reporting to Department of Statistics]', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos3 = 'CDBCOURSE_FOS3' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 3', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos4 = 'CDBCOURSE_FOS4' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 4', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos5 = 'CDBCOURSE_FOS5' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 5', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos6 = 'CDBCOURSE_FOS6' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 6', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos7 = 'CDBCOURSE_FOS7' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 7', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbcourse_fos8 = 'CDBCOURSE_FOS8' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', description='SSEC Field of Study 8', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    INDEX 'CDB_COURSE_ALL_INDX3' CLUSTER UNIQUE ( 'CDBCOURSE_TYPE' , 'CDBCOURSE_CODE' , 'CDBCOURSE_FULLPART' )
+    INDEX 'CDB_COURSE_INDX' CLUSTER ( 'CDBCOURSE_CODE' )
+    INDEX 'CDB_COURSE_INDX_TYPE' CLUSTER ( 'CDBCOURSE_TYPE' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_course_all I18N sg (
+        cdbcourse_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'Programme Code'), 
+        cdbcourse_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100', description = 'Programme Description'), 
+        cdbcourse_dept:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'College/Department/School Code, lookup CDB_DEPT'), 
+        cdbcourse_deg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '150', description = 'Degree name for this programme'), 
+        cdbcourse_beg_yr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Starting Study Yr'), 
+        cdbcourse_end_yr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Ending Study Yr'), 
+        cdbcourse_adesc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30', description = 'Abbreviated Description of Programme'), 
+        cdbcourse_fullpart:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = '(F)ull or (P)art-Time'), 
+        cdbcourse_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Type of Programme,(UND)ergraduate,(MAS)ter,MBA,PHD,(ADM)ission use,SAF,NG'), 
+        cdbcourse_coursewk:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'For course-work'), 
+        cdbcourse_research:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'For research'), 
+        cdbcourse_min_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Minimum period'), 
+        cdbcourse_max_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Maximum period'), 
+        cdbcourse_totmodule:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2'), 
+        cdbcourse_honours_yr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbcourse_min_candid_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Minimum candidature date'), 
+        cdbcourse_max_candid_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Maximum candidature date'), 
+        cdbcourse_term_per_yr:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'), 
+        cdbcourse_n_core_req:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'), 
+        cdbcourse_n_func_req:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'), 
+        cdbcourse_n_func_c_req:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'), 
+        cdbcourse_statue_course_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '200', description = 'Statue description of programme'), 
+        cdbcourse_admyr_begin:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'Starting AY'), 
+        cdbcourse_admyr_end:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'Ending AY'), 
+        cdbcourse_candid_term:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2', description = 'No. of candidature terms required to graduate'), 
+        cdbcourse_finance_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20', description = 'whether programme is Subsidized or Self-Financing'), 
+        cdbcourse_programme_launch_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Programme Launch Date'), 
+        cdbcourse_programme_end_dt:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypesize = '7', description = 'Programme End Date'), 
+        cdbcourse_lab_status:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbcourse_affiliated_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5'), 
+        cdbcourse_study_option:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2'), 
+        cdbcourse_cluster:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20', description = 'Cluster=College eg. NIE,ENGINEERING,BUSINESS,SCIENCES,HUMANITIES & ARTS'), 
+        cdbcourse_double_degree:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Double Degree, (Y)es'), 
+        cdbcourse_short_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '27', description = 'Short Description of Programme'), 
+        cdbcourse_code1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'For Double Degree, Programme Code of 1st Degree'), 
+        cdbcourse_code2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'For Double Degree, Programme Code of 2nd Degree'), 
+        cdbcourse_college_matric_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'College Code in Matric Number'), 
+        cdbcourse_normal_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Norrmal Period of Candidature'), 
+        cdbcourse_code1_area_special:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'For Double Degree, Area Special of 1st Degree, lookup CDB_AREA_SPECIAL'), 
+        cdbcourse_code2_area_special:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4', description = 'For Double Degree, Area Special of 2nd Degree, lookup CDB_AREA_SPECIAL'), 
+        cdbcourse_dt_beg_yr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Direct Entry Begin Study Yr'), 
+        cdbcourse_dt_min_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Direct Entry Minimum Candidature'), 
+        cdbcourse_dt_max_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Direct Entry Maximum Candidature'), 
+        cdbcourse_dt_normal_period:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '3', description = 'Direct Entry Normal Candidature'), 
+        cdbcourse_nmc_cluster:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100', description = 'NMC Cluster'), 
+        cdbcourse_double_major:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1', description = 'Double Major (Y/N) [For for reporting to Department of Statistics]'), 
+        cdbcourse_fos1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 1 (Singapore Standard Educational Classification (SSEC 2015)) [For for reporting to Department of Statistics]'), 
+        cdbcourse_fos2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 2 (Singapore Standard Educational Classification (SSEC 2015)) [For for reporting to Department of Statistics]'), 
+        cdbcourse_fos3:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 3'), 
+        cdbcourse_fos4:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 4'), 
+        cdbcourse_fos5:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 5'), 
+        cdbcourse_fos6:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 6'), 
+        cdbcourse_fos7:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 7'), 
+        cdbcourse_fos8:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '5', description = 'SSEC Field of Study 8')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_course_all(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbcourse_code (any) OPT ANY
+             ADD cdbcourse_desc (any) OPT ANY
+             ADD cdbcourse_dept (any) OPT ANY
+             ADD cdbcourse_deg (any) OPT ANY
+             ADD cdbcourse_beg_yr (any) OPT ANY
+             ADD cdbcourse_end_yr (any) OPT ANY
+             ADD cdbcourse_adesc (any) OPT ANY
+             ADD cdbcourse_fullpart (any) OPT ANY
+             ADD cdbcourse_type (any) OPT ANY
+             ADD cdbcourse_coursewk (any) OPT ANY
+             ADD cdbcourse_research (any) OPT ANY
+             ADD cdbcourse_min_period (any) OPT ANY
+             ADD cdbcourse_max_period (any) OPT ANY
+             ADD cdbcourse_totmodule (any) OPT ANY
+             ADD cdbcourse_honours_yr (any) OPT ANY
+             ADD cdbcourse_min_candid_dt (any) OPT ANY
+             ADD cdbcourse_max_candid_dt (any) OPT ANY
+             ADD cdbcourse_term_per_yr (any) OPT ANY
+             ADD cdbcourse_n_core_req (any) OPT ANY
+             ADD cdbcourse_n_func_req (any) OPT ANY
+             ADD cdbcourse_n_func_c_req (any) OPT ANY
+             ADD cdbcourse_statue_course_desc (any) OPT ANY
+             ADD cdbcourse_admyr_begin (any) OPT ANY
+             ADD cdbcourse_admyr_end (any) OPT ANY
+             ADD cdbcourse_candid_term (any) OPT ANY
+             ADD cdbcourse_finance_type (any) OPT ANY
+             ADD cdbcourse_programme_launch_dt (any) OPT ANY
+             ADD cdbcourse_programme_end_dt (any) OPT ANY
+             ADD cdbcourse_lab_status (any) OPT ANY
+             ADD cdbcourse_affiliated_type (any) OPT ANY
+             ADD cdbcourse_study_option (any) OPT ANY
+             ADD cdbcourse_cluster (any) OPT ANY
+             ADD cdbcourse_double_degree (any) OPT ANY
+             ADD cdbcourse_short_desc (any) OPT ANY
+             ADD cdbcourse_code1 (any) OPT ANY
+             ADD cdbcourse_code2 (any) OPT ANY
+             ADD cdbcourse_college_matric_code (any) OPT ANY
+             ADD cdbcourse_normal_period (any) OPT ANY
+             ADD cdbcourse_code1_area_special (any) OPT ANY
+             ADD cdbcourse_code2_area_special (any) OPT ANY
+             ADD cdbcourse_dt_beg_yr (any) OPT ANY
+             ADD cdbcourse_dt_min_period (any) OPT ANY
+             ADD cdbcourse_dt_max_period (any) OPT ANY
+             ADD cdbcourse_dt_normal_period (any) OPT ANY
+             ADD cdbcourse_nmc_cluster (any) OPT ANY
+             ADD cdbcourse_double_major (any) OPT ANY
+             ADD cdbcourse_fos1 (any) OPT ANY
+             ADD cdbcourse_fos2 (any) OPT ANY
+             ADD cdbcourse_fos3 (any) OPT ANY
+             ADD cdbcourse_fos4 (any) OPT ANY
+             ADD cdbcourse_fos5 (any) OPT ANY
+             ADD cdbcourse_fos6 (any) OPT ANY
+             ADD cdbcourse_fos7 (any) OPT ANY
+             ADD cdbcourse_fos8 (any) OPT ANY
+        )
+        OUTPUTLIST (cdbcourse_adesc, cdbcourse_admyr_begin, cdbcourse_admyr_end, cdbcourse_affiliated_type, cdbcourse_beg_yr, cdbcourse_candid_term, cdbcourse_cluster, cdbcourse_code, cdbcourse_code1, cdbcourse_code1_area_special, cdbcourse_code2, cdbcourse_code2_area_special, cdbcourse_college_matric_code, cdbcourse_coursewk, cdbcourse_deg, cdbcourse_dept, cdbcourse_desc, cdbcourse_double_degree, cdbcourse_double_major, cdbcourse_dt_beg_yr, cdbcourse_dt_max_period, cdbcourse_dt_min_period, cdbcourse_dt_normal_period, cdbcourse_end_yr, cdbcourse_finance_type, cdbcourse_fos1, cdbcourse_fos2, cdbcourse_fos3, cdbcourse_fos4, cdbcourse_fos5, cdbcourse_fos6, cdbcourse_fos7, cdbcourse_fos8, cdbcourse_fullpart, cdbcourse_honours_yr, cdbcourse_lab_status, cdbcourse_max_candid_dt, cdbcourse_max_period, cdbcourse_min_candid_dt, cdbcourse_min_period, cdbcourse_n_core_req, cdbcourse_n_func_c_req, cdbcourse_n_func_req, cdbcourse_nmc_cluster, cdbcourse_normal_period, cdbcourse_programme_end_dt, cdbcourse_programme_launch_dt, cdbcourse_research, cdbcourse_short_desc, cdbcourse_statue_course_desc, cdbcourse_study_option, cdbcourse_term_per_yr, cdbcourse_totmodule, cdbcourse_type
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_course_all)
+    );
+

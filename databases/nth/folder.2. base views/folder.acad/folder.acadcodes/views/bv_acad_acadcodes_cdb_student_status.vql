@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_acad_acadcodes_cdb_student_status
+    FOLDER = '/2. base views/acad/acadcodes'
+    DATASOURCENAME=ds_acad
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.acad.folder.acadcodes.views.jdbc.bv_acad_acadcodes_cdb_student_status.SCHEMANAME}' 
+    RELATIONNAME='CDB_STUDENT_STATUS' 
+    OUTPUTSCHEMA (
+        cdbstudent_status_code = 'CDBSTUDENT_STATUS_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbstudent_status_desc = 'CDBSTUDENT_STATUS_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    CONSTRAINT 'SYS_C0012155' PRIMARY KEY ( 'CDBSTUDENT_STATUS_CODE' )
+    INDEX 'SYS_C0012155' CLUSTER UNIQUE PRIMARY ( 'CDBSTUDENT_STATUS_CODE' );
+
+CREATE OR REPLACE TABLE bv_acad_acadcodes_cdb_student_status I18N sg (
+        cdbstudent_status_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbstudent_status_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30')
+    )
+    FOLDER = '/2. base views/acad/acadcodes'
+    PRIMARY KEY ( 'cdbstudent_status_code' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_acad_acadcodes_cdb_student_status(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbstudent_status_code (any) OPT ANY
+             ADD cdbstudent_status_desc (any) OPT ANY
+        )
+        OUTPUTLIST (cdbstudent_status_code, cdbstudent_status_desc
+        )
+        WRAPPER (jdbc bv_acad_acadcodes_cdb_student_status)
+    );
+

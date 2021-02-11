@@ -1,0 +1,38 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_entr_qualif
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_entr_qualif.SCHEMANAME}' 
+    RELATIONNAME='CDB_ENTR_QUALIF' 
+    OUTPUTSCHEMA (
+        cdbentr_code = 'CDBENTR_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', description='Entrance Qualification Code', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbentr_desc = 'CDBENTR_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='40', description='Entrance Qualification Description', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbentr_grp = 'CDBENTR_GRP' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', description='Entrance Qualification Group', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cdbentr_code_moe = 'CDBENTR_CODE_MOE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', description='Entrance Qualification Code of MOE', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    CONSTRAINT 'CDB_ENTR_QUALIF_PK' PRIMARY KEY ( 'CDBENTR_CODE' )
+    INDEX 'CDB_ENTR_QUALIF_PK' CLUSTER UNIQUE PRIMARY ( 'CDBENTR_CODE' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_entr_qualif I18N sg (
+        cdbentr_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2', description = 'Entrance Qualification Code'), 
+        cdbentr_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '40', description = 'Entrance Qualification Description'), 
+        cdbentr_grp:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2', description = 'Entrance Qualification Group'), 
+        cdbentr_code_moe:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2', description = 'Entrance Qualification Code of MOE')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    PRIMARY KEY ( 'cdbentr_code' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_entr_qualif(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbentr_code (any) OPT ANY
+             ADD cdbentr_desc (any) OPT ANY
+             ADD cdbentr_grp (any) OPT ANY
+             ADD cdbentr_code_moe (any) OPT ANY
+        )
+        OUTPUTLIST (cdbentr_code, cdbentr_code_moe, cdbentr_desc, cdbentr_grp
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_entr_qualif)
+    );
+

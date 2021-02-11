@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_admin_appcodes_cdb_residence_ownership
+    FOLDER = '/2. base views/admin/appcodes'
+    DATASOURCENAME=ds_admin
+    SCHEMANAME='${databases.nth.folder.2.. base views.folder.admin.folder.appcodes.views.jdbc.bv_admin_appcodes_cdb_residence_ownership.SCHEMANAME}' 
+    RELATIONNAME='CDB_RESIDENCE_OWNERSHIP' 
+    OUTPUTSCHEMA (
+        cdbresidenceownership_code = 'CDBRESIDENCEOWNERSHIP_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        cdbresidenceownership_desc = 'CDBRESIDENCEOWNERSHIP_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    INDEX 'CDB_RESIDENCE_OWNERSHIP_IDX1' CLUSTER UNIQUE ( 'CDBRESIDENCEOWNERSHIP_CODE' );
+
+CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_residence_ownership I18N sg (
+        cdbresidenceownership_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1'), 
+        cdbresidenceownership_desc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20')
+    )
+    FOLDER = '/2. base views/admin/appcodes'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_admin_appcodes_cdb_residence_ownership(
+        I18N sg
+        CONSTRAINTS (
+             ADD cdbresidenceownership_code (any) OPT ANY
+             ADD cdbresidenceownership_desc (any) OPT ANY
+        )
+        OUTPUTLIST (cdbresidenceownership_code, cdbresidenceownership_desc
+        )
+        WRAPPER (jdbc bv_admin_appcodes_cdb_residence_ownership)
+    );
+
