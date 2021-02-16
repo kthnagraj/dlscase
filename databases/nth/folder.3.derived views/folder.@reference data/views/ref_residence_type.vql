@@ -1,0 +1,26 @@
+﻿CREATE OR REPLACE VIEW ref_residence_type FOLDER = '/3.derived views/@reference data' (
+    cdbresidencetype_code (description = 'Code of residency type: 
+50	OTHERS
+11	HDB 1-ROOM FLAT
+12	HDB/SAF/PSA/PUB 2-ROOM FLAT
+13	HDB/SAF/PSA/PUB 3-ROOM FLAT
+14	HDB/SAF/PSA/PUB 4-ROOM FLAT
+15	HDB/SAF/PSA/PUB 5-ROOM FLAT
+20	GOVT/QUASI-GOVT EXECUTIVE FLAT
+21	HUDC FLAT
+22	HUDC TERRACE
+30	PRIVATE FLAT/APARTMENT
+32	TERRACE (OTHERS)
+33	SEMI-DETACHED HOUSE
+34	DETACHED HOUSE
+35	ATTAP OR ZINCE HOUSE
+36	GOVT/QUASI-GOVT/FACTORY QUARTERS
+40	HDB SHOPHOUSE
+41	SHOPHOUSE (OTHERS)'),
+    cdbresidencetype_desc (description = 'residency type descriptions')
+)
+ AS SELECT bv_admin_appcodes_cdb_residence_type.cdbresidencetype_code AS cdbresidencetype_code, bv_admin_appcodes_cdb_residence_type.cdbresidencetype_desc AS cdbresidencetype_desc FROM bv_admin_appcodes_cdb_residence_type;
+
+ALTER VIEW ref_residence_type
+ LAYOUT (bv_admin_appcodes_cdb_residence_type = [20, 20, 302, 66]);
+

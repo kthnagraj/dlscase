@@ -1,0 +1,12 @@
+﻿CREATE OR REPLACE VIEW ref_residence_ownership FOLDER = '/3.derived views/@reference data' (
+    cdbresidenceownership_code (description = 'code of residence ownership: 
+
+1	OWN
+2	RENTED'),
+    cdbresidenceownership_desc (description = 'residence ownership descriptions. OWN or RENTED')
+)
+ AS SELECT bv_admin_appcodes_cdb_residence_ownership.cdbresidenceownership_code AS cdbresidenceownership_code, bv_admin_appcodes_cdb_residence_ownership.cdbresidenceownership_desc AS cdbresidenceownership_desc FROM bv_admin_appcodes_cdb_residence_ownership;
+
+ALTER VIEW ref_residence_ownership
+ LAYOUT (bv_admin_appcodes_cdb_residence_ownership = [20, 20, 338, 66]);
+

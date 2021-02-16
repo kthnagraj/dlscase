@@ -1,0 +1,280 @@
+﻿CREATE OR REPLACE VIEW dv2_student_records_ug FOLDER = '/3.derived views/@master data' (
+    matric_nmbr (description = 'Matriculation Number'),
+    study_yr (description = 'Study year is applicable to UG only, classified by number of AU earned
+'),
+    name (description = 'Student''s Name'),
+    nationality (description = 'Student''s Nationality'),
+    pr_status (description = 'Singapore PR Status'),
+    ns_status (description = 'National Service (NS) status'),
+    home_addrty (description = 'The type of student''s home address'),
+    home_addr (description = 'The address of student''s home'),
+    home_pcode (description = 'Postcode of student''s home address'),
+    term_addr (description = 'Postal/mailing Address'),
+    term_pcode (description = 'Postcode of postal/mailing Address'),
+    birth_dt (description = 'Student''s date of brith'),
+    birth_place (description = 'Student''s place of birth'),
+    nric_ty (description = 'Type of National Registration Identity Card
+'),
+    nric_nmbr (description = 'National Registration Identity Card number'),
+    nric_issue_dt (description = 'Issue date of National Registration Identity Card'),
+    race (description = 'Student''s race'),
+    home_tel (description = 'Student''s home telephone number'),
+    term_tel (description = 'Student''s contact number'),
+    guard_name (description = 'Guardian''s name'),
+    guard_addrty (description = 'Type of guardian''s address
+'),
+    guard_addr (description = 'Guardian''s address'),
+    guard_pcode (description = 'Postcode of Guardian''s address'),
+    guard_relatn (description = 'Relationship with guardian'),
+    guard_occupatn (description = 'Guardian''s occupation
+'),
+    guard_higheduc (description = 'Guardian''s highest education
+'),
+    marital_status (description = 'Student''s marital status'),
+    entry_qualif (description = 'Student''s entry qualification'),
+    adm_yr_offer (description = 'The academic year which the student was offerred
+'),
+    adm_yr_actual (description = 'The academic year which the student admitted into the University'),
+    lang_gce (description = 'GCE Language Grade'),
+    lang_hsc (description = 'HSC Language Grade
+ '),
+    schlrship_ty (description = 'Scholarship type'),
+    schlrship_name (description = 'Scholarship name'),
+    schlrship_amt (description = 'Scholarship amount'),
+    s_grant (description = 'Grant taken?'),
+    fee_catg (description = 'Fee category'),
+    english_profcy (description = 'English proficiency'),
+    title (description = 'Title'),
+    admyr_programme (description = 'Admitted programme'),
+    fee_paid (description = 'Fee amount paid'),
+    guard_tel (description = 'Guardian''s telephone number
+'),
+    religion (description = 'Student''s religion'),
+    repeat_nus (description = 'Repeated in NUS?'),
+    prov_confer (description = 'Provisional conferred?'),
+    nus_matric_nmbr (description = 'Student''s NUS matriculation number'),
+    nus_programme_code (description = 'Student''s NUS degree programme code'),
+    srce_finance (description = 'Source of finance'),
+    ntu_staff_type (description = 'Type of employment taken up with NTU by the student
+'),
+    family_income (description = 'Student''s family income'),
+    acct_nmbr (description = 'Student''s account number'),
+    fid_nmbr (description = 'Student''s foreign ID number'),
+    previous_programme (description = 'Student''s previous programme
+'),
+    income_currency (description = 'Student''s family income currency
+'),
+    provisional_offer (description = 'Provisional offer'),
+    area_special (description = 'Area of specialisation'),
+    degree (description = 'Student''s degree'),
+    degree_choice (description = 'Student''s degree choice'),
+    father_nric (description = 'Student''s father''s NRIC'),
+    mother_nric (description = 'Student''s mother''s NRIC'),
+    mendaki_qualif_status (description = 'Mendaki''s qualification status'),
+    ntu_network_acc (description = 'Student''s NTU network account'),
+    core_au_total_todate (description = 'Core AU total todate'),
+    prescribe_au_total_todate (description = 'Prescirbe AU total todate
+'),
+    free_au_total_todate (description = 'Free AU total todate'),
+    total_au_todate (description = 'Total AU total todate
+'),
+    term_addrty (description = 'Type of the postal / mailing address'),
+    pager_nmbr (description = 'Student''s pager number'),
+    admyr_course2 (description = '2nd Admitted programme'),
+    admyr_course3 (description = '3rd Admitted programme'),
+    admyr_offer3 (description = '3rd Admitted year'),
+    orig_nationality (description = 'Student''s original nationality if his/her currently resident status is Singapore PR'),
+    convo_name (description = 'Convocation name'),
+    remark (description = 'Remarks'),
+    seat_area_special (description = 'Area of specialisation for seating arrangement'),
+    graduate_flag (description = 'Graduate flag'),
+    yr2_promotion_au (description = 'Year 2 promotion Academic Unit (AU)'),
+    yr3_promotion_au (description = 'Year 3 promotion Academic Unit (AU)
+'),
+    yr4_promotion_au (description = 'Year 4 promotion Academic Unit (AU)'),
+    core_au_required (description = 'Core AU required'),
+    prescribe_au_required (description = 'Prescribe AU required
+'),
+    free_au_required (description = 'Free AU required
+'),
+    total_au_required (description = 'Total AU required
+'),
+    edusave (description = 'On edusave?'),
+    student_type (description = 'Full-Time or Part-Time'),
+    accelerated_honours (description = 'Accelerated honours'),
+    accelerated_master (description = 'Accelerated master'),
+    cn_yang_scholars (description = 'Flag for students in the CN Yang Scholars Programme'),
+    s_gceo_pt (description = 'GCEO point'),
+    handphone_nmbr (description = 'Student''s handphone number'),
+    student_category (description = 'Category of student: UG=Undergraduate;PG=Postgraduate; NG=Non-graduating;BS=Bridging Student'),
+    jc_school (description = 'School code at JC/College level'),
+    personal_email (description = 'Personal email address'),
+    disability_detail (description = 'Disability detail'),
+    disability_flag (description = 'Disability flag'),
+    admission_semester (description = 'Admission semester'),
+    integrated_prog (description = 'Integrated programme flag'),
+    direct_entry (description = 'Direct entry to year 2 flag'),
+    non_gpa (description = 'Non-GPA flag'),
+    area_special2 (description = '2nd area of specialisation
+'),
+    gip (description = 'Global Immersion Programme (GIP) exchange flag. GIP was initiated as a component of the New Undergraduate Experience in NTU. It aims to provide NTU students the experience of studying and working abroad. '),
+    application_nmbr (description = 'Admission application number'),
+    accelerated_bachelor (description = 'Accelerated bachelor
+'),
+    qet_attendance (description = 'Qualifying English Test (QET) attendance. QET is a test for assessing newly matriculated students’ English proficiency and determining whether they are required to take the English Proficiency course as a course of study. '),
+    moe_schlr_adm_status (description = 'MOE scholarship status upon admission'),
+    normal_candidature (description = 'Normal candidature'),
+    max_candidature (description = 'Maximum candidature
+'),
+    min_candidature (description = 'Minimum candidature'),
+    old_course_code (description = 'Old programme code
+'),
+    old_nric_nmbr (description = 'Old NRIC number
+'),
+    old_matric_nmbr (description = 'Old Matric number'),
+    grp_insurance (description = 'Group insurance'),
+    ns_rank (description = 'National Service (NS) rank
+'),
+    mother_occupatn (description = 'Mother''s occupation'),
+    father_occupatn (description = 'Father''s occupation'),
+    total_candidature (description = 'Total candidature todate'),
+    residence_type (description = 'Student''s residential type'),
+    residence_ownership (description = 'Residential ownership'),
+    nmbr_brothers (description = 'Number of brothers'),
+    nmbr_sisters (description = 'Number of sisters'),
+    is_minor (description = 'Minor?'),
+    projected_graduate (description = 'Projected graduation flag'),
+    s_subsidy (description = 'Subsidy flag for CoPace to update'),
+    s_subsidy_percent (description = 'Subsidy percentage for CoPace to update'),
+    drop_dt_left (description = 'Dropout left date'),
+    drop_reason (description = 'Dropout reason'),
+    drop_reason_code (description = 'Dropout reason code'),
+    charge_fee_type (description = 'Charge fee type'),
+    tg_not_eligible_from (description = 'Tution Grant (TG) not eligible from'),
+    nmbr_sem_tg_taken (description = 'Number of semester taken for Tution Grant (TG)'),
+    s_fee_remark (description = 'Fee remarks'),
+    s_parent_income (description = 'Parent''s income
+'),
+    s_sibling_income (description = 'Sibling''s income
+'),
+    s_minor1 (description = 'Minor code 1
+'),
+    s_cand_waiver_flag (description = 'Candidature waiver flag
+'),
+    gr_graduated_yr (description = 'Graduated year
+'),
+    gr_degree_code (description = 'Code for degree conferred and is used for UG''s degree classification
+'),
+    gr_degree_award_dt (description = 'Degree award date
+'),
+    final_cgpa (description = 'Final CGPA upon graduation
+
+'),
+    rank (description = 'Rank of student in the cohort'),
+    gr_news (description = 'Graduate news flag
+'),
+    gr_gown (description = 'Graduate gown flag
+'),
+    gr_confer_date (description = 'Degree Conferment Date'),
+    gr_award_minor (description = 'Code of the 1st Minor awarded, up to 3 minors'),
+    gr_award_minor2 (description = 'Code of the 2nd Minor awarded, up to 3 minors'),
+    gr_award_minor3 (description = 'Code of the 3rd Minor awarded, up to 3 minors'),
+    gr_award_area_special2 (description = 'Code of the 2nd specialisation awarded, up to 2 specialisations, include Elective Focus by SCSE
+'),
+    gr_timestamp (description = 'Graduated date'),
+    gr_email_sent (description = 'Graduate email sent flag
+'),
+    gr_email_timestamp (description = 'Graduate email sent date
+'),
+    gr_last_acad_sem (description = 'Last academic semester'),
+    gr_life_status (description = 'Life status'),
+    moe_tg_not_elig_from (description = 'MOE TG not eligible from
+'),
+    moe_tg_ntusub_not_elig_from (description = 'MOE TG NTUSUB not eligible from'),
+    first_name (description = 'Student''s First Name'),
+    last_name (description = 'Student Last Name'),
+    exam_cumulative_wam (description = 'Exam cumulative weighted average mark
+'),
+    graduate_award_major2 (description = 'The second major which the student is awarded'),
+    s_bod_discipline (description = 'BOD discipline flag'),
+    s_discipline_yr (description = 'To update the graduating year details for students whose graduation year would be withheld pending serving suspension period (Exam Team).'),
+    s_discipline_sem (description = 'To update the graduating sem details for students whose graduation year would be withheld pending serving suspension period (Exam Team).
+'),
+    gr_award_spec (description = 'Award of Specialisation
+'),
+    race2 (description = 'For double barreled race
+'),
+    s_teach_scholars_prog (description = 'Teaching scholar programme flag
+'),
+    s_projected_graduate_upd_dt (description = 'Project graduate update date
+'),
+    gr_award_elec_foc2 (description = 'FOC elective code 2'),
+    gr_award_elec_foc1 (description = 'FOC elective code 1'),
+    s_freshmen_exemption_cnt (description = 'Freshmen exemption count'),
+    usp_scholars (description = 'Flag for students in the University Scholar Programme (USP)
+'),
+    ucpts (description = '?? UCPTS??'),
+    programme_code (description = 'Code for the degree programme'),
+    s_status (description = '?? not in use ??'),
+    student_status (description = 'The status of student which can be 
+NULL: Active,
+V:	Revoked
+M:	Leave of Absence
+W:	Withdrawn
+C:	Completed
+G:	Graduated
+R:	Did Not Matriculate
+S:	Suspension
+Z:	NIE Duplicate Record
+E:	Change Course/Programme'),
+    als_offer (description = 'On AU Adult Learners Scheme'),
+    family_pci (description = 'Total gross monthly PCI in the household'),
+    nmbr_family (description = 'Total nmbr of immediate family members staying in the same household'),
+    moe_school_type (description = 'MOE School Type (DIRECT; FLOW-THRU)
+'),
+    subsidy_update_date (description = 'Subsidy updated date'),
+    subsidy_update_by (description = 'Subsidy updated by?
+'),
+    reg_au_for_billing (description = 'Student''s total Academic unit (AUs) Registered for Billing
+'),
+    totsem_moetg_pre_in_ntu (description = 'Total number of semesters MOE TG utilised preNTU & in NTU'),
+    nric_hash (description = 'Hashed NRIC number
+'),
+    health_info (description = 'Health information
+'),
+    health_info_date (description = 'Health information creation date
+'),
+    health_tb (description = 'Tuberculosis (TB) flag
+'),
+    health_hep_b_carrier (description = 'Hepatits B carrier flag
+'),
+    health_epilepsy (description = 'Epilepsy flag
+'),
+    health_dyslexia (description = 'Dyslexia flag
+'),
+    health_asd (description = 'Autism Spectrum Disorder (ASD) flag
+'),
+    health_adhd (description = 'Adult attention-deficit/hyperactivity disorder (ADHD) flag
+'),
+    health_visual_impaired (description = 'Visual impaired flag
+'),
+    health_hear_impaired (description = 'Hearing impaired flag
+'),
+    health_physical_impaired (description = 'Physical impaired flag
+'),
+    health_nothing_declare (description = 'Nothing to declare flag
+'),
+    health_other (description = 'Others health info flag
+'),
+    criminal_declaration (description = 'Criminal declaration flag
+'),
+    criminal_declaration_date (description = 'Criminal declaration date
+'),
+    res_period_waiver (description = 'Waiver period for RES (?? What is RES??)'),
+    gender (description = 'Student''s gender')
+)
+ AS SELECT dv_student_ug.s_matric_nmbr AS matric_nmbr, dv_student_ug.s_course_code AS programme_code, dv_student_ug.s_study_yr AS study_yr, dv_student_ug.s_name AS name, dv_student_ug.s_sex AS gender, dv_student_ug.s_nationality AS nationality, dv_student_ug.s_pr_status AS pr_status, dv_student_ug.s_ns_status AS ns_status, dv_student_ug.s_home_addrty AS home_addrty, dv_student_ug.s_home_addr AS home_addr, dv_student_ug.s_home_pcode AS home_pcode, dv_student_ug.s_home_tel AS home_tel, dv_student_ug.s_term_addrty AS term_addrty, dv_student_ug.s_term_addr AS term_addr, dv_student_ug.s_term_pcode AS term_pcode, dv_student_ug.s_term_tel AS term_tel, dv_student_ug.s_pager_nmbr AS pager_nmbr, dv_student_ug.s_handphone AS handphone_nmbr, dv_student_ug.s_birth_dt AS birth_dt, dv_student_ug.s_birth_place AS birth_place, dv_student_ug.s_nric_ty AS nric_ty, dv_student_ug.s_nric_nmbr AS nric_nmbr, dv_student_ug.s_nric_issue_dt AS nric_issue_dt, dv_student_ug.s_race AS race, dv_student_ug.s_race2 AS race2, dv_student_ug.s_religion AS religion, dv_student_ug.s_domicile AS domicile, dv_student_ug.s_guard_name AS guard_name, dv_student_ug.s_guard_addrty AS guard_addrty, dv_student_ug.s_guard_addr AS guard_addr, dv_student_ug.s_guard_pcode AS guard_pcode, dv_student_ug.s_guard_tel AS guard_tel, dv_student_ug.s_guard_relatn AS guard_relatn, dv_student_ug.s_guard_occupatn AS guard_occupatn, dv_student_ug.s_guard_higheduc AS guard_higheduc, dv_student_ug.s_maritalst AS marital_status, dv_student_ug.s_entr_qualif AS entry_qualif, dv_student_ug.s_admyr_offer AS adm_yr_offer, dv_student_ug.s_admyr_actual AS adm_yr_actual, dv_student_ug.s_lang_gce AS lang_gce, dv_student_ug.s_lang_hsc AS lang_hsc, dv_student_ug.s_schlrship_ty AS schlrship_ty, dv_student_ug.s_schlrship_name AS schlrship_name, dv_student_ug.s_schlrship_amt AS schlrship_amt, dv_student_ug.s_grant AS s_grant, dv_student_ug.s_fee_catg AS fee_catg, dv_student_ug.s_title AS title, dv_student_ug.s_eng_profcy AS english_profcy, dv_student_ug.s_admyr_course AS admyr_programme, dv_student_ug.s_fee_pay AS fee_paid, dv_student_ug.s_repeat_nus AS repeat_nus, dv_student_ug.s_prov_confer AS prov_confer, dv_student_ug.s_nus_matric_nmbr AS nus_matric_nmbr, dv_student_ug.s_nus_course_code AS nus_programme_code, dv_student_ug.s_r_course AS r_course, dv_student_ug.s_srce_fin AS srce_finance, dv_student_ug.s_staff AS ntu_staff_type, dv_student_ug.s_family_income AS family_income, dv_student_ug.s_acct_nmbr AS acct_nmbr, dv_student_ug.s_fid_nmbr AS fid_nmbr, dv_student_ug.s_pon_course AS previous_programme, dv_student_ug.s_income_currency AS income_currency, dv_student_ug.s_prov_offer AS provisional_offer, dv_student_ug.s_area_special AS area_special, dv_student_ug.s_degree AS degree, dv_student_ug.s_degree_choice AS degree_choice, dv_student_ug.s_father_nric AS father_nric, dv_student_ug.s_mother_nric AS mother_nric, dv_student_ug.s_mendaki_qualif_status AS mendaki_qualif_status, dv_student_ug.s_father_name AS father_name, dv_student_ug.s_father_ctzenship AS father_ctzenship, dv_student_ug.s_father_race AS father_race, dv_student_ug.s_father_qualif AS father_qualif, dv_student_ug.s_mother_name AS mother_name, dv_student_ug.s_mother_ctzenship AS mother_ctzenship, dv_student_ug.s_mother_race AS mother_race, dv_student_ug.s_mother_qualif AS mother_qualif, dv_student_ug.s_honours_accept AS honours_accept, dv_student_ug.s_father_pr_status AS father_pr_status, dv_student_ug.s_mother_pr_status AS mother_pr_status, dv_student_ug.s_home_block_no AS home_block_no, dv_student_ug.s_home_street_name AS home_street_name, dv_student_ug.s_home_floor_no AS home_floor_no, dv_student_ug.s_home_unit_no AS home_unit_no, dv_student_ug.s_home_bldg_name AS home_bldg_name, dv_student_ug.s_term_block_no AS term_block_no, dv_student_ug.s_term_street_name AS term_street_name, dv_student_ug.s_term_floor_no AS term_floor_no, dv_student_ug.s_term_unit_no AS term_unit_no, dv_student_ug.s_term_bldg_name AS term_bldg_name, dv_student_ug.s_guard_block_no AS guard_block_no, dv_student_ug.s_guard_street_name AS guard_street_name, dv_student_ug.s_guard_floor_no AS guard_floor_no, dv_student_ug.s_guard_unit_no AS guard_unit_no, dv_student_ug.s_guard_bldg_name AS guard_bldg_name, dv_student_ug.s_hall_addr AS hall_addr, dv_student_ug.s_residence_type AS residence_type, dv_student_ug.s_residence_ownership AS residence_ownership, dv_student_ug.s_nmbr_brothers AS nmbr_brothers, dv_student_ug.s_nmbr_sisters AS nmbr_sisters, dv_student_ug.s_father_occupatn AS father_occupatn, dv_student_ug.s_mother_occupatn AS mother_occupatn, dv_student_ug.s_father_addr AS s_father_addr, dv_student_ug.s_mother_addr AS s_mother_addr, dv_student_ug.s_father_handphone AS s_father_handphone, dv_student_ug.s_mother_handphone AS s_mother_handphone, dv_student_ug.s_guard_email AS s_guard_email, dv_student_ug.s_father_email AS s_father_email, dv_student_ug.s_mother_email AS s_mother_email, dv_student_ug.s_ucpts AS ucpts, dv_student_ug.s_vms_acc AS ntu_network_acc, dv_student_ug.s_core_tot_todate AS core_au_total_todate, dv_student_ug.s_prescribe_tot_todate AS prescribe_au_total_todate, dv_student_ug.s_free_tot_todate AS free_au_total_todate, dv_student_ug.s_tot_unit_todate AS total_au_todate, dv_student_ug.s_admyr_course2 AS admyr_course2, dv_student_ug.s_admyr_course3 AS admyr_course3, dv_student_ug.s_admyr_offer3 AS admyr_offer3, dv_student_ug.s_orig_nationality AS orig_nationality, dv_student_ug.s_convo_name AS convo_name, dv_student_ug.s_remark AS remark, dv_student_ug.s_seat_area_special AS seat_area_special, dv_student_ug.s_transitional_student AS transitional_student, dv_student_ug.s_graduate_flag AS graduate_flag, dv_student_ug.s_status AS s_status, dv_student_ug.s_yr2_promotion_au AS yr2_promotion_au, dv_student_ug.s_yr3_promotion_au AS yr3_promotion_au, dv_student_ug.s_yr4_promotion_au AS yr4_promotion_au, dv_student_ug.s_yr5_promotion_au AS yr5_promotion_au, dv_student_ug.s_core_au_required AS core_au_required, dv_student_ug.s_prescribe_au_required AS prescribe_au_required, dv_student_ug.s_free_au_required AS free_au_required, dv_student_ug.s_total_au_required AS total_au_required, dv_student_ug.s_edusave AS edusave, dv_student_ug.s_student_type AS student_type, dv_student_ug.s_accelerated_honours AS accelerated_honours, dv_student_ug.s_accelerated_master AS accelerated_master, dv_student_ug.s_minor AS is_minor, dv_student_ug.s_total_candidature AS total_candidature, dv_student_ug.s_ns_rank AS ns_rank, dv_student_ug.s_gceo_pt AS s_gceo_pt, dv_student_ug.s_grp_insurance AS grp_insurance, dv_student_ug.s_old_matric_nmbr AS old_matric_nmbr, dv_student_ug.s_old_nric_nmbr AS old_nric_nmbr, dv_student_ug.s_old_course_code AS old_course_code, dv_student_ug.s_min_candidature AS min_candidature, dv_student_ug.s_max_candidature AS max_candidature, dv_student_ug.s_normal_candidature AS normal_candidature, dv_student_ug.s_moe_schlr_adm_status AS moe_schlr_adm_status, dv_student_ug.s_qet_attendance AS qet_attendance, dv_student_ug.s_accelerated_bachelor AS accelerated_bachelor, dv_student_ug.s_appno AS application_nmbr, dv_student_ug.s_gip AS gip, dv_student_ug.s_area_special2 AS area_special2, dv_student_ug.s_non_gpa AS non_gpa, dv_student_ug.s_direct_entry AS direct_entry, dv_student_ug.s_cn_yang_scholars AS cn_yang_scholars, dv_student_ug.s_uni_scholars_prog AS usp_scholars, dv_student_ug.s_integrated_prog AS integrated_prog, dv_student_ug.s_adm_semester AS admission_semester, dv_student_ug.s_disability AS disability_flag, dv_student_ug.s_disability_detail AS disability_detail, dv_student_ug.s_own_email AS personal_email, dv_student_ug.s_schl AS jc_school, dv_student_ug.s_first_name AS first_name, dv_student_ug.s_last_name AS last_name, dv_student_ug.s_projected_graduate AS projected_graduate, dv_student_ug.s_subsidy AS s_subsidy, dv_student_ug.s_subsidy_percent AS s_subsidy_percent, dv_student_ug.drop_dt_left AS drop_dt_left, dv_student_ug.drop_reason AS drop_reason, dv_student_ug.drop_reason_code AS drop_reason_code, dv_student_ug.s_charge_fee_type AS charge_fee_type, dv_student_ug.s_tg_not_elig_from AS tg_not_eligible_from, dv_student_ug.s_nmbr_sem_tg_taken AS nmbr_sem_tg_taken, dv_student_ug.s_moetg_not_elig_from AS moe_tg_not_elig_from, dv_student_ug.s_moetg_ntusub_not_elig_from AS moe_tg_ntusub_not_elig_from, dv_student_ug.s_fee_remark AS s_fee_remark, dv_student_ug.s_parent_income AS s_parent_income, dv_student_ug.s_sibling_income AS s_sibling_income, dv_student_ug.s_minor1 AS s_minor1, dv_student_ug.s_cand_waiver_flag AS s_cand_waiver_flag, dv_student_ug.gr_graduated_yr AS gr_graduated_yr, dv_student_ug.gr_degree_code AS gr_degree_code, dv_student_ug.gr_degree_award_dt AS gr_degree_award_dt, dv_student_ug.gr_overall_wt_avg AS final_cgpa, dv_student_ug.gr_rank AS rank, dv_student_ug.gr_news AS gr_news, dv_student_ug.gr_gown AS gr_gown, dv_student_ug.gr_confer_date AS gr_confer_date, dv_student_ug.gr_award_minor AS gr_award_minor, dv_student_ug.gr_award_minor2 AS gr_award_minor2, dv_student_ug.gr_award_minor3 AS gr_award_minor3, dv_student_ug.gr_award_area_special2 AS gr_award_area_special2, dv_student_ug.gr_grad_rep AS gr_grad_rep, dv_student_ug.gr_timestamp AS gr_timestamp, dv_student_ug.gr_email_sent AS gr_email_sent, dv_student_ug.gr_email_timestamp AS gr_email_timestamp, dv_student_ug.gr_last_acad_sem AS gr_last_acad_sem, dv_student_ug.gr_life_status AS gr_life_status, dv_student_ug.gr_1stdeg_nric_nmbr AS gr_1stdeg_nric_nmbr, dv_student_ug.gr_1stdeg_matric_nmbr AS gr_1stdeg_matric_nmbr, dv_student_ug.gr_1stdeg_course_code AS gr_1stdeg_course_code, dv_student_ug.gr_1stdeg_graduated_yr AS gr_1stdeg_graduated_yr, dv_student_ug.gr_1stdeg_degree_code AS gr_1stdeg_degree_code, dv_student_ug.gr_1stdeg_degree_award_dt AS gr_1stdeg_degree_award_dt, dv_student_ug.gr_1stdeg_overall_wt_avg AS gr_1stdeg_overall_wt_avg, dv_student_ug.gr_1stdeg_rank AS gr_1stdeg_rank, dv_student_ug.gr_1stdeg_degree AS gr_1stdeg_degree, dv_student_ug.gr_1stdeg_degree_choice AS gr_1stdeg_degree_choice, dv_student_ug.gr_1stdeg_confer_date AS gr_1stdeg_confer_date, dv_student_ug.gr_1stdeg_transitional_student AS gr_1stdeg_transitional_student, dv_student_ug.gr_1stdeg_core_tot_todate AS gr_1stdeg_core_tot_todate, dv_student_ug.gr_1stdeg_prescribe_tot_todate AS gr_1stdeg_prescribe_tot_todate, dv_student_ug.gr_1stdeg_free_tot_todate AS gr_1stdeg_free_tot_todate, dv_student_ug.gr_1stdeg_tot_unit_todate AS gr_1stdeg_tot_unit_todate, dv_student_ug.s_min_cand_waiver_flag AS s_min_cand_waiver_flag, dv_student_ug.s_min_cand_waiver_approve_dt AS s_min_cand_waiver_approve_dt, dv_student_ug.drop_waive_fees_dt AS drop_waive_fees_dt, dv_student_ug.drop_waive_fees_reason_code AS drop_waive_fees_reason_code, dv_student_ug.drop_waive_fees_reason AS drop_waive_fees_reason, dv_student_ug.s_entr_qualif_orig AS entr_qualif_orig, dv_student_ug.s_health_info AS health_info, dv_student_ug.s_health_info_date AS health_info_date, dv_student_ug.s_health_tb AS health_tb, dv_student_ug.s_health_hep_b_carrier AS health_hep_b_carrier, dv_student_ug.s_health_epilepsy AS health_epilepsy, dv_student_ug.s_health_dyslexia AS health_dyslexia, dv_student_ug.s_health_asd AS health_asd, dv_student_ug.s_health_adhd AS health_adhd, dv_student_ug.s_health_visual_impaired AS health_visual_impaired, dv_student_ug.s_health_hear_impaired AS health_hear_impaired, dv_student_ug.s_health_physical_impaired AS health_physical_impaired, dv_student_ug.s_health_nothing_declare AS health_nothing_declare, dv_student_ug.s_health_other AS health_other, dv_student_ug.s_criminal_declaration AS criminal_declaration, dv_student_ug.s_criminal_declaration_date AS criminal_declaration_date, dv_student_ug.s_res_period_waiver AS res_period_waiver, dv_student_ug.gr_award_elec_foc1 AS gr_award_elec_foc1, dv_student_ug.gr_award_elec_foc2 AS gr_award_elec_foc2, dv_student_ug.s_freshmen_exemption_cnt AS s_freshmen_exemption_cnt, dv_student_ug.s_projected_graduate_upd_dt AS s_projected_graduate_upd_dt, dv_student_ug.s_teach_scholars_prog AS s_teach_scholars_prog, dv_student_ug.s_bod_discipline AS s_bod_discipline, dv_student_ug.s_discipline_yr AS s_discipline_yr, dv_student_ug.s_discipline_sem AS s_discipline_sem, dv_student_ug.exam_cumulative_wam AS exam_cumulative_wam, dv_student_ug.s_category AS student_category, dv_student_ug.gr_award_spec AS gr_award_spec, dv_student_ug.gr_award_major2 AS graduate_award_major2, dv_student_ug.s_subsidy_update_by AS subsidy_update_by, dv_student_ug.s_subsidy_update_date AS subsidy_update_date, dv_student_ug.s_moe_school_type AS moe_school_type, dv_student_ug.s_nmbr_family AS nmbr_family, dv_student_ug.s_family_pci AS family_pci, dv_student_ug.s_reg_au_for_billing AS reg_au_for_billing, dv_student_ug.s_totsem_moetg_pre_in_ntu AS totsem_moetg_pre_in_ntu, dv_student_ug.s_nric_hash AS nric_hash, dv_student_ug.s_als_offer AS als_offer, dv_student_ug.s_student_status AS student_status FROM dv_student_ug;
+
+ALTER VIEW dv2_student_records_ug
+ LAYOUT (dv_student_ug = [20, 20, 240, 789]);
+

@@ -122,6 +122,7 @@ CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_course_all I18N sg (
     )
     FOLDER = '/2. base views/admin/appcodes'
     CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_admin_appcodes_cdb_course_all(
         I18N sg
@@ -184,5 +185,6 @@ CREATE OR REPLACE TABLE bv_admin_appcodes_cdb_course_all I18N sg (
         OUTPUTLIST (cdbcourse_adesc, cdbcourse_admyr_begin, cdbcourse_admyr_end, cdbcourse_affiliated_type, cdbcourse_beg_yr, cdbcourse_candid_term, cdbcourse_cluster, cdbcourse_code, cdbcourse_code1, cdbcourse_code1_area_special, cdbcourse_code2, cdbcourse_code2_area_special, cdbcourse_college_matric_code, cdbcourse_coursewk, cdbcourse_deg, cdbcourse_dept, cdbcourse_desc, cdbcourse_double_degree, cdbcourse_double_major, cdbcourse_dt_beg_yr, cdbcourse_dt_max_period, cdbcourse_dt_min_period, cdbcourse_dt_normal_period, cdbcourse_end_yr, cdbcourse_finance_type, cdbcourse_fos1, cdbcourse_fos2, cdbcourse_fos3, cdbcourse_fos4, cdbcourse_fos5, cdbcourse_fos6, cdbcourse_fos7, cdbcourse_fos8, cdbcourse_fullpart, cdbcourse_honours_yr, cdbcourse_lab_status, cdbcourse_max_candid_dt, cdbcourse_max_period, cdbcourse_min_candid_dt, cdbcourse_min_period, cdbcourse_n_core_req, cdbcourse_n_func_c_req, cdbcourse_n_func_req, cdbcourse_nmc_cluster, cdbcourse_normal_period, cdbcourse_programme_end_dt, cdbcourse_programme_launch_dt, cdbcourse_research, cdbcourse_short_desc, cdbcourse_statue_course_desc, cdbcourse_study_option, cdbcourse_term_per_yr, cdbcourse_totmodule, cdbcourse_type
         )
         WRAPPER (jdbc bv_admin_appcodes_cdb_course_all)
-    );
+    )
+    SMART_ONLY;
 

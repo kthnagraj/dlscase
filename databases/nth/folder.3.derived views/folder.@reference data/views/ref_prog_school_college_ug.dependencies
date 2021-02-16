@@ -1,0 +1,10 @@
+﻿/databases/nth/folder.3.derived views/3.derived views.vql
+/databases/nth/folder.3.derived views/folder.@reference data/@reference data.vql
+/databases/nth/folder.2. base views/2. base views.vql
+/databases/nth/folder.2. base views/folder.admin/admin.vql
+/databases/nth/folder.2. base views/folder.admin/folder.appcodes/appcodes.vql
+/maps/i18n/sg.vql
+/databases/nth/folder.1. data sources/1. data sources.vql
+/databases/nth/folder.1. data sources/datasources/jdbc/ds_admin.vql
+/databases/nth/folder.2. base views/folder.admin/folder.appcodes/views/bv_admin_appcodes_cdb_course_all.vql
+/databases/nth/folder.2. base views/folder.admin/folder.appcodes/views/bv_admin_appcodes_cdb_dept.vql

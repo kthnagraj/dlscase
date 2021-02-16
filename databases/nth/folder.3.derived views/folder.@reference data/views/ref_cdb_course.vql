@@ -1,0 +1,17 @@
+﻿CREATE OR REPLACE VIEW ref_cdb_course FOLDER = '/3.derived views/@reference data' (
+    cdbcourse_code (description = 'Degree programme code'),
+    cdbcourse_dept (description = 'Department code of the degree programme'),
+    cdbcourse_cluster (description = 'Cluster of the degree programme, such as ENGINEERING or NIE'),
+    cdbcourse_type (description = 'type of the degree programme'),
+    cdbcourse_desc (description = 'description of the degree programme'),
+    cdbcourse_deg (description = 'degree title of the degree programme'),
+    cdbcourse_double_degree (description = 'Double degree flag. Y: Double degree; Null: Single degree'),
+    cdbcourse_short_desc (description = 'Short description of degree programme'),
+    cdbcourse_code1 (description = 'Degree programme code 1'),
+    cdbcourse_code2 (description = 'Degree programme code 2')
+)
+ AS SELECT DISTINCT cdbcourse_code AS cdbcourse_code, cdbcourse_dept AS cdbcourse_dept, cdbcourse_cluster AS cdbcourse_cluster, cdbcourse_type AS cdbcourse_type, cdbcourse_desc AS cdbcourse_desc, cdbcourse_deg AS cdbcourse_deg, cdbcourse_double_degree AS cdbcourse_double_degree, cdbcourse_short_desc AS cdbcourse_short_desc, cdbcourse_code1 AS cdbcourse_code1, cdbcourse_code2 AS cdbcourse_code2, cdbcourse_lab_status AS cdbcourse_lab_status FROM bv_admin_appcodes_cdb_course_all GROUP BY cdbcourse_code, cdbcourse_dept, cdbcourse_cluster, cdbcourse_type, cdbcourse_desc, cdbcourse_deg, cdbcourse_double_degree, cdbcourse_short_desc, cdbcourse_code1, cdbcourse_code2, cdbcourse_lab_status;
+
+ALTER VIEW ref_cdb_course
+ LAYOUT (bv_admin_appcodes_cdb_course_all = [20, 20, 317, 789]);
+

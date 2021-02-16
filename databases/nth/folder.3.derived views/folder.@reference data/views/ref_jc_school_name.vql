@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW ref_jc_school_name FOLDER = '/3.derived views/@reference data' AS SELECT bv_admin_appcodes_cdb_school_name.cdbschl_code AS cdbschl_code, bv_admin_appcodes_cdb_school_name.cdbschl_name AS cdbschl_name, bv_admin_appcodes_cdb_school_name.cdbschl_country_code AS cdbschl_country_code, bv_admin_appcodes_cdb_school_name.cdbschl_state_code AS cdbschl_state_code, bv_admin_appcodes_cdb_school_name.cdbschl_principal AS cdbschl_principal, bv_admin_appcodes_cdb_school_name.cdbschl_addr AS cdbschl_addr, bv_admin_appcodes_cdb_school_name.cdbschl_tel AS cdbschl_tel, bv_admin_appcodes_cdb_school_name.cdbschl_fax AS cdbschl_fax, bv_admin_appcodes_cdb_school_name.cdbschl_email AS cdbschl_email, bv_admin_appcodes_cdb_school_name.cdbschl_rank AS cdbschl_rank, bv_admin_appcodes_cdb_school_name.cdbschl_active AS cdbschl_active, bv_admin_appcodes_cdb_school_name.cdbschl_old_code AS cdbschl_old_code, bv_admin_appcodes_cdb_school_name.cdbschl_level AS cdbschl_level FROM bv_admin_appcodes_cdb_school_name;
+
+ALTER VIEW ref_jc_school_name
+ LAYOUT (bv_admin_appcodes_cdb_school_name = [20, 20, 294, 286]);
+

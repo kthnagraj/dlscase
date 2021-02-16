@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW ref_student_status FOLDER = '/3.derived views/@reference data' AS SELECT bv_acad_acadcodes_cdb_student_status.cdbstudent_status_code AS cdbstudent_status_code, bv_acad_acadcodes_cdb_student_status.cdbstudent_status_desc AS cdbstudent_status_desc FROM bv_acad_acadcodes_cdb_student_status;
+
+ALTER VIEW ref_student_status
+ LAYOUT (bv_acad_acadcodes_cdb_student_status = [20, 20, 298, 66]);
+

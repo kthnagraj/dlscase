@@ -1,0 +1,14 @@
+﻿CREATE OR REPLACE VIEW ref_prog_school_college_ug FOLDER = '/3.derived views/@reference data' (
+    programme_code (description = 'degree programme code'),
+    programme_desc (description = 'degree programme description'),
+    school (description = 'School (abbreviation)'),
+    school_desc (description = 'School name'),
+    college (description = 'College (abbreviation)'),
+    college_desc (description = 'College name'),
+    cluster (description = 'Cluster name')
+)
+ AS SELECT bv_admin_appcodes_cdb_course_all.cdbcourse_code AS programme_code, bv_admin_appcodes_cdb_course_all.cdbcourse_desc AS programme_desc, bv_admin_appcodes_cdb_dept.cdbdept_adesc AS school, bv_admin_appcodes_cdb_dept.cdbdept_desc AS school_desc, bv_admin_appcodes_cdb_dept1.cdbdept_adesc AS college, bv_admin_appcodes_cdb_dept1.cdbdept_desc AS college_desc, bv_admin_appcodes_cdb_course_all.cdbcourse_cluster AS cluster FROM (bv_admin_appcodes_cdb_course_all AS bv_admin_appcodes_cdb_course_all LEFT OUTER JOIN bv_admin_appcodes_cdb_dept AS bv_admin_appcodes_cdb_dept ON bv_admin_appcodes_cdb_course_all.cdbcourse_dept = bv_admin_appcodes_cdb_dept.cdbdept_code ) LEFT OUTER JOIN bv_admin_appcodes_cdb_dept AS bv_admin_appcodes_cdb_dept1 ON bv_admin_appcodes_cdb_dept.cdbdept_college = bv_admin_appcodes_cdb_dept1.cdbdept_code  WHERE (bv_admin_appcodes_cdb_course_all.cdbcourse_fullpart = 'F' AND bv_admin_appcodes_cdb_course_all.cdbcourse_type in ('UND'));
+
+ALTER VIEW ref_prog_school_college_ug
+ LAYOUT (bv_admin_appcodes_cdb_course_all = [20, 20, 200, 225], bv_admin_appcodes_cdb_dept = [310, 50, 200, 225], bv_admin_appcodes_cdb_dept = [560, 50, 340, 280]);
+

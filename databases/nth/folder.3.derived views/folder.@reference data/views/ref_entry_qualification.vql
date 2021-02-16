@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW ref_entry_qualification FOLDER = '/3.derived views/@reference data' AS SELECT bv_admin_appcodes_cdb_entr_qualif.cdbentr_code AS cdbentr_code, bv_admin_appcodes_cdb_entr_qualif.cdbentr_desc AS cdbentr_desc, bv_admin_appcodes_cdb_entr_qualif.cdbentr_grp AS cdbentr_grp, bv_admin_appcodes_cdb_entr_qualif.cdbentr_code_moe AS cdbentr_code_moe FROM bv_admin_appcodes_cdb_entr_qualif;
+
+ALTER VIEW ref_entry_qualification
+ LAYOUT (bv_admin_appcodes_cdb_entr_qualif = [20, 20, 276, 106]);
+
