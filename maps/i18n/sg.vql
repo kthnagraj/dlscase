@@ -1,0 +1,12 @@
+﻿CREATE OR REPLACE MAP i18n sg (
+    'country' = 'SG'
+    'datepattern' = 'dd/MM/yyyy h:mm:ss a'
+    'datesubtypepattern' = 'dd/MM/yyyy'
+    'doubledecimalposition' = '2'
+    'doubledecimalseparator' = ''
+    'doublegroupseparator' = ''
+    'language' = 'en'
+    'timesubtypepattern' = 'h:mm:ss a'
+    'timezone' = 'Asia/Singapore'
+);
+
