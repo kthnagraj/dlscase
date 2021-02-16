@@ -1,0 +1,4 @@
+﻿CREATE OR REPLACE MATERIALIZED TABLE order_current_year (
+        field1:int
+    );
+
